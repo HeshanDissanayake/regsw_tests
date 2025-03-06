@@ -26,6 +26,7 @@ static inline void set_pointer(int pointer_reg, int mode, int base_reg){
 }
 
 
+
 static inline void fetch(int pointer_reg, int *src, int len, int base_reg, int data_len) {
     
     load_mem_location(src);

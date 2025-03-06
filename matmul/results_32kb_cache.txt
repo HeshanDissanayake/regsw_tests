@@ -1,0 +1,102 @@
+mat 16
+
+cycles_norm = 27301
+result_sum_norm = 67721216
+
+c1_extraReg_8=25747
+result_sum_extraReg_8=67721216
+
+cycles_extraReg_16 = 20501
+result_sum_extraReg_16 = 67721216
+
+cycles_b2 = 21890
+result_sum_B2 = 67721216
+
+cycles_b4 = 22519
+result_sum_B4 = 67721216
+
+mat 32
+
+cycles_norm = 526162
+result_sum_norm = 19578880
+
+c1_extraReg_8=179593
+result_sum_extraReg_8=19578880
+
+cycles_extraReg_16 = 166099
+result_sum_extraReg_16 = 19578880
+
+cycles_b2 = 158091
+result_sum_B2 = 19578880
+
+cycles_b4 = 154431
+result_sum_B4 = 19578880
+
+mat 64
+
+cycles_norm = 6537706
+result_sum_norm = 626393088
+
+c1_extraReg_8=1522531
+result_sum_extraReg_8=626393088
+
+cycles_extraReg_16 = 1253996
+result_sum_extraReg_16 = 626393088
+
+cycles_b2 = 1318969
+result_sum_B2 = 626393088
+
+cycles_b4 = 1245598
+result_sum_B4 = 626393088
+
+mat 128
+
+cycles_norm = 70971574
+result_sum_norm = -1431306240
+
+c1_extraReg_8=13529706
+result_sum_extraReg_8=-1431306240
+
+cycles_extraReg_16 = 11086241
+result_sum_extraReg_16 = -1431306240
+
+cycles_b2 = 16259358
+result_sum_B2 = -1431306240
+
+cycles_b4 = 12910846
+result_sum_B4 = -1431306240
+
+mat 256
+
+cycles_norm = 642939326
+result_sum_norm = 1434451968
+
+c1_extraReg_8=111856483
+result_sum_extraReg_8=1434451968
+
+cycles_extraReg_16 = 91064065
+result_sum_extraReg_16 = 1434451968
+
+cycles_b2 = 141046178
+result_sum_B2 = 1434451968
+
+cycles_b4 = 109039803
+result_sum_B4 = 1434451968
+
+
+mat 512
+
+cycles_norm = 806690923
+result_sum_norm = -1409286144
+
+c1_extraReg_8=958933112
+result_sum_extraReg_8=-1409286144
+
+cycles_extraReg_16 = 963933248
+result_sum_extraReg_16 = -1409286144
+
+cycles_b2 = 1161565690
+result_sum_B2 = -1409286144
+
+cycles_b4 = 901087186
+result_sum_B4 = -1409286144

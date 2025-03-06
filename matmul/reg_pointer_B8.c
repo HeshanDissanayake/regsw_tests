@@ -2,10 +2,6 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define P1_REG 28
-#define P2_REG 29
-
-
 
 static inline void enable_pointers() {
     //enable pointers
@@ -31,32 +27,29 @@ static inline void load_mem_location(int *src){
 }
 
 
-static inline void set_pointer_P1(){
+static inline void set_pointer_P1_8(){
     
     __asm__ volatile (
-        "nop\n"
-        "nop\n"
-        "nop\n"
         "regsw_c x1, 32(x28)\n":::);
 
 }
 
-static inline void set_pointer_P2(){
+static inline void set_pointer_P2_8(){
     
     __asm__ volatile (
         "nop\n"
         "nop\n"
         "nop\n"
-        "regsw_c x1, 48(x29)\n":::);
+        "regsw_c x1, 14(x29)\n":::);
 
 }
 
-static inline void fetch_P1_16_compute(int *A, int *B, int sum) {
+static inline void fetch_P1_8_compute(int *A, int *B) {
         
     
     //set a pointer to the base register
-    set_pointer_P1();
-    set_pointer_P2();
+    set_pointer_P1_8();
+    set_pointer_P2_8();
     
     int multresult1;
     int multresult2;
@@ -96,10 +89,9 @@ static inline void fetch_P1_16_compute(int *A, int *B, int sum) {
     "add %6, %3, %6\n"     //sum += multresult2
 
     "lw x28, 24(%0)\n"     //A[]
-    "lw %4, 24(%1)\n"      //multresult2 = B[]
-    "mul %4, x28, %4\n"   //multresult2 = A[] * B[]
-    "add %6, %4, %6\n"     //sum += multresult2
-
+    "lw %4, 24(%1)\n"      //multresult2 "nop\n"
+        "nop\n"
+        "nop\n"
     "lw x28, 28(%0)\n"     //A[]
     "lw %5, 28(%1)\n"      //multresult2 = B[]
     "mul %5, x28, %5\n"   //multresult2 = A[] * B[]
@@ -145,21 +137,21 @@ static inline void fetch_P1_16_compute(int *A, int *B, int sum) {
     "mul %5, x28, %5\n"   //multresult2 = A[] * B[]
     "add %6, %5, %6\n"     //sum += multresult2
 
-    "mv X29, %6\n"           
+    "mv x29, %6\n"           
     :
     :"r"(A), "r"(B), "r"(multresult1), "r"(multresult2), "r"(multresult3), "r"(multresult4), "r"(sum)
     : 
     );
 }
 
-static inline void fetch_P1_16(int *src) {
+static inline void fetch_P1_8(int *src) {
     
     load_mem_location(src);
     
     __asm__ volatile ("mv t0, %0\n":: "r"(src): "t0");
 
     //set a pointer to the base register
-    set_pointer_P1();
+    set_pointer_P1_8();
     
     
     __asm__ volatile (                                   
@@ -171,32 +163,19 @@ static inline void fetch_P1_16(int *src) {
     "lw x28, 20(t0)\n"
     "lw x28, 24(t0)\n"
     "lw x28, 28(t0)\n"
-    "lw x28, 32(t0)\n"
-    "lw x28, 36(t0)\n"
-    "lw x28, 40(t0)\n"
-    "lw x28, 44(t0)\n"
-    "lw x28, 48(t0)\n"
-    "lw x28, 52(t0)\n"
-    "lw x28, 56(t0)\n"
-    "lw x28, 60(t0)\n"
-            
     :
-    :
+    :"r"(src)
     : 
     );
 }
 
-static inline void fetch_P2_16(int *src) {
+static inline void fetch_P2_8(int *src) {
     
     load_mem_location(src);
     
     //set a pointer to the base register
-    __asm__ volatile (
-        "nop\n"
-        "nop\n"
-        "nop\n"
-        "regsw_c x1, 48(x29)\n":::);    
-    
+    set_pointer_P2_8();
+
    
     __asm__ volatile (                                   
     "lw x29, 0(t0)\n"
@@ -206,16 +185,7 @@ static inline void fetch_P2_16(int *src) {
     "lw x29, 16(t0)\n"
     "lw x29, 20(t0)\n"
     "lw x29, 24(t0)\n"
-    "lw x29, 28(t0)\n"
-    "lw x29, 32(t0)\n"
-    "lw x29, 36(t0)\n"
-    "lw x29, 40(t0)\n"
-    "lw x29, 44(t0)\n"
-    "lw x29, 48(t0)\n"
-    "lw x29, 52(t0)\n"
-    "lw x29, 56(t0)\n"
-    "lw x29, 60(t0)\n"
-            
+    "lw x29, 28(t0)\n"            
     :
     :
     : 
@@ -226,12 +196,12 @@ static inline void fetch_P2_16(int *src) {
 
 
 
-static inline void save_P1_16(int *src) {
+static inline void save_P1_8(int *src) {
     load_mem_location(src);
 
     //set a pointer to the base register
 
-    set_pointer_P1();
+    set_pointer_P1_8();
 
    
     __asm__ volatile (                                   
@@ -243,14 +213,7 @@ static inline void save_P1_16(int *src) {
         "sw x28, 20(t0)\n"
         "sw x28, 24(t0)\n"
         "sw x28, 28(t0)\n"
-        "sw x28, 32(t0)\n"
-        "sw x28, 36(t0)\n"
-        "sw x28, 40(t0)\n"
-        "sw x28, 44(t0)\n"
-        "sw x28, 48(t0)\n"
-        "sw x28, 52(t0)\n"
-        "sw x28, 56(t0)\n"
-        "sw x28, 60(t0)\n"                
+                  
     :
     :
     : 
@@ -258,12 +221,12 @@ static inline void save_P1_16(int *src) {
    
 }
 
-static inline void save_P2_16(int *src) {
+static inline void save_P2_8(int *src) {
     load_mem_location(src);
 
     //set a pointer to the base register
 
-    set_pointer_P2();
+    set_pointer_P2_8();
 
    
     __asm__ volatile (                                   
@@ -275,14 +238,7 @@ static inline void save_P2_16(int *src) {
         "sw x29, 20(t0)\n"
         "sw x29, 24(t0)\n"
         "sw x29, 28(t0)\n"
-        "sw x29, 32(t0)\n"
-        "sw x29, 36(t0)\n"
-        "sw x29, 40(t0)\n"
-        "sw x29, 44(t0)\n"
-        "sw x29, 48(t0)\n"
-        "sw x29, 52(t0)\n"
-        "sw x29, 56(t0)\n"
-        "sw x29, 60(t0)\n"                
+                   
     :
     :
     : 
@@ -290,8 +246,8 @@ static inline void save_P2_16(int *src) {
    
 }
 
-static inline void init_P2_16() {
-    set_pointer_P2();   
+static inline void init_P2_8() {
+    set_pointer_P2_8();   
 
     __asm__ volatile (                                   
     "addi x29, x0, 0\n"
@@ -302,13 +258,6 @@ static inline void init_P2_16() {
     "addi x29, x0, 0\n"
     "addi x29, x0, 0\n"
     "addi x29, x0, 0\n"
-    "addi x29, x0, 0\n"
-    "addi x29, x0, 0\n"
-    "addi x29, x0, 0\n"
-    "addi x29, x0, 0\n"
-    "addi x29, x0, 0\n"
-    "addi x29, x0, 0\n"
-    "addi x29, x0, 0\n"
-    "addi x29, x0, 0\n"
+    
     :::);
 }

@@ -1,0 +1,1216 @@
+--------------------------
+--------------------------
+
+0x0000000000010048 in ?? ()
+Loading section .text.init, size 0x2c0 lma 0x80000000
+Loading section .tohost, size 0x48 lma 0x80001000
+Loading section .text, size 0x3214 lma 0x80002000
+Loading section .rodata, size 0x1a8 lma 0x80005218
+Loading section .data, size 0x1000 lma 0x800053c0
+Start address 0x0000000080000000, load size 18116
+Transfer rate: 64 KB/sec, 3623 bytes/write.
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+main (argc=0, argv=0x0) at main.c:131
+131	    __builtin_trap(); 
+SIZE = 16
+
+C_Basic_matmul = 28697
+Sum_Basic_matmul = 67721216
+
+C_M1_b8(normal_core) = 26011
+Sum_M1_b8(normal_core) = 67721216
+
+C_M1_b16(64reg_core) = 20577
+Sum_M1_b16(64reg_core) = 67721216
+
+C_M2_b2(normal_core) = 21899
+Sum_M2_b2(normal_core) = 67721216
+
+C_M2_b4(64reg_core) = 22443
+Sum_M2_b4(64reg_core) = 67721216
+
+C_M2_b4_v2(64reg_core) = 20165
+Sum_M2_b4_v2(64reg_core) = 67721216
+
+Warning: 'set logging off', an alias for the command 'set logging enabled', is deprecated.
+Use 'set logging enabled off'.
+
+--------------------------
+--------------------------
+
+main (argc=0, argv=0x0) at main.c:124
+124	    for (int i = 0; i < SIZE; i++) {
+Loading section .text.init, size 0x2c0 lma 0x80000000
+Loading section .tohost, size 0x48 lma 0x80001000
+Loading section .text, size 0x3340 lma 0x80002000
+Loading section .rodata, size 0x1a8 lma 0x80005340
+Loading section .data, size 0x2400 lma 0x800054e8
+Start address 0x0000000080000000, load size 23536
+Transfer rate: 83 KB/sec, 4707 bytes/write.
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+main (argc=0, argv=0x0) at main.c:131
+131	    __builtin_trap(); 
+SIZE = 24
+
+C_Basic_matmul = 186944
+Sum_Basic_matmul = 1151265024
+
+C_M1_b8(normal_core) = 77450
+Sum_M1_b8(normal_core) = 1151265024
+
+C_M1_b16(64reg_core) = 30336
+Sum_M1_b16(64reg_core) = 968623872
+
+C_M2_b2(normal_core) = 68027
+Sum_M2_b2(normal_core) = 1151265024
+
+C_M2_b4(64reg_core) = 67751
+Sum_M2_b4(64reg_core) = 1151265024
+
+C_M2_b4_v2(64reg_core) = 50452
+Sum_M2_b4_v2(64reg_core) = 1151265024
+
+Warning: 'set logging off', an alias for the command 'set logging enabled', is deprecated.
+Use 'set logging enabled off'.
+
+--------------------------
+--------------------------
+
+0x0000000080002700 in multiplyMatrices_normal ()
+Loading section .text.init, size 0x2c0 lma 0x80000000
+Loading section .tohost, size 0x48 lma 0x80001000
+Loading section .text, size 0x3488 lma 0x80002000
+Loading section .rodata, size 0x1a8 lma 0x80005488
+Loading section .data, size 0x4000 lma 0x80005630
+Start address 0x0000000080000000, load size 31032
+Transfer rate: 52 KB/sec, 5172 bytes/write.
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+main (argc=0, argv=0x0) at main.c:131
+131	    __builtin_trap(); 
+SIZE = 32
+
+C_Basic_matmul = 526364
+Sum_Basic_matmul = 19578880
+
+C_M1_b8(normal_core) = 179662
+Sum_M1_b8(normal_core) = 19578880
+
+C_M1_b16(64reg_core) = 157501
+Sum_M1_b16(64reg_core) = 19578880
+
+C_M2_b2(normal_core) = 158100
+Sum_M2_b2(normal_core) = 19578880
+
+C_M2_b4(64reg_core) = 154441
+Sum_M2_b4(64reg_core) = 19578880
+
+C_M2_b4_v2(64reg_core) = 112440
+Sum_M2_b4_v2(64reg_core) = 19578880
+
+Warning: 'set logging off', an alias for the command 'set logging enabled', is deprecated.
+Use 'set logging enabled off'.
+
+--------------------------
+--------------------------
+
+main (argc=0, argv=0x0) at main.c:124
+124	    for (int i = 0; i < SIZE; i++) {
+Loading section .text.init, size 0x2c0 lma 0x80000000
+Loading section .tohost, size 0x48 lma 0x80001000
+Loading section .text, size 0x367c lma 0x80002000
+Loading section .rodata, size 0x1a8 lma 0x80005680
+Loading section .data, size 0x6400 lma 0x80005828
+Start address 0x0000000080000000, load size 40748
+Transfer rate: 68 KB/sec, 6791 bytes/write.
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+main (argc=0, argv=0x0) at main.c:131
+131	    __builtin_trap(); 
+SIZE = 40
+
+C_Basic_matmul = 1241926
+Sum_Basic_matmul = -1929928960
+
+C_M1_b8(normal_core) = 347911
+Sum_M1_b8(normal_core) = -1929928960
+
+C_M1_b16(64reg_core) = 194419
+Sum_M1_b16(64reg_core) = 1170981632
+
+C_M2_b2(normal_core) = 305935
+Sum_M2_b2(normal_core) = -1929928960
+
+C_M2_b4(64reg_core) = 295358
+Sum_M2_b4(64reg_core) = -1929928960
+
+C_M2_b4_v2(64reg_core) = 216121
+Sum_M2_b4_v2(64reg_core) = -1929928960
+
+Warning: 'set logging off', an alias for the command 'set logging enabled', is deprecated.
+Use 'set logging enabled off'.
+
+--------------------------
+--------------------------
+
+main (argc=0, argv=0x0) at main.c:131
+131	    __builtin_trap(); 
+Loading section .text.init, size 0x2c0 lma 0x80000000
+Loading section .tohost, size 0x48 lma 0x80001000
+Loading section .text, size 0x36f4 lma 0x80002000
+Loading section .rodata, size 0x1a8 lma 0x800056f8
+Loading section .data, size 0x9000 lma 0x800058a0
+Start address 0x0000000080000000, load size 52132
+Transfer rate: 59 KB/sec, 7447 bytes/write.
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+main (argc=0, argv=0x0) at main.c:131
+131	    __builtin_trap(); 
+SIZE = 48
+
+C_Basic_matmul = 2268115
+Sum_Basic_matmul = 886851584
+
+C_M1_b8(normal_core) = 600669
+Sum_M1_b8(normal_core) = 886851584
+
+C_M1_b16(64reg_core) = 523369
+Sum_M1_b16(64reg_core) = 886851584
+
+C_M2_b2(normal_core) = 541731
+Sum_M2_b2(normal_core) = 886851584
+
+C_M2_b4(64reg_core) = 512267
+Sum_M2_b4(64reg_core) = 886851584
+
+C_M2_b4_v2(64reg_core) = 370836
+Sum_M2_b4_v2(64reg_core) = 886851584
+
+Warning: 'set logging off', an alias for the command 'set logging enabled', is deprecated.
+Use 'set logging enabled off'.
+
+--------------------------
+--------------------------
+
+main (argc=0, argv=0x0) at main.c:131
+131	    __builtin_trap(); 
+Loading section .text.init, size 0x2c0 lma 0x80000000
+Loading section .tohost, size 0x48 lma 0x80001000
+Loading section .text, size 0x3814 lma 0x80002000
+Loading section .rodata, size 0x1a8 lma 0x80005818
+Loading section .data, size 0xc400 lma 0x800059c0
+Start address 0x0000000080000000, load size 65732
+Transfer rate: 55 KB/sec, 8216 bytes/write.
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+main (argc=0, argv=0x0) at main.c:131
+131	    __builtin_trap(); 
+SIZE = 56
+
+C_Basic_matmul = 4155374
+Sum_Basic_matmul = -1696695040
+
+C_M1_b8(normal_core) = 977224
+Sum_M1_b8(normal_core) = -1696695040
+
+C_M1_b16(64reg_core) = 622671
+Sum_M1_b16(64reg_core) = -1316614400
+
+C_M2_b2(normal_core) = 874726
+Sum_M2_b2(normal_core) = -1696695040
+
+C_M2_b4(64reg_core) = 824003
+Sum_M2_b4(64reg_core) = -1696695040
+
+C_M2_b4_v2(64reg_core) = 590663
+Sum_M2_b4_v2(64reg_core) = -1696695040
+
+Warning: 'set logging off', an alias for the command 'set logging enabled', is deprecated.
+Use 'set logging enabled off'.
+
+--------------------------
+--------------------------
+
+0x0000000080002700 in multiplyMatrices_normal ()
+Loading section .text.init, size 0x2c0 lma 0x80000000
+Loading section .tohost, size 0x48 lma 0x80001000
+Loading section .text, size 0x388c lma 0x80002000
+Loading section .rodata, size 0x1a8 lma 0x80005890
+Loading section .data, size 0x10000 lma 0x80005a38
+Start address 0x0000000080000000, load size 81212
+Transfer rate: 53 KB/sec, 9023 bytes/write.
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+main (argc=0, argv=0x0) at main.c:131
+131	    __builtin_trap(); 
+SIZE = 64
+
+C_Basic_matmul = 6529714
+Sum_Basic_matmul = 626393088
+
+C_M1_b8(normal_core) = 1517133
+Sum_M1_b8(normal_core) = 626393088
+
+C_M1_b16(64reg_core) = 1269520
+Sum_M1_b16(64reg_core) = 626393088
+
+C_M2_b2(normal_core) = 1320418
+Sum_M2_b2(normal_core) = 626393088
+
+C_M2_b4(64reg_core) = 1244350
+Sum_M2_b4(64reg_core) = 626393088
+
+C_M2_b4_v2(64reg_core) = 903552
+Sum_M2_b4_v2(64reg_core) = 626393088
+
+Warning: 'set logging off', an alias for the command 'set logging enabled', is deprecated.
+Use 'set logging enabled off'.
+
+--------------------------
+--------------------------
+
+main (argc=0, argv=0x0) at main.c:124
+124	    for (int i = 0; i < SIZE; i++) {
+Loading section .text.init, size 0x2c0 lma 0x80000000
+Loading section .tohost, size 0x48 lma 0x80001000
+Loading section .text, size 0x3a0c lma 0x80002000
+Loading section .rodata, size 0x1a8 lma 0x80005a10
+Loading section .data, size 0x14400 lma 0x80005bb8
+Start address 0x0000000080000000, load size 99004
+Transfer rate: 55 KB/sec, 9900 bytes/write.
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+main (argc=0, argv=0x0) at main.c:131
+131	    __builtin_trap(); 
+SIZE = 72
+
+C_Basic_matmul = 3906600
+Sum_Basic_matmul = 521114368
+
+C_M1_b8(normal_core) = 2198738
+Sum_M1_b8(normal_core) = 521114368
+
+C_M1_b16(64reg_core) = 1479447
+Sum_M1_b16(64reg_core) = 2098821888
+
+C_M2_b2(normal_core) = 1893530
+Sum_M2_b2(normal_core) = 521114368
+
+C_M2_b4(64reg_core) = 1798804
+Sum_M2_b4(64reg_core) = 521114368
+
+C_M2_b4_v2(64reg_core) = 1327710
+Sum_M2_b4_v2(64reg_core) = 521114368
+
+Warning: 'set logging off', an alias for the command 'set logging enabled', is deprecated.
+Use 'set logging enabled off'.
+
+--------------------------
+--------------------------
+
+main (argc=0, argv=0x0) at main.c:131
+131	    __builtin_trap(); 
+Loading section .text.init, size 0x2c0 lma 0x80000000
+Loading section .tohost, size 0x48 lma 0x80001000
+Loading section .text, size 0x3af8 lma 0x80002000
+Loading section .rodata, size 0x1a8 lma 0x80005af8
+Loading section .data, size 0x19000 lma 0x80005ca0
+Start address 0x0000000080000000, load size 118696
+Transfer rate: 56 KB/sec, 10790 bytes/write.
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+main (argc=0, argv=0x0) at main.c:131
+131	    __builtin_trap(); 
+SIZE = 80
+
+C_Basic_matmul = 5451789
+Sum_Basic_matmul = 636483584
+
+C_M1_b8(normal_core) = 3064856
+Sum_M1_b8(normal_core) = 636483584
+
+C_M1_b16(64reg_core) = 2590108
+Sum_M1_b16(64reg_core) = 636483584
+
+C_M2_b2(normal_core) = 2642837
+Sum_M2_b2(normal_core) = 636483584
+
+C_M2_b4(64reg_core) = 2506205
+Sum_M2_b4(64reg_core) = 636483584
+
+C_M2_b4_v2(64reg_core) = 1905856
+Sum_M2_b4_v2(64reg_core) = 636483584
+
+Warning: 'set logging off', an alias for the command 'set logging enabled', is deprecated.
+Use 'set logging enabled off'.
+
+--------------------------
+--------------------------
+
+0x0000000080002700 in main (argc=0, argv=0x0) at main.c:126
+126	            result_sum_B4 += C1[i][j];
+Loading section .text.init, size 0x2c0 lma 0x80000000
+Loading section .tohost, size 0x48 lma 0x80001000
+Loading section .text, size 0x3c50 lma 0x80002000
+Loading section .rodata, size 0x1a8 lma 0x80005c50
+Loading section .data, size 0x1e400 lma 0x80005df8
+Start address 0x0000000080000000, load size 140544
+Transfer rate: 58 KB/sec, 11712 bytes/write.
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+main (argc=0, argv=0x0) at main.c:131
+131	    __builtin_trap(); 
+SIZE = 88
+
+C_Basic_matmul = 7621714
+Sum_Basic_matmul = -2053705472
+
+C_M1_b8(normal_core) = 4159254
+Sum_M1_b8(normal_core) = -2053705472
+
+C_M1_b16(64reg_core) = 2890137
+Sum_M1_b16(64reg_core) = -638281984
+
+C_M2_b2(normal_core) = 3708635
+Sum_M2_b2(normal_core) = -2053705472
+
+C_M2_b4(64reg_core) = 3487124
+Sum_M2_b4(64reg_core) = -2053705472
+
+C_M2_b4_v2(64reg_core) = 2630626
+Sum_M2_b4_v2(64reg_core) = -2053705472
+
+Warning: 'set logging off', an alias for the command 'set logging enabled', is deprecated.
+Use 'set logging enabled off'.
+
+--------------------------
+--------------------------
+
+0x0000000080002750 in multiplyMatrices_normal ()
+Loading section .text.init, size 0x2c0 lma 0x80000000
+Loading section .tohost, size 0x48 lma 0x80001000
+Loading section .text, size 0x3ce8 lma 0x80002000
+Loading section .rodata, size 0x1a8 lma 0x80005ce8
+Loading section .data, size 0x24000 lma 0x80005e90
+Start address 0x0000000080000000, load size 164248
+Transfer rate: 55 KB/sec, 11732 bytes/write.
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+main (argc=0, argv=0x0) at main.c:131
+131	    __builtin_trap(); 
+SIZE = 96
+
+C_Basic_matmul = 11548775
+Sum_Basic_matmul = 461520896
+
+C_M1_b8(normal_core) = 5482191
+Sum_M1_b8(normal_core) = 461520896
+
+C_M1_b16(64reg_core) = 4582129
+Sum_M1_b16(64reg_core) = 461520896
+
+C_M2_b2(normal_core) = 5352768
+Sum_M2_b2(normal_core) = 461520896
+
+C_M2_b4(64reg_core) = 4783533
+Sum_M2_b4(64reg_core) = 461520896
+
+C_M2_b4_v2(64reg_core) = 3735601
+Sum_M2_b4_v2(64reg_core) = 461520896
+
+Warning: 'set logging off', an alias for the command 'set logging enabled', is deprecated.
+Use 'set logging enabled off'.
+
+--------------------------
+--------------------------
+
+0x0000000080002700 in main (argc=0, argv=0x0) at main.c:126
+126	            result_sum_B4 += C1[i][j];
+Loading section .text.init, size 0x2c0 lma 0x80000000
+Loading section .tohost, size 0x48 lma 0x80001000
+Loading section .text, size 0x3e90 lma 0x80002000
+Loading section .rodata, size 0x1a8 lma 0x80005e90
+Loading section .data, size 0x2a400 lma 0x80006038
+Start address 0x0000000080000000, load size 190272
+Transfer rate: 58 KB/sec, 11892 bytes/write.
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+main (argc=0, argv=0x0) at main.c:131
+131	    __builtin_trap(); 
+SIZE = 104
+
+C_Basic_matmul = 15955308
+Sum_Basic_matmul = 1647355648
+
+C_M1_b8(normal_core) = 7097053
+Sum_M1_b8(normal_core) = 1647355648
+
+C_M1_b16(64reg_core) = 5003768
+Sum_M1_b16(64reg_core) = -383388928
+
+C_M2_b2(normal_core) = 7508414
+Sum_M2_b2(normal_core) = 1647355648
+
+C_M2_b4(64reg_core) = 6383981
+Sum_M2_b4(64reg_core) = 1647355648
+
+C_M2_b4_v2(64reg_core) = 4923423
+Sum_M2_b4_v2(64reg_core) = 1647355648
+
+Warning: 'set logging off', an alias for the command 'set logging enabled', is deprecated.
+Use 'set logging enabled off'.
+
+--------------------------
+--------------------------
+
+0x0000000080002750 in multiplyMatrices_normal ()
+Loading section .text.init, size 0x2c0 lma 0x80000000
+Loading section .tohost, size 0x48 lma 0x80001000
+Loading section .text, size 0x3f4c lma 0x80002000
+Loading section .rodata, size 0x1a8 lma 0x80005f50
+Loading section .data, size 0x31000 lma 0x800060f8
+Start address 0x0000000080000000, load size 218108
+Transfer rate: 56 KB/sec, 12117 bytes/write.
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+main (argc=0, argv=0x0) at main.c:131
+131	    __builtin_trap(); 
+SIZE = 112
+
+C_Basic_matmul = 22082659
+Sum_Basic_matmul = 1086646272
+
+C_M1_b8(normal_core) = 8935942
+Sum_M1_b8(normal_core) = 1086646272
+
+C_M1_b16(64reg_core) = 7370940
+Sum_M1_b16(64reg_core) = 1086646272
+
+C_M2_b2(normal_core) = 10036354
+Sum_M2_b2(normal_core) = 1086646272
+
+C_M2_b4(64reg_core) = 8270329
+Sum_M2_b4(64reg_core) = 1086646272
+
+C_M2_b4_v2(64reg_core) = 6422707
+Sum_M2_b4_v2(64reg_core) = 1086646272
+
+Warning: 'set logging off', an alias for the command 'set logging enabled', is deprecated.
+Use 'set logging enabled off'.
+
+--------------------------
+--------------------------
+
+main (argc=0, argv=0x0) at main.c:131
+131	    __builtin_trap(); 
+Loading section .text.init, size 0x2c0 lma 0x80000000
+Loading section .tohost, size 0x48 lma 0x80001000
+Loading section .text, size 0x4050 lma 0x80002000
+Loading section .rodata, size 0x1a8 lma 0x80006050
+Loading section .data, size 0x38400 lma 0x800061f8
+Start address 0x0000000080000000, load size 248064
+Transfer rate: 55 KB/sec, 12403 bytes/write.
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+main (argc=0, argv=0x0) at main.c:131
+131	    __builtin_trap(); 
+SIZE = 120
+
+C_Basic_matmul = 27858895
+Sum_Basic_matmul = 1017693440
+
+C_M1_b8(normal_core) = 11096467
+Sum_M1_b8(normal_core) = 1017693440
+
+C_M1_b16(64reg_core) = 7949552
+Sum_M1_b16(64reg_core) = 968630016
+
+C_M2_b2(normal_core) = 12943474
+Sum_M2_b2(normal_core) = 1017693440
+
+C_M2_b4(64reg_core) = 10409821
+Sum_M2_b4(64reg_core) = 1017693440
+
+C_M2_b4_v2(64reg_core) = 8132600
+Sum_M2_b4_v2(64reg_core) = 1017693440
+
+Warning: 'set logging off', an alias for the command 'set logging enabled', is deprecated.
+Use 'set logging enabled off'.
+
+--------------------------
+--------------------------
+
+0x0000000080002700 in multiplyMatrices_normal ()
+Loading section .text.init, size 0x2c0 lma 0x80000000
+Loading section .tohost, size 0x48 lma 0x80001000
+Loading section .text, size 0x394c lma 0x80002000
+Loading section .rodata, size 0x1a8 lma 0x80005950
+Loading section .data, size 0x40000 lma 0x80005af8
+Start address 0x0000000080000000, load size 278012
+Transfer rate: 55 KB/sec, 13238 bytes/write.
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+main (argc=0, argv=0x0) at main.c:131
+131	    __builtin_trap(); 
+SIZE = 128
+
+C_Basic_matmul = 70954249
+Sum_Basic_matmul = -1431306240
+
+C_M1_b8(normal_core) = 13564602
+Sum_M1_b8(normal_core) = -1431306240
+
+C_M1_b16(64reg_core) = 11086177
+Sum_M1_b16(64reg_core) = -1431306240
+
+C_M2_b2(normal_core) = 16272202
+Sum_M2_b2(normal_core) = -1431306240
+
+C_M2_b4(64reg_core) = 12927638
+Sum_M2_b4(64reg_core) = -1431306240
+
+C_M2_b4_v2(64reg_core) = 10131222
+Sum_M2_b4_v2(64reg_core) = -1431306240
+
+Warning: 'set logging off', an alias for the command 'set logging enabled', is deprecated.
+Use 'set logging enabled off'.
+
+--------------------------
+--------------------------
+
+main (argc=0, argv=0x0) at main.c:124
+124	    for (int i = 0; i < SIZE; i++) {
+Loading section .text.init, size 0x2c0 lma 0x80000000
+Loading section .tohost, size 0x48 lma 0x80001000
+Loading section .text, size 0x3ac8 lma 0x80002000
+Loading section .rodata, size 0x1a8 lma 0x80005ac8
+Loading section .data, size 0x48400 lma 0x80005c70
+Start address 0x0000000080000000, load size 312184
+Transfer rate: 56 KB/sec, 13573 bytes/write.
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+main (argc=0, argv=0x0) at main.c:131
+131	    __builtin_trap(); 
+SIZE = 136
+
+C_Basic_matmul = 42438223
+Sum_Basic_matmul = 2101041920
+
+C_M1_b8(normal_core) = 16310968
+Sum_M1_b8(normal_core) = 2101041920
+
+C_M1_b16(64reg_core) = 11819714
+Sum_M1_b16(64reg_core) = -953832704
+
+C_M2_b2(normal_core) = 19911053
+Sum_M2_b2(normal_core) = 2101041920
+
+C_M2_b4(64reg_core) = 15750344
+Sum_M2_b4(64reg_core) = 2101041920
+
+C_M2_b4_v2(64reg_core) = 12902186
+Sum_M2_b4_v2(64reg_core) = 2101041920
+
+Warning: 'set logging off', an alias for the command 'set logging enabled', is deprecated.
+Use 'set logging enabled off'.
+
+--------------------------
+--------------------------
+
+main (argc=0, argv=0x0) at main.c:131
+131	    __builtin_trap(); 
+Loading section .text.init, size 0x2c0 lma 0x80000000
+Loading section .tohost, size 0x48 lma 0x80001000
+Loading section .text, size 0x3ba4 lma 0x80002000
+Loading section .rodata, size 0x1a8 lma 0x80005ba8
+Loading section .data, size 0x51000 lma 0x80005d50
+Start address 0x0000000080000000, load size 348244
+Transfer rate: 56 KB/sec, 13929 bytes/write.
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+main (argc=0, argv=0x0) at main.c:131
+131	    __builtin_trap(); 
+SIZE = 144
+
+C_Basic_matmul = 53438685
+Sum_Basic_matmul = 1289459712
+
+C_M1_b8(normal_core) = 19429562
+Sum_M1_b8(normal_core) = 1289459712
+
+C_M1_b16(64reg_core) = 15920425
+Sum_M1_b16(64reg_core) = 1289459712
+
+C_M2_b2(normal_core) = 23976479
+Sum_M2_b2(normal_core) = 1289459712
+
+C_M2_b4(64reg_core) = 18845791
+Sum_M2_b4(64reg_core) = 1289459712
+
+C_M2_b4_v2(64reg_core) = 15471669
+Sum_M2_b4_v2(64reg_core) = 1289459712
+
+Warning: 'set logging off', an alias for the command 'set logging enabled', is deprecated.
+Use 'set logging enabled off'.
+
+--------------------------
+--------------------------
+
+0x0000000080002700 in main (argc=0, argv=0x0) at main.c:126
+126	            result_sum_B4 += C1[i][j];
+Loading section .text.init, size 0x2c0 lma 0x80000000
+Loading section .tohost, size 0x48 lma 0x80001000
+Loading section .text, size 0x3ce4 lma 0x80002000
+Loading section .rodata, size 0x1a8 lma 0x80005ce8
+Loading section .data, size 0x5a400 lma 0x80005e90
+Start address 0x0000000080000000, load size 386452
+Transfer rate: 56 KB/sec, 14313 bytes/write.
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+main (argc=0, argv=0x0) at main.c:131
+131	    __builtin_trap(); 
+SIZE = 152
+
+C_Basic_matmul = 61071365
+Sum_Basic_matmul = 955545856
+
+C_M1_b8(normal_core) = 22908369
+Sum_M1_b8(normal_core) = 955545856
+
+C_M1_b16(64reg_core) = 16802818
+Sum_M1_b16(64reg_core) = 932259584
+
+C_M2_b2(normal_core) = 28464889
+Sum_M2_b2(normal_core) = 955545856
+
+C_M2_b4(64reg_core) = 22337898
+Sum_M2_b4(64reg_core) = 955545856
+
+C_M2_b4_v2(64reg_core) = 18385024
+Sum_M2_b4_v2(64reg_core) = 955545856
+
+Warning: 'set logging off', an alias for the command 'set logging enabled', is deprecated.
+Use 'set logging enabled off'.
+
+--------------------------
+--------------------------
+
+0x0000000080002750 in multiplyMatrices_normal ()
+Loading section .text.init, size 0x2c0 lma 0x80000000
+Loading section .tohost, size 0x48 lma 0x80001000
+Loading section .text, size 0x3d58 lma 0x80002000
+Loading section .rodata, size 0x1a8 lma 0x80005d58
+Loading section .data, size 0x64000 lma 0x80005f00
+Start address 0x0000000080000000, load size 426504
+Transfer rate: 55 KB/sec, 14216 bytes/write.
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+main (argc=0, argv=0x0) at main.c:131
+131	    __builtin_trap(); 
+SIZE = 160
+
+C_Basic_matmul = 84412311
+Sum_Basic_matmul = 1038073856
+
+C_M1_b8(normal_core) = 26795677
+Sum_M1_b8(normal_core) = 1038073856
+
+C_M1_b16(64reg_core) = 21927661
+Sum_M1_b16(64reg_core) = 1038073856
+
+C_M2_b2(normal_core) = 33489811
+Sum_M2_b2(normal_core) = 1038073856
+
+C_M2_b4(64reg_core) = 26161139
+Sum_M2_b4(64reg_core) = 1038073856
+
+C_M2_b4_v2(64reg_core) = 21570108
+Sum_M2_b4_v2(64reg_core) = 1038073856
+
+Warning: 'set logging off', an alias for the command 'set logging enabled', is deprecated.
+Use 'set logging enabled off'.
+
+--------------------------
+--------------------------
+
+0x0000000080002700 in main (argc=0, argv=0x0) at main.c:126
+126	            result_sum_B4 += C1[i][j];
+Loading section .text.init, size 0x2c0 lma 0x80000000
+Loading section .tohost, size 0x48 lma 0x80001000
+Loading section .text, size 0x3ef4 lma 0x80002000
+Loading section .rodata, size 0x1a8 lma 0x80005ef8
+Loading section .data, size 0x6e400 lma 0x800060a0
+Start address 0x0000000080000000, load size 468900
+Transfer rate: 56 KB/sec, 14209 bytes/write.
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+main (argc=0, argv=0x0) at main.c:131
+131	    __builtin_trap(); 
+SIZE = 168
+
+C_Basic_matmul = 84346990
+Sum_Basic_matmul = -1643106560
+
+C_M1_b8(normal_core) = 31044055
+Sum_M1_b8(normal_core) = -1643106560
+
+C_M1_b16(64reg_core) = 23023498
+Sum_M1_b16(64reg_core) = 441262848
+
+C_M2_b2(normal_core) = 39003272
+Sum_M2_b2(normal_core) = -1643106560
+
+C_M2_b4(64reg_core) = 30369747
+Sum_M2_b4(64reg_core) = -1643106560
+
+C_M2_b4_v2(64reg_core) = 25058964
+Sum_M2_b4_v2(64reg_core) = -1643106560
+
+Warning: 'set logging off', an alias for the command 'set logging enabled', is deprecated.
+Use 'set logging enabled off'.
+
+--------------------------
+--------------------------
+
+main (argc=0, argv=0x0) at main.c:131
+131	    __builtin_trap(); 
+Loading section .text.init, size 0x2c0 lma 0x80000000
+Loading section .tohost, size 0x48 lma 0x80001000
+Loading section .text, size 0x4034 lma 0x80002000
+Loading section .rodata, size 0x1a8 lma 0x80006038
+Loading section .data, size 0x79000 lma 0x800061e0
+Start address 0x0000000080000000, load size 513252
+Transfer rate: 56 KB/sec, 14257 bytes/write.
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+main (argc=0, argv=0x0) at main.c:131
+131	    __builtin_trap(); 
+SIZE = 176
+
+C_Basic_matmul = 102497504
+Sum_Basic_matmul = -72054784
+
+C_M1_b8(normal_core) = 35736241
+Sum_M1_b8(normal_core) = -72054784
+
+C_M1_b16(64reg_core) = 29298317
+Sum_M1_b16(64reg_core) = -72054784
+
+C_M2_b2(normal_core) = 44866204
+Sum_M2_b2(normal_core) = -72054784
+
+C_M2_b4(64reg_core) = 35464936
+Sum_M2_b4(64reg_core) = -72054784
+
+C_M2_b4_v2(64reg_core) = 28923977
+Sum_M2_b4_v2(64reg_core) = -72054784
+
+Warning: 'set logging off', an alias for the command 'set logging enabled', is deprecated.
+Use 'set logging enabled off'.
+
+--------------------------
+--------------------------
+
+main (argc=0, argv=0x0) at main.c:131
+131	    __builtin_trap(); 
+Loading section .text.init, size 0x2c0 lma 0x80000000
+Loading section .tohost, size 0x48 lma 0x80001000
+Loading section .text, size 0x4138 lma 0x80002000
+Loading section .rodata, size 0x1a8 lma 0x80006138
+Loading section .data, size 0x84400 lma 0x800062e0
+Start address 0x0000000080000000, load size 559592
+Transfer rate: 55 KB/sec, 14348 bytes/write.
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+main (argc=0, argv=0x0) at main.c:131
+131	    __builtin_trap(); 
+SIZE = 184
+
+C_Basic_matmul = 113319322
+Sum_Basic_matmul = -1067807488
+
+C_M1_b8(normal_core) = 40892653
+Sum_M1_b8(normal_core) = -1067807488
+
+C_M1_b16(64reg_core) = 30635048
+Sum_M1_b16(64reg_core) = -433574144
+
+C_M2_b2(normal_core) = 51641736
+Sum_M2_b2(normal_core) = -1067807488
+
+C_M2_b4(64reg_core) = 40603478
+Sum_M2_b4(64reg_core) = -1067807488
+
+C_M2_b4_v2(64reg_core) = 33122593
+Sum_M2_b4_v2(64reg_core) = -1067807488
+
+Warning: 'set logging off', an alias for the command 'set logging enabled', is deprecated.
+Use 'set logging enabled off'.
+
+--------------------------
+--------------------------
+
+0x0000000080002750 in multiplyMatrices_normal ()
+Loading section .text.init, size 0x2c0 lma 0x80000000
+Loading section .tohost, size 0x48 lma 0x80001000
+Loading section .text, size 0x3a14 lma 0x80002000
+Loading section .rodata, size 0x1a8 lma 0x80005a18
+Loading section .data, size 0x90000 lma 0x80005bc0
+Start address 0x0000000080000000, load size 605892
+Transfer rate: 55 KB/sec, 14777 bytes/write.
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+main (argc=0, argv=0x0) at main.c:131
+131	    __builtin_trap(); 
+SIZE = 192
+
+C_Basic_matmul = 226353663
+Sum_Basic_matmul = 1880227840
+
+C_M1_b8(normal_core) = 46548213
+Sum_M1_b8(normal_core) = 1880227840
+
+C_M1_b16(64reg_core) = 37698827
+Sum_M1_b16(64reg_core) = 1880227840
+
+C_M2_b2(normal_core) = 58873467
+Sum_M2_b2(normal_core) = 1880227840
+
+C_M2_b4(64reg_core) = 46190686
+Sum_M2_b4(64reg_core) = 1880227840
+
+C_M2_b4_v2(64reg_core) = 37720818
+Sum_M2_b4_v2(64reg_core) = 1880227840
+
+Warning: 'set logging off', an alias for the command 'set logging enabled', is deprecated.
+Use 'set logging enabled off'.
+
+--------------------------
+--------------------------
+
+0x0000000080002700 in main (argc=0, argv=0x0) at main.c:126
+126	            result_sum_B4 += C1[i][j];
+Loading section .text.init, size 0x2c0 lma 0x80000000
+Loading section .tohost, size 0x48 lma 0x80001000
+Loading section .text, size 0x3b60 lma 0x80002000
+Loading section .rodata, size 0x1a8 lma 0x80005b60
+Loading section .data, size 0x9c400 lma 0x80005d08
+Start address 0x0000000080000000, load size 656400
+Transfer rate: 55 KB/sec, 14918 bytes/write.
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+main (argc=0, argv=0x0) at main.c:131
+131	    __builtin_trap(); 
+SIZE = 200
+
+C_Basic_matmul = 145272787
+Sum_Basic_matmul = -2054184192
+
+C_M1_b8(normal_core) = 52557883
+Sum_M1_b8(normal_core) = -2054184192
+
+C_M1_b16(64reg_core) = 39245016
+Sum_M1_b16(64reg_core) = 2010176256
+
+C_M2_b2(normal_core) = 66522500
+Sum_M2_b2(normal_core) = -2054184192
+
+C_M2_b4(64reg_core) = 51692202
+Sum_M2_b4(64reg_core) = -2054184192
+
+C_M2_b4_v2(64reg_core) = 40510987
+Sum_M2_b4_v2(64reg_core) = -2054184192
+
+Warning: 'set logging off', an alias for the command 'set logging enabled', is deprecated.
+Use 'set logging enabled off'.
+
+--------------------------
+--------------------------
+
+main (argc=0, argv=0x0) at main.c:131
+131	    __builtin_trap(); 
+Loading section .text.init, size 0x2c0 lma 0x80000000
+Loading section .tohost, size 0x48 lma 0x80001000
+Loading section .text, size 0x3c40 lma 0x80002000
+Loading section .rodata, size 0x1a8 lma 0x80005c40
+Loading section .data, size 0xa9000 lma 0x80005de8
+Start address 0x0000000080000000, load size 708848
+Transfer rate: 55 KB/sec, 15081 bytes/write.
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+main (argc=0, argv=0x0) at main.c:131
+131	    __builtin_trap(); 
+SIZE = 208
+
+C_Basic_matmul = 172516862
+Sum_Basic_matmul = 1959802880
+
+C_M1_b8(normal_core) = 59143522
+Sum_M1_b8(normal_core) = 1959802880
+
+C_M1_b16(64reg_core) = 47961369
+Sum_M1_b16(64reg_core) = 1959802880
+
+C_M2_b2(normal_core) = 74991280
+Sum_M2_b2(normal_core) = 1959802880
+
+C_M2_b4(64reg_core) = 58246739
+Sum_M2_b4(64reg_core) = 1959802880
+
+C_M2_b4_v2(64reg_core) = 45673829
+Sum_M2_b4_v2(64reg_core) = 1959802880
+
+Warning: 'set logging off', an alias for the command 'set logging enabled', is deprecated.
+Use 'set logging enabled off'.
+
+--------------------------
+--------------------------
+
+main (argc=0, argv=0x0) at main.c:131
+131	    __builtin_trap(); 
+Loading section .text.init, size 0x2c0 lma 0x80000000
+Loading section .tohost, size 0x48 lma 0x80001000
+Loading section .text, size 0x3d18 lma 0x80002000
+Loading section .rodata, size 0x1a8 lma 0x80005d18
+Loading section .data, size 0xb6400 lma 0x80005ec0
+Start address 0x0000000080000000, load size 763336
+Transfer rate: 54 KB/sec, 14967 bytes/write.
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+main (argc=0, argv=0x0) at main.c:131
+131	    __builtin_trap(); 
+SIZE = 216
+
+C_Basic_matmul = 183680510
+Sum_Basic_matmul = 1908113664
+
+C_M1_b8(normal_core) = 66474574
+Sum_M1_b8(normal_core) = 1908113664
+
+C_M1_b16(64reg_core) = 50131612
+Sum_M1_b16(64reg_core) = -801786112
+
+C_M2_b2(normal_core) = 83946338
+Sum_M2_b2(normal_core) = 1908113664
+
+C_M2_b4(64reg_core) = 65889534
+Sum_M2_b4(64reg_core) = 1908113664
+
+C_M2_b4_v2(64reg_core) = 53867216
+Sum_M2_b4_v2(64reg_core) = 1908113664
+
+Warning: 'set logging off', an alias for the command 'set logging enabled', is deprecated.
+Use 'set logging enabled off'.
+
+--------------------------
+--------------------------
+
+0x0000000080002750 in multiplyMatrices_normal ()
+Loading section .text.init, size 0x2c0 lma 0x80000000
+Loading section .tohost, size 0x48 lma 0x80001000
+Loading section .text, size 0x3d90 lma 0x80002000
+Loading section .rodata, size 0x1a8 lma 0x80005d90
+Loading section .data, size 0xc4000 lma 0x80005f38
+Start address 0x0000000080000000, load size 819776
+Transfer rate: 54 KB/sec, 14905 bytes/write.
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+main (argc=0, argv=0x0) at main.c:131
+131	    __builtin_trap(); 
+SIZE = 224
+
+C_Basic_matmul = 267229616
+Sum_Basic_matmul = -1740161024
+
+C_M1_b8(normal_core) = 74060245
+Sum_M1_b8(normal_core) = -1740161024
+
+C_M1_b16(64reg_core) = 60205321
+Sum_M1_b16(64reg_core) = -1740161024
+
+C_M2_b2(normal_core) = 93837852
+Sum_M2_b2(normal_core) = -1740161024
+
+C_M2_b4(64reg_core) = 72851830
+Sum_M2_b4(64reg_core) = -1740161024
+
+C_M2_b4_v2(64reg_core) = 57165456
+Sum_M2_b4_v2(64reg_core) = -1740161024
+
+Warning: 'set logging off', an alias for the command 'set logging enabled', is deprecated.
+Use 'set logging enabled off'.
+
+--------------------------
+--------------------------
+
+0x0000000080002700 in main (argc=0, argv=0x0) at main.c:126
+126	            result_sum_B4 += C1[i][j];
+Loading section .text.init, size 0x2c0 lma 0x80000000
+Loading section .tohost, size 0x48 lma 0x80001000
+Loading section .text, size 0x3f0c lma 0x80002000
+Loading section .rodata, size 0x1a8 lma 0x80005f10
+Loading section .data, size 0xd2400 lma 0x800060b8
+Start address 0x0000000080000000, load size 878524
+Transfer rate: 55 KB/sec, 14890 bytes/write.
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+main (argc=0, argv=0x0) at main.c:131
+131	    __builtin_trap(); 
+SIZE = 232
+
+C_Basic_matmul = 228944406
+Sum_Basic_matmul = 328873728
+
+C_M1_b8(normal_core) = 82303390
+Sum_M1_b8(normal_core) = 328873728
+
+C_M1_b16(64reg_core) = 62602626
+Sum_M1_b16(64reg_core) = -756722944
+
+C_M2_b2(normal_core) = 104257440
+Sum_M2_b2(normal_core) = 328873728
+
+C_M2_b4(64reg_core) = 80936238
+Sum_M2_b4(64reg_core) = 328873728
+
+C_M2_b4_v2(64reg_core) = 63501189
+Sum_M2_b4_v2(64reg_core) = 328873728
+
+Warning: 'set logging off', an alias for the command 'set logging enabled', is deprecated.
+Use 'set logging enabled off'.
+
+--------------------------
+--------------------------
+
+0x0000000080002750 in multiplyMatrices_normal ()
+Loading section .text.init, size 0x2c0 lma 0x80000000
+Loading section .tohost, size 0x48 lma 0x80001000
+Loading section .text, size 0x3fc8 lma 0x80002000
+Loading section .rodata, size 0x1a8 lma 0x80005fc8
+Loading section .data, size 0xe1000 lma 0x80006170
+Start address 0x0000000080000000, load size 939128
+Transfer rate: 55 KB/sec, 15147 bytes/write.
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+main (argc=0, argv=0x0) at main.c:131
+131	    __builtin_trap(); 
+SIZE = 240
+
+C_Basic_matmul = 272597711
+Sum_Basic_matmul = -508614656
+
+C_M1_b8(normal_core) = 91431733
+Sum_M1_b8(normal_core) = -508614656
+
+C_M1_b16(64reg_core) = 74954976
+Sum_M1_b16(64reg_core) = -508614656
+
+C_M2_b2(normal_core) = 115604499
+Sum_M2_b2(normal_core) = -508614656
+
+C_M2_b4(64reg_core) = 90607251
+Sum_M2_b4(64reg_core) = -508614656
+
+C_M2_b4_v2(64reg_core) = 74141255
+Sum_M2_b4_v2(64reg_core) = -508614656
+
+Warning: 'set logging off', an alias for the command 'set logging enabled', is deprecated.
+Use 'set logging enabled off'.
+
+--------------------------
+--------------------------
+
+main (argc=0, argv=0x0) at main.c:131
+131	    __builtin_trap(); 
+Loading section .text.init, size 0x2c0 lma 0x80000000
+Loading section .tohost, size 0x48 lma 0x80001000
+Loading section .text, size 0x40cc lma 0x80002000
+Loading section .rodata, size 0x1a8 lma 0x800060d0
+Loading section .data, size 0xf0400 lma 0x80006278
+Start address 0x0000000080000000, load size 1001852
+Transfer rate: 55 KB/sec, 15179 bytes/write.
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+main (argc=0, argv=0x0) at main.c:131
+131	    __builtin_trap(); 
+SIZE = 248
+
+C_Basic_matmul = 282229796
+Sum_Basic_matmul = -789064448
+
+C_M1_b8(normal_core) = 100723710
+Sum_M1_b8(normal_core) = -789064448
+
+C_M1_b16(64reg_core) = 77227992
+Sum_M1_b16(64reg_core) = -999407872
+
+C_M2_b2(normal_core) = 127583494
+Sum_M2_b2(normal_core) = -789064448
+
+C_M2_b4(64reg_core) = 99043777
+Sum_M2_b4(64reg_core) = -789064448
+
+C_M2_b4_v2(64reg_core) = 77769618
+Sum_M2_b4_v2(64reg_core) = -789064448
+
+Warning: 'set logging off', an alias for the command 'set logging enabled', is deprecated.
+Use 'set logging enabled off'.
+
+--------------------------
+--------------------------
+
+0x0000000080002700 in multiplyMatrices_normal ()
+Loading section .text.init, size 0x2c0 lma 0x80000000
+Loading section .tohost, size 0x48 lma 0x80001000
+Loading section .text, size 0x39b4 lma 0x80002000
+Loading section .rodata, size 0x1a8 lma 0x800059b8
+Loading section .data, size 0x100000 lma 0x80005b60
+Start address 0x0000000080000000, load size 1064548
+Transfer rate: 55 KB/sec, 15428 bytes/write.
+
+Program received signal SIGTRAP, Trace/breakpoint trap.
+main (argc=0, argv=0x0) at main.c:131
+131	    __builtin_trap(); 
+SIZE = 256
+
+C_Basic_matmul = 642984020
+Sum_Basic_matmul = 1434451968
+
+C_M1_b8(normal_core) = 111748072
+Sum_M1_b8(normal_core) = 1434451968
+
+C_M1_b16(64reg_core) = 91517469
+Sum_M1_b16(64reg_core) = 1434451968
+
+C_M2_b2(normal_core) = 141128285
+Sum_M2_b2(normal_core) = 1434451968
+
+C_M2_b4(64reg_core) = 108987384
+Sum_M2_b4(64reg_core) = 1434451968
+
+C_M2_b4_v2(64reg_core) = 90208513
+Sum_M2_b4_v2(64reg_core) = 1434451968
+
+Warning: 'set logging off', an alias for the command 'set logging enabled', is deprecated.
+Use 'set logging enabled off'.
+
+--------------------------
+--------------------------
+
+main (argc=0, argv=0x0) at main.c:131
+131	    __builtin_trap(); 
+Loading section .text.init, size 0x2c0 lma 0x80000000
+Loading section .tohost, size 0x48 lma 0x80001000
+Loading section .text, size 0x39b4 lma 0x80002000
+Loading section .rodata, size 0x1a8 lma 0x800059b8
+Loading section .data, size 0x400000 lma 0x80005b60
+Start address 0x0000000080000000, load size 4210276
+Transfer rate: 54 KB/sec, 16008 bytes/write.
+
+Program received signal SIGINT, Interrupt.
+0x0000000080002bac in multiplyMatrices_normal ()
+../debug.gdb:9: Error in sourced command file:
+No symbol "size" in current context.
+[Inferior 1 (Remote target) detached]

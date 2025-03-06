@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "matmul.h"
-#include "reg_pointer_hard.c"
+#include "reg_pointer_B16.c"
 
 
 #define BLOCK_SIZE 16
@@ -12,7 +12,7 @@
 
 
 // Function to multiply two matrices with memory operation tracking
-void multiplyMatrices_extraReg(int A[SIZE][SIZE], int B[SIZE][SIZE], int C[SIZE][SIZE]) {
+void multiplyMatrices_extraReg_V16(int A[SIZE][SIZE], int B[SIZE][SIZE], int C[SIZE][SIZE]) {
     enable_pointers();
     int NUM_SIZE = SIZE / BLOCK_SIZE;  // Number of blocks
     
@@ -20,16 +20,20 @@ void multiplyMatrices_extraReg(int A[SIZE][SIZE], int B[SIZE][SIZE], int C[SIZE]
 
     for(int Cj=0; Cj<NUM_SIZE; Cj++){
 
+        #pragma GCC unroll 4
         for (int i = 0; i < SIZE; i++) {
 
             init_P2_16();
-
+            
             for (int b = 0; b < NUM_SIZE; b++) {
                 
+               set_pointer_P2_16();                
+            //    fetch_P1_16_compute(A[i]+b*BLOCK_SIZE, B[Cj*BLOCK_SIZE]);
                fetch_P1_16(A[i]+b*BLOCK_SIZE);
-               set_pointer_P2();                
-               for (int j = Cj*BLOCK_SIZE; j < (Cj+1)*BLOCK_SIZE; j++) {  
-                    set_pointer_P1();
+                
+
+               for (int j = Cj*BLOCK_SIZE ; j < (Cj+1)*BLOCK_SIZE; j++) {  
+                    set_pointer_P1_16();
                     __asm__ volatile (                                   
                         "add %0, x0, x0\n"  
                        
