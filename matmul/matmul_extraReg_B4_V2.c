@@ -9,8 +9,11 @@
 #define BLOCK_SIZE 4    // Define the block size for tiling
 #define BASEREG_B 32    // Define the base register for B matrix
 #define BASEREG_C 48    // Define the base register for C matrix
+#define STRINGIFY(x) #x
+#define PRAGMA_UNROLL(x) _Pragma(STRINGIFY(GCC unroll x))
 
 static inline void compute(){
+   
     __asm__ volatile(
         "mul x16, x28, x20\n"
         "mul x17, x28, x21\n"
@@ -39,219 +42,74 @@ static inline void set_pointer_P2(int target){
 
 
 
-static inline void load_A_B(int *A_row, int *B_row){
-
-   
-};
-
-static inline void multiply_block_4x4_V2(int *A_row0, int *A_row1, int *A_row2,int *A_row3,  int *B_row0, int *B_row1, int *B_row2, int *B_row3){
-                 
-
-      set_pointer_P1(BASEREG_B);
-      __asm__ volatile (
+static inline void load_A(int *A_row){
+   __asm__ volatile (
         //load A[row_0]
         //set B pointer -> 0
         
-
         "lw x20,  0(%0)\n"  // A[0][0]
         "lw x21,  4(%0)\n"  // A[0][1]
         "lw x22,  8(%0)\n"  // A[0][2]
         "lw x23, 12(%0)\n"  // A[0][3]
-         
-        //load B[row_0]
-        "lw x28,  0(%1)\n"  // B[0][0]
-        "lw x28, 4(%1)\n"  // B[0][1]
-        "lw x28, 8(%1)\n"  // B[0][2]
-        "lw x28, 12(%1)\n"  // B[0][3]
    
-        ::"r"(A_row0), "r"(B_row0):"x20", "x21", "x22", "x23");
-      
-      
-      //set B pointer -> 0 | C pointer -> 0
-      set_pointer_P2(BASEREG_C);
+        ::"r"(A_row):);
+
+};
+
+
+static inline void load_B(int *B_row){
+   __asm__ volatile (
+       
+        //load B[row_0]
+        "lw x28,  0(%0)\n"  // B[0][0]
+        "lw x28,  4(%0)\n"  // B[0][1]
+        "lw x28,  8(%0)\n"  // B[0][2]
+        "lw x28, 12(%0)\n"  // B[0][3]
+   
+        ::"r"(B_row):);
+
+};
+
+static inline void multiply_block_4x4_V2(int A[SIZE][SIZE], int B[SIZE][SIZE] , int bi, int bj, int bk){
+                 
+
       set_pointer_P1(BASEREG_B);
-
-      // Compute +=c[0]..
-      compute();
-
-
-    __asm__ volatile (
-        //load B[row_1]
-        "lw x28,  0(%0)\n"  // B[0][0]
-        "lw x28,  4(%0)\n"  // B[0][1]
-        "lw x28,  8(%0)\n"  // B[0][2]
-        "lw x28, 12(%0)\n"  // B[0][3]
-        //set B pointer -> 0 | C pointer -> 0
-        "regsw_c x1, 48(x29)\n"
-        "regsw_c x1, %1(x28)\n"
-
-        ::"r"(B_row1), "i"(BASEREG_B+4) :);
-        
-        // Compute += c[0]..
-        compute();
-
-     __asm__ volatile (
-        //load B[row_1]
-        "lw x28,  0(%0)\n"  // B[0][0]
-        "lw x28,  4(%0)\n"  // B[0][1]
-        "lw x28,  8(%0)\n"  // B[0][2]
-        "lw x28, 12(%0)\n"  // B[0][3]
-        //set B pointer -> 0 | C pointer -> 0
-        "regsw_c x1, 48(x29)\n"
-        "regsw_c x1, %1(x28)\n"
-
-        ::"r"(B_row2), "i"(BASEREG_B+8) :);
-        
-        // Compute += c[0]..
-        compute();
-
-     __asm__ volatile (
-        //load B[row_1]
-        "lw x28,  0(%0)\n"  // B[0][0]
-        "lw x28,  4(%0)\n"  // B[0][1]
-        "lw x28,  8(%0)\n"  // B[0][2]
-        "lw x28, 12(%0)\n"  // B[0][3]
-        //set B pointer -> 0 | C pointer -> 0
-        "regsw_c x1, 48(x29)\n"
-        "regsw_c x1, %1(x28)\n"
-
-        ::"r"(B_row3), "i"(BASEREG_B+12):);
-        
-        // Compute += c[0]...
-        compute();
+      load_A(&A[bi][bk]);
+      
+      
+      PRAGMA_UNROLL(BLOCK_SIZE)
+      for(int i = 0; i < BLOCK_SIZE; i++){
+         load_B(&B[bj+i][bk]);
+         //set B pointer -> 0 | C pointer -> 0
+         set_pointer_P1(BASEREG_B + i*BLOCK_SIZE);
+         set_pointer_P2(BASEREG_C);
+         // Compute +=c[0]..
+         compute();
+      }
 
 
 //--------- B is now fully loaded ----------------
 
 //--------- A[1]*B = C[1]-------------------------
-    set_pointer_P1(BASEREG_B);
 
-    __asm__ volatile (
-        //load A[row_1]
-        //set B pointer -> 0
-        
 
-        "lw x20,  0(%0)\n"  // A[1][0]
-        "lw x21,  4(%0)\n"  // A[1][1]
-        "lw x22,  8(%0)\n"  // A[1][2]
-        "lw x23, 12(%0)\n"  // A[1][3]
+      set_pointer_P1(BASEREG_B);
+
+      PRAGMA_UNROLL(BLOCK_SIZE)
+      for  (int i = 1; i<BLOCK_SIZE; i++){
          
-         
-        // C pointer -> 48 + 4
-        "regsw_c x1, 52(x29)\n"
+         load_A(&A[bi+i][bk]);
+         set_pointer_P1(BASEREG_B);
 
-        ::"r"(A_row1) :);
-
-        // Compute +=c[1]..
-        compute();
-
-     __asm__ volatile (     
-        // C pointer -> 48 + 4
-        "regsw_c x1, 52(x29)\n"
-        :::);
-        // Compute += c[1]..
-        compute();
-
-     __asm__ volatile (
-        // C pointer -> 48 + 4
-        "regsw_c x1, 52(x29)\n"
-        :::);
-        // Compute += c[1]..
-        compute();
-
-     __asm__ volatile (
-       // C pointer -> 48 + 4
-        "regsw_c x1, 52(x29)\n"
-        :::);
-        // Compute += c[1]...
-        compute();
-
-
-//--------- A[2]*B = C[2]-------------------------
-   set_pointer_P1(BASEREG_B);
-
-    __asm__ volatile (
-        //load A[row_2]
-        //set B pointer -> 0
-        
-
-        "lw x20,  0(%0)\n"  // A[1][0]
-        "lw x21,  4(%0)\n"  // A[1][1]
-        "lw x22,  8(%0)\n"  // A[1][2]
-        "lw x23, 12(%0)\n"  // A[1][3]
-         
-        "regsw_c x1, 56(x29)\n"
-         
-        // C pointer -> 48 + 8
-
-        ::"r"(A_row2) :);
-
-        // Compute +=c[2]..
-        compute();
-
-     __asm__ volatile (     
-        // C pointer -> 48 + 8
-        "regsw_c x1, 56(x29)\n"
-        :::);
-        // Compute += c[2]..
-        compute();
-
-     __asm__ volatile (
-        // C pointer -> 48 + 8
-        "regsw_c x1, 56(x29)\n"
-        :::);
-        // Compute += c[2]..
-        compute();
-
-     __asm__ volatile (
-       // C pointer -> 48 + 8
-        "regsw_c x1, 56(x29)\n"
-        :::);
-        // Compute += c[2]...
-        compute();
-
-//--------- A[3]*B = C[3]-------------------------
-    set_pointer_P1(BASEREG_B);
-
-    __asm__ volatile (
-        //load A[row_3]
-        //set B pointer -> 0
-        
-
-        "lw x20,  0(%0)\n"  // A[1][0]
-        "lw x21,  4(%0)\n"  // A[1][1]
-        "lw x22,  8(%0)\n"  // A[1][2]
-        "lw x23, 12(%0)\n"  // A[1][3]
-         
-         
-        // C pointer -> 48 + 12
-        "regsw_c x1, 60(x29)\n"
-
-        ::"r"(A_row3) :);
-
-        // Compute +=c[3]..
-        compute();
-
-     __asm__ volatile (     
-        // C pointer -> 48 + 12
-        "regsw_c x1, 60(x29)\n"
-        :::);
-        // Compute += c[3]..
-        compute();
-
-     __asm__ volatile (
-        // C pointer -> 48 + 12
-        "regsw_c x1, 60(x29)\n"
-        :::);
-        // Compute += c[3]..
-        compute();
-
-     __asm__ volatile (
-       // C pointer -> 48 + 12
-        "regsw_c x1, 60(x29)\n"
-        :::);
-        // Compute += c[3]...
-        compute();
+         PRAGMA_UNROLL(BLOCK_SIZE)
+         for  (int j = 0; j<BLOCK_SIZE; j++){
+            // C pointer -> 48 + 4
+            set_pointer_P2(BASEREG_C + i*BLOCK_SIZE );
+            // Compute +=c[1]..
+            compute();
+         }
+      }
+  
 }
 
 
@@ -291,8 +149,7 @@ void multiplyMatrices_B4_V2(int A[SIZE][SIZE], int B[SIZE][SIZE], int C[SIZE][SI
             
             for (int bk = 0; bk < SIZE; bk += BLOCK_SIZE) {
                
-               multiply_block_4x4_V2(&A[bi][bk], &A[bi+1][bk], &A[bi+2][bk], &A[bi+3][bk],\
-                                     &B[bj][bk], &B[bj+1][bk], &B[bj+2][bk], &B[bj+3][bk]);
+               multiply_block_4x4_V2(A,B, bi, bj, bk);
             }
 
             __asm__ volatile (
