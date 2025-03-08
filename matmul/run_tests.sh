@@ -1,7 +1,7 @@
 #!/bin/bash
 
 OUTPUT_FILE="results.txt"
-SIZES=32
+SIZES=64
 # ($(seq 16 8 256) 512)
 
 echo "SIZE,RESULT" > $OUTPUT_FILE  # Header for CSV output
@@ -24,3 +24,5 @@ done
 cp gdb_output.txt $OUTPUT_FILE
 
 echo "Experiment completed. Results saved in $OUTPUT_FILE"
+1159719323
+ 721817854

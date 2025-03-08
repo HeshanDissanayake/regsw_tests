@@ -31,25 +31,49 @@ static inline uint64_t read_cycle() {
     return cycles;
 }
 
+void init_C(){
+     for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++) {
+            C1[i][j]=0;
+        }
+    }
+}
 
 int main(int argc, char *argv[]) {    
 
+  
+    
     int size = SIZE;
-
-     uint64_t c1_b4_V2 = read_cycle();  
-    multiplyMatrices_B4_V2(A, B, C1);
-    uint64_t c2_b4_V2 = read_cycle();  
-    uint64_t cycles_b4_V2 = c2_b4_V2 - c1_b4_V2; //2539136
+    init_C();
+    uint64_t c1_b4 = read_cycle();  
+    multiplyMatrices_B4(A, B, C1);
+    uint64_t c2_b4 = read_cycle();  
+    uint64_t cycles_b4 = c2_b4 - c1_b4; //2539136
 
      // Calculate the sum of the result matrix
-    uint64_t result_sum_B4_V2 = 0;
+    uint64_t result_sum_B4 = 0;
     for (int i = 0; i < SIZE; i++) {
         for (int j = 0; j < SIZE; j++) {
-            result_sum_B4_V2 += C1[i][j];
+            result_sum_B4 += C1[i][j];
         }
     }
     
     
+    uint64_t c1_b2 = read_cycle();  
+    multiplyMatrices_B2(A, B, C1);
+    uint64_t c2_b2 = read_cycle();  
+    uint64_t cycles_b2 = c2_b2 - c1_b2; //2539136
+
+     // Calculate the sum of the result matrix
+    uint64_t result_sum_B2 = 0;
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++) {
+            result_sum_B2 += C1[i][j];
+        }
+    }
+
+
+   
 
     uint64_t c1_extraReg_16 = read_cycle();  
     multiplyMatrices_extraReg_V16(A, B, C1);
@@ -63,6 +87,22 @@ int main(int argc, char *argv[]) {
             result_sum_extraReg_16 += C1[i][j];
         }
     }
+
+
+     init_C();
+    uint64_t c1_b4x2 = read_cycle();  
+    multiplyMatrices_B4x2(A, B, C1);
+    uint64_t c2_b4x2 = read_cycle();  
+    uint64_t cycles_b4x2 = c2_b4x2 - c1_b4x2; //2539136
+
+     // Calculate the sum of the result matrix
+    uint64_t result_sum_B4x2 = 0;
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++) {
+            result_sum_B4x2 += C1[i][j];
+        }
+    }
+
 
 
     for (int i = 0; i < SIZE; i++) {
@@ -100,32 +140,10 @@ int main(int argc, char *argv[]) {
         }
     }
 
-    uint64_t c1_b2 = read_cycle();  
-    multiplyMatrices_B2(A, B, C1);
-    uint64_t c2_b2 = read_cycle();  
-    uint64_t cycles_b2 = c2_b2 - c1_b2; //2539136
-
-     // Calculate the sum of the result matrix
-    uint64_t result_sum_B2 = 0;
-    for (int i = 0; i < SIZE; i++) {
-        for (int j = 0; j < SIZE; j++) {
-            result_sum_B2 += C1[i][j];
-        }
-    }
+    
 
 
-    uint64_t c1_b4 = read_cycle();  
-    multiplyMatrices_B4(A, B, C1);
-    uint64_t c2_b4 = read_cycle();  
-    uint64_t cycles_b4 = c2_b4 - c1_b4; //2539136
-
-     // Calculate the sum of the result matrix
-    uint64_t result_sum_B4 = 0;
-    for (int i = 0; i < SIZE; i++) {
-        for (int j = 0; j < SIZE; j++) {
-            result_sum_B4 += C1[i][j];
-        }
-    }
+    
 
    
     __builtin_trap(); 

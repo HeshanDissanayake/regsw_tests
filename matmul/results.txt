@@ -1,38 +1,38 @@
 --------------------------
 --------------------------
 
-main (argc=0, argv=0x0) at main.c:131
-131	    __builtin_trap(); 
+main (argc=0, argv=0x0) at main.c:149
+149	    __builtin_trap(); 
 Loading section .text.init, size 0x2c0 lma 0x80000000
 Loading section .tohost, size 0x48 lma 0x80001000
-Loading section .text, size 0x3488 lma 0x80002000
-Loading section .rodata, size 0x1a8 lma 0x80005488
-Loading section .data, size 0x4000 lma 0x80005630
-Start address 0x0000000080000000, load size 31032
-Transfer rate: 52 KB/sec, 5172 bytes/write.
+Loading section .text, size 0x3c0c lma 0x80002000
+Loading section .rodata, size 0x1a8 lma 0x80005c10
+Loading section .data, size 0x10000 lma 0x80005db8
+Start address 0x0000000080000000, load size 82108
+Transfer rate: 53 KB/sec, 9123 bytes/write.
 
 Program received signal SIGTRAP, Trace/breakpoint trap.
-main (argc=0, argv=0x0) at main.c:131
-131	    __builtin_trap(); 
-SIZE = 32
+main (argc=0, argv=0x0) at main.c:149
+149	    __builtin_trap(); 
+SIZE = 64
 
-C_Basic_matmul = 520455
-Sum_Basic_matmul = 19578880
+C_Basic_matmul = 6531104
+Sum_Basic_matmul = 626393088
 
-C_M1_b8(normal_core) = 179578
-Sum_M1_b8(normal_core) = 19578880
+C_M1_b8(normal_core) = 1522786
+Sum_M1_b8(normal_core) = 626393088
 
-C_M1_b16(64reg_core) = 157297
-Sum_M1_b16(64reg_core) = 19578880
+C_M1_b16(64reg_core) = 1273972
+Sum_M1_b16(64reg_core) = 626393088
 
-C_M2_b2(normal_core) = 158057
-Sum_M2_b2(normal_core) = 19578880
+C_M2_b2(normal_core) = 1297677
+Sum_M2_b2(normal_core) = 626393088
 
-C_M2_b4(64reg_core) = 154437
-Sum_M2_b4(64reg_core) = 19578880
+C_M2_b4(64reg_core) = 950012
+Sum_M2_b4(64reg_core) = 626393088
 
-C_M2_b4_v2(64reg_core) = 112297
-Sum_M2_b4_v2(64reg_core) = 19578880
+C_M2_b4x2(64reg_core) = 894866
+Sum_M2_b4x2(64reg_core) = 626393088
 
 Warning: 'set logging off', an alias for the command 'set logging enabled', is deprecated.
 Use 'set logging enabled off'.

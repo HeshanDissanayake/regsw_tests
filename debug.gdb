@@ -25,8 +25,8 @@ printf "\n"
 printf "C_M2_b4(64reg_core) = %d\n", cycles_b4
 printf "Sum_M2_b4(64reg_core) = %d\n", result_sum_B4
 printf "\n"
-printf "C_M2_b4_v2(64reg_core) = %d\n", cycles_b4_V2
-printf "Sum_M2_b4_v2(64reg_core) = %d\n", result_sum_B4_V2
+printf "C_M2_b4x2(64reg_core) = %d\n", cycles_b4x2
+printf "Sum_M2_b4x2(64reg_core) = %d\n", result_sum_B4x2
 printf "\n"
 set logging off
 quit

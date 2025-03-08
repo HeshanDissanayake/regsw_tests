@@ -1,10 +1,10 @@
 # Compiler
 RISCV_GCC := /opt/dev/cva6_riscv_regsw/bin/riscv-none-elf-gcc
-SIZE ?= 128
+SIZE ?= 512
 
 # Input source files
 MAIN_SRC := main.c
-OBJ_FILES := matmul_normal.o matmul_extraReg_V8.o matmul_extraReg_V16.o matmul_extraReg_B2.o matmul_extraReg_B4.o matmul_extraReg_B4_V2.o 
+OBJ_FILES := matmul_normal.o matmul_extraReg_V8.o matmul_extraReg_V16.o matmul_extraReg_B2.o matmul_extraReg_B4.o matmul_extraReg_B4x2.o 
 
 # Compiler flags for each source file
 CFLAGS_NORMAL     := -O3 -c -D SIZE=$(SIZE) -static -ffixed-x28 -ffixed-x29 -march=rv64g_zba_zbb_zbs_zbc -mabi=lp64d
@@ -28,7 +28,7 @@ CFLAGS_EXTRA_B4   := -O3 -c -D SIZE=$(SIZE) -static  -ffixed-x31 \
 										  -ffixed-x29 \
 										  -march=rv64g_zba_zbb_zbs_zbc -mabi=lp64d
 
-CFLAGS_EXTRA_B4_V2  := -D SIZE=$(SIZE) -O3 -c -static 	  -ffixed-x16 \
+CFLAGS_EXTRA_B4x2  := -D SIZE=$(SIZE) -O3 -funroll-all-loops -c -static 	  -ffixed-x16 \
 										  -ffixed-x17 \
 										  -ffixed-x18 \
 										  -ffixed-x19 \
@@ -84,8 +84,8 @@ matmul_extraReg_B2.o: matmul_extraReg_B2.c
 matmul_extraReg_B4.o: matmul_extraReg_B4.c
 	$(RISCV_GCC) $(CFLAGS_EXTRA_B4) -o $@ $<
 
-matmul_extraReg_B4_V2.o: matmul_extraReg_B4_V2.c
-	$(RISCV_GCC) $(CFLAGS_EXTRA_B4_V2) -o $@ $<
+matmul_extraReg_B4x2.o: matmul_extraReg_B4x2.c
+	$(RISCV_GCC) $(CFLAGS_EXTRA_B4x2) -o $@ $<
 
 
 
