@@ -6,26 +6,26 @@
 #include <time.h>
 #include "sha.h"
 
-int main(int argc, char **argv)
+int main()
 {
-    FILE *fin;
+   
     SHA_INFO sha_info;
 
-    if (argc < 2) {
-	fin = stdin;
-	sha_stream(&sha_info, fin);
+	const char *input_string = "The output of asdasdthis sdasdasSHA algorithm  ";  // Example input
+
+	sha_stream(&sha_info, input_string);
 	sha_print(&sha_info);
-    } else {
-	while (--argc) {
-	    fin = fopen(*(++argv), "rb");
-	    if (fin == NULL) {
-		printf("error opening %s for reading\n", *argv);
-	    } else {
-		sha_stream(&sha_info, fin);
-		sha_print(&sha_info);
-		fclose(fin);
-	    }
+
+#ifdef __riscv
+
+	#pragma GCC unroll 5
+	for(int i=0; i<5; i++){
+		asm volatile (
+			"ld x20, %0\n"
+		::"m"(sha_info.digest[0]): "x20");
 	}
-    }
+#endif
+    
+    
     return(0);
 }

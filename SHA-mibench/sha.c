@@ -132,6 +132,10 @@ void sha_init(SHA_INFO *sha_info)
     sha_info->digest[4] = 0xc3d2e1f0L;
     sha_info->count_lo = 0L;
     sha_info->count_hi = 0L;
+
+    memset(sha_info->data, 0, SHA_BLOCKSIZE); 
+   
+   
 }
 
 /* update the SHA digest */
@@ -144,7 +148,8 @@ void sha_update(SHA_INFO *sha_info, BYTE *buffer, int count)
     sha_info->count_lo += (LONG) count << 3;
     sha_info->count_hi += (LONG) count >> 29;
     while (count >= SHA_BLOCKSIZE) {
-	memcpy(sha_info->data, buffer, SHA_BLOCKSIZE);
+	// memcpy(sha_info->data, buffer, SHA_BLOCKSIZE);
+
 #ifdef LITTLE_ENDIAN
 	byte_reverse(sha_info->data, SHA_BLOCKSIZE);
 #endif /* LITTLE_ENDIAN */
@@ -152,7 +157,9 @@ void sha_update(SHA_INFO *sha_info, BYTE *buffer, int count)
 	buffer += SHA_BLOCKSIZE;
 	count -= SHA_BLOCKSIZE;
     }
-    memcpy(sha_info->data, buffer, count);
+   
+    // memcpy(sha_info->data, buffer, count);
+    printf("\n");
 }
 
 /* finish computing the SHA digest */
@@ -186,19 +193,26 @@ void sha_final(SHA_INFO *sha_info)
 
 /* compute the SHA digest of a FILE stream */
 
-#define BLOCK_SIZE	8192
+#define BLOCK_SIZE 128	// 8192
 
-void sha_stream(SHA_INFO *sha_info, FILE *fin)
+void sha_stream(SHA_INFO *sha_info,  const char *str)
 {
-    int i;
+    int len = strlen(str);
+    int i = 0;
     BYTE data[BLOCK_SIZE];
 
     sha_init(sha_info);
-    while ((i = fread(data, 1, BLOCK_SIZE, fin)) > 0) {
-	sha_update(sha_info, data, i);
+    while (i < len) {
+        int chunk_size = (len - i) < BLOCK_SIZE ? (len - i) : BLOCK_SIZE;
+        memset(data, 0, BLOCK_SIZE);  // Zero out the buffer
+        memcpy(data, str + i, chunk_size);
+        sha_update(sha_info, data, chunk_size);
+        i += chunk_size;
     }
     sha_final(sha_info);
 }
+
+
 
 /* print a SHA digest */
 
@@ -209,27 +223,3 @@ void sha_print(SHA_INFO *sha_info)
 	sha_info->digest[3], sha_info->digest[4]);
 }
 
-
-int main(int argc, char **argv)
-{
-    FILE *fin;
-    SHA_INFO sha_info;
-
-    if (argc < 2) {
-	fin = stdin;
-	sha_stream(&sha_info, fin);
-	sha_print(&sha_info);
-    } else {
-	while (--argc) {
-	    fin = fopen(*(++argv), "rb");
-	    if (fin == NULL) {
-		printf("error opening %s for reading\n", *argv);
-	    } else {
-		sha_stream(&sha_info, fin);
-		sha_print(&sha_info);
-		fclose(fin);
-	    }
-	}
-    }
-    return(0);
-}

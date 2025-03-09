@@ -9,7 +9,7 @@
 typedef unsigned char BYTE;
 typedef unsigned long LONG;
 
-#define SHA_BLOCKSIZE		64
+#define SHA_BLOCKSIZE	 128
 #define SHA_DIGESTSIZE		20
 
 typedef struct {
@@ -22,7 +22,7 @@ void sha_init(SHA_INFO *);
 void sha_update(SHA_INFO *, BYTE *, int);
 void sha_final(SHA_INFO *);
 
-void sha_stream(SHA_INFO *, FILE *);
+void sha_stream(SHA_INFO *,  const char *str);
 void sha_print(SHA_INFO *);
 
 #endif /* SHA_H */
