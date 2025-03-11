@@ -11,21 +11,10 @@ int main()
    
     SHA_INFO sha_info;
 
-	const char *input_string = "The output of asdasdthis sdasdasSHA algorithm  ";  // Example input
+	const char *input_string = "The output ";  // Example input
 
 	sha_stream(&sha_info, input_string);
-	sha_print(&sha_info);
 
-#ifdef __riscv
-
-	#pragma GCC unroll 5
-	for(int i=0; i<5; i++){
-		asm volatile (
-			"ld x20, %0\n"
-		::"m"(sha_info.digest[0]): "x20");
-	}
-#endif
-    
-    
+	// sha_print(&sha_info);
     return(0);
 }

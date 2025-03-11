@@ -1,13 +1,12 @@
 RISCV_GCC := /opt/dev/cva6_riscv_regsw/bin/riscv-none-elf-gcc
 RUN_REGSW = ../run.sh
 
-SHA_CFLAGS = -O2 
+SHA_CFLAGS = -O2  
 
 SRC = main.c
-OBJ = main.o regsw_obj/sha_extra.o
-EXEC = sha_exec.o
+OBJ = main.o regsw_obj/bubble_sort_extra.o
+EXEC = bubble.o
 
-# CFLAGS = 
 # Linker flags
 LDFLAGS := -I/home/heshds/working_dir/cva6/verif/sim/../env/corev-dv/user_extension \
            -static \
@@ -15,7 +14,6 @@ LDFLAGS := -I/home/heshds/working_dir/cva6/verif/sim/../env/corev-dv/user_extens
            -fvisibility=hidden \
            -nostdlib \
            -nostartfiles \
-           -ffixed-x28 -ffixed-x29 \
            -g \
            -I/home/heshds/working_dir/regsw_tests/env \
            -lgcc \
@@ -30,14 +28,13 @@ LINK_SOURCES := /home/heshds/working_dir/regsw_tests/common/syscalls.c \
 all: clean $(EXEC)
 
 $(EXEC): $(OBJ)
-	$(RISCV_GCC) $(LDFLAGS) $(LINK_SOURCES) -DNOPRINT=1 -o $(EXEC) $(OBJ)
+	$(RISCV_GCC) $(LDFLAGS) $(LINK_SOURCES) -o $(EXEC) $(OBJ)
 
 main.o: main.c
 	$(RISCV_GCC) $(LDFLAGS) -c main.c -o main.o
 
-regsw_obj/sha_extra.o: sha.c
-	#  $(RUN_REGSW) sha.c
-	$(RISCV_GCC)  $(LDFLAGS) -c -static sha.c -o regsw_obj/sha_extra.o
+regsw_obj/bubble_sort_extra.o: bubble_sort.c
+	$(RUN_REGSW) bubble_sort.c  # <== Fixed indentation (TAB used here)
 
 clean:
 	rm -f $(OBJ) $(EXEC)

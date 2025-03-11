@@ -93,6 +93,8 @@ static void sha_transform(SHA_INFO *sha_info)
     sha_info->digest[2] += C;
     sha_info->digest[3] += D;
     sha_info->digest[4] += E;
+    sha_print(sha_info);
+
 }
 
 #ifdef LITTLE_ENDIAN
@@ -141,25 +143,30 @@ void sha_init(SHA_INFO *sha_info)
 /* update the SHA digest */
 
 void sha_update(SHA_INFO *sha_info, BYTE *buffer, int count)
-{
+{   
+
     if ((sha_info->count_lo + ((LONG) count << 3)) < sha_info->count_lo) {
 	++sha_info->count_hi;
     }
+
     sha_info->count_lo += (LONG) count << 3;
     sha_info->count_hi += (LONG) count >> 29;
+   
     while (count >= SHA_BLOCKSIZE) {
 	// memcpy(sha_info->data, buffer, SHA_BLOCKSIZE);
 
 #ifdef LITTLE_ENDIAN
-	byte_reverse(sha_info->data, SHA_BLOCKSIZE);
+	byte_reverse(sha_info->data, SHA_BLOCKSIZE); 
 #endif /* LITTLE_ENDIAN */
-	sha_transform(sha_info);
+
+	
+    sha_transform(sha_info);
+    
 	buffer += SHA_BLOCKSIZE;
 	count -= SHA_BLOCKSIZE;
     }
+       
    
-    // memcpy(sha_info->data, buffer, count);
-    printf("\n");
 }
 
 /* finish computing the SHA digest */
@@ -178,8 +185,11 @@ void sha_final(SHA_INFO *sha_info)
 #ifdef LITTLE_ENDIAN
 	byte_reverse(sha_info->data, SHA_BLOCKSIZE);
 #endif /* LITTLE_ENDIAN */
+    
 	sha_transform(sha_info);
-	memset(&sha_info->data, 0, 56);
+	
+
+    memset(&sha_info->data, 0, 56);
     } else {
 	memset((BYTE *) &sha_info->data + count, 0, 56 - count);
     }
@@ -193,7 +203,7 @@ void sha_final(SHA_INFO *sha_info)
 
 /* compute the SHA digest of a FILE stream */
 
-#define BLOCK_SIZE 128	// 8192
+#define BLOCK_SIZE  256
 
 void sha_stream(SHA_INFO *sha_info,  const char *str)
 {
@@ -208,6 +218,7 @@ void sha_stream(SHA_INFO *sha_info,  const char *str)
         memcpy(data, str + i, chunk_size);
         sha_update(sha_info, data, chunk_size);
         i += chunk_size;
+       
     }
     sha_final(sha_info);
 }
@@ -218,8 +229,20 @@ void sha_stream(SHA_INFO *sha_info,  const char *str)
 
 void sha_print(SHA_INFO *sha_info)
 {
-    printf("%08lx %08lx %08lx %08lx %08lx\n",
-	sha_info->digest[0], sha_info->digest[1], sha_info->digest[2],
-	sha_info->digest[3], sha_info->digest[4]);
+     #ifdef __riscv
+	
+		asm volatile ("ld x20, %0\n"::"m"(sha_info->digest[0]): "x20");
+		asm volatile ("ld x20, %0\n"::"m"(sha_info->digest[1]): "x20");
+		asm volatile ("ld x20, %0\n"::"m"(sha_info->digest[2]): "x20");
+		asm volatile ("ld x20, %0\n"::"m"(sha_info->digest[3]): "x20");
+		asm volatile ("ld x20, %0\n"::"m"(sha_info->digest[4]): "x20");
+	
+    #endif
+    #ifndef __riscv
+        printf("%08lx %08lx %08lx %08lx %08lx\n",
+        sha_info->digest[0], sha_info->digest[1], sha_info->digest[2],
+        sha_info->digest[3], sha_info->digest[4]);
+    #endif
+    
 }
 
