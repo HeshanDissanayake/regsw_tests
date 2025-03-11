@@ -37,6 +37,7 @@ void printArray(int arr[], int size) {
         #endif
 
     }
+    __builtin_trap(); 
 
     #ifdef __riscv
         asm volatile ("lw n21, %0\n"::"m"(arr[0]): "x20");
