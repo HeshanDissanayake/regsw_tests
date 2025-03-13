@@ -1,6 +1,9 @@
 #!/bin/bash
 
 INJECTOR_PATH="/home/heshds/working_dir/regws-instruction-injection"
+OPTIMIZATION_LEVEL="-O0"
+# O1 = gcc -fauto-inc-dec -fbranch-count-reg -fcprop-registers -fmerge-constants mycode.c -o myprogram
+
 
 
 # Check if an argument is provided
@@ -34,12 +37,21 @@ for FOLDER in "${FOLDERS[@]}"; do
 done
 
 
-/home/heshds/working_dir/llvm-project/output-regsw/bin/clang -ffixed-x12 -ffixed-x13 -ffixed-x14 -ffixed-x15 -ffixed-x16 -ffixed-x17 -ffixed-x18 -ffixed-x19  -ffixed-x21 -ffixed-x22 -ffixed-x23 -ffixed-x24 -ffixed-x25 -ffixed-x26 -ffixed-x27 -ffixed-x28 -ffixed-x29 -ffixed-x30 -ffixed-x31  --sysroot=/opt/dev/cva6_riscv_regsw/riscv-none-elf/ --gcc-toolchain=/opt/dev/cva6_riscv_regsw/ -O3 -S  -emit-llvm --target=riscv64  -march=rv64g  $1 -o LLVM/${basename}.ll
+/home/heshds/working_dir/llvm-project/output-regsw/bin/clang -I/home/heshds/working_dir/regsw_tests/common/syscalls.c  --sysroot=/opt/dev/cva6_riscv_regsw/riscv-none-elf/ --gcc-toolchain=/opt/dev/cva6_riscv_regsw/ -O3 -S  -emit-llvm --target=riscv64  -mcpu=generic-rv64  $1 -o LLVM/${basename}_extra.ll
+# /home/heshds/working_dir/llvm-project/delete/llvm-project/output/bin/clang -I/home/heshds/working_dir/regsw_tests/common/syscalls.c  --sysroot=/opt/dev/cva6_riscv_regsw/riscv-none-elf/ --gcc-toolchain=/opt/dev/cva6_riscv_regsw/ -O3 -S  -emit-llvm --target=riscv64  -mcpu=generic-rv64 $1 -o LLVM/${basename}_normal.ll
 
-/home/heshds/working_dir/llvm-project/output-regsw/bin/llc -O3  --march=riscv64 -mcpu=generic-rv64 -mattr=+d -relocation-model=pic LLVM/${basename}.ll -o asm/${basename}_exReg.S
 
-python3 "$INJECTOR_PATH/inject.py" asm/${basename}_exReg.S "$INJECTOR_PATH/encoding.json" asm_injected/${basename}_exReg_Inj.S
+/home/heshds/working_dir/llvm-project/output-regsw/bin/llc  -O3  --march=riscv64 -mcpu=generic-rv64 -mattr=+d -relocation-model=pic LLVM/${basename}_extra.ll -o asm/${basename}_extra.S
+# /home/heshds/working_dir/llvm-project/delete/llvm-project/output/bin/llc -O3  --march=riscv64 -mcpu=generic-rv64 -mattr=+d -relocation-model=pic LLVM/${basename}_normal.ll -o asm/${basename}_normal.S
 
-/opt/dev/cva6_riscv_regsw/bin/riscv-none-elf-gcc -static -c -O3  -nostdlib -nostartfiles -march=rv64g_zba_zbb_zbs_zbc -mabi=lp64d asm_injected/${basename}_exReg_Inj.S -o regsw_obj/${basename}_extra.o
+python3 "$INJECTOR_PATH/inject.py" asm/${basename}_extra.S "$INJECTOR_PATH/encoding.json" asm_injected/${basename}_exReg_Inj.S
+
+/opt/dev/cva6_riscv_regsw/bin/riscv-none-elf-gcc  -c -nostdlib -nostartfiles -march=rv64g_zba_zbb_zbs_zbc -mabi=lp64d asm_injected/${basename}_exReg_Inj.S -o regsw_obj/${basename}_extra.o
+# /opt/dev/cva6_riscv_regsw/bin/riscv-none-elf-gcc  -c -nostdlib -nostartfiles -march=rv64g_zba_zbb_zbs_zbc -mabi=lp64d asm/${basename}_normal.S -o regsw_obj/${basename}_extra.o
+
+
+
+
+# /opt/dev/cva6_riscv_regsw/bin/riscv-none-elf-gcc -static -c -O3  -nostdlib -nostartfiles -march=rv64g_zba_zbb_zbs_zbc -mabi=lp64d asm/${basename}_normal.S -o regsw_obj/${basename}_normal.o
 
 

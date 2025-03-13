@@ -1,0 +1,24 @@
+RISCV_GCC :=/opt/dev/riscv_linux_rv64g/bin/riscv64-unknown-linux-gnu-gcc
+RUN_REGSW = ../run_linux.sh
+
+SHA_CFLAGS = -O2 
+
+SRC = main.c
+OBJ = main.o regsw_obj/sha_extra.o
+EXEC = sha_linux.o
+
+all: clean $(EXEC)
+
+$(EXEC): $(OBJ)
+	$(RISCV_GCC) -static -o $(EXEC) $(OBJ)
+
+main.o: main.c
+	$(RISCV_GCC)  -c main.c -o main.o
+
+regsw_obj/sha_extra.o: sha.c
+	 $(RUN_REGSW) sha.c
+
+clean:
+	rm -f $(OBJ) $(EXEC)
+
+.PHONY: all clean

@@ -67,7 +67,39 @@ printArray:                             # @printArray
 .LprintArray$local:
 	.type	.LprintArray$local,@function
 # %bb.0:
-	unimp
+	addi	sp, sp, -16
+	sd	s4, 8(sp)                       # 8-byte Folded Spill
+	#APP
+	lw	n21, 0(a0)
+
+	#NO_APP
+	#APP
+	lw	s4, 4(a0)
+
+	#NO_APP
+	#APP
+	lw	s4, 8(a0)
+
+	#NO_APP
+	#APP
+	lw	s4, 12(a0)
+
+	#NO_APP
+	#APP
+	lw	s4, 16(a0)
+
+	#NO_APP
+	#APP
+	lw	s4, 20(a0)
+
+	#NO_APP
+	#APP
+	lw	s4, 24(a0)
+
+	#NO_APP
+	ld	s4, 8(sp)                       # 8-byte Folded Reload
+	addi	sp, sp, 16
+	ret
 .Lfunc_end1:
 	.size	printArray, .Lfunc_end1-printArray
 	.size	.LprintArray$local, .Lfunc_end1-printArray
