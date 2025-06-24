@@ -47,4 +47,9 @@ def register_sort_key(reg):
 table = PrettyTable(["Register", "Count"])
 for reg, count in sorted(counts.items(), key=lambda x: register_sort_key(x[0])):
     table.add_row([reg, count])
+
+# Add a row for the total number of unique registers used
+total_unique = len(counts)
+table.add_row(["Total Unique Registers", total_unique])
+
 print(table)

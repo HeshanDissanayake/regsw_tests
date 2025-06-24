@@ -12,9 +12,15 @@
 /*************************** HEADER FILES ***************************/
 #include <stddef.h>
 #include <string.h>  // Standard header
+#include <stdint.h>
+
 
 
 /****************************** MACROS ******************************/
+#ifndef MODE
+#define MODE "normal"
+#endif
+
 #define SHA256_BLOCK_SIZE 32            // SHA256 outputs a 32 byte digest
 
 /**************************** DATA TYPES ****************************/
@@ -29,8 +35,11 @@ typedef struct {
 } SHA256_CTX;
 
 /*********************** FUNCTION DECLARATIONS **********************/
+uint64_t read_cycles();
 void sha256_init(SHA256_CTX *ctx);
 void sha256_update(SHA256_CTX *ctx, const BYTE data[], size_t len);
 void sha256_final(SHA256_CTX *ctx, BYTE hash[]);
-
+void sha256_transform_normal(SHA256_CTX *ctx, const BYTE data[]);
+void sha256_transform_regsw(SHA256_CTX *ctx, const BYTE data[]);
+void use_64_registers(int *out);
 #endif   // SHA256_H

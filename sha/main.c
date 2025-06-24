@@ -14,6 +14,7 @@
 /*************************** HEADER FILES ***************************/
 #include <stdio.h>
 #include <string.h>
+#include <stdint.h>
 #include "sha.h"
 
 int memcmp(const void *ptr1, const void *ptr2, size_t num) {
@@ -27,6 +28,7 @@ int memcmp(const void *ptr1, const void *ptr2, size_t num) {
     }
     return 0;  // Memory blocks are identical
 }
+
 
 /*********************** FUNCTION DEFINITIONS ***********************/
 int sha256_test()
@@ -45,33 +47,55 @@ int sha256_test()
 	int idx;
 	int pass = 1;
 
-	sha256_init(&ctx);
-	sha256_update(&ctx, text1, strlen(text1));
-	sha256_final(&ctx, buf);
-	pass = pass && !memcmp(hash1, buf, SHA256_BLOCK_SIZE);
-	__builtin_trap(); 
+	int result;
+	uint64_t start, end, cycles_test1, cycles_test2, cycles_test3;
+	
+	// test 1
 
+	start = read_cycles();  
 	sha256_init(&ctx);
 	sha256_update(&ctx, text2, strlen(text2));
 	sha256_final(&ctx, buf);
 	pass = pass && !memcmp(hash2, buf, SHA256_BLOCK_SIZE);
+	end = read_cycles();  
+	cycles_test1 = end - start;	
 
+
+	// test 2
+	start = read_cycles();
+	sha256_init(&ctx);
+	sha256_update(&ctx, text2, strlen(text2));
+	sha256_final(&ctx, buf);
+	pass = pass && !memcmp(hash2, buf, SHA256_BLOCK_SIZE);
+	end = read_cycles();
+	cycles_test2 = end - start;	
+
+	// test 3
+	start = read_cycles();
 	sha256_init(&ctx);
 	for (idx = 0; idx < 100000; ++idx)
 	   sha256_update(&ctx, text3, strlen(text3));
 	sha256_final(&ctx, buf);
 	pass = pass && !memcmp(hash3, buf, SHA256_BLOCK_SIZE);
-	
+	end = read_cycles();
+	cycles_test3 = end - start;
+
+	__builtin_trap(); 
 
 
 	return(pass);
 }
 
+
+
 int main()
 {
+	uint64_t start = read_cycles();
 	int pass = sha256_test();
+	uint64_t end = read_cycles();
 
-	printf("%d\n", pass);
+	printf("cycles: %llu \n", end - start);
+	// printf("%d\n", pass);
 
 	return(0);
 }

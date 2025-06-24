@@ -30,6 +30,8 @@ static inline uint64_t read_cycle() {
     __asm__ volatile ("csrr %0, mcycle" : "=r"(cycles));
     return cycles;
 }
+    
+
 
 void init_C(){
      for (int i = 0; i < SIZE; i++) {

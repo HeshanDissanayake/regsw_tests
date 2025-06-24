@@ -23,7 +23,7 @@ FOLDERS=(
   "asm"
   "asm_injected"
   "LLVM"
-  "regsw_obj"
+  "obj"
 )
 
 # Loop through each folder and check if it exists
@@ -37,16 +37,29 @@ for FOLDER in "${FOLDERS[@]}"; do
 done
 
 
-/home/heshds/working_dir/llvm-project/output-regsw/bin/clang -I/home/heshds/working_dir/regsw_tests/common/syscalls.c  --sysroot=/opt/dev/cva6_riscv_regsw/riscv-none-elf/ --gcc-toolchain=/opt/dev/cva6_riscv_regsw/ -O3 -S  -emit-llvm --target=riscv64  -mcpu=generic-rv64  $1 -o LLVM/${basename}_extra.ll
+if [ "$2" == "regsw" ]; then
+  echo "Regsw mode"
+  /home/heshds/working_dir/llvm-project/output-regsw/bin/clang   -I/home/heshds/working_dir/regsw_tests/common/syscalls.c  --sysroot=/opt/dev/cva6_riscv_regsw/riscv-none-elf/ --gcc-toolchain=/opt/dev/cva6_riscv_regsw/ -O3 -funroll-loops -S  -emit-llvm --target=riscv64  -march=rv64g  $1 -o LLVM/${basename}.ll
+  /home/heshds/working_dir/llvm-project/output-regsw/bin/llc  -O3 -disable-spill-fusing -disable-post-ra -enable-ipra  --march=riscv64  -mattr=+d -relocation-model=pic LLVM/${basename}.ll -o asm/${basename}_extra.S
+  python3 "$INJECTOR_PATH/inject.py" asm/${basename}_extra.S "$INJECTOR_PATH/encoding.json" asm_injected/${basename}_exReg_Inj.S
+  /opt/dev/cva6_riscv_regsw/bin/riscv-none-elf-gcc -O3 -c  -nostdlib -nostartfiles -march=rv64g_zba_zbb_zbs_zbc -mabi=lp64d asm_injected/${basename}_exReg_Inj.S -o obj/${basename}_extra.o
+
+else
+  echo "Normal mode"
+  /home/heshds/working_dir/llvm-project/output-normal/bin/clang   -I/home/heshds/working_dir/regsw_tests/common/syscalls.c  --sysroot=/opt/dev/cva6_riscv_regsw/riscv-none-elf/ --gcc-toolchain=/opt/dev/cva6_riscv_regsw/ -O3 -funroll-loops -S  -emit-llvm --target=riscv64  -march=rv64g  $1 -o LLVM/${basename}.ll
+  /home/heshds/working_dir/llvm-project/output-normal/bin/llc  -O3 -disable-spill-fusing -disable-post-ra -enable-ipra  --march=riscv64  -mattr=+d -relocation-model=pic LLVM/${basename}.ll -o asm/${basename}_normal.S
+  /opt/dev/cva6_riscv_regsw/bin/riscv-none-elf-gcc -O3 -c  -nostdlib -nostartfiles -march=rv64g_zba_zbb_zbs_zbc -mabi=lp64d asm/${basename}_normal.S -o obj/${basename}_extra.o
+fi
+
+# /home/heshds/working_dir/llvm-project/output-regsw/bin/clang -I/home/heshds/working_dir/regsw_tests/common/syscalls.c  --sysroot=/opt/dev/cva6_riscv_regsw/riscv-none-elf/ --gcc-toolchain=/opt/dev/cva6_riscv_regsw/ -O3 -funroll-loops -S  -emit-llvm --target=riscv64   -mcpu=generic-rv64  $1 -o LLVM/${basename}_extra.ll
+
 # /home/heshds/working_dir/llvm-project/delete/llvm-project/output/bin/clang -I/home/heshds/working_dir/regsw_tests/common/syscalls.c  --sysroot=/opt/dev/cva6_riscv_regsw/riscv-none-elf/ --gcc-toolchain=/opt/dev/cva6_riscv_regsw/ -O3 -S  -emit-llvm --target=riscv64  -mcpu=generic-rv64 $1 -o LLVM/${basename}_normal.ll
 
-
-/home/heshds/working_dir/llvm-project/output-regsw/bin/llc  -O3  --march=riscv64 -mcpu=generic-rv64 -mattr=+d -relocation-model=pic LLVM/${basename}_extra.ll -o asm/${basename}_extra.S
+ 
 # /home/heshds/working_dir/llvm-project/delete/llvm-project/output/bin/llc -O3  --march=riscv64 -mcpu=generic-rv64 -mattr=+d -relocation-model=pic LLVM/${basename}_normal.ll -o asm/${basename}_normal.S
 
-python3 "$INJECTOR_PATH/inject.py" asm/${basename}_extra.S "$INJECTOR_PATH/encoding.json" asm_injected/${basename}_exReg_Inj.S
 
-/opt/dev/cva6_riscv_regsw/bin/riscv-none-elf-gcc  -c -nostdlib -nostartfiles -march=rv64g_zba_zbb_zbs_zbc -mabi=lp64d asm_injected/${basename}_exReg_Inj.S -o regsw_obj/${basename}_extra.o
+
 # /opt/dev/cva6_riscv_regsw/bin/riscv-none-elf-gcc  -c -nostdlib -nostartfiles -march=rv64g_zba_zbb_zbs_zbc -mabi=lp64d asm/${basename}_normal.S -o regsw_obj/${basename}_extra.o
 
 

@@ -1,10 +1,16 @@
 RISCV_GCC := /opt/dev/cva6_riscv_regsw/bin/riscv-none-elf-gcc
 RUN_REGSW = ../run.sh
 
+MODE = regsw
 
 SRC = main.c
-OBJ = main.o regsw_obj/sha_extra.o
-EXEC = sha_exec.o
+OBJ = main.o obj/sha.o
+
+ifeq ($(MODE), regsw)
+  EXEC = sha_exec_regsw.o
+else
+  EXEC = sha_exec_normal.o
+endif
 
 # CFLAGS = 
 # Linker flags
@@ -31,12 +37,12 @@ $(EXEC): $(OBJ)
 	$(RISCV_GCC) $(LDFLAGS) $(LINK_SOURCES) -DNOPRINT=1 -o $(EXEC) $(OBJ)
 
 main.o: main.c
-	$(RISCV_GCC) $(LDFLAGS) -c main.c -o main.o
+	$(RISCV_GCC) $(LDFLAGS)  -c main.c -o main.o
 
-regsw_obj/sha_extra.o: sha.c
-	 $(RUN_REGSW) sha.c
+obj/sha.o: sha.c
+	# $(RUN_REGSW) sha.c $(MODE)
+	$(RISCV_GCC)  $(LDFLAGS) -DMODE=\"$(MODE)\" -O3 -c -static sha.c -o obj/sha.o
 
-# $(RISCV_GCC)  $(LDFLAGS) -c -static sha.c -o regsw_obj/sha_extra.o
 
 clean:
 	rm -f $(OBJ) $(EXEC)

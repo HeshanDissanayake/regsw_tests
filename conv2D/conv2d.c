@@ -1,94 +1,60 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
+#include <stdint.h>
+#include "config.h"
+#include "conv.h"
 
-int load_count = 0;
-int store_count = 0;
 
-// Function to track loads
-int load(int *array, int i, int j, int cols) {
-    return array[i * cols + j];
-}
 
-// Function to track stores
-void store(int *array, int i, int j, int cols, int value) {
-    store_count++;
-    array[i * cols + j] = value;
-}
+extern int input[N][N];
+extern int kernel[K][K];
 
-// Function to perform 2D convolution
-void convolve(int *matrix, int rows, int cols, int *kernel, int krows, int kcols, int *output) {
-    int kr_half = krows / 2;
-    int kc_half = kcols / 2;
+static inline void set_pointer_P1(int target){
     
-    for (int i = 0; i < rows; i++) {
-        for (int j = 0; j < cols; j++) {
-            int sum = 0;
-            
-            for (int ki = 0; ki < krows; ki++) {
-                for (int kj = 0; kj < kcols; kj++) {
-                    int mi = i + ki - kr_half;
-                    int mj = j + kj - kc_half;
-                    
-                    if (mi >= 0 && mi < rows && mj >= 0 && mj < cols) {
+    __asm__ volatile ("regsw_c x1, 32(x28)\n"::);
 
-                        load_count+= 1 + 3;
-                        sum += matrix[mi*cols + mj] * kernel[ki*kcols + kj];
-                    }
+}
+
+void load_kernel(){
+   int weight;
+   set_pointer_P1(28);
+   for (int ki = 0; ki < K; ki++) {
+        for (int kj = 0; kj < K; kj++) {
+            weight = kernel[ki][kj];
+            __asm__ volatile ("ld x28, %0\n"::"m"(weight));
+        }
+    }
+}
+
+
+void conv2d_regsw(int output[N - K + 1][N - K + 1]) {
+    for (int i = 0; i <= N - K; i++) {
+        for (int j = 0; j <= N - K; j++) {
+            int sum = 0;
+            for (int ki = 0; ki < K; ki++) {
+                for (int kj = 0; kj < K; kj++) {
+                    sum += input[i + ki][j + kj] * kernel[ki][kj];
                 }
             }
-            store(output, i, j, cols, sum);
+            output[i][j] = sum;
         }
     }
 }
 
-int main(int argc, char *argv[]) {
-    if (argc != 3) {
-        printf("Usage: %s <mat size> <k size>\n", argv[0]);
-        return 1;
-    }
-    
-    srand(3);
-    
-    int rows = atoi(argv[1]);
-    int cols = atoi(argv[1]);
-    int krows = atoi(argv[2]);
-    int kcols = atoi(argv[2]);
-    
-    int matrix_size = rows * cols;
-    int kernel_size = krows * kcols;
-    
-    int *matrix = (int *)malloc(matrix_size * sizeof(int));
-    int *kernel = (int *)malloc(kernel_size * sizeof(int));
-    int *output = (int *)malloc(matrix_size * sizeof(int));
-    
-    // Initialize matrix with random values
-    for (int i = 0; i < matrix_size; i++) {
-        matrix[i] = rand() % 10;
-    }
-    
-    // Initialize kernel with random values
-    for (int i = 0; i < kernel_size; i++) {
-        kernel[i] = rand() % 5;
-    }
-    
-    convolve(matrix, rows, cols, kernel, krows, kcols, output);
-    
-    // Compute the sum of the output matrix
-    int sum = 0;
-    for (int i = 0; i < rows; i++) {
-        for (int j = 0; j < cols; j++) {
-            sum += output[i * cols + j];
+void conv2d_normal(int output[N - K + 1][N - K + 1]) {
+    load_kernel();
+    for (int i = 0; i <= N - K; i++) {
+        for (int j = 0; j <= N - K; j++) {
+            int sum = 0;
+            for (int ki = 0; ki < K; ki++) {
+                for (int kj = 0; kj < K; kj++) {
+                    int in = input[i + ki][j + kj];
+                    __asm__ volatile ("add %0, x28, %1\n":"=r"(sum):"r"(in));
+                }
+            }
+            output[i][j] = sum;
         }
     }
-    
-    printf("Sum of Output Matrix: %d\n", sum);
-    printf("Memory Loads: %d\n", load_count);
-    printf("Memory Stores: %d\n", store_count);
-    
-    free(matrix);
-    free(kernel);
-    free(output);
-    
-    return 0;
 }
+
+
+

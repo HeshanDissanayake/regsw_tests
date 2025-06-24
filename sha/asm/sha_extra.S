@@ -1,7 +1,9 @@
 	.text
 	.attribute	4, 16
-	.attribute	5, "rv64i2p1_f2p2_d2p2_zicsr2p0"
+	.attribute	5, "rv64i2p1_m2p0_a2p1_f2p2_d2p2_zicsr2p0_zifencei2p0"
 	.file	"sha.c"
+	.option	push
+	.option	arch, +a, +m, +zifencei
 	.globl	sha256_transform                # -- Begin function sha256_transform
 	.p2align	2
 	.type	sha256_transform,@function
@@ -157,6 +159,9 @@ sha256_transform:                       # @sha256_transform
 	.size	sha256_transform, .Lfunc_end0-sha256_transform
 	.size	.Lsha256_transform$local, .Lfunc_end0-sha256_transform
                                         # -- End function
+	.option	pop
+	.option	push
+	.option	arch, +a, +m, +zifencei
 	.section	.srodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0                          # -- Begin function sha256_init
 .LCPI1_0:
@@ -198,6 +203,9 @@ sha256_init:                            # @sha256_init
 	.size	sha256_init, .Lfunc_end1-sha256_init
 	.size	.Lsha256_init$local, .Lfunc_end1-sha256_init
                                         # -- End function
+	.option	pop
+	.option	push
+	.option	arch, +a, +m, +zifencei
 	.globl	sha256_update                   # -- Begin function sha256_update
 	.p2align	2
 	.type	sha256_update,@function
@@ -207,61 +215,52 @@ sha256_update:                          # @sha256_update
 # %bb.0:
 	beqz	a2, .LBB2_6
 # %bb.1:
-	addi	sp, sp, -48
-	sd	ra, 40(sp)                      # 8-byte Folded Spill
-	sd	s0, 32(sp)                      # 8-byte Folded Spill
-	sd	s1, 24(sp)                      # 8-byte Folded Spill
-	sd	s2, 16(sp)                      # 8-byte Folded Spill
-	sd	s3, 8(sp)                       # 8-byte Folded Spill
-	sd	s4, 0(sp)                       # 8-byte Folded Spill
-	mv	s0, a2
-	mv	s1, a1
-	mv	s2, a0
-	lw	a0, 64(a0)
-	li	a1, 0
-	li	s3, 1
-	li	s4, 64
+	addi	sp, sp, -16
+	sd	ra, 8(sp)                       # 8-byte Folded Spill
+	mv	n11, a2
+	mv	n12, a1
+	lw	a1, 64(a0)
+	li	a2, 0
+	li	n13, 1
+	li	n14, 64
 	j	.LBB2_3
 .LBB2_2:                                #   in Loop: Header=BB2_3 Depth=1
-	slli	a1, s3, 32
-	srli	a1, a1, 32
-	addi	s3, s3, 1
-	bgeu	a1, s0, .LBB2_5
+	slli	a2, n13, 32
+	srli	a2, a2, 32
+	addi	n13, n13, 1
+	bgeu	a2, n11, .LBB2_5
 .LBB2_3:                                # =>This Inner Loop Header: Depth=1
-	add	a1, s1, a1
-	lbu	a1, 0(a1)
-	slli	a0, a0, 32
-	srli	a0, a0, 32
-	add	a0, s2, a0
-	sb	a1, 0(a0)
-	lw	a0, 64(s2)
-	addiw	a0, a0, 1
-	sw	a0, 64(s2)
-	bne	a0, s4, .LBB2_2
+	add	a2, n12, a2
+	lbu	a2, 0(a2)
+	slli	a1, a1, 32
+	srli	a1, a1, 32
+	add	a1, a0, a1
+	sb	a2, 0(a1)
+	lw	a1, 64(a0)
+	addiw	a1, a1, 1
+	sw	a1, 64(a0)
+	bne	a1, n14, .LBB2_2
 # %bb.4:                                #   in Loop: Header=BB2_3 Depth=1
-	mv	a0, s2
-	mv	a1, s2
+	mv	a1, a0
 	call	.Lsha256_transform$local
-	ld	a1, 72(s2)
-	li	a0, 0
-	addi	a1, a1, 512
-	sd	a1, 72(s2)
-	sw	zero, 64(s2)
+	ld	a2, 72(a0)
+	li	a1, 0
+	addi	a2, a2, 512
+	sd	a2, 72(a0)
+	sw	zero, 64(a0)
 	j	.LBB2_2
 .LBB2_5:
-	ld	ra, 40(sp)                      # 8-byte Folded Reload
-	ld	s0, 32(sp)                      # 8-byte Folded Reload
-	ld	s1, 24(sp)                      # 8-byte Folded Reload
-	ld	s2, 16(sp)                      # 8-byte Folded Reload
-	ld	s3, 8(sp)                       # 8-byte Folded Reload
-	ld	s4, 0(sp)                       # 8-byte Folded Reload
-	addi	sp, sp, 48
+	ld	ra, 8(sp)                       # 8-byte Folded Reload
+	addi	sp, sp, 16
 .LBB2_6:
 	ret
 .Lfunc_end2:
 	.size	sha256_update, .Lfunc_end2-sha256_update
 	.size	.Lsha256_update$local, .Lfunc_end2-sha256_update
                                         # -- End function
+	.option	pop
+	.option	push
+	.option	arch, +a, +m, +zifencei
 	.globl	sha256_final                    # -- Begin function sha256_final
 	.p2align	2
 	.type	sha256_final,@function
@@ -410,6 +409,24 @@ sha256_final:                           # @sha256_final
 	.size	sha256_final, .Lfunc_end3-sha256_final
 	.size	.Lsha256_final$local, .Lfunc_end3-sha256_final
                                         # -- End function
+	.option	pop
+	.option	push
+	.option	arch, +a, +m, +zifencei
+	.globl	use_64_registers                # -- Begin function use_64_registers
+	.p2align	2
+	.type	use_64_registers,@function
+use_64_registers:                       # @use_64_registers
+.Luse_64_registers$local:
+	.type	.Luse_64_registers$local,@function
+# %bb.0:
+	li	a1, 2016
+	sw	a1, 0(a0)
+	ret
+.Lfunc_end4:
+	.size	use_64_registers, .Lfunc_end4-use_64_registers
+	.size	.Luse_64_registers$local, .Lfunc_end4-use_64_registers
+                                        # -- End function
+	.option	pop
 	.type	k,@object                       # @k
 	.section	.rodata,"a",@progbits
 	.p2align	2, 0x0

@@ -1,16 +1,8 @@
 RISCV_GCC := /opt/dev/cva6_riscv_regsw/bin/riscv-none-elf-gcc
 RUN_REGSW = ../run.sh
 
-SHA_CFLAGS = -O2 
-
-SRC = main.c
-OBJ = main.o regsw_obj/sha_extra.o
-EXEC = sha_exec.o
-
-# CFLAGS = 
 # Linker flags
 LDFLAGS := -I/home/heshds/working_dir/cva6/verif/sim/../env/corev-dv/user_extension \
-           -static \
            -mcmodel=medany \
            -fvisibility=hidden \
            -nostdlib \
@@ -27,19 +19,8 @@ LDFLAGS := -I/home/heshds/working_dir/cva6/verif/sim/../env/corev-dv/user_extens
 LINK_SOURCES := /home/heshds/working_dir/regsw_tests/common/syscalls.c \
                 /home/heshds/working_dir/regsw_tests/common/crt.S
 
-all: clean $(EXEC)
+compile:
+	$(RISCV_GCC)  $(LDFLAGS) -DNORMAL=0  -O2 -c conv2d.c data.c 
+	$(RISCV_GCC)  $(LDFLAGS) $(LINK_SOURCES) -DNORMAL=0 -static  main.c conv2d.o data.c -o main.o 
 
-$(EXEC): $(OBJ)
-	$(RISCV_GCC) $(LDFLAGS) $(LINK_SOURCES) -DNOPRINT=1 -o $(EXEC) $(OBJ)
 
-main.o: main.c
-	$(RISCV_GCC) $(LDFLAGS) -c main.c -o main.o
-
-regsw_obj/sha_extra.o: sha.c
-	#  $(RUN_REGSW) sha.c
-	$(RISCV_GCC)  $(LDFLAGS) -c -static sha.c -o regsw_obj/sha_extra.o
-
-clean:
-	rm -f $(OBJ) $(EXEC)
-
-.PHONY: all clean
