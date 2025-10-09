@@ -109,7 +109,7 @@ define dso_local void @jinit_c_prep_controller(ptr noundef %0, i32 noundef signe
   store ptr %80, ptr %82, align 8, !tbaa !37
   %83 = add nuw nsw i64 %75, 1
   %84 = icmp eq i64 %83, %51
-  br i1 %84, label %85, label %74, !llvm.loop !38
+  br i1 %84, label %85, label %74
 
 85:                                               ; preds = %74
   %86 = getelementptr inbounds [10 x ptr], ptr %44, i64 0, i64 %53
@@ -120,7 +120,7 @@ define dso_local void @jinit_c_prep_controller(ptr noundef %0, i32 noundef signe
   %90 = load i32, ptr %26, align 4, !tbaa !30
   %91 = sext i32 %90 to i64
   %92 = icmp slt i64 %88, %91
-  br i1 %92, label %52, label %157, !llvm.loop !40
+  br i1 %92, label %52, label %157
 
 93:                                               ; preds = %35, %93
   %94 = phi i64 [ %116, %93 ], [ 0, %35 ]
@@ -152,7 +152,7 @@ define dso_local void @jinit_c_prep_controller(ptr noundef %0, i32 noundef signe
   %118 = load i32, ptr %26, align 4, !tbaa !30
   %119 = sext i32 %118 to i64
   %120 = icmp slt i64 %116, %119
-  br i1 %120, label %93, label %157, !llvm.loop !40
+  br i1 %120, label %93, label %157
 
 121:                                              ; preds = %8
   store ptr @pre_process_data, ptr %19, align 8, !tbaa !28
@@ -196,7 +196,7 @@ define dso_local void @jinit_c_prep_controller(ptr noundef %0, i32 noundef signe
   %154 = load i32, ptr %122, align 4, !tbaa !30
   %155 = sext i32 %154 to i64
   %156 = icmp slt i64 %152, %155
-  br i1 %156, label %131, label %157, !llvm.loop !41
+  br i1 %156, label %131, label %157
 
 157:                                              ; preds = %93, %85, %131, %121, %20
   ret void
@@ -219,18 +219,18 @@ define internal void @start_pass_prep(ptr noundef %0, i32 noundef signext %1) #0
 
 10:                                               ; preds = %6, %2
   %11 = getelementptr inbounds i8, ptr %0, i64 52
-  %12 = load i32, ptr %11, align 4, !tbaa !42
+  %12 = load i32, ptr %11, align 4, !tbaa !38
   %13 = getelementptr inbounds i8, ptr %4, i64 96
-  store i32 %12, ptr %13, align 8, !tbaa !43
+  store i32 %12, ptr %13, align 8, !tbaa !39
   %14 = getelementptr inbounds i8, ptr %4, i64 100
-  store i32 0, ptr %14, align 4, !tbaa !44
+  store i32 0, ptr %14, align 4, !tbaa !40
   %15 = getelementptr inbounds i8, ptr %4, i64 104
-  store i32 0, ptr %15, align 8, !tbaa !45
+  store i32 0, ptr %15, align 8, !tbaa !41
   %16 = getelementptr inbounds i8, ptr %0, i64 316
   %17 = load i32, ptr %16, align 4, !tbaa !29
   %18 = shl nsw i32 %17, 1
   %19 = getelementptr inbounds i8, ptr %4, i64 108
-  store i32 %18, ptr %19, align 4, !tbaa !46
+  store i32 %18, ptr %19, align 4, !tbaa !42
   ret void
 }
 
@@ -242,7 +242,7 @@ define internal void @pre_process_context(ptr noundef %0, ptr noundef %1, ptr no
   %11 = load i32, ptr %10, align 4, !tbaa !29
   %12 = mul nsw i32 %11, 3
   %13 = getelementptr inbounds i8, ptr %9, i64 96
-  %14 = load i32, ptr %5, align 4, !tbaa !47
+  %14 = load i32, ptr %5, align 4, !tbaa !43
   %15 = icmp ult i32 %14, %6
   br i1 %15, label %16, label %145
 
@@ -259,24 +259,24 @@ define internal void @pre_process_context(ptr noundef %0, ptr noundef %1, ptr no
   br label %26
 
 26:                                               ; preds = %16, %142
-  %27 = load i32, ptr %2, align 4, !tbaa !47
+  %27 = load i32, ptr %2, align 4, !tbaa !43
   %28 = icmp ult i32 %27, %3
   br i1 %28, label %29, label %80
 
 29:                                               ; preds = %26
   %30 = sub i32 %3, %27
-  %31 = load i32, ptr %18, align 4, !tbaa !46
-  %32 = load i32, ptr %17, align 4, !tbaa !44
+  %31 = load i32, ptr %18, align 4, !tbaa !42
+  %32 = load i32, ptr %17, align 4, !tbaa !40
   %33 = sub nsw i32 %31, %32
   %34 = tail call i32 @llvm.umin.i32(i32 %33, i32 %30)
-  %35 = load ptr, ptr %22, align 8, !tbaa !48
+  %35 = load ptr, ptr %22, align 8, !tbaa !44
   %36 = getelementptr inbounds i8, ptr %35, i64 8
-  %37 = load ptr, ptr %36, align 8, !tbaa !49
+  %37 = load ptr, ptr %36, align 8, !tbaa !45
   %38 = zext i32 %27 to i64
   %39 = getelementptr inbounds ptr, ptr %1, i64 %38
   tail call void %37(ptr noundef %0, ptr noundef %39, ptr noundef nonnull %20, i32 noundef signext %32, i32 noundef signext %34) #4
-  %40 = load i32, ptr %13, align 8, !tbaa !43
-  %41 = load i32, ptr %23, align 4, !tbaa !42
+  %40 = load i32, ptr %13, align 8, !tbaa !39
+  %41 = load i32, ptr %23, align 4, !tbaa !38
   %42 = icmp eq i32 %40, %41
   br i1 %42, label %43, label %72
 
@@ -305,12 +305,12 @@ define internal void @pre_process_context(ptr noundef %0, ptr noundef %1, ptr no
   %57 = phi i32 [ 1, %54 ], [ %61, %56 ]
   %58 = load ptr, ptr %55, align 8, !tbaa !37
   %59 = sub nsw i32 0, %57
-  %60 = load i32, ptr %21, align 8, !tbaa !51
+  %60 = load i32, ptr %21, align 8, !tbaa !47
   tail call void @jcopy_sample_rows(ptr noundef %58, i32 noundef signext 0, ptr noundef %58, i32 noundef signext %59, i32 noundef signext 1, i32 noundef signext %60) #4
   %61 = add nuw nsw i32 %57, 1
   %62 = load i32, ptr %10, align 4, !tbaa !29
   %63 = icmp slt i32 %57, %62
-  br i1 %63, label %56, label %64, !llvm.loop !52
+  br i1 %63, label %56, label %64
 
 64:                                               ; preds = %56
   %65 = load i32, ptr %19, align 4, !tbaa !30
@@ -322,29 +322,29 @@ define internal void @pre_process_context(ptr noundef %0, ptr noundef %1, ptr no
   %69 = add nuw nsw i64 %52, 1
   %70 = sext i32 %67 to i64
   %71 = icmp slt i64 %69, %70
-  br i1 %71, label %49, label %72, !llvm.loop !53
+  br i1 %71, label %49, label %72, !llvm.loop !48
 
 72:                                               ; preds = %66, %46, %43, %29
-  %73 = load i32, ptr %2, align 4, !tbaa !47
+  %73 = load i32, ptr %2, align 4, !tbaa !43
   %74 = add i32 %73, %34
-  store i32 %74, ptr %2, align 4, !tbaa !47
-  %75 = load i32, ptr %17, align 4, !tbaa !44
+  store i32 %74, ptr %2, align 4, !tbaa !43
+  %75 = load i32, ptr %17, align 4, !tbaa !40
   %76 = add nsw i32 %75, %34
-  store i32 %76, ptr %17, align 4, !tbaa !44
-  %77 = load i32, ptr %13, align 8, !tbaa !43
+  store i32 %76, ptr %17, align 4, !tbaa !40
+  %77 = load i32, ptr %13, align 8, !tbaa !39
   %78 = sub i32 %77, %34
-  store i32 %78, ptr %13, align 8, !tbaa !43
-  %79 = load i32, ptr %18, align 4, !tbaa !46
+  store i32 %78, ptr %13, align 8, !tbaa !39
+  %79 = load i32, ptr %18, align 4, !tbaa !42
   br label %117
 
 80:                                               ; preds = %26
-  %81 = load i32, ptr %13, align 8, !tbaa !43
+  %81 = load i32, ptr %13, align 8, !tbaa !39
   %82 = icmp eq i32 %81, 0
   br i1 %82, label %83, label %145
 
 83:                                               ; preds = %80
-  %84 = load i32, ptr %17, align 4, !tbaa !44
-  %85 = load i32, ptr %18, align 4, !tbaa !46
+  %84 = load i32, ptr %17, align 4, !tbaa !40
+  %85 = load i32, ptr %18, align 4, !tbaa !42
   %86 = icmp slt i32 %84, %85
   br i1 %86, label %87, label %117
 
@@ -358,9 +358,9 @@ define internal void @pre_process_context(ptr noundef %0, ptr noundef %1, ptr no
   %92 = phi i64 [ %109, %107 ], [ 0, %87 ]
   %93 = getelementptr inbounds [10 x ptr], ptr %20, i64 0, i64 %92
   %94 = load ptr, ptr %93, align 8, !tbaa !37
-  %95 = load i32, ptr %21, align 8, !tbaa !51
-  %96 = load i32, ptr %17, align 4, !tbaa !44
-  %97 = load i32, ptr %18, align 4, !tbaa !46
+  %95 = load i32, ptr %21, align 8, !tbaa !47
+  %96 = load i32, ptr %17, align 4, !tbaa !40
+  %97 = load i32, ptr %18, align 4, !tbaa !42
   %98 = icmp slt i32 %96, %97
   br i1 %98, label %99, label %107
 
@@ -373,7 +373,7 @@ define internal void @pre_process_context(ptr noundef %0, ptr noundef %1, ptr no
   tail call void @jcopy_sample_rows(ptr noundef %94, i32 noundef signext %100, ptr noundef %94, i32 noundef signext %102, i32 noundef signext 1, i32 noundef signext %95) #4
   %103 = add i32 %102, 1
   %104 = icmp eq i32 %103, %97
-  br i1 %104, label %105, label %101, !llvm.loop !55
+  br i1 %104, label %105, label %101
 
 105:                                              ; preds = %101
   %106 = load i32, ptr %19, align 4, !tbaa !30
@@ -384,60 +384,60 @@ define internal void @pre_process_context(ptr noundef %0, ptr noundef %1, ptr no
   %109 = add nuw nsw i64 %92, 1
   %110 = sext i32 %108 to i64
   %111 = icmp slt i64 %109, %110
-  br i1 %111, label %90, label %112, !llvm.loop !56
+  br i1 %111, label %90, label %112, !llvm.loop !50
 
 112:                                              ; preds = %107
-  %113 = load i32, ptr %18, align 4, !tbaa !46
+  %113 = load i32, ptr %18, align 4, !tbaa !42
   br label %114
 
 114:                                              ; preds = %87, %112
   %115 = phi i32 [ %113, %112 ], [ %85, %87 ]
-  store i32 %115, ptr %17, align 4, !tbaa !44
-  %116 = load i32, ptr %5, align 4, !tbaa !47
+  store i32 %115, ptr %17, align 4, !tbaa !40
+  %116 = load i32, ptr %5, align 4, !tbaa !43
   br label %122
 
 117:                                              ; preds = %83, %72
   %118 = phi i32 [ %85, %83 ], [ %79, %72 ]
   %119 = phi i32 [ %84, %83 ], [ %76, %72 ]
   %120 = icmp eq i32 %119, %118
-  %121 = load i32, ptr %5, align 4, !tbaa !47
+  %121 = load i32, ptr %5, align 4, !tbaa !43
   br i1 %120, label %122, label %142
 
 122:                                              ; preds = %114, %117
   %123 = phi i32 [ %116, %114 ], [ %121, %117 ]
   %124 = load ptr, ptr %24, align 8, !tbaa !25
   %125 = getelementptr inbounds i8, ptr %124, i64 8
-  %126 = load ptr, ptr %125, align 8, !tbaa !57
-  %127 = load i32, ptr %25, align 8, !tbaa !45
+  %126 = load ptr, ptr %125, align 8, !tbaa !51
+  %127 = load i32, ptr %25, align 8, !tbaa !41
   tail call void %126(ptr noundef %0, ptr noundef nonnull %20, i32 noundef signext %127, ptr noundef %4, i32 noundef signext %123) #4
-  %128 = load i32, ptr %5, align 4, !tbaa !47
+  %128 = load i32, ptr %5, align 4, !tbaa !43
   %129 = add i32 %128, 1
-  store i32 %129, ptr %5, align 4, !tbaa !47
+  store i32 %129, ptr %5, align 4, !tbaa !43
   %130 = load i32, ptr %10, align 4, !tbaa !29
-  %131 = load i32, ptr %25, align 8, !tbaa !45
+  %131 = load i32, ptr %25, align 8, !tbaa !41
   %132 = add nsw i32 %131, %130
   %133 = icmp slt i32 %132, %12
   %134 = select i1 %133, i32 %132, i32 0
-  store i32 %134, ptr %25, align 8, !tbaa !45
-  %135 = load i32, ptr %17, align 4, !tbaa !44
+  store i32 %134, ptr %25, align 8, !tbaa !41
+  %135 = load i32, ptr %17, align 4, !tbaa !40
   %136 = icmp slt i32 %135, %12
   br i1 %136, label %138, label %137
 
 137:                                              ; preds = %122
-  store i32 0, ptr %17, align 4, !tbaa !44
+  store i32 0, ptr %17, align 4, !tbaa !40
   br label %138
 
 138:                                              ; preds = %137, %122
   %139 = phi i32 [ 0, %137 ], [ %135, %122 ]
   %140 = add nsw i32 %139, %130
-  store i32 %140, ptr %18, align 4, !tbaa !46
-  %141 = load i32, ptr %5, align 4, !tbaa !47
+  store i32 %140, ptr %18, align 4, !tbaa !42
+  %141 = load i32, ptr %5, align 4, !tbaa !43
   br label %142
 
 142:                                              ; preds = %138, %117
   %143 = phi i32 [ %141, %138 ], [ %121, %117 ]
   %144 = icmp ult i32 %143, %6
-  br i1 %144, label %26, label %145, !llvm.loop !58
+  br i1 %144, label %26, label %145
 
 145:                                              ; preds = %142, %80, %7
   ret void
@@ -445,7 +445,7 @@ define internal void @pre_process_context(ptr noundef %0, ptr noundef %1, ptr no
 
 ; Function Attrs: nounwind
 define internal void @pre_process_data(ptr noundef %0, ptr noundef %1, ptr nocapture noundef %2, i32 noundef signext %3, ptr noundef %4, ptr nocapture noundef %5, i32 noundef signext %6) #0 {
-  %8 = load i32, ptr %2, align 4, !tbaa !47
+  %8 = load i32, ptr %2, align 4, !tbaa !43
   %9 = icmp ult i32 %8, %3
   br i1 %9, label %10, label %129
 
@@ -464,31 +464,31 @@ define internal void @pre_process_data(ptr noundef %0, ptr noundef %1, ptr nocap
 
 21:                                               ; preds = %10, %126
   %22 = phi i32 [ %8, %10 ], [ %127, %126 ]
-  %23 = load i32, ptr %5, align 4, !tbaa !47
+  %23 = load i32, ptr %5, align 4, !tbaa !43
   %24 = icmp ult i32 %23, %6
   br i1 %24, label %25, label %129
 
 25:                                               ; preds = %21
   %26 = sub i32 %3, %22
   %27 = load i32, ptr %13, align 4, !tbaa !29
-  %28 = load i32, ptr %14, align 4, !tbaa !44
+  %28 = load i32, ptr %14, align 4, !tbaa !40
   %29 = sub nsw i32 %27, %28
   %30 = tail call i32 @llvm.umin.i32(i32 %29, i32 %26)
-  %31 = load ptr, ptr %15, align 8, !tbaa !48
+  %31 = load ptr, ptr %15, align 8, !tbaa !44
   %32 = getelementptr inbounds i8, ptr %31, i64 8
-  %33 = load ptr, ptr %32, align 8, !tbaa !49
+  %33 = load ptr, ptr %32, align 8, !tbaa !45
   %34 = zext i32 %22 to i64
   %35 = getelementptr inbounds ptr, ptr %1, i64 %34
   tail call void %33(ptr noundef nonnull %0, ptr noundef %35, ptr noundef nonnull %16, i32 noundef signext %28, i32 noundef signext %30) #4
-  %36 = load i32, ptr %2, align 4, !tbaa !47
+  %36 = load i32, ptr %2, align 4, !tbaa !43
   %37 = add i32 %36, %30
-  store i32 %37, ptr %2, align 4, !tbaa !47
-  %38 = load i32, ptr %14, align 4, !tbaa !44
+  store i32 %37, ptr %2, align 4, !tbaa !43
+  %38 = load i32, ptr %14, align 4, !tbaa !40
   %39 = add nsw i32 %38, %30
-  store i32 %39, ptr %14, align 4, !tbaa !44
-  %40 = load i32, ptr %17, align 8, !tbaa !43
+  store i32 %39, ptr %14, align 4, !tbaa !40
+  %40 = load i32, ptr %17, align 8, !tbaa !39
   %41 = sub i32 %40, %30
-  store i32 %41, ptr %17, align 8, !tbaa !43
+  store i32 %41, ptr %17, align 8, !tbaa !39
   %42 = icmp eq i32 %40, %30
   %43 = load i32, ptr %13, align 4, !tbaa !29
   %44 = icmp slt i32 %39, %43
@@ -505,8 +505,8 @@ define internal void @pre_process_data(ptr noundef %0, ptr noundef %1, ptr nocap
   %51 = phi i64 [ %68, %66 ], [ 0, %46 ]
   %52 = getelementptr inbounds [10 x ptr], ptr %16, i64 0, i64 %51
   %53 = load ptr, ptr %52, align 8, !tbaa !37
-  %54 = load i32, ptr %19, align 8, !tbaa !51
-  %55 = load i32, ptr %14, align 4, !tbaa !44
+  %54 = load i32, ptr %19, align 8, !tbaa !47
+  %55 = load i32, ptr %14, align 4, !tbaa !40
   %56 = load i32, ptr %13, align 4, !tbaa !29
   %57 = icmp slt i32 %55, %56
   br i1 %57, label %58, label %66
@@ -520,7 +520,7 @@ define internal void @pre_process_data(ptr noundef %0, ptr noundef %1, ptr nocap
   tail call void @jcopy_sample_rows(ptr noundef %53, i32 noundef signext %59, ptr noundef %53, i32 noundef signext %61, i32 noundef signext 1, i32 noundef signext %54) #4
   %62 = add i32 %61, 1
   %63 = icmp eq i32 %62, %56
-  br i1 %63, label %64, label %60, !llvm.loop !55
+  br i1 %63, label %64, label %60
 
 64:                                               ; preds = %60
   %65 = load i32, ptr %18, align 4, !tbaa !30
@@ -531,7 +531,7 @@ define internal void @pre_process_data(ptr noundef %0, ptr noundef %1, ptr nocap
   %68 = add nuw nsw i64 %51, 1
   %69 = sext i32 %67 to i64
   %70 = icmp slt i64 %68, %69
-  br i1 %70, label %49, label %71, !llvm.loop !59
+  br i1 %70, label %49, label %71, !llvm.loop !52
 
 71:                                               ; preds = %66
   %72 = load i32, ptr %13, align 4, !tbaa !29
@@ -539,7 +539,7 @@ define internal void @pre_process_data(ptr noundef %0, ptr noundef %1, ptr nocap
 
 73:                                               ; preds = %46, %71
   %74 = phi i32 [ %72, %71 ], [ %43, %46 ]
-  store i32 %74, ptr %14, align 4, !tbaa !44
+  store i32 %74, ptr %14, align 4, !tbaa !40
   br label %77
 
 75:                                               ; preds = %25
@@ -549,22 +549,22 @@ define internal void @pre_process_data(ptr noundef %0, ptr noundef %1, ptr nocap
 77:                                               ; preds = %73, %75
   %78 = load ptr, ptr %20, align 8, !tbaa !25
   %79 = getelementptr inbounds i8, ptr %78, i64 8
-  %80 = load ptr, ptr %79, align 8, !tbaa !57
-  %81 = load i32, ptr %5, align 4, !tbaa !47
+  %80 = load ptr, ptr %79, align 8, !tbaa !51
+  %81 = load i32, ptr %5, align 4, !tbaa !43
   tail call void %80(ptr noundef nonnull %0, ptr noundef nonnull %16, i32 noundef signext 0, ptr noundef %4, i32 noundef signext %81) #4
-  store i32 0, ptr %14, align 4, !tbaa !44
-  %82 = load i32, ptr %5, align 4, !tbaa !47
+  store i32 0, ptr %14, align 4, !tbaa !40
+  %82 = load i32, ptr %5, align 4, !tbaa !43
   %83 = add i32 %82, 1
-  store i32 %83, ptr %5, align 4, !tbaa !47
+  store i32 %83, ptr %5, align 4, !tbaa !43
   br label %84
 
 84:                                               ; preds = %77, %75
-  %85 = load i32, ptr %17, align 8, !tbaa !43
+  %85 = load i32, ptr %17, align 8, !tbaa !39
   %86 = icmp eq i32 %85, 0
   br i1 %86, label %87, label %126
 
 87:                                               ; preds = %84
-  %88 = load i32, ptr %5, align 4, !tbaa !47
+  %88 = load i32, ptr %5, align 4, !tbaa !43
   %89 = icmp ult i32 %88, %6
   br i1 %89, label %90, label %126
 
@@ -587,9 +587,9 @@ define internal void @pre_process_data(ptr noundef %0, ptr noundef %1, ptr nocap
   %102 = getelementptr inbounds i8, ptr %99, i64 28
   %103 = load i32, ptr %102, align 4, !tbaa !33
   %104 = shl i32 %103, 3
-  %105 = load i32, ptr %5, align 4, !tbaa !47
+  %105 = load i32, ptr %5, align 4, !tbaa !43
   %106 = getelementptr inbounds i8, ptr %99, i64 12
-  %107 = load i32, ptr %106, align 4, !tbaa !60
+  %107 = load i32, ptr %106, align 4, !tbaa !53
   %108 = mul i32 %107, %105
   %109 = mul i32 %107, %6
   %110 = icmp slt i32 %108, %109
@@ -604,7 +604,7 @@ define internal void @pre_process_data(ptr noundef %0, ptr noundef %1, ptr nocap
   tail call void @jcopy_sample_rows(ptr noundef %101, i32 noundef signext %112, ptr noundef %101, i32 noundef signext %114, i32 noundef signext 1, i32 noundef signext %104) #4
   %115 = add i32 %114, 1
   %116 = icmp eq i32 %115, %109
-  br i1 %116, label %117, label %113, !llvm.loop !55
+  br i1 %116, label %117, label %113
 
 117:                                              ; preds = %113
   %118 = load i32, ptr %18, align 4, !tbaa !30
@@ -616,16 +616,16 @@ define internal void @pre_process_data(ptr noundef %0, ptr noundef %1, ptr nocap
   %122 = getelementptr inbounds i8, ptr %99, i64 96
   %123 = sext i32 %120 to i64
   %124 = icmp slt i64 %121, %123
-  br i1 %124, label %96, label %125, !llvm.loop !61
+  br i1 %124, label %96, label %125
 
 125:                                              ; preds = %119, %90
-  store i32 %6, ptr %5, align 4, !tbaa !47
+  store i32 %6, ptr %5, align 4, !tbaa !43
   br label %129
 
 126:                                              ; preds = %87, %84
-  %127 = load i32, ptr %2, align 4, !tbaa !47
+  %127 = load i32, ptr %2, align 4, !tbaa !43
   %128 = icmp ult i32 %127, %3
-  br i1 %128, label %21, label %129, !llvm.loop !62
+  br i1 %128, label %21, label %129
 
 129:                                              ; preds = %21, %126, %7, %125
   ret void
@@ -686,28 +686,19 @@ attributes #4 = { nounwind }
 !35 = !{!7, !11, i64 312}
 !36 = !{!34, !11, i64 8}
 !37 = !{!8, !8, i64 0}
-!38 = distinct !{!38, !39}
-!39 = !{!"llvm.loop.mustprogress"}
-!40 = distinct !{!40, !39}
-!41 = distinct !{!41, !39}
-!42 = !{!7, !11, i64 52}
-!43 = !{!23, !11, i64 96}
-!44 = !{!23, !11, i64 100}
-!45 = !{!23, !11, i64 104}
-!46 = !{!23, !11, i64 108}
-!47 = !{!11, !11, i64 0}
-!48 = !{!7, !8, i64 472}
-!49 = !{!50, !8, i64 8}
-!50 = !{!"jpeg_color_converter", !8, i64 0, !8, i64 8}
-!51 = !{!7, !11, i64 48}
-!52 = distinct !{!52, !39}
-!53 = distinct !{!53, !39, !54}
-!54 = !{!"llvm.loop.unswitch.partial.disable"}
-!55 = distinct !{!55, !39}
-!56 = distinct !{!56, !39, !54}
-!57 = !{!27, !8, i64 8}
-!58 = distinct !{!58, !39}
-!59 = distinct !{!59, !39, !54}
-!60 = !{!34, !11, i64 12}
-!61 = distinct !{!61, !39}
-!62 = distinct !{!62, !39}
+!38 = !{!7, !11, i64 52}
+!39 = !{!23, !11, i64 96}
+!40 = !{!23, !11, i64 100}
+!41 = !{!23, !11, i64 104}
+!42 = !{!23, !11, i64 108}
+!43 = !{!11, !11, i64 0}
+!44 = !{!7, !8, i64 472}
+!45 = !{!46, !8, i64 8}
+!46 = !{!"jpeg_color_converter", !8, i64 0, !8, i64 8}
+!47 = !{!7, !11, i64 48}
+!48 = distinct !{!48, !49}
+!49 = !{!"llvm.loop.unswitch.partial.disable"}
+!50 = distinct !{!50, !49}
+!51 = !{!27, !8, i64 8}
+!52 = distinct !{!52, !49}
+!53 = !{!34, !11, i64 12}

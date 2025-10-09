@@ -25,6 +25,7 @@
 
 #include "cdjpeg.h"		/* Common decls for cjpeg/djpeg applications */
 #include "jversion.h"		/* for version message */
+#include "regsw_perf.h"
 
 #ifdef USE_CCOMMAND		/* command-line reader for Macintosh */
 #ifdef __MWERKS__
@@ -457,9 +458,14 @@ parse_switches (j_compress_ptr cinfo, int argc, char **argv,
  * The main program.
  */
 
-int
-main (int argc, char **argv)
-{
+int main (int argc, char **argv)
+{ 
+
+  //regsw perf start
+  clear_regsw_cache();
+  uint64_t start = get_cycles();
+
+
   struct jpeg_compress_struct cinfo;
   struct jpeg_error_mgr jerr;
 #ifdef PROGRESS_REPORT
@@ -600,6 +606,23 @@ main (int argc, char **argv)
   end_progress_monitor((j_common_ptr) &cinfo);
 #endif
 
+  //regsw perf end
+  uint64_t end = get_cycles();
+  uint64_t time = end - start;
+
+  int regsw_hits = get_regsw_hits();
+  int regsw_misses = get_regsw_misses();   
+		
+	printf("cycles: %lu | regsw hits:%d regsw misses:%d \n", end - start, regsw_hits, regsw_misses);
+  printf("Corrected Cycles: %lu\n", end - start - regsw_hits);
+
+  uint64_t lw = get_lw();
+  uint64_t li = get_li();
+  uint64_t ld = get_ld();
+
+  uint64_t sw = get_sw();
+  uint64_t sd = get_sd();
+  printf("lw, %lu\n ld, %lu\n li, %lu\n sw, %lu\n sd, %lu\n ", lw, ld, li, sw, sd);
   /* All done. */
   exit(jerr.num_warnings ? EXIT_WARNING : EXIT_SUCCESS);
   return 0;			/* suppress no-return-value warnings */

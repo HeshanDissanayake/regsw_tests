@@ -184,13 +184,13 @@ define dso_local void @jpeg_idct_float(ptr nocapture noundef readonly %0, ptr no
   %146 = getelementptr inbounds i8, ptr %18, i64 2
   %147 = add nsw i32 %15, -1
   %148 = icmp ugt i32 %15, 1
-  br i1 %148, label %14, label %11, !llvm.loop !19
+  br i1 %148, label %14, label %11
 
 149:                                              ; preds = %11, %149
   %150 = phi i64 [ 0, %11 ], [ %259, %149 ]
   %151 = phi ptr [ %6, %11 ], [ %258, %149 ]
   %152 = getelementptr inbounds ptr, ptr %3, i64 %150
-  %153 = load ptr, ptr %152, align 8, !tbaa !21
+  %153 = load ptr, ptr %152, align 8, !tbaa !19
   %154 = getelementptr inbounds i8, ptr %153, i64 %13
   %155 = load float, ptr %151, align 4, !tbaa !17
   %156 = getelementptr inbounds i8, ptr %151, i64 16
@@ -238,75 +238,75 @@ define dso_local void @jpeg_idct_float(ptr nocapture noundef readonly %0, ptr no
   %198 = lshr i64 %197, 3
   %199 = and i64 %198, 1023
   %200 = getelementptr inbounds i8, ptr %12, i64 %199
-  %201 = load i8, ptr %200, align 1, !tbaa !22
-  store i8 %201, ptr %154, align 1, !tbaa !22
+  %201 = load i8, ptr %200, align 1, !tbaa !20
+  store i8 %201, ptr %154, align 1, !tbaa !20
   %202 = fsub float %168, %184
   %203 = fptosi float %202 to i64
   %204 = add i64 %203, 4
   %205 = lshr i64 %204, 3
   %206 = and i64 %205, 1023
   %207 = getelementptr inbounds i8, ptr %12, i64 %206
-  %208 = load i8, ptr %207, align 1, !tbaa !22
+  %208 = load i8, ptr %207, align 1, !tbaa !20
   %209 = getelementptr inbounds i8, ptr %154, i64 7
-  store i8 %208, ptr %209, align 1, !tbaa !22
+  store i8 %208, ptr %209, align 1, !tbaa !20
   %210 = fadd float %170, %192
   %211 = fptosi float %210 to i64
   %212 = add i64 %211, 4
   %213 = lshr i64 %212, 3
   %214 = and i64 %213, 1023
   %215 = getelementptr inbounds i8, ptr %12, i64 %214
-  %216 = load i8, ptr %215, align 1, !tbaa !22
+  %216 = load i8, ptr %215, align 1, !tbaa !20
   %217 = getelementptr inbounds i8, ptr %154, i64 1
-  store i8 %216, ptr %217, align 1, !tbaa !22
+  store i8 %216, ptr %217, align 1, !tbaa !20
   %218 = fsub float %170, %192
   %219 = fptosi float %218 to i64
   %220 = add i64 %219, 4
   %221 = lshr i64 %220, 3
   %222 = and i64 %221, 1023
   %223 = getelementptr inbounds i8, ptr %12, i64 %222
-  %224 = load i8, ptr %223, align 1, !tbaa !22
+  %224 = load i8, ptr %223, align 1, !tbaa !20
   %225 = getelementptr inbounds i8, ptr %154, i64 6
-  store i8 %224, ptr %225, align 1, !tbaa !22
+  store i8 %224, ptr %225, align 1, !tbaa !20
   %226 = fadd float %171, %193
   %227 = fptosi float %226 to i64
   %228 = add i64 %227, 4
   %229 = lshr i64 %228, 3
   %230 = and i64 %229, 1023
   %231 = getelementptr inbounds i8, ptr %12, i64 %230
-  %232 = load i8, ptr %231, align 1, !tbaa !22
+  %232 = load i8, ptr %231, align 1, !tbaa !20
   %233 = getelementptr inbounds i8, ptr %154, i64 2
-  store i8 %232, ptr %233, align 1, !tbaa !22
+  store i8 %232, ptr %233, align 1, !tbaa !20
   %234 = fsub float %171, %193
   %235 = fptosi float %234 to i64
   %236 = add i64 %235, 4
   %237 = lshr i64 %236, 3
   %238 = and i64 %237, 1023
   %239 = getelementptr inbounds i8, ptr %12, i64 %238
-  %240 = load i8, ptr %239, align 1, !tbaa !22
+  %240 = load i8, ptr %239, align 1, !tbaa !20
   %241 = getelementptr inbounds i8, ptr %154, i64 5
-  store i8 %240, ptr %241, align 1, !tbaa !22
+  store i8 %240, ptr %241, align 1, !tbaa !20
   %242 = fadd float %169, %194
   %243 = fptosi float %242 to i64
   %244 = add i64 %243, 4
   %245 = lshr i64 %244, 3
   %246 = and i64 %245, 1023
   %247 = getelementptr inbounds i8, ptr %12, i64 %246
-  %248 = load i8, ptr %247, align 1, !tbaa !22
+  %248 = load i8, ptr %247, align 1, !tbaa !20
   %249 = getelementptr inbounds i8, ptr %154, i64 4
-  store i8 %248, ptr %249, align 1, !tbaa !22
+  store i8 %248, ptr %249, align 1, !tbaa !20
   %250 = fsub float %169, %194
   %251 = fptosi float %250 to i64
   %252 = add i64 %251, 4
   %253 = lshr i64 %252, 3
   %254 = and i64 %253, 1023
   %255 = getelementptr inbounds i8, ptr %12, i64 %254
-  %256 = load i8, ptr %255, align 1, !tbaa !22
+  %256 = load i8, ptr %255, align 1, !tbaa !20
   %257 = getelementptr inbounds i8, ptr %154, i64 3
-  store i8 %256, ptr %257, align 1, !tbaa !22
+  store i8 %256, ptr %257, align 1, !tbaa !20
   %258 = getelementptr inbounds i8, ptr %151, i64 32
   %259 = add nuw nsw i64 %150, 1
   %260 = icmp eq i64 %259, 8
-  br i1 %260, label %261, label %149, !llvm.loop !23
+  br i1 %260, label %261, label %149
 
 261:                                              ; preds = %149
   call void @llvm.lifetime.end.p0(i64 256, ptr nonnull %6) #3
@@ -349,8 +349,5 @@ attributes #3 = { nounwind }
 !16 = !{!13, !13, i64 0}
 !17 = !{!18, !18, i64 0}
 !18 = !{!"float", !9, i64 0}
-!19 = distinct !{!19, !20}
-!20 = !{!"llvm.loop.mustprogress"}
-!21 = !{!8, !8, i64 0}
-!22 = !{!9, !9, i64 0}
-!23 = distinct !{!23, !20}
+!19 = !{!8, !8, i64 0}
+!20 = !{!9, !9, i64 0}

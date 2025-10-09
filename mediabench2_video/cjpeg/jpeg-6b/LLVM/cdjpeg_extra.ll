@@ -51,7 +51,7 @@ define dso_local signext range(i32 0, 2) i32 @keymatch(ptr nocapture noundef rea
   %34 = add nuw nsw i32 %9, 1
   %35 = load i8, ptr %11, align 1, !tbaa !6
   %36 = icmp eq i8 %35, 0
-  br i1 %36, label %37, label %6, !llvm.loop !15
+  br i1 %36, label %37, label %6
 
 37:                                               ; preds = %33, %3
   %38 = phi i32 [ 0, %3 ], [ %34, %33 ]
@@ -105,5 +105,3 @@ attributes #3 = { nounwind willreturn memory(none) }
 !12 = !{!"short", !7, i64 0}
 !13 = !{!14, !14, i64 0}
 !14 = !{!"int", !7, i64 0}
-!15 = distinct !{!15, !16}
-!16 = !{!"llvm.loop.mustprogress"}

@@ -2,6 +2,12 @@
     "files.associations": {
         "stddef.h": "c",
         "stdint.h": "c",
-        "conv.h": "c"
-    }
+        "conv.h": "c",
+        "jversion.h": "c",
+        "regsw_perf.h": "c",
+        "string.h": "c",
+        "signal.h": "c",
+        "stdlib.h": "c"
+    },
+    "cmake.sourceDirectory": "/home/heshds/working_dir/regsw_tests/kissfft"
 }

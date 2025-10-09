@@ -1,0 +1,3 @@
+this readme has the description of each scripts
+
+move_to_sdk.sh : this script is used to move the build files that are located in a set of source directories to the     cva6-skd rootfs home directory. 

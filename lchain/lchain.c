@@ -7,6 +7,8 @@
 #include <string.h>
 #include <stdlib.h>
 #include <time.h>
+#include <stdint.h>
+
 
 #define MM_SEED_SEG_SHIFT  48
 #define MM_SEED_SEG_MASK   (0xffULL<<(MM_SEED_SEG_SHIFT))
@@ -183,22 +185,22 @@ mm128_t *mg_lchain_dp(int max_dist_x, int max_dist_y, int bw, int max_skip, int 
 { // TODO: make sure this works when n has more than 32 bits
 
     // ...existing code...
-    printf("max_dist_x: %d\n", max_dist_x);
-    printf("max_dist_y: %d\n", max_dist_y);
-    printf("bw: %d\n", bw);
-    printf("max_skip: %d\n", max_skip);
-    printf("max_iter: %d\n", max_iter);
-    printf("min_cnt: %d\n", min_cnt);
-    printf("min_sc: %d\n", min_sc);
-    printf("chn_pen_gap: %.2f\n", chn_pen_gap);
-    printf("chn_pen_skip: %.2f\n", chn_pen_skip);
-    printf("is_cdna: %d\n", is_cdna);
-    printf("n_seg: %d\n", n_seg);
-    printf("n: %ld\n", n);
-    printf("a: %p\n", (void*)a);
-    printf("n_u_: %p\n", (void*)n_u_);
-    printf("_u: %p\n", (void*)*_u);
-    printf("km: %p\n", km);
+    // printf("max_dist_x: %d\n", max_dist_x);
+    // printf("max_dist_y: %d\n", max_dist_y);
+    // printf("bw: %d\n", bw);
+    // printf("max_skip: %d\n", max_skip);
+    // printf("max_iter: %d\n", max_iter);
+    // printf("min_cnt: %d\n", min_cnt);
+    // printf("min_sc: %d\n", min_sc);
+    // printf("chn_pen_gap: %.2f\n", chn_pen_gap);
+    // printf("chn_pen_skip: %.2f\n", chn_pen_skip);
+    // printf("is_cdna: %d\n", is_cdna);
+    // printf("n_seg: %d\n", n_seg);
+    // printf("n: %ld\n", n);
+    // printf("a: %p\n", (void*)a);
+    // printf("n_u_: %p\n", (void*)n_u_);
+    // printf("_u: %p\n", (void*)*_u);
+    // printf("km: %p\n", km);
     // ...existing code...
 
 	int32_t *f, *t, *v, n_u, n_v, mmax_f = 0, max_drop = bw;
@@ -1377,11 +1379,53 @@ void clear_regsw_cache(){
 
 uint64_t get_cycles(){
     int cycles;
-    asm volatile ("csrr %0, 0x80e" : "=r"(cycles));
+    asm volatile ("csrr %0, 0x814" : "=r"(cycles));
     return cycles;
 }
 
+void enable_regsw(int enable){
+    asm volatile ("csrw 0x803, %0"::"r"(enable)); // enable regsw unit
+
+}
+
+
+uint64_t get_li(){
+    int cycles;
+    asm volatile ("csrr %0, 0x80f" : "=r"(cycles));
+    return cycles;
+}
+
+uint64_t get_ld(){
+    int cycles;
+    asm volatile ("csrr %0, 0x811" : "=r"(cycles));
+    return cycles;
+}
+
+uint64_t get_lw(){
+    int cycles;
+    asm volatile ("csrr %0, 0x810" : "=r"(cycles));
+    return cycles;
+}
+
+uint64_t get_sd(){
+    int cycles;
+    asm volatile ("csrr %0, 0x813" : "=r"(cycles));
+    return cycles;
+}
+
+uint64_t get_sw(){
+    int cycles;
+    asm volatile ("csrr %0, 0x812" : "=r"(cycles));
+    return cycles;
+}
+
+
+
+
+
 int main(int argc, char *argv[]){
+
+    // enable_regsw(1); // enable regsw unit
 	// Load the data from the file
     int loaded_max_dist_x, loaded_max_dist_y, loaded_bw, loaded_max_skip, loaded_max_iter, loaded_min_cnt, loaded_min_sc, loaded_is_cdna, loaded_n_seg;
     int64_t loaded_n;
@@ -1413,6 +1457,7 @@ int main(int argc, char *argv[]){
 
     clear_regsw_cache();
     uint64_t start = get_cycles();
+    
     mm128_t *res = mg_lchain_dp(max_dist_x, max_dist_y, bw, max_skip, \
                                     max_iter, min_cnt, min_sc, chn_pen_gap, \
                                     chn_pen_skip, is_cdna, n_seg, n, sta, &n_u_, &_u, km);
@@ -1422,10 +1467,22 @@ int main(int argc, char *argv[]){
 
     int resw_hits = get_regsw_hits();
     int resw_misses = get_regsw_misses();   
-		
+
+    
+
   
 	print_mm128_array(res, 20);
+    // enable_regsw(0); // enable regsw unit
     printf("chaining done\n\n");
+
 	printf("cycles: %lu | regsw hits:%d regsw misses:%d \n", end - start, resw_hits, resw_misses);
+
+    uint64_t lw = get_lw();
+    uint64_t li = get_li();
+    uint64_t ld = get_ld();
+
+    uint64_t sw = get_sw();
+    uint64_t sd = get_sd();
+    printf("lw, %lu\n ld, %lu\n li, %lu\n sw, %lu\n sd, %lu\n ", lw, ld, li, sw, sd);
     return 0;
 }

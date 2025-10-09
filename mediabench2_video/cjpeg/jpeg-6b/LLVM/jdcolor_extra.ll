@@ -94,7 +94,7 @@ define dso_local void @jinit_color_deconverter(ptr noundef %0) local_unnamed_add
   store i32 0, ptr %46, align 8, !tbaa !31
   %47 = add nuw nsw i64 %45, 1
   %48 = icmp eq i64 %47, %43
-  br i1 %48, label %171, label %44, !llvm.loop !33
+  br i1 %48, label %171, label %44
 
 49:                                               ; preds = %32
   %50 = load ptr, ptr %0, align 8, !tbaa !23
@@ -122,25 +122,25 @@ define dso_local void @jinit_color_deconverter(ptr noundef %0) local_unnamed_add
   %60 = load ptr, ptr %59, align 8, !tbaa !14
   %61 = tail call ptr %60(ptr noundef nonnull %0, i32 noundef signext 1, i64 noundef 1024) #4
   %62 = getelementptr inbounds i8, ptr %58, i64 16
-  store ptr %61, ptr %62, align 8, !tbaa !35
+  store ptr %61, ptr %62, align 8, !tbaa !33
   %63 = load ptr, ptr %2, align 8, !tbaa !6
   %64 = load ptr, ptr %63, align 8, !tbaa !14
   %65 = tail call ptr %64(ptr noundef nonnull %0, i32 noundef signext 1, i64 noundef 1024) #4
   %66 = getelementptr inbounds i8, ptr %58, i64 24
-  store ptr %65, ptr %66, align 8, !tbaa !36
+  store ptr %65, ptr %66, align 8, !tbaa !34
   %67 = load ptr, ptr %2, align 8, !tbaa !6
   %68 = load ptr, ptr %67, align 8, !tbaa !14
   %69 = tail call ptr %68(ptr noundef nonnull %0, i32 noundef signext 1, i64 noundef 2048) #4
   %70 = getelementptr inbounds i8, ptr %58, i64 32
-  store ptr %69, ptr %70, align 8, !tbaa !37
+  store ptr %69, ptr %70, align 8, !tbaa !35
   %71 = load ptr, ptr %2, align 8, !tbaa !6
   %72 = load ptr, ptr %71, align 8, !tbaa !14
   %73 = tail call ptr %72(ptr noundef nonnull %0, i32 noundef signext 1, i64 noundef 2048) #4
   %74 = getelementptr inbounds i8, ptr %58, i64 40
-  store ptr %73, ptr %74, align 8, !tbaa !38
-  %75 = load ptr, ptr %62, align 8, !tbaa !35
-  %76 = load ptr, ptr %66, align 8, !tbaa !36
-  %77 = load ptr, ptr %70, align 8, !tbaa !37
+  store ptr %73, ptr %74, align 8, !tbaa !36
+  %75 = load ptr, ptr %62, align 8, !tbaa !33
+  %76 = load ptr, ptr %66, align 8, !tbaa !34
+  %77 = load ptr, ptr %70, align 8, !tbaa !35
   br label %78
 
 78:                                               ; preds = %78, %56
@@ -151,24 +151,24 @@ define dso_local void @jinit_color_deconverter(ptr noundef %0) local_unnamed_add
   %83 = lshr i64 %82, 16
   %84 = trunc i64 %83 to i32
   %85 = getelementptr inbounds i32, ptr %75, i64 %79
-  store i32 %84, ptr %85, align 4, !tbaa !39
+  store i32 %84, ptr %85, align 4, !tbaa !37
   %86 = mul nsw i64 %80, 116130
   %87 = add nsw i64 %86, 32768
   %88 = lshr i64 %87, 16
   %89 = trunc i64 %88 to i32
   %90 = getelementptr inbounds i32, ptr %76, i64 %79
-  store i32 %89, ptr %90, align 4, !tbaa !39
+  store i32 %89, ptr %90, align 4, !tbaa !37
   %91 = mul nsw i64 %80, -46802
   %92 = getelementptr inbounds i64, ptr %77, i64 %79
-  store i64 %91, ptr %92, align 8, !tbaa !40
+  store i64 %91, ptr %92, align 8, !tbaa !38
   %93 = mul nsw i64 %80, -22554
   %94 = add nsw i64 %93, 32768
   %95 = getelementptr inbounds i64, ptr %73, i64 %79
-  store i64 %94, ptr %95, align 8, !tbaa !40
+  store i64 %94, ptr %95, align 8, !tbaa !38
   %96 = add nuw nsw i64 %79, 1
   %97 = add nsw i64 %80, 1
   %98 = icmp eq i64 %96, 256
-  br i1 %98, label %171, label %78, !llvm.loop !41
+  br i1 %98, label %171, label %78
 
 99:                                               ; preds = %53
   %100 = getelementptr inbounds i8, ptr %5, i64 8
@@ -205,25 +205,25 @@ define dso_local void @jinit_color_deconverter(ptr noundef %0) local_unnamed_add
   %114 = load ptr, ptr %113, align 8, !tbaa !14
   %115 = tail call ptr %114(ptr noundef nonnull %0, i32 noundef signext 1, i64 noundef 1024) #4
   %116 = getelementptr inbounds i8, ptr %112, i64 16
-  store ptr %115, ptr %116, align 8, !tbaa !35
+  store ptr %115, ptr %116, align 8, !tbaa !33
   %117 = load ptr, ptr %2, align 8, !tbaa !6
   %118 = load ptr, ptr %117, align 8, !tbaa !14
   %119 = tail call ptr %118(ptr noundef nonnull %0, i32 noundef signext 1, i64 noundef 1024) #4
   %120 = getelementptr inbounds i8, ptr %112, i64 24
-  store ptr %119, ptr %120, align 8, !tbaa !36
+  store ptr %119, ptr %120, align 8, !tbaa !34
   %121 = load ptr, ptr %2, align 8, !tbaa !6
   %122 = load ptr, ptr %121, align 8, !tbaa !14
   %123 = tail call ptr %122(ptr noundef nonnull %0, i32 noundef signext 1, i64 noundef 2048) #4
   %124 = getelementptr inbounds i8, ptr %112, i64 32
-  store ptr %123, ptr %124, align 8, !tbaa !37
+  store ptr %123, ptr %124, align 8, !tbaa !35
   %125 = load ptr, ptr %2, align 8, !tbaa !6
   %126 = load ptr, ptr %125, align 8, !tbaa !14
   %127 = tail call ptr %126(ptr noundef nonnull %0, i32 noundef signext 1, i64 noundef 2048) #4
   %128 = getelementptr inbounds i8, ptr %112, i64 40
-  store ptr %127, ptr %128, align 8, !tbaa !38
-  %129 = load ptr, ptr %116, align 8, !tbaa !35
-  %130 = load ptr, ptr %120, align 8, !tbaa !36
-  %131 = load ptr, ptr %124, align 8, !tbaa !37
+  store ptr %127, ptr %128, align 8, !tbaa !36
+  %129 = load ptr, ptr %116, align 8, !tbaa !33
+  %130 = load ptr, ptr %120, align 8, !tbaa !34
+  %131 = load ptr, ptr %124, align 8, !tbaa !35
   br label %132
 
 132:                                              ; preds = %132, %110
@@ -234,24 +234,24 @@ define dso_local void @jinit_color_deconverter(ptr noundef %0) local_unnamed_add
   %137 = lshr i64 %136, 16
   %138 = trunc i64 %137 to i32
   %139 = getelementptr inbounds i32, ptr %129, i64 %133
-  store i32 %138, ptr %139, align 4, !tbaa !39
+  store i32 %138, ptr %139, align 4, !tbaa !37
   %140 = mul nsw i64 %134, 116130
   %141 = add nsw i64 %140, 32768
   %142 = lshr i64 %141, 16
   %143 = trunc i64 %142 to i32
   %144 = getelementptr inbounds i32, ptr %130, i64 %133
-  store i32 %143, ptr %144, align 4, !tbaa !39
+  store i32 %143, ptr %144, align 4, !tbaa !37
   %145 = mul nsw i64 %134, -46802
   %146 = getelementptr inbounds i64, ptr %131, i64 %133
-  store i64 %145, ptr %146, align 8, !tbaa !40
+  store i64 %145, ptr %146, align 8, !tbaa !38
   %147 = mul nsw i64 %134, -22554
   %148 = add nsw i64 %147, 32768
   %149 = getelementptr inbounds i64, ptr %127, i64 %133
-  store i64 %148, ptr %149, align 8, !tbaa !40
+  store i64 %148, ptr %149, align 8, !tbaa !38
   %150 = add nuw nsw i64 %133, 1
   %151 = add nsw i64 %134, 1
   %152 = icmp eq i64 %150, 256
-  br i1 %152, label %171, label %132, !llvm.loop !41
+  br i1 %152, label %171, label %132
 
 153:                                              ; preds = %107
   %154 = getelementptr inbounds i8, ptr %5, i64 8
@@ -290,7 +290,7 @@ define dso_local void @jinit_color_deconverter(ptr noundef %0) local_unnamed_add
 
 171:                                              ; preds = %132, %78, %44, %35, %162, %167, %155, %153, %101, %103, %99, %49
   %172 = getelementptr inbounds i8, ptr %0, i64 108
-  %173 = load i32, ptr %172, align 4, !tbaa !42
+  %173 = load i32, ptr %172, align 4, !tbaa !39
   %174 = icmp eq i32 %173, 0
   br i1 %174, label %175, label %178
 
@@ -313,9 +313,9 @@ define internal void @start_pass_dcolor(ptr nocapture readnone %0) #1 {
 
 ; Function Attrs: nounwind
 define internal void @grayscale_convert(ptr nocapture noundef readonly %0, ptr nocapture noundef readonly %1, i32 noundef signext %2, ptr noundef %3, i32 noundef signext %4) #0 {
-  %6 = load ptr, ptr %1, align 8, !tbaa !43
+  %6 = load ptr, ptr %1, align 8, !tbaa !40
   %7 = getelementptr inbounds i8, ptr %0, i64 136
-  %8 = load i32, ptr %7, align 8, !tbaa !44
+  %8 = load i32, ptr %7, align 8, !tbaa !41
   tail call void @jcopy_sample_rows(ptr noundef %6, i32 noundef signext %2, ptr noundef %3, i32 noundef signext 0, i32 noundef signext %4, i32 noundef signext %8) #4
   ret void
 }
@@ -325,17 +325,17 @@ define internal void @ycc_rgb_convert(ptr nocapture noundef readonly %0, ptr noc
   %6 = getelementptr inbounds i8, ptr %0, i64 616
   %7 = load ptr, ptr %6, align 8, !tbaa !17
   %8 = getelementptr inbounds i8, ptr %0, i64 136
-  %9 = load i32, ptr %8, align 8, !tbaa !44
+  %9 = load i32, ptr %8, align 8, !tbaa !41
   %10 = getelementptr inbounds i8, ptr %0, i64 424
-  %11 = load ptr, ptr %10, align 8, !tbaa !45
+  %11 = load ptr, ptr %10, align 8, !tbaa !42
   %12 = getelementptr inbounds i8, ptr %7, i64 16
-  %13 = load ptr, ptr %12, align 8, !tbaa !35
+  %13 = load ptr, ptr %12, align 8, !tbaa !33
   %14 = getelementptr inbounds i8, ptr %7, i64 24
-  %15 = load ptr, ptr %14, align 8, !tbaa !36
+  %15 = load ptr, ptr %14, align 8, !tbaa !34
   %16 = getelementptr inbounds i8, ptr %7, i64 32
-  %17 = load ptr, ptr %16, align 8, !tbaa !37
+  %17 = load ptr, ptr %16, align 8, !tbaa !35
   %18 = getelementptr inbounds i8, ptr %7, i64 40
-  %19 = load ptr, ptr %18, align 8, !tbaa !38
+  %19 = load ptr, ptr %18, align 8, !tbaa !36
   %20 = icmp sgt i32 %4, 0
   br i1 %20, label %21, label %87
 
@@ -354,69 +354,69 @@ define internal void @ycc_rgb_convert(ptr nocapture noundef readonly %0, ptr noc
   %29 = phi i32 [ %42, %84 ], [ %2, %25 ]
   %30 = phi ptr [ %85, %84 ], [ %3, %25 ]
   %31 = add nsw i32 %28, -1
-  %32 = load ptr, ptr %1, align 8, !tbaa !43
+  %32 = load ptr, ptr %1, align 8, !tbaa !40
   %33 = zext i32 %29 to i64
   %34 = getelementptr inbounds ptr, ptr %32, i64 %33
-  %35 = load ptr, ptr %34, align 8, !tbaa !43
-  %36 = load ptr, ptr %22, align 8, !tbaa !43
+  %35 = load ptr, ptr %34, align 8, !tbaa !40
+  %36 = load ptr, ptr %22, align 8, !tbaa !40
   %37 = getelementptr inbounds ptr, ptr %36, i64 %33
-  %38 = load ptr, ptr %37, align 8, !tbaa !43
-  %39 = load ptr, ptr %23, align 8, !tbaa !43
+  %38 = load ptr, ptr %37, align 8, !tbaa !40
+  %39 = load ptr, ptr %23, align 8, !tbaa !40
   %40 = getelementptr inbounds ptr, ptr %39, i64 %33
-  %41 = load ptr, ptr %40, align 8, !tbaa !43
+  %41 = load ptr, ptr %40, align 8, !tbaa !40
   %42 = add i32 %29, 1
-  %43 = load ptr, ptr %30, align 8, !tbaa !43
+  %43 = load ptr, ptr %30, align 8, !tbaa !40
   br label %44
 
 44:                                               ; preds = %27, %44
   %45 = phi i64 [ 0, %27 ], [ %82, %44 ]
   %46 = phi ptr [ %43, %27 ], [ %81, %44 ]
   %47 = getelementptr inbounds i8, ptr %35, i64 %45
-  %48 = load i8, ptr %47, align 1, !tbaa !46
+  %48 = load i8, ptr %47, align 1, !tbaa !43
   %49 = zext i8 %48 to i32
   %50 = getelementptr inbounds i8, ptr %38, i64 %45
-  %51 = load i8, ptr %50, align 1, !tbaa !46
+  %51 = load i8, ptr %50, align 1, !tbaa !43
   %52 = getelementptr inbounds i8, ptr %41, i64 %45
-  %53 = load i8, ptr %52, align 1, !tbaa !46
+  %53 = load i8, ptr %52, align 1, !tbaa !43
   %54 = zext i8 %53 to i64
   %55 = getelementptr inbounds i32, ptr %13, i64 %54
-  %56 = load i32, ptr %55, align 4, !tbaa !39
+  %56 = load i32, ptr %55, align 4, !tbaa !37
   %57 = add nsw i32 %56, %49
   %58 = sext i32 %57 to i64
   %59 = getelementptr inbounds i8, ptr %11, i64 %58
-  %60 = load i8, ptr %59, align 1, !tbaa !46
-  store i8 %60, ptr %46, align 1, !tbaa !46
+  %60 = load i8, ptr %59, align 1, !tbaa !43
+  store i8 %60, ptr %46, align 1, !tbaa !43
   %61 = zext i8 %51 to i64
   %62 = getelementptr inbounds i64, ptr %19, i64 %61
-  %63 = load i64, ptr %62, align 8, !tbaa !40
+  %63 = load i64, ptr %62, align 8, !tbaa !38
   %64 = getelementptr inbounds i64, ptr %17, i64 %54
-  %65 = load i64, ptr %64, align 8, !tbaa !40
+  %65 = load i64, ptr %64, align 8, !tbaa !38
   %66 = add nsw i64 %65, %63
   %67 = lshr i64 %66, 16
   %68 = trunc i64 %67 to i32
   %69 = add nsw i32 %68, %49
   %70 = sext i32 %69 to i64
   %71 = getelementptr inbounds i8, ptr %11, i64 %70
-  %72 = load i8, ptr %71, align 1, !tbaa !46
+  %72 = load i8, ptr %71, align 1, !tbaa !43
   %73 = getelementptr inbounds i8, ptr %46, i64 1
-  store i8 %72, ptr %73, align 1, !tbaa !46
+  store i8 %72, ptr %73, align 1, !tbaa !43
   %74 = getelementptr inbounds i32, ptr %15, i64 %61
-  %75 = load i32, ptr %74, align 4, !tbaa !39
+  %75 = load i32, ptr %74, align 4, !tbaa !37
   %76 = add nsw i32 %75, %49
   %77 = sext i32 %76 to i64
   %78 = getelementptr inbounds i8, ptr %11, i64 %77
-  %79 = load i8, ptr %78, align 1, !tbaa !46
+  %79 = load i8, ptr %78, align 1, !tbaa !43
   %80 = getelementptr inbounds i8, ptr %46, i64 2
-  store i8 %79, ptr %80, align 1, !tbaa !46
+  store i8 %79, ptr %80, align 1, !tbaa !43
   %81 = getelementptr inbounds i8, ptr %46, i64 3
   %82 = add nuw nsw i64 %45, 1
   %83 = icmp eq i64 %82, %26
-  br i1 %83, label %84, label %44, !llvm.loop !47
+  br i1 %83, label %84, label %44
 
 84:                                               ; preds = %44
   %85 = getelementptr inbounds i8, ptr %30, i64 8
   %86 = icmp sgt i32 %28, 1
-  br i1 %86, label %27, label %87, !llvm.loop !48
+  br i1 %86, label %27, label %87
 
 87:                                               ; preds = %84, %21, %5
   ret void
@@ -425,7 +425,7 @@ define internal void @ycc_rgb_convert(ptr nocapture noundef readonly %0, ptr noc
 ; Function Attrs: nofree norecurse nosync nounwind memory(readwrite, inaccessiblemem: none)
 define internal void @gray_rgb_convert(ptr nocapture noundef readonly %0, ptr nocapture noundef readonly %1, i32 noundef signext %2, ptr nocapture noundef readonly %3, i32 noundef signext %4) #2 {
   %6 = getelementptr inbounds i8, ptr %0, i64 136
-  %7 = load i32, ptr %6, align 8, !tbaa !44
+  %7 = load i32, ptr %6, align 8, !tbaa !41
   %8 = icmp slt i32 %4, 1
   %9 = icmp eq i32 %7, 0
   %10 = select i1 %8, i1 true, i1 %9
@@ -440,33 +440,33 @@ define internal void @gray_rgb_convert(ptr nocapture noundef readonly %0, ptr no
   %15 = phi i32 [ %34, %33 ], [ %2, %11 ]
   %16 = phi ptr [ %35, %33 ], [ %3, %11 ]
   %17 = add nsw i32 %14, -1
-  %18 = load ptr, ptr %1, align 8, !tbaa !43
+  %18 = load ptr, ptr %1, align 8, !tbaa !40
   %19 = zext i32 %15 to i64
   %20 = getelementptr inbounds ptr, ptr %18, i64 %19
-  %21 = load ptr, ptr %20, align 8, !tbaa !43
-  %22 = load ptr, ptr %16, align 8, !tbaa !43
+  %21 = load ptr, ptr %20, align 8, !tbaa !40
+  %22 = load ptr, ptr %16, align 8, !tbaa !40
   br label %23
 
 23:                                               ; preds = %13, %23
   %24 = phi i64 [ 0, %13 ], [ %31, %23 ]
   %25 = phi ptr [ %22, %13 ], [ %30, %23 ]
   %26 = getelementptr inbounds i8, ptr %21, i64 %24
-  %27 = load i8, ptr %26, align 1, !tbaa !46
+  %27 = load i8, ptr %26, align 1, !tbaa !43
   %28 = getelementptr inbounds i8, ptr %25, i64 2
-  store i8 %27, ptr %28, align 1, !tbaa !46
+  store i8 %27, ptr %28, align 1, !tbaa !43
   %29 = getelementptr inbounds i8, ptr %25, i64 1
-  store i8 %27, ptr %29, align 1, !tbaa !46
-  store i8 %27, ptr %25, align 1, !tbaa !46
+  store i8 %27, ptr %29, align 1, !tbaa !43
+  store i8 %27, ptr %25, align 1, !tbaa !43
   %30 = getelementptr inbounds i8, ptr %25, i64 3
   %31 = add nuw nsw i64 %24, 1
   %32 = icmp eq i64 %31, %12
-  br i1 %32, label %33, label %23, !llvm.loop !49
+  br i1 %32, label %33, label %23
 
 33:                                               ; preds = %23
   %34 = add i32 %15, 1
   %35 = getelementptr inbounds i8, ptr %16, i64 8
   %36 = icmp sgt i32 %14, 1
-  br i1 %36, label %13, label %37, !llvm.loop !50
+  br i1 %36, label %13, label %37
 
 37:                                               ; preds = %33, %5
   ret void
@@ -477,7 +477,7 @@ define internal void @null_convert(ptr nocapture noundef readonly %0, ptr nocapt
   %6 = getelementptr inbounds i8, ptr %0, i64 56
   %7 = load i32, ptr %6, align 8, !tbaa !22
   %8 = getelementptr inbounds i8, ptr %0, i64 136
-  %9 = load i32, ptr %8, align 8, !tbaa !44
+  %9 = load i32, ptr %8, align 8, !tbaa !41
   %10 = icmp sgt i32 %4, 0
   br i1 %10, label %11, label %48
 
@@ -503,10 +503,10 @@ define internal void @null_convert(ptr nocapture noundef readonly %0, ptr nocapt
 24:                                               ; preds = %18, %41
   %25 = phi i64 [ 0, %18 ], [ %42, %41 ]
   %26 = getelementptr inbounds ptr, ptr %1, i64 %25
-  %27 = load ptr, ptr %26, align 8, !tbaa !43
+  %27 = load ptr, ptr %26, align 8, !tbaa !40
   %28 = getelementptr inbounds ptr, ptr %27, i64 %23
-  %29 = load ptr, ptr %28, align 8, !tbaa !43
-  %30 = load ptr, ptr %21, align 8, !tbaa !43
+  %29 = load ptr, ptr %28, align 8, !tbaa !40
+  %30 = load ptr, ptr %21, align 8, !tbaa !40
   %31 = getelementptr inbounds i8, ptr %30, i64 %25
   br label %32
 
@@ -515,23 +515,23 @@ define internal void @null_convert(ptr nocapture noundef readonly %0, ptr nocapt
   %34 = phi ptr [ %31, %24 ], [ %38, %32 ]
   %35 = phi ptr [ %29, %24 ], [ %36, %32 ]
   %36 = getelementptr inbounds i8, ptr %35, i64 1
-  %37 = load i8, ptr %35, align 1, !tbaa !46
-  store i8 %37, ptr %34, align 1, !tbaa !46
+  %37 = load i8, ptr %35, align 1, !tbaa !43
+  store i8 %37, ptr %34, align 1, !tbaa !43
   %38 = getelementptr inbounds i8, ptr %34, i64 %13
   %39 = add i32 %33, -1
   %40 = icmp eq i32 %39, 0
-  br i1 %40, label %41, label %32, !llvm.loop !51
+  br i1 %40, label %41, label %32
 
 41:                                               ; preds = %32
   %42 = add nuw nsw i64 %25, 1
   %43 = icmp eq i64 %42, %17
-  br i1 %43, label %44, label %24, !llvm.loop !52
+  br i1 %43, label %44, label %24
 
 44:                                               ; preds = %41
   %45 = add i32 %20, 1
   %46 = getelementptr inbounds i8, ptr %21, i64 8
   %47 = icmp sgt i32 %19, 1
-  br i1 %47, label %18, label %48, !llvm.loop !53
+  br i1 %47, label %18, label %48
 
 48:                                               ; preds = %44, %11, %5
   ret void
@@ -542,17 +542,17 @@ define internal void @ycck_cmyk_convert(ptr nocapture noundef readonly %0, ptr n
   %6 = getelementptr inbounds i8, ptr %0, i64 616
   %7 = load ptr, ptr %6, align 8, !tbaa !17
   %8 = getelementptr inbounds i8, ptr %0, i64 136
-  %9 = load i32, ptr %8, align 8, !tbaa !44
+  %9 = load i32, ptr %8, align 8, !tbaa !41
   %10 = getelementptr inbounds i8, ptr %0, i64 424
-  %11 = load ptr, ptr %10, align 8, !tbaa !45
+  %11 = load ptr, ptr %10, align 8, !tbaa !42
   %12 = getelementptr inbounds i8, ptr %7, i64 16
-  %13 = load ptr, ptr %12, align 8, !tbaa !35
+  %13 = load ptr, ptr %12, align 8, !tbaa !33
   %14 = getelementptr inbounds i8, ptr %7, i64 24
-  %15 = load ptr, ptr %14, align 8, !tbaa !36
+  %15 = load ptr, ptr %14, align 8, !tbaa !34
   %16 = getelementptr inbounds i8, ptr %7, i64 32
-  %17 = load ptr, ptr %16, align 8, !tbaa !37
+  %17 = load ptr, ptr %16, align 8, !tbaa !35
   %18 = getelementptr inbounds i8, ptr %7, i64 40
-  %19 = load ptr, ptr %18, align 8, !tbaa !38
+  %19 = load ptr, ptr %18, align 8, !tbaa !36
   %20 = icmp sgt i32 %4, 0
   br i1 %20, label %21, label %95
 
@@ -572,77 +572,77 @@ define internal void @ycck_cmyk_convert(ptr nocapture noundef readonly %0, ptr n
   %30 = phi i32 [ %46, %92 ], [ %2, %26 ]
   %31 = phi ptr [ %93, %92 ], [ %3, %26 ]
   %32 = add nsw i32 %29, -1
-  %33 = load ptr, ptr %1, align 8, !tbaa !43
+  %33 = load ptr, ptr %1, align 8, !tbaa !40
   %34 = zext i32 %30 to i64
   %35 = getelementptr inbounds ptr, ptr %33, i64 %34
-  %36 = load ptr, ptr %35, align 8, !tbaa !43
-  %37 = load ptr, ptr %22, align 8, !tbaa !43
+  %36 = load ptr, ptr %35, align 8, !tbaa !40
+  %37 = load ptr, ptr %22, align 8, !tbaa !40
   %38 = getelementptr inbounds ptr, ptr %37, i64 %34
-  %39 = load ptr, ptr %38, align 8, !tbaa !43
-  %40 = load ptr, ptr %23, align 8, !tbaa !43
+  %39 = load ptr, ptr %38, align 8, !tbaa !40
+  %40 = load ptr, ptr %23, align 8, !tbaa !40
   %41 = getelementptr inbounds ptr, ptr %40, i64 %34
-  %42 = load ptr, ptr %41, align 8, !tbaa !43
-  %43 = load ptr, ptr %24, align 8, !tbaa !43
+  %42 = load ptr, ptr %41, align 8, !tbaa !40
+  %43 = load ptr, ptr %24, align 8, !tbaa !40
   %44 = getelementptr inbounds ptr, ptr %43, i64 %34
-  %45 = load ptr, ptr %44, align 8, !tbaa !43
+  %45 = load ptr, ptr %44, align 8, !tbaa !40
   %46 = add i32 %30, 1
-  %47 = load ptr, ptr %31, align 8, !tbaa !43
+  %47 = load ptr, ptr %31, align 8, !tbaa !40
   br label %48
 
 48:                                               ; preds = %28, %48
   %49 = phi i64 [ 0, %28 ], [ %90, %48 ]
   %50 = phi ptr [ %47, %28 ], [ %89, %48 ]
   %51 = getelementptr inbounds i8, ptr %36, i64 %49
-  %52 = load i8, ptr %51, align 1, !tbaa !46
+  %52 = load i8, ptr %51, align 1, !tbaa !43
   %53 = getelementptr inbounds i8, ptr %39, i64 %49
-  %54 = load i8, ptr %53, align 1, !tbaa !46
+  %54 = load i8, ptr %53, align 1, !tbaa !43
   %55 = getelementptr inbounds i8, ptr %42, i64 %49
-  %56 = load i8, ptr %55, align 1, !tbaa !46
+  %56 = load i8, ptr %55, align 1, !tbaa !43
   %57 = zext i8 %56 to i64
   %58 = getelementptr inbounds i32, ptr %13, i64 %57
-  %59 = load i32, ptr %58, align 4, !tbaa !39
+  %59 = load i32, ptr %58, align 4, !tbaa !37
   %60 = xor i8 %52, -1
   %61 = zext i8 %60 to i32
   %62 = sub i32 %61, %59
   %63 = sext i32 %62 to i64
   %64 = getelementptr inbounds i8, ptr %11, i64 %63
-  %65 = load i8, ptr %64, align 1, !tbaa !46
-  store i8 %65, ptr %50, align 1, !tbaa !46
+  %65 = load i8, ptr %64, align 1, !tbaa !43
+  store i8 %65, ptr %50, align 1, !tbaa !43
   %66 = zext i8 %54 to i64
   %67 = getelementptr inbounds i64, ptr %19, i64 %66
-  %68 = load i64, ptr %67, align 8, !tbaa !40
+  %68 = load i64, ptr %67, align 8, !tbaa !38
   %69 = getelementptr inbounds i64, ptr %17, i64 %57
-  %70 = load i64, ptr %69, align 8, !tbaa !40
+  %70 = load i64, ptr %69, align 8, !tbaa !38
   %71 = add nsw i64 %70, %68
   %72 = lshr i64 %71, 16
   %73 = trunc i64 %72 to i32
   %74 = sub i32 %61, %73
   %75 = sext i32 %74 to i64
   %76 = getelementptr inbounds i8, ptr %11, i64 %75
-  %77 = load i8, ptr %76, align 1, !tbaa !46
+  %77 = load i8, ptr %76, align 1, !tbaa !43
   %78 = getelementptr inbounds i8, ptr %50, i64 1
-  store i8 %77, ptr %78, align 1, !tbaa !46
+  store i8 %77, ptr %78, align 1, !tbaa !43
   %79 = getelementptr inbounds i32, ptr %15, i64 %66
-  %80 = load i32, ptr %79, align 4, !tbaa !39
+  %80 = load i32, ptr %79, align 4, !tbaa !37
   %81 = sub i32 %61, %80
   %82 = sext i32 %81 to i64
   %83 = getelementptr inbounds i8, ptr %11, i64 %82
-  %84 = load i8, ptr %83, align 1, !tbaa !46
+  %84 = load i8, ptr %83, align 1, !tbaa !43
   %85 = getelementptr inbounds i8, ptr %50, i64 2
-  store i8 %84, ptr %85, align 1, !tbaa !46
+  store i8 %84, ptr %85, align 1, !tbaa !43
   %86 = getelementptr inbounds i8, ptr %45, i64 %49
-  %87 = load i8, ptr %86, align 1, !tbaa !46
+  %87 = load i8, ptr %86, align 1, !tbaa !43
   %88 = getelementptr inbounds i8, ptr %50, i64 3
-  store i8 %87, ptr %88, align 1, !tbaa !46
+  store i8 %87, ptr %88, align 1, !tbaa !43
   %89 = getelementptr inbounds i8, ptr %50, i64 4
   %90 = add nuw nsw i64 %49, 1
   %91 = icmp eq i64 %90, %27
-  br i1 %91, label %92, label %48, !llvm.loop !54
+  br i1 %91, label %92, label %48
 
 92:                                               ; preds = %48
   %93 = getelementptr inbounds i8, ptr %31, i64 8
   %94 = icmp sgt i32 %29, 1
-  br i1 %94, label %28, label %95, !llvm.loop !55
+  br i1 %94, label %28, label %95
 
 95:                                               ; preds = %92, %21, %5
   ret void
@@ -692,26 +692,14 @@ attributes #4 = { nounwind }
 !30 = !{!7, !8, i64 304}
 !31 = !{!32, !11, i64 48}
 !32 = !{!"", !11, i64 0, !11, i64 4, !11, i64 8, !11, i64 12, !11, i64 16, !11, i64 20, !11, i64 24, !11, i64 28, !11, i64 32, !11, i64 36, !11, i64 40, !11, i64 44, !11, i64 48, !11, i64 52, !11, i64 56, !11, i64 60, !11, i64 64, !11, i64 68, !11, i64 72, !8, i64 80, !8, i64 88}
-!33 = distinct !{!33, !34}
-!34 = !{!"llvm.loop.mustprogress"}
-!35 = !{!19, !8, i64 16}
-!36 = !{!19, !8, i64 24}
-!37 = !{!19, !8, i64 32}
-!38 = !{!19, !8, i64 40}
-!39 = !{!11, !11, i64 0}
-!40 = !{!16, !16, i64 0}
-!41 = distinct !{!41, !34}
-!42 = !{!7, !11, i64 108}
-!43 = !{!8, !8, i64 0}
-!44 = !{!7, !11, i64 136}
-!45 = !{!7, !8, i64 424}
-!46 = !{!9, !9, i64 0}
-!47 = distinct !{!47, !34}
-!48 = distinct !{!48, !34}
-!49 = distinct !{!49, !34}
-!50 = distinct !{!50, !34}
-!51 = distinct !{!51, !34}
-!52 = distinct !{!52, !34}
-!53 = distinct !{!53, !34}
-!54 = distinct !{!54, !34}
-!55 = distinct !{!55, !34}
+!33 = !{!19, !8, i64 16}
+!34 = !{!19, !8, i64 24}
+!35 = !{!19, !8, i64 32}
+!36 = !{!19, !8, i64 40}
+!37 = !{!11, !11, i64 0}
+!38 = !{!16, !16, i64 0}
+!39 = !{!7, !11, i64 108}
+!40 = !{!8, !8, i64 0}
+!41 = !{!7, !11, i64 136}
+!42 = !{!7, !8, i64 424}
+!43 = !{!9, !9, i64 0}

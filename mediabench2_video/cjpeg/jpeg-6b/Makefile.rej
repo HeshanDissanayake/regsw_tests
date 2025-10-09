@@ -1,0 +1,12 @@
+--- Makefile	2025-08-20 11:50:37.735885068 +1000
++++ Makefile_old	2025-08-20 12:03:15.102899315 +1000
+@@ -197,6 +197,9 @@
+ 
+ install: cjpeg djpeg jpegtran rdjpgcom wrjpgcom 
+ 	mkdir -p build
++	mkdir -p bindir 
++	mkdir -p libdir
++	mkdir -p includedir
+ 	$(INSTALL_PROGRAM) cjpeg $(bindir)/$(binprefix)cjpeg
+ 	$(INSTALL_PROGRAM) djpeg $(bindir)/$(binprefix)djpeg
+ 	$(INSTALL_PROGRAM) jpegtran $(bindir)/$(binprefix)jpegtran

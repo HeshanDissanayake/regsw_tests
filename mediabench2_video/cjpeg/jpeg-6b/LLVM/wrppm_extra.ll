@@ -182,7 +182,7 @@ define internal void @copy_pixel_rows(ptr nocapture readnone %0, ptr nocapture n
   store i8 %18, ptr %16, align 1, !tbaa !42
   %20 = add i32 %14, -1
   %21 = icmp eq i32 %20, 0
-  br i1 %21, label %22, label %13, !llvm.loop !43
+  br i1 %21, label %22, label %13
 
 22:                                               ; preds = %13
   %23 = load ptr, ptr %4, align 8, !tbaa !25
@@ -201,7 +201,7 @@ define internal void @copy_pixel_rows(ptr nocapture readnone %0, ptr nocapture n
 ; Function Attrs: nofree nounwind
 define internal void @put_demapped_gray(ptr nocapture noundef readonly %0, ptr nocapture noundef readonly %1, i32 signext %2) #2 {
   %4 = getelementptr inbounds i8, ptr %0, i64 160
-  %5 = load ptr, ptr %4, align 8, !tbaa !45
+  %5 = load ptr, ptr %4, align 8, !tbaa !43
   %6 = load ptr, ptr %5, align 8, !tbaa !41
   %7 = getelementptr inbounds i8, ptr %1, i64 48
   %8 = load ptr, ptr %7, align 8, !tbaa !25
@@ -229,7 +229,7 @@ define internal void @put_demapped_gray(ptr nocapture noundef readonly %0, ptr n
   store i8 %24, ptr %18, align 1, !tbaa !42
   %26 = add i32 %17, -1
   %27 = icmp eq i32 %26, 0
-  br i1 %27, label %28, label %16, !llvm.loop !46
+  br i1 %27, label %28, label %16
 
 28:                                               ; preds = %16
   %29 = load ptr, ptr %7, align 8, !tbaa !25
@@ -248,7 +248,7 @@ define internal void @put_demapped_gray(ptr nocapture noundef readonly %0, ptr n
 ; Function Attrs: nofree nounwind
 define internal void @put_demapped_rgb(ptr nocapture noundef readonly %0, ptr nocapture noundef readonly %1, i32 signext %2) #2 {
   %4 = getelementptr inbounds i8, ptr %0, i64 160
-  %5 = load ptr, ptr %4, align 8, !tbaa !45
+  %5 = load ptr, ptr %4, align 8, !tbaa !43
   %6 = load ptr, ptr %5, align 8, !tbaa !41
   %7 = getelementptr inbounds i8, ptr %5, i64 8
   %8 = load ptr, ptr %7, align 8, !tbaa !41
@@ -288,7 +288,7 @@ define internal void @put_demapped_rgb(ptr nocapture noundef readonly %0, ptr no
   store i8 %34, ptr %32, align 1, !tbaa !42
   %36 = add i32 %21, -1
   %37 = icmp eq i32 %36, 0
-  br i1 %37, label %38, label %20, !llvm.loop !47
+  br i1 %37, label %38, label %20
 
 38:                                               ; preds = %20
   %39 = load ptr, ptr %11, align 8, !tbaa !25
@@ -380,8 +380,4 @@ attributes #4 = { nounwind }
 !40 = !{!19, !8, i64 24}
 !41 = !{!8, !8, i64 0}
 !42 = !{!9, !9, i64 0}
-!43 = distinct !{!43, !44}
-!44 = !{!"llvm.loop.mustprogress"}
-!45 = !{!7, !8, i64 160}
-!46 = distinct !{!46, !44}
-!47 = distinct !{!47, !44}
+!43 = !{!7, !8, i64 160}

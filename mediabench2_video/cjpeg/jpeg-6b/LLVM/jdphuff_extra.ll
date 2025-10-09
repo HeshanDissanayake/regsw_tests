@@ -43,7 +43,7 @@ define dso_local void @jinit_phuff_decoder(ptr noundef %0) local_unnamed_addr #0
   %23 = add nuw nsw i32 %20, 1
   %24 = load i32, ptr %10, align 8, !tbaa !24
   %25 = icmp slt i32 %23, %24
-  br i1 %25, label %19, label %26, !llvm.loop !27
+  br i1 %25, label %19, label %26
 
 26:                                               ; preds = %19, %1
   ret void
@@ -57,10 +57,10 @@ define internal void @start_pass_phuff_decoder(ptr noundef %0) #0 {
   %2 = getelementptr inbounds i8, ptr %0, i64 592
   %3 = load ptr, ptr %2, align 8, !tbaa !17
   %4 = getelementptr inbounds i8, ptr %0, i64 524
-  %5 = load i32, ptr %4, align 4, !tbaa !29
+  %5 = load i32, ptr %4, align 4, !tbaa !27
   %6 = icmp eq i32 %5, 0
   %7 = getelementptr inbounds i8, ptr %0, i64 528
-  %8 = load i32, ptr %7, align 8, !tbaa !30
+  %8 = load i32, ptr %7, align 8, !tbaa !28
   br i1 %6, label %9, label %11
 
 9:                                                ; preds = %1
@@ -72,7 +72,7 @@ define internal void @start_pass_phuff_decoder(ptr noundef %0) #0 {
   %13 = icmp sgt i32 %8, 63
   %14 = or i1 %12, %13
   %15 = getelementptr inbounds i8, ptr %0, i64 432
-  %16 = load i32, ptr %15, align 8, !tbaa !31
+  %16 = load i32, ptr %15, align 8, !tbaa !29
   %17 = icmp ne i32 %16, 1
   %18 = select i1 %17, i1 true, i1 %14
   br label %19
@@ -80,10 +80,10 @@ define internal void @start_pass_phuff_decoder(ptr noundef %0) #0 {
 19:                                               ; preds = %11, %9
   %20 = phi i1 [ %10, %9 ], [ %18, %11 ]
   %21 = getelementptr inbounds i8, ptr %0, i64 532
-  %22 = load i32, ptr %21, align 4, !tbaa !32
+  %22 = load i32, ptr %21, align 4, !tbaa !30
   %23 = icmp ne i32 %22, 0
   %24 = getelementptr inbounds i8, ptr %0, i64 536
-  %25 = load i32, ptr %24, align 8, !tbaa !33
+  %25 = load i32, ptr %24, align 8, !tbaa !31
   %26 = add nsw i32 %22, -1
   %27 = icmp ne i32 %25, %26
   %28 = select i1 %23, i1 %27, i1 false
@@ -94,32 +94,32 @@ define internal void @start_pass_phuff_decoder(ptr noundef %0) #0 {
   br i1 %32, label %33, label %49
 
 33:                                               ; preds = %19
-  %34 = load ptr, ptr %0, align 8, !tbaa !34
+  %34 = load ptr, ptr %0, align 8, !tbaa !32
   %35 = getelementptr inbounds i8, ptr %34, i64 40
-  store i32 16, ptr %35, align 8, !tbaa !35
+  store i32 16, ptr %35, align 8, !tbaa !33
   %36 = getelementptr inbounds i8, ptr %34, i64 44
-  store i32 %5, ptr %36, align 4, !tbaa !37
+  store i32 %5, ptr %36, align 4, !tbaa !35
   %37 = getelementptr inbounds i8, ptr %0, i64 528
-  %38 = load i32, ptr %37, align 8, !tbaa !30
-  %39 = load ptr, ptr %0, align 8, !tbaa !34
+  %38 = load i32, ptr %37, align 8, !tbaa !28
+  %39 = load ptr, ptr %0, align 8, !tbaa !32
   %40 = getelementptr inbounds i8, ptr %39, i64 48
-  store i32 %38, ptr %40, align 4, !tbaa !37
-  %41 = load i32, ptr %21, align 4, !tbaa !32
-  %42 = load ptr, ptr %0, align 8, !tbaa !34
+  store i32 %38, ptr %40, align 4, !tbaa !35
+  %41 = load i32, ptr %21, align 4, !tbaa !30
+  %42 = load ptr, ptr %0, align 8, !tbaa !32
   %43 = getelementptr inbounds i8, ptr %42, i64 52
-  store i32 %41, ptr %43, align 4, !tbaa !37
-  %44 = load i32, ptr %29, align 8, !tbaa !33
-  %45 = load ptr, ptr %0, align 8, !tbaa !34
+  store i32 %41, ptr %43, align 4, !tbaa !35
+  %44 = load i32, ptr %29, align 8, !tbaa !31
+  %45 = load ptr, ptr %0, align 8, !tbaa !32
   %46 = getelementptr inbounds i8, ptr %45, i64 56
-  store i32 %44, ptr %46, align 4, !tbaa !37
-  %47 = load ptr, ptr %0, align 8, !tbaa !34
-  %48 = load ptr, ptr %47, align 8, !tbaa !38
+  store i32 %44, ptr %46, align 4, !tbaa !35
+  %47 = load ptr, ptr %0, align 8, !tbaa !32
+  %48 = load ptr, ptr %47, align 8, !tbaa !36
   tail call void %48(ptr noundef nonnull %0) #6
   br label %49
 
 49:                                               ; preds = %33, %19
   %50 = getelementptr inbounds i8, ptr %0, i64 432
-  %51 = load i32, ptr %50, align 8, !tbaa !31
+  %51 = load i32, ptr %50, align 8, !tbaa !29
   %52 = icmp sgt i32 %51, 0
   br i1 %52, label %53, label %161
 
@@ -130,8 +130,8 @@ define internal void @start_pass_phuff_decoder(ptr noundef %0) #0 {
   br i1 %6, label %57, label %107
 
 57:                                               ; preds = %53
-  %58 = load i32, ptr %4, align 4, !tbaa !29
-  %59 = load i32, ptr %56, align 8, !tbaa !30
+  %58 = load i32, ptr %4, align 4, !tbaa !27
+  %59 = load i32, ptr %56, align 8, !tbaa !28
   %60 = icmp sgt i32 %58, %59
   br i1 %60, label %165, label %61
 
@@ -142,11 +142,11 @@ define internal void @start_pass_phuff_decoder(ptr noundef %0) #0 {
   %65 = getelementptr inbounds [4 x ptr], ptr %54, i64 0, i64 %64
   %66 = load ptr, ptr %65, align 8, !tbaa !23
   %67 = getelementptr inbounds i8, ptr %66, i64 4
-  %68 = load i32, ptr %67, align 4, !tbaa !39
+  %68 = load i32, ptr %67, align 4, !tbaa !37
   %69 = load ptr, ptr %55, align 8, !tbaa !25
   %70 = sext i32 %68 to i64
   %71 = getelementptr inbounds [64 x i32], ptr %69, i64 %70
-  %72 = load i32, ptr %4, align 4, !tbaa !29
+  %72 = load i32, ptr %4, align 4, !tbaa !27
   %73 = icmp sgt i32 %72, %63
   br i1 %73, label %101, label %74
 
@@ -159,37 +159,37 @@ define internal void @start_pass_phuff_decoder(ptr noundef %0) #0 {
   %78 = getelementptr inbounds i32, ptr %71, i64 %77
   %79 = load i32, ptr %78, align 4, !tbaa !26
   %80 = tail call i32 @llvm.smax.i32(i32 %79, i32 0)
-  %81 = load i32, ptr %21, align 4, !tbaa !32
+  %81 = load i32, ptr %21, align 4, !tbaa !30
   %82 = icmp eq i32 %81, %80
   br i1 %82, label %93, label %83
 
 83:                                               ; preds = %76
-  %84 = load ptr, ptr %0, align 8, !tbaa !34
+  %84 = load ptr, ptr %0, align 8, !tbaa !32
   %85 = getelementptr inbounds i8, ptr %84, i64 40
-  store i32 115, ptr %85, align 8, !tbaa !35
+  store i32 115, ptr %85, align 8, !tbaa !33
   %86 = getelementptr inbounds i8, ptr %84, i64 44
-  store i32 %68, ptr %86, align 4, !tbaa !37
-  %87 = load ptr, ptr %0, align 8, !tbaa !34
+  store i32 %68, ptr %86, align 4, !tbaa !35
+  %87 = load ptr, ptr %0, align 8, !tbaa !32
   %88 = getelementptr inbounds i8, ptr %87, i64 48
   %89 = trunc nsw i64 %77 to i32
-  store i32 %89, ptr %88, align 4, !tbaa !37
-  %90 = load ptr, ptr %0, align 8, !tbaa !34
+  store i32 %89, ptr %88, align 4, !tbaa !35
+  %90 = load ptr, ptr %0, align 8, !tbaa !32
   %91 = getelementptr inbounds i8, ptr %90, i64 8
-  %92 = load ptr, ptr %91, align 8, !tbaa !41
+  %92 = load ptr, ptr %91, align 8, !tbaa !39
   tail call void %92(ptr noundef nonnull %0, i32 noundef signext -1) #6
   br label %93
 
 93:                                               ; preds = %83, %76
-  %94 = load i32, ptr %29, align 8, !tbaa !33
+  %94 = load i32, ptr %29, align 8, !tbaa !31
   store i32 %94, ptr %78, align 4, !tbaa !26
   %95 = add nsw i64 %77, 1
-  %96 = load i32, ptr %56, align 8, !tbaa !30
+  %96 = load i32, ptr %56, align 8, !tbaa !28
   %97 = sext i32 %96 to i64
   %98 = icmp slt i64 %77, %97
-  br i1 %98, label %76, label %99, !llvm.loop !42
+  br i1 %98, label %76, label %99
 
 99:                                               ; preds = %93
-  %100 = load i32, ptr %50, align 8, !tbaa !31
+  %100 = load i32, ptr %50, align 8, !tbaa !29
   br label %101
 
 101:                                              ; preds = %99, %61
@@ -198,14 +198,14 @@ define internal void @start_pass_phuff_decoder(ptr noundef %0) #0 {
   %104 = add nuw nsw i64 %64, 1
   %105 = sext i32 %102 to i64
   %106 = icmp slt i64 %104, %105
-  br i1 %106, label %61, label %161, !llvm.loop !43
+  br i1 %106, label %61, label %161, !llvm.loop !40
 
 107:                                              ; preds = %53, %156
   %108 = phi i64 [ %157, %156 ], [ 0, %53 ]
   %109 = getelementptr inbounds [4 x ptr], ptr %54, i64 0, i64 %108
   %110 = load ptr, ptr %109, align 8, !tbaa !23
   %111 = getelementptr inbounds i8, ptr %110, i64 4
-  %112 = load i32, ptr %111, align 4, !tbaa !39
+  %112 = load i32, ptr %111, align 4, !tbaa !37
   %113 = load ptr, ptr %55, align 8, !tbaa !25
   %114 = sext i32 %112 to i64
   %115 = getelementptr inbounds [64 x i32], ptr %113, i64 %114
@@ -214,23 +214,23 @@ define internal void @start_pass_phuff_decoder(ptr noundef %0) #0 {
   br i1 %117, label %118, label %127
 
 118:                                              ; preds = %107
-  %119 = load ptr, ptr %0, align 8, !tbaa !34
+  %119 = load ptr, ptr %0, align 8, !tbaa !32
   %120 = getelementptr inbounds i8, ptr %119, i64 40
-  store i32 115, ptr %120, align 8, !tbaa !35
+  store i32 115, ptr %120, align 8, !tbaa !33
   %121 = getelementptr inbounds i8, ptr %119, i64 44
-  store i32 %112, ptr %121, align 4, !tbaa !37
-  %122 = load ptr, ptr %0, align 8, !tbaa !34
+  store i32 %112, ptr %121, align 4, !tbaa !35
+  %122 = load ptr, ptr %0, align 8, !tbaa !32
   %123 = getelementptr inbounds i8, ptr %122, i64 48
-  store i32 0, ptr %123, align 4, !tbaa !37
-  %124 = load ptr, ptr %0, align 8, !tbaa !34
+  store i32 0, ptr %123, align 4, !tbaa !35
+  %124 = load ptr, ptr %0, align 8, !tbaa !32
   %125 = getelementptr inbounds i8, ptr %124, i64 8
-  %126 = load ptr, ptr %125, align 8, !tbaa !41
+  %126 = load ptr, ptr %125, align 8, !tbaa !39
   tail call void %126(ptr noundef nonnull %0, i32 noundef signext -1) #6
   br label %127
 
 127:                                              ; preds = %118, %107
-  %128 = load i32, ptr %4, align 4, !tbaa !29
-  %129 = load i32, ptr %56, align 8, !tbaa !30
+  %128 = load i32, ptr %4, align 4, !tbaa !27
+  %129 = load i32, ptr %56, align 8, !tbaa !28
   %130 = icmp sgt i32 %128, %129
   br i1 %130, label %156, label %131
 
@@ -243,50 +243,50 @@ define internal void @start_pass_phuff_decoder(ptr noundef %0) #0 {
   %135 = getelementptr inbounds i32, ptr %115, i64 %134
   %136 = load i32, ptr %135, align 4, !tbaa !26
   %137 = tail call i32 @llvm.smax.i32(i32 %136, i32 0)
-  %138 = load i32, ptr %21, align 4, !tbaa !32
+  %138 = load i32, ptr %21, align 4, !tbaa !30
   %139 = icmp eq i32 %138, %137
   br i1 %139, label %150, label %140
 
 140:                                              ; preds = %133
-  %141 = load ptr, ptr %0, align 8, !tbaa !34
+  %141 = load ptr, ptr %0, align 8, !tbaa !32
   %142 = getelementptr inbounds i8, ptr %141, i64 40
-  store i32 115, ptr %142, align 8, !tbaa !35
+  store i32 115, ptr %142, align 8, !tbaa !33
   %143 = getelementptr inbounds i8, ptr %141, i64 44
-  store i32 %112, ptr %143, align 4, !tbaa !37
-  %144 = load ptr, ptr %0, align 8, !tbaa !34
+  store i32 %112, ptr %143, align 4, !tbaa !35
+  %144 = load ptr, ptr %0, align 8, !tbaa !32
   %145 = getelementptr inbounds i8, ptr %144, i64 48
   %146 = trunc nsw i64 %134 to i32
-  store i32 %146, ptr %145, align 4, !tbaa !37
-  %147 = load ptr, ptr %0, align 8, !tbaa !34
+  store i32 %146, ptr %145, align 4, !tbaa !35
+  %147 = load ptr, ptr %0, align 8, !tbaa !32
   %148 = getelementptr inbounds i8, ptr %147, i64 8
-  %149 = load ptr, ptr %148, align 8, !tbaa !41
+  %149 = load ptr, ptr %148, align 8, !tbaa !39
   tail call void %149(ptr noundef nonnull %0, i32 noundef signext -1) #6
   br label %150
 
 150:                                              ; preds = %140, %133
-  %151 = load i32, ptr %29, align 8, !tbaa !33
+  %151 = load i32, ptr %29, align 8, !tbaa !31
   store i32 %151, ptr %135, align 4, !tbaa !26
   %152 = add nsw i64 %134, 1
-  %153 = load i32, ptr %56, align 8, !tbaa !30
+  %153 = load i32, ptr %56, align 8, !tbaa !28
   %154 = sext i32 %153 to i64
   %155 = icmp slt i64 %134, %154
-  br i1 %155, label %133, label %156, !llvm.loop !42
+  br i1 %155, label %133, label %156
 
 156:                                              ; preds = %150, %127
   %157 = add nuw nsw i64 %108, 1
-  %158 = load i32, ptr %50, align 8, !tbaa !31
+  %158 = load i32, ptr %50, align 8, !tbaa !29
   %159 = sext i32 %158 to i64
   %160 = icmp slt i64 %157, %159
-  br i1 %160, label %107, label %161, !llvm.loop !45
+  br i1 %160, label %107, label %161
 
 161:                                              ; preds = %156, %101, %49
   %162 = phi i32 [ %51, %49 ], [ %102, %101 ], [ %158, %156 ]
-  %163 = load i32, ptr %21, align 4, !tbaa !32
+  %163 = load i32, ptr %21, align 4, !tbaa !30
   %164 = icmp eq i32 %163, 0
   br i1 %164, label %169, label %171
 
 165:                                              ; preds = %57
-  %166 = load i32, ptr %21, align 4, !tbaa !32
+  %166 = load i32, ptr %21, align 4, !tbaa !30
   %167 = icmp eq i32 %166, 0
   %168 = select i1 %167, ptr @decode_mcu_DC_first, ptr @decode_mcu_DC_refine
   br label %173
@@ -303,7 +303,7 @@ define internal void @start_pass_phuff_decoder(ptr noundef %0) #0 {
   %174 = phi ptr [ %170, %169 ], [ %168, %165 ], [ %172, %171 ]
   %175 = phi i32 [ %162, %169 ], [ %51, %165 ], [ %162, %171 ]
   %176 = getelementptr inbounds i8, ptr %3, i64 8
-  store ptr %174, ptr %176, align 8, !tbaa !46
+  store ptr %174, ptr %176, align 8, !tbaa !42
   %177 = icmp sgt i32 %175, 0
   br i1 %177, label %178, label %214
 
@@ -316,7 +316,7 @@ define internal void @start_pass_phuff_decoder(ptr noundef %0) #0 {
 
 183:                                              ; preds = %178, %194
   %184 = phi i64 [ %196, %194 ], [ 0, %178 ]
-  %185 = load i32, ptr %21, align 4, !tbaa !32
+  %185 = load i32, ptr %21, align 4, !tbaa !30
   %186 = icmp eq i32 %185, 0
   br i1 %186, label %187, label %194
 
@@ -324,7 +324,7 @@ define internal void @start_pass_phuff_decoder(ptr noundef %0) #0 {
   %188 = getelementptr inbounds [4 x ptr], ptr %179, i64 0, i64 %184
   %189 = load ptr, ptr %188, align 8, !tbaa !23
   %190 = getelementptr inbounds i8, ptr %189, i64 20
-  %191 = load i32, ptr %190, align 4, !tbaa !47
+  %191 = load i32, ptr %190, align 4, !tbaa !43
   %192 = sext i32 %191 to i64
   %193 = getelementptr inbounds [4 x ptr], ptr %180, i64 0, i64 %192
   tail call void @jpeg_make_d_derived_tbl(ptr noundef nonnull %0, i32 noundef signext 1, i32 noundef signext %191, ptr noundef nonnull %193) #6
@@ -334,43 +334,43 @@ define internal void @start_pass_phuff_decoder(ptr noundef %0) #0 {
   %195 = getelementptr inbounds [4 x i32], ptr %182, i64 0, i64 %184
   store i32 0, ptr %195, align 4, !tbaa !26
   %196 = add nuw nsw i64 %184, 1
-  %197 = load i32, ptr %50, align 8, !tbaa !31
+  %197 = load i32, ptr %50, align 8, !tbaa !29
   %198 = sext i32 %197 to i64
   %199 = icmp slt i64 %196, %198
-  br i1 %199, label %183, label %214, !llvm.loop !48
+  br i1 %199, label %183, label %214
 
 200:                                              ; preds = %178, %200
   %201 = phi i64 [ %210, %200 ], [ 0, %178 ]
   %202 = getelementptr inbounds [4 x ptr], ptr %179, i64 0, i64 %201
   %203 = load ptr, ptr %202, align 8, !tbaa !23
   %204 = getelementptr inbounds i8, ptr %203, i64 24
-  %205 = load i32, ptr %204, align 8, !tbaa !49
+  %205 = load i32, ptr %204, align 8, !tbaa !44
   %206 = sext i32 %205 to i64
   %207 = getelementptr inbounds [4 x ptr], ptr %180, i64 0, i64 %206
   tail call void @jpeg_make_d_derived_tbl(ptr noundef nonnull %0, i32 noundef signext 0, i32 noundef signext %205, ptr noundef nonnull %207) #6
   %208 = load ptr, ptr %207, align 8, !tbaa !23
-  store ptr %208, ptr %181, align 8, !tbaa !50
+  store ptr %208, ptr %181, align 8, !tbaa !45
   %209 = getelementptr inbounds [4 x i32], ptr %182, i64 0, i64 %201
   store i32 0, ptr %209, align 4, !tbaa !26
   %210 = add nuw nsw i64 %201, 1
-  %211 = load i32, ptr %50, align 8, !tbaa !31
+  %211 = load i32, ptr %50, align 8, !tbaa !29
   %212 = sext i32 %211 to i64
   %213 = icmp slt i64 %210, %212
-  br i1 %213, label %200, label %214, !llvm.loop !48
+  br i1 %213, label %200, label %214
 
 214:                                              ; preds = %200, %194, %173
   %215 = getelementptr inbounds i8, ptr %3, i64 24
   %216 = getelementptr inbounds i8, ptr %3, i64 32
-  store i32 0, ptr %216, align 8, !tbaa !51
-  store i64 0, ptr %215, align 8, !tbaa !52
+  store i32 0, ptr %216, align 8, !tbaa !46
+  store i64 0, ptr %215, align 8, !tbaa !47
   %217 = getelementptr inbounds i8, ptr %3, i64 16
-  store i32 0, ptr %217, align 8, !tbaa !53
+  store i32 0, ptr %217, align 8, !tbaa !48
   %218 = getelementptr inbounds i8, ptr %3, i64 40
-  store i32 0, ptr %218, align 8, !tbaa !54
+  store i32 0, ptr %218, align 8, !tbaa !49
   %219 = getelementptr inbounds i8, ptr %0, i64 368
-  %220 = load i32, ptr %219, align 8, !tbaa !55
+  %220 = load i32, ptr %219, align 8, !tbaa !50
   %221 = getelementptr inbounds i8, ptr %3, i64 60
-  store i32 %220, ptr %221, align 4, !tbaa !56
+  store i32 %220, ptr %221, align 4, !tbaa !51
   ret void
 }
 
@@ -384,40 +384,40 @@ define internal noundef signext i32 @decode_mcu_DC_first(ptr noundef %0, ptr noc
   %5 = getelementptr inbounds i8, ptr %0, i64 592
   %6 = load ptr, ptr %5, align 8, !tbaa !17
   %7 = getelementptr inbounds i8, ptr %0, i64 536
-  %8 = load i32, ptr %7, align 8, !tbaa !33
+  %8 = load i32, ptr %7, align 8, !tbaa !31
   call void @llvm.lifetime.start.p0(i64 40, ptr nonnull %3) #6
   call void @llvm.lifetime.start.p0(i64 20, ptr nonnull %4) #6
   %9 = getelementptr inbounds i8, ptr %0, i64 368
-  %10 = load i32, ptr %9, align 8, !tbaa !55
+  %10 = load i32, ptr %9, align 8, !tbaa !50
   %11 = icmp eq i32 %10, 0
   br i1 %11, label %50, label %12
 
 12:                                               ; preds = %2
   %13 = getelementptr inbounds i8, ptr %6, i64 60
-  %14 = load i32, ptr %13, align 4, !tbaa !56
+  %14 = load i32, ptr %13, align 4, !tbaa !51
   %15 = icmp eq i32 %14, 0
   br i1 %15, label %16, label %50
 
 16:                                               ; preds = %12
   %17 = getelementptr inbounds i8, ptr %6, i64 32
-  %18 = load i32, ptr %17, align 8, !tbaa !51
+  %18 = load i32, ptr %17, align 8, !tbaa !46
   %19 = sdiv i32 %18, 8
   %20 = getelementptr inbounds i8, ptr %0, i64 584
-  %21 = load ptr, ptr %20, align 8, !tbaa !57
+  %21 = load ptr, ptr %20, align 8, !tbaa !52
   %22 = getelementptr inbounds i8, ptr %21, i64 36
-  %23 = load i32, ptr %22, align 4, !tbaa !58
+  %23 = load i32, ptr %22, align 4, !tbaa !53
   %24 = add i32 %23, %19
-  store i32 %24, ptr %22, align 4, !tbaa !58
-  store i32 0, ptr %17, align 8, !tbaa !51
+  store i32 %24, ptr %22, align 4, !tbaa !53
+  store i32 0, ptr %17, align 8, !tbaa !46
   %25 = getelementptr inbounds i8, ptr %21, i64 16
-  %26 = load ptr, ptr %25, align 8, !tbaa !60
+  %26 = load ptr, ptr %25, align 8, !tbaa !55
   %27 = tail call signext i32 %26(ptr noundef nonnull %0) #6
   %28 = icmp eq i32 %27, 0
   br i1 %28, label %186, label %29
 
 29:                                               ; preds = %16
   %30 = getelementptr inbounds i8, ptr %0, i64 432
-  %31 = load i32, ptr %30, align 8, !tbaa !31
+  %31 = load i32, ptr %30, align 8, !tbaa !29
   %32 = icmp sgt i32 %31, 0
   br i1 %32, label %33, label %42
 
@@ -430,51 +430,51 @@ define internal noundef signext i32 @decode_mcu_DC_first(ptr noundef %0, ptr noc
   %37 = getelementptr inbounds [4 x i32], ptr %34, i64 0, i64 %36
   store i32 0, ptr %37, align 4, !tbaa !26
   %38 = add nuw nsw i64 %36, 1
-  %39 = load i32, ptr %30, align 8, !tbaa !31
+  %39 = load i32, ptr %30, align 8, !tbaa !29
   %40 = sext i32 %39 to i64
   %41 = icmp slt i64 %38, %40
-  br i1 %41, label %35, label %42, !llvm.loop !61
+  br i1 %41, label %35, label %42
 
 42:                                               ; preds = %35, %29
   %43 = getelementptr inbounds i8, ptr %6, i64 40
-  store i32 0, ptr %43, align 8, !tbaa !54
-  %44 = load i32, ptr %9, align 8, !tbaa !55
-  store i32 %44, ptr %13, align 4, !tbaa !56
+  store i32 0, ptr %43, align 8, !tbaa !49
+  %44 = load i32, ptr %9, align 8, !tbaa !50
+  store i32 %44, ptr %13, align 4, !tbaa !51
   %45 = getelementptr inbounds i8, ptr %0, i64 540
-  %46 = load i32, ptr %45, align 4, !tbaa !62
+  %46 = load i32, ptr %45, align 4, !tbaa !56
   %47 = icmp eq i32 %46, 0
   br i1 %47, label %48, label %50
 
 48:                                               ; preds = %42
   %49 = getelementptr inbounds i8, ptr %6, i64 16
-  store i32 0, ptr %49, align 8, !tbaa !53
+  store i32 0, ptr %49, align 8, !tbaa !48
   br label %50
 
 50:                                               ; preds = %42, %48, %12, %2
   %51 = getelementptr inbounds i8, ptr %6, i64 16
-  %52 = load i32, ptr %51, align 8, !tbaa !53
+  %52 = load i32, ptr %51, align 8, !tbaa !48
   %53 = icmp eq i32 %52, 0
   br i1 %53, label %54, label %182
 
 54:                                               ; preds = %50
   %55 = getelementptr inbounds i8, ptr %3, i64 32
-  store ptr %0, ptr %55, align 8, !tbaa !63
+  store ptr %0, ptr %55, align 8, !tbaa !57
   %56 = getelementptr inbounds i8, ptr %0, i64 40
-  %57 = load ptr, ptr %56, align 8, !tbaa !65
-  %58 = load ptr, ptr %57, align 8, !tbaa !66
-  store ptr %58, ptr %3, align 8, !tbaa !68
+  %57 = load ptr, ptr %56, align 8, !tbaa !59
+  %58 = load ptr, ptr %57, align 8, !tbaa !60
+  store ptr %58, ptr %3, align 8, !tbaa !62
   %59 = getelementptr inbounds i8, ptr %57, i64 8
-  %60 = load i64, ptr %59, align 8, !tbaa !69
+  %60 = load i64, ptr %59, align 8, !tbaa !63
   %61 = getelementptr inbounds i8, ptr %3, i64 8
-  store i64 %60, ptr %61, align 8, !tbaa !70
+  store i64 %60, ptr %61, align 8, !tbaa !64
   %62 = getelementptr inbounds i8, ptr %6, i64 24
-  %63 = load i64, ptr %62, align 8, !tbaa !52
+  %63 = load i64, ptr %62, align 8, !tbaa !47
   %64 = getelementptr inbounds i8, ptr %6, i64 32
-  %65 = load i32, ptr %64, align 8, !tbaa !51
+  %65 = load i32, ptr %64, align 8, !tbaa !46
   %66 = getelementptr inbounds i8, ptr %6, i64 40
-  call void @llvm.memcpy.p0.p0.i64(ptr noundef nonnull align 4 dereferenceable(20) %4, ptr noundef nonnull align 8 dereferenceable(20) %66, i64 20, i1 false), !tbaa.struct !71
+  call void @llvm.memcpy.p0.p0.i64(ptr noundef nonnull align 4 dereferenceable(20) %4, ptr noundef nonnull align 8 dereferenceable(20) %66, i64 20, i1 false), !tbaa.struct !65
   %67 = getelementptr inbounds i8, ptr %0, i64 480
-  %68 = load i32, ptr %67, align 8, !tbaa !72
+  %68 = load i32, ptr %67, align 8, !tbaa !66
   %69 = icmp sgt i32 %68, 0
   br i1 %69, label %70, label %175
 
@@ -499,7 +499,7 @@ define internal noundef signext i32 @decode_mcu_DC_first(ptr noundef %0, ptr noc
   %86 = getelementptr inbounds [4 x ptr], ptr %72, i64 0, i64 %85
   %87 = load ptr, ptr %86, align 8, !tbaa !23
   %88 = getelementptr inbounds i8, ptr %87, i64 20
-  %89 = load i32, ptr %88, align 4, !tbaa !47
+  %89 = load i32, ptr %88, align 4, !tbaa !43
   %90 = sext i32 %89 to i64
   %91 = getelementptr inbounds [4 x ptr], ptr %73, i64 0, i64 %90
   %92 = load ptr, ptr %91, align 8, !tbaa !23
@@ -512,8 +512,8 @@ define internal noundef signext i32 @decode_mcu_DC_first(ptr noundef %0, ptr noc
   br i1 %96, label %186, label %97
 
 97:                                               ; preds = %94
-  %98 = load i64, ptr %74, align 8, !tbaa !73
-  %99 = load i32, ptr %75, align 8, !tbaa !74
+  %98 = load i64, ptr %74, align 8, !tbaa !67
+  %99 = load i32, ptr %75, align 8, !tbaa !68
   %100 = icmp slt i32 %99, 8
   br i1 %100, label %118, label %101
 
@@ -534,7 +534,7 @@ define internal noundef signext i32 @decode_mcu_DC_first(ptr noundef %0, ptr noc
   %113 = sub nsw i32 %103, %110
   %114 = getelementptr inbounds i8, ptr %92, i64 1312
   %115 = getelementptr inbounds [256 x i8], ptr %114, i64 0, i64 %107
-  %116 = load i8, ptr %115, align 1, !tbaa !37
+  %116 = load i8, ptr %115, align 1, !tbaa !35
   %117 = zext i8 %116 to i32
   br label %127
 
@@ -547,8 +547,8 @@ define internal noundef signext i32 @decode_mcu_DC_first(ptr noundef %0, ptr noc
   br i1 %123, label %186, label %124
 
 124:                                              ; preds = %118
-  %125 = load i64, ptr %74, align 8, !tbaa !73
-  %126 = load i32, ptr %75, align 8, !tbaa !74
+  %125 = load i64, ptr %74, align 8, !tbaa !67
+  %126 = load i32, ptr %75, align 8, !tbaa !68
   br label %127
 
 127:                                              ; preds = %124, %112
@@ -568,8 +568,8 @@ define internal noundef signext i32 @decode_mcu_DC_first(ptr noundef %0, ptr noc
   br i1 %136, label %186, label %137
 
 137:                                              ; preds = %134
-  %138 = load i64, ptr %74, align 8, !tbaa !73
-  %139 = load i32, ptr %75, align 8, !tbaa !74
+  %138 = load i64, ptr %74, align 8, !tbaa !67
+  %139 = load i32, ptr %75, align 8, !tbaa !68
   br label %140
 
 140:                                              ; preds = %137, %132
@@ -604,17 +604,17 @@ define internal noundef signext i32 @decode_mcu_DC_first(ptr noundef %0, ptr noc
   store i32 %164, ptr %162, align 4, !tbaa !26
   %165 = shl i32 %164, %8
   %166 = trunc i32 %165 to i16
-  store i16 %166, ptr %82, align 2, !tbaa !75
+  store i16 %166, ptr %82, align 2, !tbaa !69
   %167 = add nuw nsw i64 %78, 1
-  %168 = load i32, ptr %67, align 8, !tbaa !72
+  %168 = load i32, ptr %67, align 8, !tbaa !66
   %169 = sext i32 %168 to i64
   %170 = icmp slt i64 %167, %169
-  br i1 %170, label %77, label %171, !llvm.loop !76
+  br i1 %170, label %77, label %171
 
 171:                                              ; preds = %158
-  %172 = load ptr, ptr %3, align 8, !tbaa !68
-  %173 = load ptr, ptr %56, align 8, !tbaa !65
-  %174 = load i64, ptr %61, align 8, !tbaa !70
+  %172 = load ptr, ptr %3, align 8, !tbaa !62
+  %173 = load ptr, ptr %56, align 8, !tbaa !59
+  %174 = load i64, ptr %61, align 8, !tbaa !64
   br label %175
 
 175:                                              ; preds = %171, %54
@@ -623,19 +623,19 @@ define internal noundef signext i32 @decode_mcu_DC_first(ptr noundef %0, ptr noc
   %178 = phi ptr [ %58, %54 ], [ %172, %171 ]
   %179 = phi i64 [ %63, %54 ], [ %159, %171 ]
   %180 = phi i32 [ %65, %54 ], [ %160, %171 ]
-  store ptr %178, ptr %177, align 8, !tbaa !66
+  store ptr %178, ptr %177, align 8, !tbaa !60
   %181 = getelementptr inbounds i8, ptr %177, i64 8
-  store i64 %176, ptr %181, align 8, !tbaa !69
-  store i64 %179, ptr %62, align 8, !tbaa !52
-  store i32 %180, ptr %64, align 8, !tbaa !51
-  call void @llvm.memcpy.p0.p0.i64(ptr noundef nonnull align 8 dereferenceable(20) %66, ptr noundef nonnull align 4 dereferenceable(20) %4, i64 20, i1 false), !tbaa.struct !71
+  store i64 %176, ptr %181, align 8, !tbaa !63
+  store i64 %179, ptr %62, align 8, !tbaa !47
+  store i32 %180, ptr %64, align 8, !tbaa !46
+  call void @llvm.memcpy.p0.p0.i64(ptr noundef nonnull align 8 dereferenceable(20) %66, ptr noundef nonnull align 4 dereferenceable(20) %4, i64 20, i1 false), !tbaa.struct !65
   br label %182
 
 182:                                              ; preds = %175, %50
   %183 = getelementptr inbounds i8, ptr %6, i64 60
-  %184 = load i32, ptr %183, align 4, !tbaa !56
+  %184 = load i32, ptr %183, align 4, !tbaa !51
   %185 = add i32 %184, -1
-  store i32 %185, ptr %183, align 4, !tbaa !56
+  store i32 %185, ptr %183, align 4, !tbaa !51
   br label %186
 
 186:                                              ; preds = %94, %118, %134, %16, %182
@@ -651,41 +651,41 @@ define internal noundef signext i32 @decode_mcu_AC_first(ptr noundef %0, ptr noc
   %4 = getelementptr inbounds i8, ptr %0, i64 592
   %5 = load ptr, ptr %4, align 8, !tbaa !17
   %6 = getelementptr inbounds i8, ptr %0, i64 528
-  %7 = load i32, ptr %6, align 8, !tbaa !30
+  %7 = load i32, ptr %6, align 8, !tbaa !28
   %8 = getelementptr inbounds i8, ptr %0, i64 536
-  %9 = load i32, ptr %8, align 8, !tbaa !33
+  %9 = load i32, ptr %8, align 8, !tbaa !31
   call void @llvm.lifetime.start.p0(i64 40, ptr nonnull %3) #6
   %10 = getelementptr inbounds i8, ptr %0, i64 368
-  %11 = load i32, ptr %10, align 8, !tbaa !55
+  %11 = load i32, ptr %10, align 8, !tbaa !50
   %12 = icmp eq i32 %11, 0
   br i1 %12, label %51, label %13
 
 13:                                               ; preds = %2
   %14 = getelementptr inbounds i8, ptr %5, i64 60
-  %15 = load i32, ptr %14, align 4, !tbaa !56
+  %15 = load i32, ptr %14, align 4, !tbaa !51
   %16 = icmp eq i32 %15, 0
   br i1 %16, label %17, label %51
 
 17:                                               ; preds = %13
   %18 = getelementptr inbounds i8, ptr %5, i64 32
-  %19 = load i32, ptr %18, align 8, !tbaa !51
+  %19 = load i32, ptr %18, align 8, !tbaa !46
   %20 = sdiv i32 %19, 8
   %21 = getelementptr inbounds i8, ptr %0, i64 584
-  %22 = load ptr, ptr %21, align 8, !tbaa !57
+  %22 = load ptr, ptr %21, align 8, !tbaa !52
   %23 = getelementptr inbounds i8, ptr %22, i64 36
-  %24 = load i32, ptr %23, align 4, !tbaa !58
+  %24 = load i32, ptr %23, align 4, !tbaa !53
   %25 = add i32 %24, %20
-  store i32 %25, ptr %23, align 4, !tbaa !58
-  store i32 0, ptr %18, align 8, !tbaa !51
+  store i32 %25, ptr %23, align 4, !tbaa !53
+  store i32 0, ptr %18, align 8, !tbaa !46
   %26 = getelementptr inbounds i8, ptr %22, i64 16
-  %27 = load ptr, ptr %26, align 8, !tbaa !60
+  %27 = load ptr, ptr %26, align 8, !tbaa !55
   %28 = tail call signext i32 %27(ptr noundef nonnull %0) #6
   %29 = icmp eq i32 %28, 0
   br i1 %29, label %213, label %30
 
 30:                                               ; preds = %17
   %31 = getelementptr inbounds i8, ptr %0, i64 432
-  %32 = load i32, ptr %31, align 8, !tbaa !31
+  %32 = load i32, ptr %31, align 8, !tbaa !29
   %33 = icmp sgt i32 %32, 0
   br i1 %33, label %34, label %43
 
@@ -698,35 +698,35 @@ define internal noundef signext i32 @decode_mcu_AC_first(ptr noundef %0, ptr noc
   %38 = getelementptr inbounds [4 x i32], ptr %35, i64 0, i64 %37
   store i32 0, ptr %38, align 4, !tbaa !26
   %39 = add nuw nsw i64 %37, 1
-  %40 = load i32, ptr %31, align 8, !tbaa !31
+  %40 = load i32, ptr %31, align 8, !tbaa !29
   %41 = sext i32 %40 to i64
   %42 = icmp slt i64 %39, %41
-  br i1 %42, label %36, label %43, !llvm.loop !61
+  br i1 %42, label %36, label %43
 
 43:                                               ; preds = %36, %30
   %44 = getelementptr inbounds i8, ptr %5, i64 40
-  store i32 0, ptr %44, align 8, !tbaa !54
-  %45 = load i32, ptr %10, align 8, !tbaa !55
-  store i32 %45, ptr %14, align 4, !tbaa !56
+  store i32 0, ptr %44, align 8, !tbaa !49
+  %45 = load i32, ptr %10, align 8, !tbaa !50
+  store i32 %45, ptr %14, align 4, !tbaa !51
   %46 = getelementptr inbounds i8, ptr %0, i64 540
-  %47 = load i32, ptr %46, align 4, !tbaa !62
+  %47 = load i32, ptr %46, align 4, !tbaa !56
   %48 = icmp eq i32 %47, 0
   br i1 %48, label %49, label %51
 
 49:                                               ; preds = %43
   %50 = getelementptr inbounds i8, ptr %5, i64 16
-  store i32 0, ptr %50, align 8, !tbaa !53
+  store i32 0, ptr %50, align 8, !tbaa !48
   br label %51
 
 51:                                               ; preds = %43, %49, %13, %2
   %52 = getelementptr inbounds i8, ptr %5, i64 16
-  %53 = load i32, ptr %52, align 8, !tbaa !53
+  %53 = load i32, ptr %52, align 8, !tbaa !48
   %54 = icmp eq i32 %53, 0
   br i1 %54, label %55, label %209
 
 55:                                               ; preds = %51
   %56 = getelementptr inbounds i8, ptr %5, i64 40
-  %57 = load i32, ptr %56, align 8, !tbaa !54
+  %57 = load i32, ptr %56, align 8, !tbaa !49
   %58 = icmp eq i32 %57, 0
   br i1 %58, label %61, label %59
 
@@ -736,24 +736,24 @@ define internal noundef signext i32 @decode_mcu_AC_first(ptr noundef %0, ptr noc
 
 61:                                               ; preds = %55
   %62 = getelementptr inbounds i8, ptr %3, i64 32
-  store ptr %0, ptr %62, align 8, !tbaa !63
+  store ptr %0, ptr %62, align 8, !tbaa !57
   %63 = getelementptr inbounds i8, ptr %0, i64 40
-  %64 = load ptr, ptr %63, align 8, !tbaa !65
-  %65 = load ptr, ptr %64, align 8, !tbaa !66
-  store ptr %65, ptr %3, align 8, !tbaa !68
+  %64 = load ptr, ptr %63, align 8, !tbaa !59
+  %65 = load ptr, ptr %64, align 8, !tbaa !60
+  store ptr %65, ptr %3, align 8, !tbaa !62
   %66 = getelementptr inbounds i8, ptr %64, i64 8
-  %67 = load i64, ptr %66, align 8, !tbaa !69
+  %67 = load i64, ptr %66, align 8, !tbaa !63
   %68 = getelementptr inbounds i8, ptr %3, i64 8
-  store i64 %67, ptr %68, align 8, !tbaa !70
+  store i64 %67, ptr %68, align 8, !tbaa !64
   %69 = getelementptr inbounds i8, ptr %5, i64 24
-  %70 = load i64, ptr %69, align 8, !tbaa !52
+  %70 = load i64, ptr %69, align 8, !tbaa !47
   %71 = getelementptr inbounds i8, ptr %5, i64 32
-  %72 = load i32, ptr %71, align 8, !tbaa !51
+  %72 = load i32, ptr %71, align 8, !tbaa !46
   %73 = load ptr, ptr %1, align 8, !tbaa !23
   %74 = getelementptr inbounds i8, ptr %5, i64 96
-  %75 = load ptr, ptr %74, align 8, !tbaa !50
+  %75 = load ptr, ptr %74, align 8, !tbaa !45
   %76 = getelementptr inbounds i8, ptr %0, i64 524
-  %77 = load i32, ptr %76, align 4, !tbaa !29
+  %77 = load i32, ptr %76, align 4, !tbaa !27
   %78 = icmp sgt i32 %77, %7
   br i1 %78, label %199, label %79
 
@@ -777,8 +777,8 @@ define internal noundef signext i32 @decode_mcu_AC_first(ptr noundef %0, ptr noc
   br i1 %91, label %213, label %92
 
 92:                                               ; preds = %89
-  %93 = load i64, ptr %80, align 8, !tbaa !73
-  %94 = load i32, ptr %81, align 8, !tbaa !74
+  %93 = load i64, ptr %80, align 8, !tbaa !67
+  %94 = load i32, ptr %81, align 8, !tbaa !68
   %95 = icmp slt i32 %94, 8
   br i1 %95, label %111, label %96
 
@@ -797,7 +797,7 @@ define internal noundef signext i32 @decode_mcu_AC_first(ptr noundef %0, ptr noc
 106:                                              ; preds = %96
   %107 = sub nsw i32 %98, %104
   %108 = getelementptr inbounds [256 x i8], ptr %83, i64 0, i64 %102
-  %109 = load i8, ptr %108, align 1, !tbaa !37
+  %109 = load i8, ptr %108, align 1, !tbaa !35
   %110 = zext i8 %109 to i32
   br label %120
 
@@ -810,8 +810,8 @@ define internal noundef signext i32 @decode_mcu_AC_first(ptr noundef %0, ptr noc
   br i1 %116, label %213, label %117
 
 117:                                              ; preds = %111
-  %118 = load i64, ptr %80, align 8, !tbaa !73
-  %119 = load i32, ptr %81, align 8, !tbaa !74
+  %118 = load i64, ptr %80, align 8, !tbaa !67
+  %119 = load i32, ptr %81, align 8, !tbaa !68
   br label %120
 
 120:                                              ; preds = %117, %106
@@ -834,8 +834,8 @@ define internal noundef signext i32 @decode_mcu_AC_first(ptr noundef %0, ptr noc
   br i1 %132, label %213, label %133
 
 133:                                              ; preds = %130
-  %134 = load i64, ptr %80, align 8, !tbaa !73
-  %135 = load i32, ptr %81, align 8, !tbaa !74
+  %134 = load i64, ptr %80, align 8, !tbaa !67
+  %135 = load i32, ptr %81, align 8, !tbaa !68
   br label %136
 
 136:                                              ; preds = %133, %127
@@ -869,7 +869,7 @@ define internal noundef signext i32 @decode_mcu_AC_first(ptr noundef %0, ptr noc
   %160 = load i32, ptr %159, align 4, !tbaa !26
   %161 = sext i32 %160 to i64
   %162 = getelementptr inbounds [64 x i16], ptr %73, i64 0, i64 %161
-  store i16 %157, ptr %162, align 2, !tbaa !75
+  store i16 %157, ptr %162, align 2, !tbaa !69
   br label %193
 
 163:                                              ; preds = %120
@@ -895,8 +895,8 @@ define internal noundef signext i32 @decode_mcu_AC_first(ptr noundef %0, ptr noc
   br i1 %174, label %213, label %175
 
 175:                                              ; preds = %172
-  %176 = load i64, ptr %80, align 8, !tbaa !73
-  %177 = load i32, ptr %81, align 8, !tbaa !74
+  %176 = load i64, ptr %80, align 8, !tbaa !67
+  %177 = load i32, ptr %81, align 8, !tbaa !68
   br label %178
 
 178:                                              ; preds = %175, %170
@@ -924,32 +924,32 @@ define internal noundef signext i32 @decode_mcu_AC_first(ptr noundef %0, ptr noc
   %196 = phi i32 [ %139, %154 ], [ %122, %165 ]
   %197 = add nsw i32 %194, 1
   %198 = icmp slt i32 %194, %7
-  br i1 %198, label %84, label %199, !llvm.loop !77
+  br i1 %198, label %84, label %199
 
 199:                                              ; preds = %193, %61, %188
   %200 = phi i32 [ %192, %188 ], [ 0, %61 ], [ 0, %193 ]
   %201 = phi i64 [ %190, %188 ], [ %70, %61 ], [ %195, %193 ]
   %202 = phi i32 [ %191, %188 ], [ %72, %61 ], [ %196, %193 ]
-  %203 = load ptr, ptr %3, align 8, !tbaa !68
-  %204 = load ptr, ptr %63, align 8, !tbaa !65
-  store ptr %203, ptr %204, align 8, !tbaa !66
-  %205 = load i64, ptr %68, align 8, !tbaa !70
+  %203 = load ptr, ptr %3, align 8, !tbaa !62
+  %204 = load ptr, ptr %63, align 8, !tbaa !59
+  store ptr %203, ptr %204, align 8, !tbaa !60
+  %205 = load i64, ptr %68, align 8, !tbaa !64
   %206 = getelementptr inbounds i8, ptr %204, i64 8
-  store i64 %205, ptr %206, align 8, !tbaa !69
-  store i64 %201, ptr %69, align 8, !tbaa !52
-  store i32 %202, ptr %71, align 8, !tbaa !51
+  store i64 %205, ptr %206, align 8, !tbaa !63
+  store i64 %201, ptr %69, align 8, !tbaa !47
+  store i32 %202, ptr %71, align 8, !tbaa !46
   br label %207
 
 207:                                              ; preds = %199, %59
   %208 = phi i32 [ %60, %59 ], [ %200, %199 ]
-  store i32 %208, ptr %56, align 8, !tbaa !54
+  store i32 %208, ptr %56, align 8, !tbaa !49
   br label %209
 
 209:                                              ; preds = %207, %51
   %210 = getelementptr inbounds i8, ptr %5, i64 60
-  %211 = load i32, ptr %210, align 4, !tbaa !56
+  %211 = load i32, ptr %210, align 4, !tbaa !51
   %212 = add i32 %211, -1
-  store i32 %212, ptr %210, align 4, !tbaa !56
+  store i32 %212, ptr %210, align 4, !tbaa !51
   br label %213
 
 213:                                              ; preds = %89, %111, %130, %17, %172, %209
@@ -964,40 +964,40 @@ define internal signext range(i32 0, 2) i32 @decode_mcu_DC_refine(ptr noundef %0
   %4 = getelementptr inbounds i8, ptr %0, i64 592
   %5 = load ptr, ptr %4, align 8, !tbaa !17
   %6 = getelementptr inbounds i8, ptr %0, i64 536
-  %7 = load i32, ptr %6, align 8, !tbaa !33
+  %7 = load i32, ptr %6, align 8, !tbaa !31
   %8 = shl nuw i32 1, %7
   call void @llvm.lifetime.start.p0(i64 40, ptr nonnull %3) #6
   %9 = getelementptr inbounds i8, ptr %0, i64 368
-  %10 = load i32, ptr %9, align 8, !tbaa !55
+  %10 = load i32, ptr %9, align 8, !tbaa !50
   %11 = icmp eq i32 %10, 0
   br i1 %11, label %50, label %12
 
 12:                                               ; preds = %2
   %13 = getelementptr inbounds i8, ptr %5, i64 60
-  %14 = load i32, ptr %13, align 4, !tbaa !56
+  %14 = load i32, ptr %13, align 4, !tbaa !51
   %15 = icmp eq i32 %14, 0
   br i1 %15, label %16, label %50
 
 16:                                               ; preds = %12
   %17 = getelementptr inbounds i8, ptr %5, i64 32
-  %18 = load i32, ptr %17, align 8, !tbaa !51
+  %18 = load i32, ptr %17, align 8, !tbaa !46
   %19 = sdiv i32 %18, 8
   %20 = getelementptr inbounds i8, ptr %0, i64 584
-  %21 = load ptr, ptr %20, align 8, !tbaa !57
+  %21 = load ptr, ptr %20, align 8, !tbaa !52
   %22 = getelementptr inbounds i8, ptr %21, i64 36
-  %23 = load i32, ptr %22, align 4, !tbaa !58
+  %23 = load i32, ptr %22, align 4, !tbaa !53
   %24 = add i32 %23, %19
-  store i32 %24, ptr %22, align 4, !tbaa !58
-  store i32 0, ptr %17, align 8, !tbaa !51
+  store i32 %24, ptr %22, align 4, !tbaa !53
+  store i32 0, ptr %17, align 8, !tbaa !46
   %25 = getelementptr inbounds i8, ptr %21, i64 16
-  %26 = load ptr, ptr %25, align 8, !tbaa !60
+  %26 = load ptr, ptr %25, align 8, !tbaa !55
   %27 = tail call signext i32 %26(ptr noundef nonnull %0) #6
   %28 = icmp eq i32 %27, 0
   br i1 %28, label %112, label %29
 
 29:                                               ; preds = %16
   %30 = getelementptr inbounds i8, ptr %0, i64 432
-  %31 = load i32, ptr %30, align 8, !tbaa !31
+  %31 = load i32, ptr %30, align 8, !tbaa !29
   %32 = icmp sgt i32 %31, 0
   br i1 %32, label %33, label %42
 
@@ -1010,43 +1010,43 @@ define internal signext range(i32 0, 2) i32 @decode_mcu_DC_refine(ptr noundef %0
   %37 = getelementptr inbounds [4 x i32], ptr %34, i64 0, i64 %36
   store i32 0, ptr %37, align 4, !tbaa !26
   %38 = add nuw nsw i64 %36, 1
-  %39 = load i32, ptr %30, align 8, !tbaa !31
+  %39 = load i32, ptr %30, align 8, !tbaa !29
   %40 = sext i32 %39 to i64
   %41 = icmp slt i64 %38, %40
-  br i1 %41, label %35, label %42, !llvm.loop !61
+  br i1 %41, label %35, label %42
 
 42:                                               ; preds = %35, %29
   %43 = getelementptr inbounds i8, ptr %5, i64 40
-  store i32 0, ptr %43, align 8, !tbaa !54
-  %44 = load i32, ptr %9, align 8, !tbaa !55
-  store i32 %44, ptr %13, align 4, !tbaa !56
+  store i32 0, ptr %43, align 8, !tbaa !49
+  %44 = load i32, ptr %9, align 8, !tbaa !50
+  store i32 %44, ptr %13, align 4, !tbaa !51
   %45 = getelementptr inbounds i8, ptr %0, i64 540
-  %46 = load i32, ptr %45, align 4, !tbaa !62
+  %46 = load i32, ptr %45, align 4, !tbaa !56
   %47 = icmp eq i32 %46, 0
   br i1 %47, label %48, label %50
 
 48:                                               ; preds = %42
   %49 = getelementptr inbounds i8, ptr %5, i64 16
-  store i32 0, ptr %49, align 8, !tbaa !53
+  store i32 0, ptr %49, align 8, !tbaa !48
   br label %50
 
 50:                                               ; preds = %42, %48, %12, %2
   %51 = getelementptr inbounds i8, ptr %3, i64 32
-  store ptr %0, ptr %51, align 8, !tbaa !63
+  store ptr %0, ptr %51, align 8, !tbaa !57
   %52 = getelementptr inbounds i8, ptr %0, i64 40
-  %53 = load ptr, ptr %52, align 8, !tbaa !65
-  %54 = load ptr, ptr %53, align 8, !tbaa !66
-  store ptr %54, ptr %3, align 8, !tbaa !68
+  %53 = load ptr, ptr %52, align 8, !tbaa !59
+  %54 = load ptr, ptr %53, align 8, !tbaa !60
+  store ptr %54, ptr %3, align 8, !tbaa !62
   %55 = getelementptr inbounds i8, ptr %53, i64 8
-  %56 = load i64, ptr %55, align 8, !tbaa !69
+  %56 = load i64, ptr %55, align 8, !tbaa !63
   %57 = getelementptr inbounds i8, ptr %3, i64 8
-  store i64 %56, ptr %57, align 8, !tbaa !70
+  store i64 %56, ptr %57, align 8, !tbaa !64
   %58 = getelementptr inbounds i8, ptr %5, i64 24
-  %59 = load i64, ptr %58, align 8, !tbaa !52
+  %59 = load i64, ptr %58, align 8, !tbaa !47
   %60 = getelementptr inbounds i8, ptr %5, i64 32
-  %61 = load i32, ptr %60, align 8, !tbaa !51
+  %61 = load i32, ptr %60, align 8, !tbaa !46
   %62 = getelementptr inbounds i8, ptr %0, i64 480
-  %63 = load i32, ptr %62, align 8, !tbaa !72
+  %63 = load i32, ptr %62, align 8, !tbaa !66
   %64 = icmp sgt i32 %63, 0
   br i1 %64, label %65, label %102
 
@@ -1071,8 +1071,8 @@ define internal signext range(i32 0, 2) i32 @decode_mcu_DC_refine(ptr noundef %0
   br i1 %78, label %112, label %79
 
 79:                                               ; preds = %76
-  %80 = load i64, ptr %66, align 8, !tbaa !73
-  %81 = load i32, ptr %67, align 8, !tbaa !74
+  %80 = load i64, ptr %66, align 8, !tbaa !67
+  %81 = load i32, ptr %67, align 8, !tbaa !68
   br label %82
 
 82:                                               ; preds = %79, %69
@@ -1086,22 +1086,22 @@ define internal signext range(i32 0, 2) i32 @decode_mcu_DC_refine(ptr noundef %0
   br i1 %89, label %93, label %90
 
 90:                                               ; preds = %82
-  %91 = load i16, ptr %74, align 2, !tbaa !75
+  %91 = load i16, ptr %74, align 2, !tbaa !69
   %92 = or i16 %91, %68
-  store i16 %92, ptr %74, align 2, !tbaa !75
+  store i16 %92, ptr %74, align 2, !tbaa !69
   br label %93
 
 93:                                               ; preds = %82, %90
   %94 = add nuw nsw i64 %70, 1
-  %95 = load i32, ptr %62, align 8, !tbaa !72
+  %95 = load i32, ptr %62, align 8, !tbaa !66
   %96 = sext i32 %95 to i64
   %97 = icmp slt i64 %94, %96
-  br i1 %97, label %69, label %98, !llvm.loop !78
+  br i1 %97, label %69, label %98
 
 98:                                               ; preds = %93
-  %99 = load ptr, ptr %3, align 8, !tbaa !68
-  %100 = load ptr, ptr %52, align 8, !tbaa !65
-  %101 = load i64, ptr %57, align 8, !tbaa !70
+  %99 = load ptr, ptr %3, align 8, !tbaa !62
+  %100 = load ptr, ptr %52, align 8, !tbaa !59
+  %101 = load i64, ptr %57, align 8, !tbaa !64
   br label %102
 
 102:                                              ; preds = %98, %50
@@ -1110,15 +1110,15 @@ define internal signext range(i32 0, 2) i32 @decode_mcu_DC_refine(ptr noundef %0
   %105 = phi ptr [ %54, %50 ], [ %99, %98 ]
   %106 = phi i64 [ %59, %50 ], [ %83, %98 ]
   %107 = phi i32 [ %61, %50 ], [ %85, %98 ]
-  store ptr %105, ptr %104, align 8, !tbaa !66
+  store ptr %105, ptr %104, align 8, !tbaa !60
   %108 = getelementptr inbounds i8, ptr %104, i64 8
-  store i64 %103, ptr %108, align 8, !tbaa !69
-  store i64 %106, ptr %58, align 8, !tbaa !52
-  store i32 %107, ptr %60, align 8, !tbaa !51
+  store i64 %103, ptr %108, align 8, !tbaa !63
+  store i64 %106, ptr %58, align 8, !tbaa !47
+  store i32 %107, ptr %60, align 8, !tbaa !46
   %109 = getelementptr inbounds i8, ptr %5, i64 60
-  %110 = load i32, ptr %109, align 4, !tbaa !56
+  %110 = load i32, ptr %109, align 4, !tbaa !51
   %111 = add i32 %110, -1
-  store i32 %111, ptr %109, align 4, !tbaa !56
+  store i32 %111, ptr %109, align 4, !tbaa !51
   br label %112
 
 112:                                              ; preds = %76, %16, %102
@@ -1134,44 +1134,44 @@ define internal noundef signext i32 @decode_mcu_AC_refine(ptr noundef %0, ptr no
   %5 = getelementptr inbounds i8, ptr %0, i64 592
   %6 = load ptr, ptr %5, align 8, !tbaa !17
   %7 = getelementptr inbounds i8, ptr %0, i64 528
-  %8 = load i32, ptr %7, align 8, !tbaa !30
+  %8 = load i32, ptr %7, align 8, !tbaa !28
   %9 = getelementptr inbounds i8, ptr %0, i64 536
-  %10 = load i32, ptr %9, align 8, !tbaa !33
+  %10 = load i32, ptr %9, align 8, !tbaa !31
   %11 = shl nuw i32 1, %10
   %12 = shl nsw i32 -1, %10
   call void @llvm.lifetime.start.p0(i64 40, ptr nonnull %3) #6
   call void @llvm.lifetime.start.p0(i64 256, ptr nonnull %4) #6
   %13 = getelementptr inbounds i8, ptr %0, i64 368
-  %14 = load i32, ptr %13, align 8, !tbaa !55
+  %14 = load i32, ptr %13, align 8, !tbaa !50
   %15 = icmp eq i32 %14, 0
   br i1 %15, label %54, label %16
 
 16:                                               ; preds = %2
   %17 = getelementptr inbounds i8, ptr %6, i64 60
-  %18 = load i32, ptr %17, align 4, !tbaa !56
+  %18 = load i32, ptr %17, align 4, !tbaa !51
   %19 = icmp eq i32 %18, 0
   br i1 %19, label %20, label %54
 
 20:                                               ; preds = %16
   %21 = getelementptr inbounds i8, ptr %6, i64 32
-  %22 = load i32, ptr %21, align 8, !tbaa !51
+  %22 = load i32, ptr %21, align 8, !tbaa !46
   %23 = sdiv i32 %22, 8
   %24 = getelementptr inbounds i8, ptr %0, i64 584
-  %25 = load ptr, ptr %24, align 8, !tbaa !57
+  %25 = load ptr, ptr %24, align 8, !tbaa !52
   %26 = getelementptr inbounds i8, ptr %25, i64 36
-  %27 = load i32, ptr %26, align 4, !tbaa !58
+  %27 = load i32, ptr %26, align 4, !tbaa !53
   %28 = add i32 %27, %23
-  store i32 %28, ptr %26, align 4, !tbaa !58
-  store i32 0, ptr %21, align 8, !tbaa !51
+  store i32 %28, ptr %26, align 4, !tbaa !53
+  store i32 0, ptr %21, align 8, !tbaa !46
   %29 = getelementptr inbounds i8, ptr %25, i64 16
-  %30 = load ptr, ptr %29, align 8, !tbaa !60
+  %30 = load ptr, ptr %29, align 8, !tbaa !55
   %31 = tail call signext i32 %30(ptr noundef nonnull %0) #6
   %32 = icmp eq i32 %31, 0
   br i1 %32, label %339, label %33
 
 33:                                               ; preds = %20
   %34 = getelementptr inbounds i8, ptr %0, i64 432
-  %35 = load i32, ptr %34, align 8, !tbaa !31
+  %35 = load i32, ptr %34, align 8, !tbaa !29
   %36 = icmp sgt i32 %35, 0
   br i1 %36, label %37, label %46
 
@@ -1184,54 +1184,54 @@ define internal noundef signext i32 @decode_mcu_AC_refine(ptr noundef %0, ptr no
   %41 = getelementptr inbounds [4 x i32], ptr %38, i64 0, i64 %40
   store i32 0, ptr %41, align 4, !tbaa !26
   %42 = add nuw nsw i64 %40, 1
-  %43 = load i32, ptr %34, align 8, !tbaa !31
+  %43 = load i32, ptr %34, align 8, !tbaa !29
   %44 = sext i32 %43 to i64
   %45 = icmp slt i64 %42, %44
-  br i1 %45, label %39, label %46, !llvm.loop !61
+  br i1 %45, label %39, label %46
 
 46:                                               ; preds = %39, %33
   %47 = getelementptr inbounds i8, ptr %6, i64 40
-  store i32 0, ptr %47, align 8, !tbaa !54
-  %48 = load i32, ptr %13, align 8, !tbaa !55
-  store i32 %48, ptr %17, align 4, !tbaa !56
+  store i32 0, ptr %47, align 8, !tbaa !49
+  %48 = load i32, ptr %13, align 8, !tbaa !50
+  store i32 %48, ptr %17, align 4, !tbaa !51
   %49 = getelementptr inbounds i8, ptr %0, i64 540
-  %50 = load i32, ptr %49, align 4, !tbaa !62
+  %50 = load i32, ptr %49, align 4, !tbaa !56
   %51 = icmp eq i32 %50, 0
   br i1 %51, label %52, label %54
 
 52:                                               ; preds = %46
   %53 = getelementptr inbounds i8, ptr %6, i64 16
-  store i32 0, ptr %53, align 8, !tbaa !53
+  store i32 0, ptr %53, align 8, !tbaa !48
   br label %54
 
 54:                                               ; preds = %46, %52, %16, %2
   %55 = getelementptr inbounds i8, ptr %6, i64 16
-  %56 = load i32, ptr %55, align 8, !tbaa !53
+  %56 = load i32, ptr %55, align 8, !tbaa !48
   %57 = icmp eq i32 %56, 0
   br i1 %57, label %58, label %322
 
 58:                                               ; preds = %54
   %59 = getelementptr inbounds i8, ptr %3, i64 32
-  store ptr %0, ptr %59, align 8, !tbaa !63
+  store ptr %0, ptr %59, align 8, !tbaa !57
   %60 = getelementptr inbounds i8, ptr %0, i64 40
-  %61 = load ptr, ptr %60, align 8, !tbaa !65
-  %62 = load ptr, ptr %61, align 8, !tbaa !66
-  store ptr %62, ptr %3, align 8, !tbaa !68
+  %61 = load ptr, ptr %60, align 8, !tbaa !59
+  %62 = load ptr, ptr %61, align 8, !tbaa !60
+  store ptr %62, ptr %3, align 8, !tbaa !62
   %63 = getelementptr inbounds i8, ptr %61, i64 8
-  %64 = load i64, ptr %63, align 8, !tbaa !69
+  %64 = load i64, ptr %63, align 8, !tbaa !63
   %65 = getelementptr inbounds i8, ptr %3, i64 8
-  store i64 %64, ptr %65, align 8, !tbaa !70
+  store i64 %64, ptr %65, align 8, !tbaa !64
   %66 = getelementptr inbounds i8, ptr %6, i64 24
-  %67 = load i64, ptr %66, align 8, !tbaa !52
+  %67 = load i64, ptr %66, align 8, !tbaa !47
   %68 = getelementptr inbounds i8, ptr %6, i64 32
-  %69 = load i32, ptr %68, align 8, !tbaa !51
+  %69 = load i32, ptr %68, align 8, !tbaa !46
   %70 = getelementptr inbounds i8, ptr %6, i64 40
-  %71 = load i32, ptr %70, align 8, !tbaa !54
+  %71 = load i32, ptr %70, align 8, !tbaa !49
   %72 = load ptr, ptr %1, align 8, !tbaa !23
   %73 = getelementptr inbounds i8, ptr %6, i64 96
-  %74 = load ptr, ptr %73, align 8, !tbaa !50
+  %74 = load ptr, ptr %73, align 8, !tbaa !45
   %75 = getelementptr inbounds i8, ptr %0, i64 524
-  %76 = load i32, ptr %75, align 4, !tbaa !29
+  %76 = load i32, ptr %75, align 4, !tbaa !27
   %77 = icmp ne i32 %71, 0
   %78 = icmp sgt i32 %76, %8
   %79 = select i1 %77, i1 true, i1 %78
@@ -1258,8 +1258,8 @@ define internal noundef signext i32 @decode_mcu_AC_refine(ptr noundef %0, ptr no
   br i1 %93, label %326, label %94
 
 94:                                               ; preds = %91
-  %95 = load i64, ptr %81, align 8, !tbaa !73
-  %96 = load i32, ptr %82, align 8, !tbaa !74
+  %95 = load i64, ptr %81, align 8, !tbaa !67
+  %96 = load i32, ptr %82, align 8, !tbaa !68
   %97 = icmp slt i32 %96, 8
   br i1 %97, label %113, label %98
 
@@ -1278,7 +1278,7 @@ define internal noundef signext i32 @decode_mcu_AC_refine(ptr noundef %0, ptr no
 108:                                              ; preds = %98
   %109 = sub nsw i32 %100, %106
   %110 = getelementptr inbounds [256 x i8], ptr %84, i64 0, i64 %104
-  %111 = load i8, ptr %110, align 1, !tbaa !37
+  %111 = load i8, ptr %110, align 1, !tbaa !35
   %112 = zext i8 %111 to i32
   br label %122
 
@@ -1291,8 +1291,8 @@ define internal noundef signext i32 @decode_mcu_AC_refine(ptr noundef %0, ptr no
   br i1 %118, label %326, label %119
 
 119:                                              ; preds = %113
-  %120 = load i64, ptr %81, align 8, !tbaa !73
-  %121 = load i32, ptr %82, align 8, !tbaa !74
+  %120 = load i64, ptr %81, align 8, !tbaa !67
+  %121 = load i32, ptr %82, align 8, !tbaa !68
   br label %122
 
 122:                                              ; preds = %119, %108
@@ -1307,11 +1307,11 @@ define internal noundef signext i32 @decode_mcu_AC_refine(ptr noundef %0, ptr no
   ]
 
 128:                                              ; preds = %122
-  %129 = load ptr, ptr %0, align 8, !tbaa !34
+  %129 = load ptr, ptr %0, align 8, !tbaa !32
   %130 = getelementptr inbounds i8, ptr %129, i64 40
-  store i32 118, ptr %130, align 8, !tbaa !35
+  store i32 118, ptr %130, align 8, !tbaa !33
   %131 = getelementptr inbounds i8, ptr %129, i64 8
-  %132 = load ptr, ptr %131, align 8, !tbaa !41
+  %132 = load ptr, ptr %131, align 8, !tbaa !39
   call void %132(ptr noundef nonnull %0, i32 noundef signext -1) #6
   br label %133
 
@@ -1325,8 +1325,8 @@ define internal noundef signext i32 @decode_mcu_AC_refine(ptr noundef %0, ptr no
   br i1 %137, label %326, label %138
 
 138:                                              ; preds = %135
-  %139 = load i64, ptr %81, align 8, !tbaa !73
-  %140 = load i32, ptr %82, align 8, !tbaa !74
+  %139 = load i64, ptr %81, align 8, !tbaa !67
+  %140 = load i32, ptr %82, align 8, !tbaa !68
   br label %141
 
 141:                                              ; preds = %138, %133
@@ -1359,8 +1359,8 @@ define internal noundef signext i32 @decode_mcu_AC_refine(ptr noundef %0, ptr no
   br i1 %159, label %326, label %160
 
 160:                                              ; preds = %157
-  %161 = load i64, ptr %81, align 8, !tbaa !73
-  %162 = load i32, ptr %82, align 8, !tbaa !74
+  %161 = load i64, ptr %81, align 8, !tbaa !67
+  %162 = load i32, ptr %82, align 8, !tbaa !68
   br label %163
 
 163:                                              ; preds = %160, %155
@@ -1395,7 +1395,7 @@ define internal noundef signext i32 @decode_mcu_AC_refine(ptr noundef %0, ptr no
   %188 = load i32, ptr %187, align 4, !tbaa !26
   %189 = sext i32 %188 to i64
   %190 = getelementptr inbounds i16, ptr %72, i64 %189
-  %191 = load i16, ptr %190, align 2, !tbaa !75
+  %191 = load i16, ptr %190, align 2, !tbaa !69
   %192 = icmp eq i16 %191, 0
   br i1 %192, label %219, label %193
 
@@ -1409,8 +1409,8 @@ define internal noundef signext i32 @decode_mcu_AC_refine(ptr noundef %0, ptr no
   br i1 %197, label %326, label %198
 
 198:                                              ; preds = %195
-  %199 = load i64, ptr %81, align 8, !tbaa !73
-  %200 = load i32, ptr %82, align 8, !tbaa !74
+  %199 = load i64, ptr %81, align 8, !tbaa !67
+  %200 = load i32, ptr %82, align 8, !tbaa !68
   br label %201
 
 201:                                              ; preds = %198, %193
@@ -1424,7 +1424,7 @@ define internal noundef signext i32 @decode_mcu_AC_refine(ptr noundef %0, ptr no
   br i1 %208, label %222, label %209
 
 209:                                              ; preds = %201
-  %210 = load i16, ptr %190, align 2, !tbaa !75
+  %210 = load i16, ptr %190, align 2, !tbaa !69
   %211 = sext i16 %210 to i32
   %212 = and i32 %11, %211
   %213 = icmp eq i32 %212, 0
@@ -1435,7 +1435,7 @@ define internal noundef signext i32 @decode_mcu_AC_refine(ptr noundef %0, ptr no
   %216 = select i1 %215, i32 %12, i32 %11
   %217 = trunc i32 %216 to i16
   %218 = add i16 %210, %217
-  store i16 %218, ptr %190, align 2, !tbaa !75
+  store i16 %218, ptr %190, align 2, !tbaa !69
   br label %222
 
 219:                                              ; preds = %182
@@ -1449,7 +1449,7 @@ define internal noundef signext i32 @decode_mcu_AC_refine(ptr noundef %0, ptr no
   %225 = phi i32 [ %204, %209 ], [ %204, %201 ], [ %186, %219 ], [ %204, %214 ]
   %226 = add nsw i64 %183, 1
   %227 = icmp eq i64 %183, %181
-  br i1 %227, label %230, label %182, !llvm.loop !79
+  br i1 %227, label %230, label %182
 
 228:                                              ; preds = %219
   %229 = trunc nsw i64 %183 to i32
@@ -1469,7 +1469,7 @@ define internal noundef signext i32 @decode_mcu_AC_refine(ptr noundef %0, ptr no
   %239 = trunc i32 %176 to i16
   %240 = sext i32 %238 to i64
   %241 = getelementptr inbounds [64 x i16], ptr %72, i64 0, i64 %240
-  store i16 %239, ptr %241, align 2, !tbaa !75
+  store i16 %239, ptr %241, align 2, !tbaa !69
   %242 = add nsw i32 %86, 1
   %243 = sext i32 %86 to i64
   %244 = getelementptr inbounds [64 x i32], ptr %4, i64 0, i64 %243
@@ -1480,7 +1480,7 @@ define internal noundef signext i32 @decode_mcu_AC_refine(ptr noundef %0, ptr no
   %246 = phi i32 [ %242, %235 ], [ %86, %230 ]
   %247 = add nsw i32 %233, 1
   %248 = icmp slt i32 %233, %8
-  br i1 %248, label %85, label %314, !llvm.loop !80
+  br i1 %248, label %85, label %314
 
 249:                                              ; preds = %163, %58
   %250 = phi i32 [ %172, %163 ], [ %71, %58 ]
@@ -1515,7 +1515,7 @@ define internal noundef signext i32 @decode_mcu_AC_refine(ptr noundef %0, ptr no
   %273 = load i32, ptr %272, align 4, !tbaa !26
   %274 = sext i32 %273 to i64
   %275 = getelementptr inbounds i16, ptr %72, i64 %274
-  %276 = load i16, ptr %275, align 2, !tbaa !75
+  %276 = load i16, ptr %275, align 2, !tbaa !69
   %277 = icmp eq i16 %276, 0
   br i1 %277, label %304, label %278
 
@@ -1529,8 +1529,8 @@ define internal noundef signext i32 @decode_mcu_AC_refine(ptr noundef %0, ptr no
   br i1 %282, label %326, label %283
 
 283:                                              ; preds = %280
-  %284 = load i64, ptr %264, align 8, !tbaa !73
-  %285 = load i32, ptr %265, align 8, !tbaa !74
+  %284 = load i64, ptr %264, align 8, !tbaa !67
+  %285 = load i32, ptr %265, align 8, !tbaa !68
   br label %286
 
 286:                                              ; preds = %283, %278
@@ -1544,7 +1544,7 @@ define internal noundef signext i32 @decode_mcu_AC_refine(ptr noundef %0, ptr no
   br i1 %293, label %304, label %294
 
 294:                                              ; preds = %286
-  %295 = load i16, ptr %275, align 2, !tbaa !75
+  %295 = load i16, ptr %275, align 2, !tbaa !69
   %296 = sext i16 %295 to i32
   %297 = and i32 %11, %296
   %298 = icmp eq i32 %297, 0
@@ -1555,7 +1555,7 @@ define internal noundef signext i32 @decode_mcu_AC_refine(ptr noundef %0, ptr no
   %301 = select i1 %300, i32 %12, i32 %11
   %302 = trunc i32 %301 to i16
   %303 = add i16 %295, %302
-  store i16 %303, ptr %275, align 2, !tbaa !75
+  store i16 %303, ptr %275, align 2, !tbaa !69
   br label %304
 
 304:                                              ; preds = %299, %268, %294, %286
@@ -1564,7 +1564,7 @@ define internal noundef signext i32 @decode_mcu_AC_refine(ptr noundef %0, ptr no
   %307 = add nsw i64 %269, 1
   %308 = trunc i64 %307 to i32
   %309 = icmp eq i32 %267, %308
-  br i1 %309, label %310, label %268, !llvm.loop !81
+  br i1 %309, label %310, label %268
 
 310:                                              ; preds = %304, %256
   %311 = phi i64 [ %260, %256 ], [ %305, %304 ]
@@ -1576,22 +1576,22 @@ define internal noundef signext i32 @decode_mcu_AC_refine(ptr noundef %0, ptr no
   %315 = phi i32 [ %313, %310 ], [ 0, %249 ], [ 0, %245 ]
   %316 = phi i64 [ %311, %310 ], [ %251, %249 ], [ %231, %245 ]
   %317 = phi i32 [ %312, %310 ], [ %252, %249 ], [ %232, %245 ]
-  %318 = load ptr, ptr %3, align 8, !tbaa !68
-  %319 = load ptr, ptr %60, align 8, !tbaa !65
-  store ptr %318, ptr %319, align 8, !tbaa !66
-  %320 = load i64, ptr %65, align 8, !tbaa !70
+  %318 = load ptr, ptr %3, align 8, !tbaa !62
+  %319 = load ptr, ptr %60, align 8, !tbaa !59
+  store ptr %318, ptr %319, align 8, !tbaa !60
+  %320 = load i64, ptr %65, align 8, !tbaa !64
   %321 = getelementptr inbounds i8, ptr %319, i64 8
-  store i64 %320, ptr %321, align 8, !tbaa !69
-  store i64 %316, ptr %66, align 8, !tbaa !52
-  store i32 %317, ptr %68, align 8, !tbaa !51
-  store i32 %315, ptr %70, align 8, !tbaa !54
+  store i64 %320, ptr %321, align 8, !tbaa !63
+  store i64 %316, ptr %66, align 8, !tbaa !47
+  store i32 %317, ptr %68, align 8, !tbaa !46
+  store i32 %315, ptr %70, align 8, !tbaa !49
   br label %322
 
 322:                                              ; preds = %314, %54
   %323 = getelementptr inbounds i8, ptr %6, i64 60
-  %324 = load i32, ptr %323, align 4, !tbaa !56
+  %324 = load i32, ptr %323, align 4, !tbaa !51
   %325 = add i32 %324, -1
-  store i32 %325, ptr %323, align 4, !tbaa !56
+  store i32 %325, ptr %323, align 4, !tbaa !51
   br label %339
 
 326:                                              ; preds = %91, %113, %135, %195, %280, %157
@@ -1610,9 +1610,9 @@ define internal noundef signext i32 @decode_mcu_AC_refine(ptr noundef %0, ptr no
   %335 = load i32, ptr %334, align 4, !tbaa !26
   %336 = sext i32 %335 to i64
   %337 = getelementptr inbounds [64 x i16], ptr %72, i64 0, i64 %336
-  store i16 0, ptr %337, align 2, !tbaa !75
+  store i16 0, ptr %337, align 2, !tbaa !69
   %338 = icmp ugt i64 %332, 1
-  br i1 %338, label %331, label %339, !llvm.loop !82
+  br i1 %338, label %331, label %339
 
 339:                                              ; preds = %331, %326, %20, %322
   %340 = phi i32 [ 1, %322 ], [ 0, %20 ], [ 0, %326 ], [ 0, %331 ]
@@ -1674,59 +1674,46 @@ attributes #6 = { nounwind }
 !24 = !{!7, !11, i64 56}
 !25 = !{!7, !8, i64 192}
 !26 = !{!11, !11, i64 0}
-!27 = distinct !{!27, !28}
-!28 = !{!"llvm.loop.mustprogress"}
-!29 = !{!7, !11, i64 524}
-!30 = !{!7, !11, i64 528}
-!31 = !{!7, !11, i64 432}
-!32 = !{!7, !11, i64 532}
-!33 = !{!7, !11, i64 536}
-!34 = !{!7, !8, i64 0}
-!35 = !{!36, !11, i64 40}
-!36 = !{!"jpeg_error_mgr", !8, i64 0, !8, i64 8, !8, i64 16, !8, i64 24, !8, i64 32, !11, i64 40, !9, i64 44, !11, i64 124, !16, i64 128, !8, i64 136, !11, i64 144, !8, i64 152, !11, i64 160, !11, i64 164}
-!37 = !{!9, !9, i64 0}
-!38 = !{!36, !8, i64 0}
-!39 = !{!40, !11, i64 4}
-!40 = !{!"", !11, i64 0, !11, i64 4, !11, i64 8, !11, i64 12, !11, i64 16, !11, i64 20, !11, i64 24, !11, i64 28, !11, i64 32, !11, i64 36, !11, i64 40, !11, i64 44, !11, i64 48, !11, i64 52, !11, i64 56, !11, i64 60, !11, i64 64, !11, i64 68, !11, i64 72, !8, i64 80, !8, i64 88}
-!41 = !{!36, !8, i64 8}
-!42 = distinct !{!42, !28}
-!43 = distinct !{!43, !28, !44}
-!44 = !{!"llvm.loop.unswitch.partial.disable"}
-!45 = distinct !{!45, !28}
-!46 = !{!19, !8, i64 8}
-!47 = !{!40, !11, i64 20}
-!48 = distinct !{!48, !28}
-!49 = !{!40, !11, i64 24}
-!50 = !{!19, !8, i64 96}
-!51 = !{!19, !11, i64 32}
-!52 = !{!19, !16, i64 24}
-!53 = !{!19, !11, i64 16}
-!54 = !{!19, !11, i64 40}
-!55 = !{!7, !11, i64 368}
-!56 = !{!19, !11, i64 60}
-!57 = !{!7, !8, i64 584}
-!58 = !{!59, !11, i64 36}
-!59 = !{!"jpeg_marker_reader", !8, i64 0, !8, i64 8, !8, i64 16, !11, i64 24, !11, i64 28, !11, i64 32, !11, i64 36}
-!60 = !{!59, !8, i64 16}
-!61 = distinct !{!61, !28}
-!62 = !{!7, !11, i64 540}
-!63 = !{!64, !8, i64 32}
-!64 = !{!"", !8, i64 0, !16, i64 8, !16, i64 16, !11, i64 24, !8, i64 32}
-!65 = !{!7, !8, i64 40}
-!66 = !{!67, !8, i64 0}
-!67 = !{!"jpeg_source_mgr", !8, i64 0, !16, i64 8, !8, i64 16, !8, i64 24, !8, i64 32, !8, i64 40, !8, i64 48}
-!68 = !{!64, !8, i64 0}
-!69 = !{!67, !16, i64 8}
-!70 = !{!64, !16, i64 8}
-!71 = !{i64 0, i64 4, !26, i64 4, i64 16, !37}
-!72 = !{!7, !11, i64 480}
-!73 = !{!64, !16, i64 16}
-!74 = !{!64, !11, i64 24}
-!75 = !{!13, !13, i64 0}
-!76 = distinct !{!76, !28}
-!77 = distinct !{!77, !28}
-!78 = distinct !{!78, !28}
-!79 = distinct !{!79, !28}
-!80 = distinct !{!80, !28}
-!81 = distinct !{!81, !28}
-!82 = distinct !{!82, !28}
+!27 = !{!7, !11, i64 524}
+!28 = !{!7, !11, i64 528}
+!29 = !{!7, !11, i64 432}
+!30 = !{!7, !11, i64 532}
+!31 = !{!7, !11, i64 536}
+!32 = !{!7, !8, i64 0}
+!33 = !{!34, !11, i64 40}
+!34 = !{!"jpeg_error_mgr", !8, i64 0, !8, i64 8, !8, i64 16, !8, i64 24, !8, i64 32, !11, i64 40, !9, i64 44, !11, i64 124, !16, i64 128, !8, i64 136, !11, i64 144, !8, i64 152, !11, i64 160, !11, i64 164}
+!35 = !{!9, !9, i64 0}
+!36 = !{!34, !8, i64 0}
+!37 = !{!38, !11, i64 4}
+!38 = !{!"", !11, i64 0, !11, i64 4, !11, i64 8, !11, i64 12, !11, i64 16, !11, i64 20, !11, i64 24, !11, i64 28, !11, i64 32, !11, i64 36, !11, i64 40, !11, i64 44, !11, i64 48, !11, i64 52, !11, i64 56, !11, i64 60, !11, i64 64, !11, i64 68, !11, i64 72, !8, i64 80, !8, i64 88}
+!39 = !{!34, !8, i64 8}
+!40 = distinct !{!40, !41}
+!41 = !{!"llvm.loop.unswitch.partial.disable"}
+!42 = !{!19, !8, i64 8}
+!43 = !{!38, !11, i64 20}
+!44 = !{!38, !11, i64 24}
+!45 = !{!19, !8, i64 96}
+!46 = !{!19, !11, i64 32}
+!47 = !{!19, !16, i64 24}
+!48 = !{!19, !11, i64 16}
+!49 = !{!19, !11, i64 40}
+!50 = !{!7, !11, i64 368}
+!51 = !{!19, !11, i64 60}
+!52 = !{!7, !8, i64 584}
+!53 = !{!54, !11, i64 36}
+!54 = !{!"jpeg_marker_reader", !8, i64 0, !8, i64 8, !8, i64 16, !11, i64 24, !11, i64 28, !11, i64 32, !11, i64 36}
+!55 = !{!54, !8, i64 16}
+!56 = !{!7, !11, i64 540}
+!57 = !{!58, !8, i64 32}
+!58 = !{!"", !8, i64 0, !16, i64 8, !16, i64 16, !11, i64 24, !8, i64 32}
+!59 = !{!7, !8, i64 40}
+!60 = !{!61, !8, i64 0}
+!61 = !{!"jpeg_source_mgr", !8, i64 0, !16, i64 8, !8, i64 16, !8, i64 24, !8, i64 32, !8, i64 40, !8, i64 48}
+!62 = !{!58, !8, i64 0}
+!63 = !{!61, !16, i64 8}
+!64 = !{!58, !16, i64 8}
+!65 = !{i64 0, i64 4, !26, i64 4, i64 16, !35}
+!66 = !{!7, !11, i64 480}
+!67 = !{!58, !16, i64 16}
+!68 = !{!58, !11, i64 24}
+!69 = !{!13, !13, i64 0}

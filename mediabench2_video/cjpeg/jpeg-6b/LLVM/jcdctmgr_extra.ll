@@ -152,7 +152,7 @@ define internal void @start_pass_fdctmgr(ptr noundef %0) #0 {
   store i32 %56, ptr %57, align 4, !tbaa !36
   %58 = add nuw nsw i64 %52, 1
   %59 = icmp eq i64 %58, 64
-  br i1 %59, label %184, label %51, !llvm.loop !37
+  br i1 %59, label %184, label %51
 
 60:                                               ; preds = %37
   %61 = getelementptr inbounds [4 x ptr], ptr %14, i64 0, i64 %38
@@ -187,7 +187,7 @@ define internal void @start_pass_fdctmgr(ptr noundef %0) #0 {
   store i32 %81, ptr %82, align 4, !tbaa !36
   %83 = add nuw nsw i64 %71, 1
   %84 = icmp eq i64 %83, 64
-  br i1 %84, label %184, label %70, !llvm.loop !39
+  br i1 %84, label %184, label %70
 
 85:                                               ; preds = %37
   %86 = getelementptr inbounds [4 x ptr], ptr %12, i64 0, i64 %38
@@ -210,7 +210,7 @@ define internal void @start_pass_fdctmgr(ptr noundef %0) #0 {
   %96 = phi i64 [ 0, %93 ], [ %178, %95 ]
   %97 = phi i64 [ 0, %93 ], [ %177, %95 ]
   %98 = getelementptr inbounds [8 x double], ptr @start_pass_fdctmgr.aanscalefactor, i64 0, i64 %97
-  %99 = load double, ptr %98, align 8, !tbaa !40
+  %99 = load double, ptr %98, align 8, !tbaa !37
   %100 = getelementptr inbounds [64 x i16], ptr %39, i64 0, i64 %96
   %101 = load i16, ptr %100, align 2, !tbaa !35
   %102 = uitofp i16 %101 to double
@@ -219,7 +219,7 @@ define internal void @start_pass_fdctmgr(ptr noundef %0) #0 {
   %105 = fdiv double 1.000000e+00, %104
   %106 = fptrunc double %105 to float
   %107 = getelementptr inbounds float, ptr %94, i64 %96
-  store float %106, ptr %107, align 4, !tbaa !41
+  store float %106, ptr %107, align 4, !tbaa !38
   %108 = or disjoint i64 %96, 1
   %109 = getelementptr inbounds [64 x i16], ptr %39, i64 0, i64 %108
   %110 = load i16, ptr %109, align 2, !tbaa !35
@@ -230,7 +230,7 @@ define internal void @start_pass_fdctmgr(ptr noundef %0) #0 {
   %115 = fdiv double 1.000000e+00, %114
   %116 = fptrunc double %115 to float
   %117 = getelementptr inbounds float, ptr %94, i64 %108
-  store float %116, ptr %117, align 4, !tbaa !41
+  store float %116, ptr %117, align 4, !tbaa !38
   %118 = or disjoint i64 %96, 2
   %119 = getelementptr inbounds [64 x i16], ptr %39, i64 0, i64 %118
   %120 = load i16, ptr %119, align 2, !tbaa !35
@@ -241,7 +241,7 @@ define internal void @start_pass_fdctmgr(ptr noundef %0) #0 {
   %125 = fdiv double 1.000000e+00, %124
   %126 = fptrunc double %125 to float
   %127 = getelementptr inbounds float, ptr %94, i64 %118
-  store float %126, ptr %127, align 4, !tbaa !41
+  store float %126, ptr %127, align 4, !tbaa !38
   %128 = or disjoint i64 %96, 3
   %129 = getelementptr inbounds [64 x i16], ptr %39, i64 0, i64 %128
   %130 = load i16, ptr %129, align 2, !tbaa !35
@@ -252,7 +252,7 @@ define internal void @start_pass_fdctmgr(ptr noundef %0) #0 {
   %135 = fdiv double 1.000000e+00, %134
   %136 = fptrunc double %135 to float
   %137 = getelementptr inbounds float, ptr %94, i64 %128
-  store float %136, ptr %137, align 4, !tbaa !41
+  store float %136, ptr %137, align 4, !tbaa !38
   %138 = or disjoint i64 %96, 4
   %139 = getelementptr inbounds [64 x i16], ptr %39, i64 0, i64 %138
   %140 = load i16, ptr %139, align 2, !tbaa !35
@@ -262,7 +262,7 @@ define internal void @start_pass_fdctmgr(ptr noundef %0) #0 {
   %144 = fdiv double 1.000000e+00, %143
   %145 = fptrunc double %144 to float
   %146 = getelementptr inbounds float, ptr %94, i64 %138
-  store float %145, ptr %146, align 4, !tbaa !41
+  store float %145, ptr %146, align 4, !tbaa !38
   %147 = or disjoint i64 %96, 5
   %148 = getelementptr inbounds [64 x i16], ptr %39, i64 0, i64 %147
   %149 = load i16, ptr %148, align 2, !tbaa !35
@@ -273,7 +273,7 @@ define internal void @start_pass_fdctmgr(ptr noundef %0) #0 {
   %154 = fdiv double 1.000000e+00, %153
   %155 = fptrunc double %154 to float
   %156 = getelementptr inbounds float, ptr %94, i64 %147
-  store float %155, ptr %156, align 4, !tbaa !41
+  store float %155, ptr %156, align 4, !tbaa !38
   %157 = or disjoint i64 %96, 6
   %158 = getelementptr inbounds [64 x i16], ptr %39, i64 0, i64 %157
   %159 = load i16, ptr %158, align 2, !tbaa !35
@@ -284,7 +284,7 @@ define internal void @start_pass_fdctmgr(ptr noundef %0) #0 {
   %164 = fdiv double 1.000000e+00, %163
   %165 = fptrunc double %164 to float
   %166 = getelementptr inbounds float, ptr %94, i64 %157
-  store float %165, ptr %166, align 4, !tbaa !41
+  store float %165, ptr %166, align 4, !tbaa !38
   %167 = or disjoint i64 %96, 7
   %168 = getelementptr inbounds [64 x i16], ptr %39, i64 0, i64 %167
   %169 = load i16, ptr %168, align 2, !tbaa !35
@@ -295,11 +295,11 @@ define internal void @start_pass_fdctmgr(ptr noundef %0) #0 {
   %174 = fdiv double 1.000000e+00, %173
   %175 = fptrunc double %174 to float
   %176 = getelementptr inbounds float, ptr %94, i64 %167
-  store float %175, ptr %176, align 4, !tbaa !41
+  store float %175, ptr %176, align 4, !tbaa !38
   %177 = add nuw nsw i64 %97, 1
   %178 = add nuw nsw i64 %96, 8
   %179 = icmp eq i64 %177, 8
-  br i1 %179, label %184, label %95, !llvm.loop !43
+  br i1 %179, label %184, label %95
 
 180:                                              ; preds = %37
   %181 = load ptr, ptr %0, align 8, !tbaa !25
@@ -314,7 +314,7 @@ define internal void @start_pass_fdctmgr(ptr noundef %0) #0 {
   %186 = getelementptr inbounds i8, ptr %17, i64 96
   %187 = load i32, ptr %2, align 4, !tbaa !30
   %188 = icmp slt i32 %185, %187
-  br i1 %188, label %15, label %189, !llvm.loop !44
+  br i1 %188, label %15, label %189
 
 189:                                              ; preds = %184, %1
   ret void
@@ -789,13 +789,13 @@ define internal void @forward_DCT(ptr nocapture noundef readonly %0, ptr nocaptu
   store i16 %386, ptr %387, align 2, !tbaa !35
   %388 = add nuw nsw i64 %364, 1
   %389 = icmp eq i64 %388, 64
-  br i1 %389, label %390, label %363, !llvm.loop !45
+  br i1 %389, label %390, label %363
 
 390:                                              ; preds = %384
   %391 = add nuw nsw i64 %95, 1
   %392 = add i32 %96, 8
   %393 = icmp eq i64 %391, %23
-  br i1 %393, label %394, label %94, !llvm.loop !46
+  br i1 %393, label %394, label %94
 
 394:                                              ; preds = %390, %7
   call void @llvm.lifetime.end.p0(i64 256, ptr nonnull %8) #4
@@ -910,48 +910,48 @@ define internal void @forward_DCT_float(ptr nocapture noundef readonly %0, ptr n
   %102 = zext i8 %101 to i32
   %103 = add nsw i32 %102, -128
   %104 = sitofp i32 %103 to float
-  store float %104, ptr %8, align 4, !tbaa !41
+  store float %104, ptr %8, align 4, !tbaa !38
   %105 = getelementptr inbounds i8, ptr %99, i64 2
   %106 = load i8, ptr %100, align 1, !tbaa !34
   %107 = zext i8 %106 to i32
   %108 = add nsw i32 %107, -128
   %109 = sitofp i32 %108 to float
-  store float %109, ptr %24, align 4, !tbaa !41
+  store float %109, ptr %24, align 4, !tbaa !38
   %110 = getelementptr inbounds i8, ptr %99, i64 3
   %111 = load i8, ptr %105, align 1, !tbaa !34
   %112 = zext i8 %111 to i32
   %113 = add nsw i32 %112, -128
   %114 = sitofp i32 %113 to float
-  store float %114, ptr %25, align 4, !tbaa !41
+  store float %114, ptr %25, align 4, !tbaa !38
   %115 = getelementptr inbounds i8, ptr %99, i64 4
   %116 = load i8, ptr %110, align 1, !tbaa !34
   %117 = zext i8 %116 to i32
   %118 = add nsw i32 %117, -128
   %119 = sitofp i32 %118 to float
-  store float %119, ptr %26, align 4, !tbaa !41
+  store float %119, ptr %26, align 4, !tbaa !38
   %120 = getelementptr inbounds i8, ptr %99, i64 5
   %121 = load i8, ptr %115, align 1, !tbaa !34
   %122 = zext i8 %121 to i32
   %123 = add nsw i32 %122, -128
   %124 = sitofp i32 %123 to float
-  store float %124, ptr %27, align 4, !tbaa !41
+  store float %124, ptr %27, align 4, !tbaa !38
   %125 = getelementptr inbounds i8, ptr %99, i64 6
   %126 = load i8, ptr %120, align 1, !tbaa !34
   %127 = zext i8 %126 to i32
   %128 = add nsw i32 %127, -128
   %129 = sitofp i32 %128 to float
-  store float %129, ptr %28, align 4, !tbaa !41
+  store float %129, ptr %28, align 4, !tbaa !38
   %130 = getelementptr inbounds i8, ptr %99, i64 7
   %131 = load i8, ptr %125, align 1, !tbaa !34
   %132 = zext i8 %131 to i32
   %133 = add nsw i32 %132, -128
   %134 = sitofp i32 %133 to float
-  store float %134, ptr %29, align 4, !tbaa !41
+  store float %134, ptr %29, align 4, !tbaa !38
   %135 = load i8, ptr %130, align 1, !tbaa !34
   %136 = zext i8 %135 to i32
   %137 = add nsw i32 %136, -128
   %138 = sitofp i32 %137 to float
-  store float %138, ptr %30, align 4, !tbaa !41
+  store float %138, ptr %30, align 4, !tbaa !38
   %139 = load ptr, ptr %32, align 8, !tbaa !29
   %140 = getelementptr inbounds i8, ptr %139, i64 %97
   %141 = getelementptr inbounds i8, ptr %140, i64 1
@@ -959,48 +959,48 @@ define internal void @forward_DCT_float(ptr nocapture noundef readonly %0, ptr n
   %143 = zext i8 %142 to i32
   %144 = add nsw i32 %143, -128
   %145 = sitofp i32 %144 to float
-  store float %145, ptr %31, align 4, !tbaa !41
+  store float %145, ptr %31, align 4, !tbaa !38
   %146 = getelementptr inbounds i8, ptr %140, i64 2
   %147 = load i8, ptr %141, align 1, !tbaa !34
   %148 = zext i8 %147 to i32
   %149 = add nsw i32 %148, -128
   %150 = sitofp i32 %149 to float
-  store float %150, ptr %33, align 4, !tbaa !41
+  store float %150, ptr %33, align 4, !tbaa !38
   %151 = getelementptr inbounds i8, ptr %140, i64 3
   %152 = load i8, ptr %146, align 1, !tbaa !34
   %153 = zext i8 %152 to i32
   %154 = add nsw i32 %153, -128
   %155 = sitofp i32 %154 to float
-  store float %155, ptr %34, align 4, !tbaa !41
+  store float %155, ptr %34, align 4, !tbaa !38
   %156 = getelementptr inbounds i8, ptr %140, i64 4
   %157 = load i8, ptr %151, align 1, !tbaa !34
   %158 = zext i8 %157 to i32
   %159 = add nsw i32 %158, -128
   %160 = sitofp i32 %159 to float
-  store float %160, ptr %35, align 4, !tbaa !41
+  store float %160, ptr %35, align 4, !tbaa !38
   %161 = getelementptr inbounds i8, ptr %140, i64 5
   %162 = load i8, ptr %156, align 1, !tbaa !34
   %163 = zext i8 %162 to i32
   %164 = add nsw i32 %163, -128
   %165 = sitofp i32 %164 to float
-  store float %165, ptr %36, align 4, !tbaa !41
+  store float %165, ptr %36, align 4, !tbaa !38
   %166 = getelementptr inbounds i8, ptr %140, i64 6
   %167 = load i8, ptr %161, align 1, !tbaa !34
   %168 = zext i8 %167 to i32
   %169 = add nsw i32 %168, -128
   %170 = sitofp i32 %169 to float
-  store float %170, ptr %37, align 4, !tbaa !41
+  store float %170, ptr %37, align 4, !tbaa !38
   %171 = getelementptr inbounds i8, ptr %140, i64 7
   %172 = load i8, ptr %166, align 1, !tbaa !34
   %173 = zext i8 %172 to i32
   %174 = add nsw i32 %173, -128
   %175 = sitofp i32 %174 to float
-  store float %175, ptr %38, align 4, !tbaa !41
+  store float %175, ptr %38, align 4, !tbaa !38
   %176 = load i8, ptr %171, align 1, !tbaa !34
   %177 = zext i8 %176 to i32
   %178 = add nsw i32 %177, -128
   %179 = sitofp i32 %178 to float
-  store float %179, ptr %39, align 4, !tbaa !41
+  store float %179, ptr %39, align 4, !tbaa !38
   %180 = load ptr, ptr %41, align 8, !tbaa !29
   %181 = getelementptr inbounds i8, ptr %180, i64 %97
   %182 = getelementptr inbounds i8, ptr %181, i64 1
@@ -1008,48 +1008,48 @@ define internal void @forward_DCT_float(ptr nocapture noundef readonly %0, ptr n
   %184 = zext i8 %183 to i32
   %185 = add nsw i32 %184, -128
   %186 = sitofp i32 %185 to float
-  store float %186, ptr %40, align 4, !tbaa !41
+  store float %186, ptr %40, align 4, !tbaa !38
   %187 = getelementptr inbounds i8, ptr %181, i64 2
   %188 = load i8, ptr %182, align 1, !tbaa !34
   %189 = zext i8 %188 to i32
   %190 = add nsw i32 %189, -128
   %191 = sitofp i32 %190 to float
-  store float %191, ptr %42, align 4, !tbaa !41
+  store float %191, ptr %42, align 4, !tbaa !38
   %192 = getelementptr inbounds i8, ptr %181, i64 3
   %193 = load i8, ptr %187, align 1, !tbaa !34
   %194 = zext i8 %193 to i32
   %195 = add nsw i32 %194, -128
   %196 = sitofp i32 %195 to float
-  store float %196, ptr %43, align 4, !tbaa !41
+  store float %196, ptr %43, align 4, !tbaa !38
   %197 = getelementptr inbounds i8, ptr %181, i64 4
   %198 = load i8, ptr %192, align 1, !tbaa !34
   %199 = zext i8 %198 to i32
   %200 = add nsw i32 %199, -128
   %201 = sitofp i32 %200 to float
-  store float %201, ptr %44, align 4, !tbaa !41
+  store float %201, ptr %44, align 4, !tbaa !38
   %202 = getelementptr inbounds i8, ptr %181, i64 5
   %203 = load i8, ptr %197, align 1, !tbaa !34
   %204 = zext i8 %203 to i32
   %205 = add nsw i32 %204, -128
   %206 = sitofp i32 %205 to float
-  store float %206, ptr %45, align 4, !tbaa !41
+  store float %206, ptr %45, align 4, !tbaa !38
   %207 = getelementptr inbounds i8, ptr %181, i64 6
   %208 = load i8, ptr %202, align 1, !tbaa !34
   %209 = zext i8 %208 to i32
   %210 = add nsw i32 %209, -128
   %211 = sitofp i32 %210 to float
-  store float %211, ptr %46, align 4, !tbaa !41
+  store float %211, ptr %46, align 4, !tbaa !38
   %212 = getelementptr inbounds i8, ptr %181, i64 7
   %213 = load i8, ptr %207, align 1, !tbaa !34
   %214 = zext i8 %213 to i32
   %215 = add nsw i32 %214, -128
   %216 = sitofp i32 %215 to float
-  store float %216, ptr %47, align 4, !tbaa !41
+  store float %216, ptr %47, align 4, !tbaa !38
   %217 = load i8, ptr %212, align 1, !tbaa !34
   %218 = zext i8 %217 to i32
   %219 = add nsw i32 %218, -128
   %220 = sitofp i32 %219 to float
-  store float %220, ptr %48, align 4, !tbaa !41
+  store float %220, ptr %48, align 4, !tbaa !38
   %221 = load ptr, ptr %50, align 8, !tbaa !29
   %222 = getelementptr inbounds i8, ptr %221, i64 %97
   %223 = getelementptr inbounds i8, ptr %222, i64 1
@@ -1057,48 +1057,48 @@ define internal void @forward_DCT_float(ptr nocapture noundef readonly %0, ptr n
   %225 = zext i8 %224 to i32
   %226 = add nsw i32 %225, -128
   %227 = sitofp i32 %226 to float
-  store float %227, ptr %49, align 4, !tbaa !41
+  store float %227, ptr %49, align 4, !tbaa !38
   %228 = getelementptr inbounds i8, ptr %222, i64 2
   %229 = load i8, ptr %223, align 1, !tbaa !34
   %230 = zext i8 %229 to i32
   %231 = add nsw i32 %230, -128
   %232 = sitofp i32 %231 to float
-  store float %232, ptr %51, align 4, !tbaa !41
+  store float %232, ptr %51, align 4, !tbaa !38
   %233 = getelementptr inbounds i8, ptr %222, i64 3
   %234 = load i8, ptr %228, align 1, !tbaa !34
   %235 = zext i8 %234 to i32
   %236 = add nsw i32 %235, -128
   %237 = sitofp i32 %236 to float
-  store float %237, ptr %52, align 4, !tbaa !41
+  store float %237, ptr %52, align 4, !tbaa !38
   %238 = getelementptr inbounds i8, ptr %222, i64 4
   %239 = load i8, ptr %233, align 1, !tbaa !34
   %240 = zext i8 %239 to i32
   %241 = add nsw i32 %240, -128
   %242 = sitofp i32 %241 to float
-  store float %242, ptr %53, align 4, !tbaa !41
+  store float %242, ptr %53, align 4, !tbaa !38
   %243 = getelementptr inbounds i8, ptr %222, i64 5
   %244 = load i8, ptr %238, align 1, !tbaa !34
   %245 = zext i8 %244 to i32
   %246 = add nsw i32 %245, -128
   %247 = sitofp i32 %246 to float
-  store float %247, ptr %54, align 4, !tbaa !41
+  store float %247, ptr %54, align 4, !tbaa !38
   %248 = getelementptr inbounds i8, ptr %222, i64 6
   %249 = load i8, ptr %243, align 1, !tbaa !34
   %250 = zext i8 %249 to i32
   %251 = add nsw i32 %250, -128
   %252 = sitofp i32 %251 to float
-  store float %252, ptr %55, align 4, !tbaa !41
+  store float %252, ptr %55, align 4, !tbaa !38
   %253 = getelementptr inbounds i8, ptr %222, i64 7
   %254 = load i8, ptr %248, align 1, !tbaa !34
   %255 = zext i8 %254 to i32
   %256 = add nsw i32 %255, -128
   %257 = sitofp i32 %256 to float
-  store float %257, ptr %56, align 4, !tbaa !41
+  store float %257, ptr %56, align 4, !tbaa !38
   %258 = load i8, ptr %253, align 1, !tbaa !34
   %259 = zext i8 %258 to i32
   %260 = add nsw i32 %259, -128
   %261 = sitofp i32 %260 to float
-  store float %261, ptr %57, align 4, !tbaa !41
+  store float %261, ptr %57, align 4, !tbaa !38
   %262 = load ptr, ptr %59, align 8, !tbaa !29
   %263 = getelementptr inbounds i8, ptr %262, i64 %97
   %264 = getelementptr inbounds i8, ptr %263, i64 1
@@ -1106,48 +1106,48 @@ define internal void @forward_DCT_float(ptr nocapture noundef readonly %0, ptr n
   %266 = zext i8 %265 to i32
   %267 = add nsw i32 %266, -128
   %268 = sitofp i32 %267 to float
-  store float %268, ptr %58, align 4, !tbaa !41
+  store float %268, ptr %58, align 4, !tbaa !38
   %269 = getelementptr inbounds i8, ptr %263, i64 2
   %270 = load i8, ptr %264, align 1, !tbaa !34
   %271 = zext i8 %270 to i32
   %272 = add nsw i32 %271, -128
   %273 = sitofp i32 %272 to float
-  store float %273, ptr %60, align 4, !tbaa !41
+  store float %273, ptr %60, align 4, !tbaa !38
   %274 = getelementptr inbounds i8, ptr %263, i64 3
   %275 = load i8, ptr %269, align 1, !tbaa !34
   %276 = zext i8 %275 to i32
   %277 = add nsw i32 %276, -128
   %278 = sitofp i32 %277 to float
-  store float %278, ptr %61, align 4, !tbaa !41
+  store float %278, ptr %61, align 4, !tbaa !38
   %279 = getelementptr inbounds i8, ptr %263, i64 4
   %280 = load i8, ptr %274, align 1, !tbaa !34
   %281 = zext i8 %280 to i32
   %282 = add nsw i32 %281, -128
   %283 = sitofp i32 %282 to float
-  store float %283, ptr %62, align 4, !tbaa !41
+  store float %283, ptr %62, align 4, !tbaa !38
   %284 = getelementptr inbounds i8, ptr %263, i64 5
   %285 = load i8, ptr %279, align 1, !tbaa !34
   %286 = zext i8 %285 to i32
   %287 = add nsw i32 %286, -128
   %288 = sitofp i32 %287 to float
-  store float %288, ptr %63, align 4, !tbaa !41
+  store float %288, ptr %63, align 4, !tbaa !38
   %289 = getelementptr inbounds i8, ptr %263, i64 6
   %290 = load i8, ptr %284, align 1, !tbaa !34
   %291 = zext i8 %290 to i32
   %292 = add nsw i32 %291, -128
   %293 = sitofp i32 %292 to float
-  store float %293, ptr %64, align 4, !tbaa !41
+  store float %293, ptr %64, align 4, !tbaa !38
   %294 = getelementptr inbounds i8, ptr %263, i64 7
   %295 = load i8, ptr %289, align 1, !tbaa !34
   %296 = zext i8 %295 to i32
   %297 = add nsw i32 %296, -128
   %298 = sitofp i32 %297 to float
-  store float %298, ptr %65, align 4, !tbaa !41
+  store float %298, ptr %65, align 4, !tbaa !38
   %299 = load i8, ptr %294, align 1, !tbaa !34
   %300 = zext i8 %299 to i32
   %301 = add nsw i32 %300, -128
   %302 = sitofp i32 %301 to float
-  store float %302, ptr %66, align 4, !tbaa !41
+  store float %302, ptr %66, align 4, !tbaa !38
   %303 = load ptr, ptr %68, align 8, !tbaa !29
   %304 = getelementptr inbounds i8, ptr %303, i64 %97
   %305 = getelementptr inbounds i8, ptr %304, i64 1
@@ -1155,48 +1155,48 @@ define internal void @forward_DCT_float(ptr nocapture noundef readonly %0, ptr n
   %307 = zext i8 %306 to i32
   %308 = add nsw i32 %307, -128
   %309 = sitofp i32 %308 to float
-  store float %309, ptr %67, align 4, !tbaa !41
+  store float %309, ptr %67, align 4, !tbaa !38
   %310 = getelementptr inbounds i8, ptr %304, i64 2
   %311 = load i8, ptr %305, align 1, !tbaa !34
   %312 = zext i8 %311 to i32
   %313 = add nsw i32 %312, -128
   %314 = sitofp i32 %313 to float
-  store float %314, ptr %69, align 4, !tbaa !41
+  store float %314, ptr %69, align 4, !tbaa !38
   %315 = getelementptr inbounds i8, ptr %304, i64 3
   %316 = load i8, ptr %310, align 1, !tbaa !34
   %317 = zext i8 %316 to i32
   %318 = add nsw i32 %317, -128
   %319 = sitofp i32 %318 to float
-  store float %319, ptr %70, align 4, !tbaa !41
+  store float %319, ptr %70, align 4, !tbaa !38
   %320 = getelementptr inbounds i8, ptr %304, i64 4
   %321 = load i8, ptr %315, align 1, !tbaa !34
   %322 = zext i8 %321 to i32
   %323 = add nsw i32 %322, -128
   %324 = sitofp i32 %323 to float
-  store float %324, ptr %71, align 4, !tbaa !41
+  store float %324, ptr %71, align 4, !tbaa !38
   %325 = getelementptr inbounds i8, ptr %304, i64 5
   %326 = load i8, ptr %320, align 1, !tbaa !34
   %327 = zext i8 %326 to i32
   %328 = add nsw i32 %327, -128
   %329 = sitofp i32 %328 to float
-  store float %329, ptr %72, align 4, !tbaa !41
+  store float %329, ptr %72, align 4, !tbaa !38
   %330 = getelementptr inbounds i8, ptr %304, i64 6
   %331 = load i8, ptr %325, align 1, !tbaa !34
   %332 = zext i8 %331 to i32
   %333 = add nsw i32 %332, -128
   %334 = sitofp i32 %333 to float
-  store float %334, ptr %73, align 4, !tbaa !41
+  store float %334, ptr %73, align 4, !tbaa !38
   %335 = getelementptr inbounds i8, ptr %304, i64 7
   %336 = load i8, ptr %330, align 1, !tbaa !34
   %337 = zext i8 %336 to i32
   %338 = add nsw i32 %337, -128
   %339 = sitofp i32 %338 to float
-  store float %339, ptr %74, align 4, !tbaa !41
+  store float %339, ptr %74, align 4, !tbaa !38
   %340 = load i8, ptr %335, align 1, !tbaa !34
   %341 = zext i8 %340 to i32
   %342 = add nsw i32 %341, -128
   %343 = sitofp i32 %342 to float
-  store float %343, ptr %75, align 4, !tbaa !41
+  store float %343, ptr %75, align 4, !tbaa !38
   %344 = load ptr, ptr %77, align 8, !tbaa !29
   %345 = getelementptr inbounds i8, ptr %344, i64 %97
   %346 = getelementptr inbounds i8, ptr %345, i64 1
@@ -1204,48 +1204,48 @@ define internal void @forward_DCT_float(ptr nocapture noundef readonly %0, ptr n
   %348 = zext i8 %347 to i32
   %349 = add nsw i32 %348, -128
   %350 = sitofp i32 %349 to float
-  store float %350, ptr %76, align 4, !tbaa !41
+  store float %350, ptr %76, align 4, !tbaa !38
   %351 = getelementptr inbounds i8, ptr %345, i64 2
   %352 = load i8, ptr %346, align 1, !tbaa !34
   %353 = zext i8 %352 to i32
   %354 = add nsw i32 %353, -128
   %355 = sitofp i32 %354 to float
-  store float %355, ptr %78, align 4, !tbaa !41
+  store float %355, ptr %78, align 4, !tbaa !38
   %356 = getelementptr inbounds i8, ptr %345, i64 3
   %357 = load i8, ptr %351, align 1, !tbaa !34
   %358 = zext i8 %357 to i32
   %359 = add nsw i32 %358, -128
   %360 = sitofp i32 %359 to float
-  store float %360, ptr %79, align 4, !tbaa !41
+  store float %360, ptr %79, align 4, !tbaa !38
   %361 = getelementptr inbounds i8, ptr %345, i64 4
   %362 = load i8, ptr %356, align 1, !tbaa !34
   %363 = zext i8 %362 to i32
   %364 = add nsw i32 %363, -128
   %365 = sitofp i32 %364 to float
-  store float %365, ptr %80, align 4, !tbaa !41
+  store float %365, ptr %80, align 4, !tbaa !38
   %366 = getelementptr inbounds i8, ptr %345, i64 5
   %367 = load i8, ptr %361, align 1, !tbaa !34
   %368 = zext i8 %367 to i32
   %369 = add nsw i32 %368, -128
   %370 = sitofp i32 %369 to float
-  store float %370, ptr %81, align 4, !tbaa !41
+  store float %370, ptr %81, align 4, !tbaa !38
   %371 = getelementptr inbounds i8, ptr %345, i64 6
   %372 = load i8, ptr %366, align 1, !tbaa !34
   %373 = zext i8 %372 to i32
   %374 = add nsw i32 %373, -128
   %375 = sitofp i32 %374 to float
-  store float %375, ptr %82, align 4, !tbaa !41
+  store float %375, ptr %82, align 4, !tbaa !38
   %376 = getelementptr inbounds i8, ptr %345, i64 7
   %377 = load i8, ptr %371, align 1, !tbaa !34
   %378 = zext i8 %377 to i32
   %379 = add nsw i32 %378, -128
   %380 = sitofp i32 %379 to float
-  store float %380, ptr %83, align 4, !tbaa !41
+  store float %380, ptr %83, align 4, !tbaa !38
   %381 = load i8, ptr %376, align 1, !tbaa !34
   %382 = zext i8 %381 to i32
   %383 = add nsw i32 %382, -128
   %384 = sitofp i32 %383 to float
-  store float %384, ptr %84, align 4, !tbaa !41
+  store float %384, ptr %84, align 4, !tbaa !38
   %385 = load ptr, ptr %86, align 8, !tbaa !29
   %386 = getelementptr inbounds i8, ptr %385, i64 %97
   %387 = getelementptr inbounds i8, ptr %386, i64 1
@@ -1253,48 +1253,48 @@ define internal void @forward_DCT_float(ptr nocapture noundef readonly %0, ptr n
   %389 = zext i8 %388 to i32
   %390 = add nsw i32 %389, -128
   %391 = sitofp i32 %390 to float
-  store float %391, ptr %85, align 4, !tbaa !41
+  store float %391, ptr %85, align 4, !tbaa !38
   %392 = getelementptr inbounds i8, ptr %386, i64 2
   %393 = load i8, ptr %387, align 1, !tbaa !34
   %394 = zext i8 %393 to i32
   %395 = add nsw i32 %394, -128
   %396 = sitofp i32 %395 to float
-  store float %396, ptr %87, align 4, !tbaa !41
+  store float %396, ptr %87, align 4, !tbaa !38
   %397 = getelementptr inbounds i8, ptr %386, i64 3
   %398 = load i8, ptr %392, align 1, !tbaa !34
   %399 = zext i8 %398 to i32
   %400 = add nsw i32 %399, -128
   %401 = sitofp i32 %400 to float
-  store float %401, ptr %88, align 4, !tbaa !41
+  store float %401, ptr %88, align 4, !tbaa !38
   %402 = getelementptr inbounds i8, ptr %386, i64 4
   %403 = load i8, ptr %397, align 1, !tbaa !34
   %404 = zext i8 %403 to i32
   %405 = add nsw i32 %404, -128
   %406 = sitofp i32 %405 to float
-  store float %406, ptr %89, align 4, !tbaa !41
+  store float %406, ptr %89, align 4, !tbaa !38
   %407 = getelementptr inbounds i8, ptr %386, i64 5
   %408 = load i8, ptr %402, align 1, !tbaa !34
   %409 = zext i8 %408 to i32
   %410 = add nsw i32 %409, -128
   %411 = sitofp i32 %410 to float
-  store float %411, ptr %90, align 4, !tbaa !41
+  store float %411, ptr %90, align 4, !tbaa !38
   %412 = getelementptr inbounds i8, ptr %386, i64 6
   %413 = load i8, ptr %407, align 1, !tbaa !34
   %414 = zext i8 %413 to i32
   %415 = add nsw i32 %414, -128
   %416 = sitofp i32 %415 to float
-  store float %416, ptr %91, align 4, !tbaa !41
+  store float %416, ptr %91, align 4, !tbaa !38
   %417 = getelementptr inbounds i8, ptr %386, i64 7
   %418 = load i8, ptr %412, align 1, !tbaa !34
   %419 = zext i8 %418 to i32
   %420 = add nsw i32 %419, -128
   %421 = sitofp i32 %420 to float
-  store float %421, ptr %92, align 4, !tbaa !41
+  store float %421, ptr %92, align 4, !tbaa !38
   %422 = load i8, ptr %417, align 1, !tbaa !34
   %423 = zext i8 %422 to i32
   %424 = add nsw i32 %423, -128
   %425 = sitofp i32 %424 to float
-  store float %425, ptr %93, align 4, !tbaa !41
+  store float %425, ptr %93, align 4, !tbaa !38
   call void %12(ptr noundef nonnull %8) #4
   %426 = getelementptr inbounds [64 x i16], ptr %3, i64 %95
   br label %427
@@ -1302,9 +1302,9 @@ define internal void @forward_DCT_float(ptr nocapture noundef readonly %0, ptr n
 427:                                              ; preds = %94, %427
   %428 = phi i64 [ 0, %94 ], [ %439, %427 ]
   %429 = getelementptr inbounds [64 x float], ptr %8, i64 0, i64 %428
-  %430 = load float, ptr %429, align 4, !tbaa !41
+  %430 = load float, ptr %429, align 4, !tbaa !38
   %431 = getelementptr inbounds float, ptr %18, i64 %428
-  %432 = load float, ptr %431, align 4, !tbaa !41
+  %432 = load float, ptr %431, align 4, !tbaa !38
   %433 = fmul float %430, %432
   %434 = fadd float %433, 1.638450e+04
   %435 = fptosi float %434 to i32
@@ -1314,13 +1314,13 @@ define internal void @forward_DCT_float(ptr nocapture noundef readonly %0, ptr n
   store i16 %437, ptr %438, align 2, !tbaa !35
   %439 = add nuw nsw i64 %428, 1
   %440 = icmp eq i64 %439, 64
-  br i1 %440, label %441, label %427, !llvm.loop !47
+  br i1 %440, label %441, label %427
 
 441:                                              ; preds = %427
   %442 = add nuw nsw i64 %95, 1
   %443 = add i32 %96, 8
   %444 = icmp eq i64 %442, %23
-  br i1 %444, label %445, label %94, !llvm.loop !48
+  br i1 %444, label %445, label %94
 
 445:                                              ; preds = %441, %7
   call void @llvm.lifetime.end.p0(i64 256, ptr nonnull %8) #4
@@ -1381,15 +1381,6 @@ attributes #4 = { nounwind }
 !34 = !{!9, !9, i64 0}
 !35 = !{!13, !13, i64 0}
 !36 = !{!11, !11, i64 0}
-!37 = distinct !{!37, !38}
-!38 = !{!"llvm.loop.mustprogress"}
-!39 = distinct !{!39, !38}
-!40 = !{!12, !12, i64 0}
-!41 = !{!42, !42, i64 0}
-!42 = !{!"float", !9, i64 0}
-!43 = distinct !{!43, !38}
-!44 = distinct !{!44, !38}
-!45 = distinct !{!45, !38}
-!46 = distinct !{!46, !38}
-!47 = distinct !{!47, !38}
-!48 = distinct !{!48, !38}
+!37 = !{!12, !12, i64 0}
+!38 = !{!39, !39, i64 0}
+!39 = !{!"float", !9, i64 0}

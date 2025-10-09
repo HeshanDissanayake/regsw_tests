@@ -80,7 +80,7 @@ Proc_List	*create_procedure_list ()
 }
 
 
-void		delete_procedure_list (Proc_List *plist)
+void delete_procedure_list (Proc_List *plist)
 {
     Proc_Node	*next;
 

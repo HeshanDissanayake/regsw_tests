@@ -585,7 +585,7 @@ define internal void @start_input_bmp(ptr noundef %0, ptr nocapture noundef %1) 
   store i8 %404, ptr %407, align 1, !tbaa !27
   %408 = add nuw nsw i64 %366, 1
   %409 = icmp eq i64 %408, %364
-  br i1 %409, label %470, label %365, !llvm.loop !36
+  br i1 %409, label %470, label %365
 
 410:                                              ; preds = %461, %357
   %411 = phi i64 [ 0, %357 ], [ %462, %461 ]
@@ -668,7 +668,7 @@ define internal void @start_input_bmp(ptr noundef %0, ptr nocapture noundef %1) 
 461:                                              ; preds = %456, %448
   %462 = add nuw nsw i64 %411, 1
   %463 = icmp eq i64 %462, %359
-  br i1 %463, label %470, label %410, !llvm.loop !38
+  br i1 %463, label %470, label %410
 
 464:                                              ; preds = %346
   %465 = getelementptr inbounds i8, ptr %1, i64 48
@@ -728,7 +728,7 @@ define internal void @start_input_bmp(ptr noundef %0, ptr nocapture noundef %1) 
 
 498:                                              ; preds = %487, %493
   %499 = icmp ugt i64 %488, 1
-  br i1 %499, label %487, label %500, !llvm.loop !39
+  br i1 %499, label %487, label %500
 
 500:                                              ; preds = %498, %479, %483
   %501 = getelementptr inbounds i8, ptr %1, i64 80
@@ -741,27 +741,27 @@ define internal void @start_input_bmp(ptr noundef %0, ptr nocapture noundef %1) 
   %508 = and i32 %507, 3
   %509 = add i32 %506, %508
   %510 = getelementptr inbounds i8, ptr %1, i64 76
-  store i32 %509, ptr %510, align 4, !tbaa !40
+  store i32 %509, ptr %510, align 4, !tbaa !36
   %511 = getelementptr inbounds i8, ptr %0, i64 8
   %512 = load ptr, ptr %511, align 8, !tbaa !6
   %513 = getelementptr inbounds i8, ptr %512, i64 32
-  %514 = load ptr, ptr %513, align 8, !tbaa !41
+  %514 = load ptr, ptr %513, align 8, !tbaa !37
   %515 = trunc nuw i64 %476 to i32
   %516 = tail call ptr %514(ptr noundef %0, i32 noundef signext 1, i32 noundef signext 0, i32 noundef signext %509, i32 noundef signext %515, i32 noundef signext 1) #4
   %517 = getelementptr inbounds i8, ptr %1, i64 64
-  store ptr %516, ptr %517, align 8, !tbaa !42
+  store ptr %516, ptr %517, align 8, !tbaa !38
   %518 = getelementptr inbounds i8, ptr %1, i64 8
-  store ptr @preload_image, ptr %518, align 8, !tbaa !43
+  store ptr @preload_image, ptr %518, align 8, !tbaa !39
   %519 = getelementptr inbounds i8, ptr %0, i64 16
-  %520 = load ptr, ptr %519, align 8, !tbaa !44
+  %520 = load ptr, ptr %519, align 8, !tbaa !40
   %521 = icmp eq ptr %520, null
   br i1 %521, label %526, label %522
 
 522:                                              ; preds = %500
   %523 = getelementptr inbounds i8, ptr %520, i64 36
-  %524 = load i32, ptr %523, align 4, !tbaa !45
+  %524 = load i32, ptr %523, align 4, !tbaa !41
   %525 = add nsw i32 %524, 1
-  store i32 %525, ptr %523, align 4, !tbaa !45
+  store i32 %525, ptr %523, align 4, !tbaa !41
   br label %526
 
 526:                                              ; preds = %522, %500
@@ -770,19 +770,19 @@ define internal void @start_input_bmp(ptr noundef %0, ptr nocapture noundef %1) 
   %529 = load ptr, ptr %528, align 8, !tbaa !33
   %530 = tail call ptr %529(ptr noundef nonnull %0, i32 noundef signext 1, i32 noundef signext %505, i32 noundef signext 1) #4
   %531 = getelementptr inbounds i8, ptr %1, i64 32
-  store ptr %530, ptr %531, align 8, !tbaa !48
+  store ptr %530, ptr %531, align 8, !tbaa !44
   %532 = getelementptr inbounds i8, ptr %1, i64 40
-  store i32 1, ptr %532, align 8, !tbaa !49
+  store i32 1, ptr %532, align 8, !tbaa !45
   %533 = getelementptr inbounds i8, ptr %0, i64 60
-  store i32 2, ptr %533, align 4, !tbaa !50
+  store i32 2, ptr %533, align 4, !tbaa !46
   %534 = getelementptr inbounds i8, ptr %0, i64 56
-  store i32 3, ptr %534, align 8, !tbaa !51
+  store i32 3, ptr %534, align 8, !tbaa !47
   %535 = getelementptr inbounds i8, ptr %0, i64 72
-  store i32 8, ptr %535, align 8, !tbaa !52
+  store i32 8, ptr %535, align 8, !tbaa !48
   %536 = getelementptr inbounds i8, ptr %0, i64 48
-  store i32 %504, ptr %536, align 8, !tbaa !53
+  store i32 %504, ptr %536, align 8, !tbaa !49
   %537 = getelementptr inbounds i8, ptr %0, i64 52
-  store i32 %515, ptr %537, align 4, !tbaa !54
+  store i32 %515, ptr %537, align 4, !tbaa !50
   call void @llvm.lifetime.end.p0(i64 64, ptr nonnull %4) #4
   call void @llvm.lifetime.end.p0(i64 14, ptr nonnull %3) #4
   ret void
@@ -804,9 +804,9 @@ define internal signext i32 @preload_image(ptr noundef %0, ptr noundef %1) #0 {
   %3 = getelementptr inbounds i8, ptr %1, i64 24
   %4 = load ptr, ptr %3, align 8, !tbaa !22
   %5 = getelementptr inbounds i8, ptr %0, i64 16
-  %6 = load ptr, ptr %5, align 8, !tbaa !44
+  %6 = load ptr, ptr %5, align 8, !tbaa !40
   %7 = getelementptr inbounds i8, ptr %0, i64 52
-  %8 = load i32, ptr %7, align 4, !tbaa !54
+  %8 = load i32, ptr %7, align 4, !tbaa !50
   %9 = icmp eq i32 %8, 0
   br i1 %9, label %80, label %10
 
@@ -823,10 +823,10 @@ define internal signext i32 @preload_image(ptr noundef %0, ptr noundef %1) #0 {
   %18 = phi i32 [ %43, %42 ], [ 0, %10 ]
   %19 = load ptr, ptr %14, align 8, !tbaa !6
   %20 = getelementptr inbounds i8, ptr %19, i64 56
-  %21 = load ptr, ptr %20, align 8, !tbaa !55
-  %22 = load ptr, ptr %15, align 8, !tbaa !42
+  %21 = load ptr, ptr %20, align 8, !tbaa !51
+  %22 = load ptr, ptr %15, align 8, !tbaa !38
   %23 = tail call ptr %21(ptr noundef nonnull %0, ptr noundef %22, i32 noundef signext %18, i32 noundef signext 1, i32 noundef signext 1) #4
-  %24 = load i32, ptr %16, align 4, !tbaa !40
+  %24 = load i32, ptr %16, align 4, !tbaa !36
   %25 = icmp eq i32 %24, 0
   br i1 %25, label %42, label %26
 
@@ -855,29 +855,29 @@ define internal signext i32 @preload_image(ptr noundef %0, ptr noundef %1) #0 {
   store i8 %38, ptr %29, align 1, !tbaa !27
   %40 = add i32 %30, -1
   %41 = icmp eq i32 %40, 0
-  br i1 %41, label %42, label %28, !llvm.loop !56
+  br i1 %41, label %42, label %28
 
 42:                                               ; preds = %37, %17
   %43 = add nuw i32 %18, 1
-  %44 = load i32, ptr %7, align 4, !tbaa !54
+  %44 = load i32, ptr %7, align 4, !tbaa !50
   %45 = icmp ult i32 %43, %44
-  br i1 %45, label %17, label %80, !llvm.loop !57
+  br i1 %45, label %17, label %80
 
 46:                                               ; preds = %10, %75
   %47 = phi i64 [ %76, %75 ], [ 0, %10 ]
   %48 = phi i32 [ %77, %75 ], [ %8, %10 ]
-  store i64 %47, ptr %12, align 8, !tbaa !58
+  store i64 %47, ptr %12, align 8, !tbaa !52
   %49 = zext i32 %48 to i64
-  store i64 %49, ptr %13, align 8, !tbaa !59
-  %50 = load ptr, ptr %6, align 8, !tbaa !60
+  store i64 %49, ptr %13, align 8, !tbaa !53
+  %50 = load ptr, ptr %6, align 8, !tbaa !54
   tail call void %50(ptr noundef nonnull %0) #4
   %51 = load ptr, ptr %14, align 8, !tbaa !6
   %52 = getelementptr inbounds i8, ptr %51, i64 56
-  %53 = load ptr, ptr %52, align 8, !tbaa !55
-  %54 = load ptr, ptr %15, align 8, !tbaa !42
+  %53 = load ptr, ptr %52, align 8, !tbaa !51
+  %54 = load ptr, ptr %15, align 8, !tbaa !38
   %55 = trunc nuw i64 %47 to i32
   %56 = tail call ptr %53(ptr noundef nonnull %0, ptr noundef %54, i32 noundef signext %55, i32 noundef signext 1, i32 noundef signext 1) #4
-  %57 = load i32, ptr %16, align 4, !tbaa !40
+  %57 = load i32, ptr %16, align 4, !tbaa !36
   %58 = icmp eq i32 %57, 0
   br i1 %58, label %75, label %59
 
@@ -906,14 +906,14 @@ define internal signext i32 @preload_image(ptr noundef %0, ptr noundef %1) #0 {
   store i8 %71, ptr %62, align 1, !tbaa !27
   %73 = add i32 %63, -1
   %74 = icmp eq i32 %73, 0
-  br i1 %74, label %75, label %61, !llvm.loop !56
+  br i1 %74, label %75, label %61
 
 75:                                               ; preds = %70, %46
   %76 = add nuw nsw i64 %47, 1
-  %77 = load i32, ptr %7, align 4, !tbaa !54
+  %77 = load i32, ptr %7, align 4, !tbaa !50
   %78 = zext i32 %77 to i64
   %79 = icmp ult i64 %76, %78
-  br i1 %79, label %46, label %80, !llvm.loop !57
+  br i1 %79, label %46, label %80
 
 80:                                               ; preds = %75, %42, %2
   %81 = phi i32 [ 0, %2 ], [ %44, %42 ], [ %77, %75 ]
@@ -922,9 +922,9 @@ define internal signext i32 @preload_image(ptr noundef %0, ptr noundef %1) #0 {
 
 83:                                               ; preds = %80
   %84 = getelementptr inbounds i8, ptr %6, i64 32
-  %85 = load i32, ptr %84, align 8, !tbaa !61
+  %85 = load i32, ptr %84, align 8, !tbaa !55
   %86 = add nsw i32 %85, 1
-  store i32 %86, ptr %84, align 8, !tbaa !61
+  store i32 %86, ptr %84, align 8, !tbaa !55
   br label %87
 
 87:                                               ; preds = %83, %80
@@ -937,12 +937,12 @@ define internal signext i32 @preload_image(ptr noundef %0, ptr noundef %1) #0 {
 
 90:                                               ; preds = %87
   %91 = getelementptr inbounds i8, ptr %1, i64 8
-  store ptr @get_8bit_row, ptr %91, align 8, !tbaa !43
+  store ptr @get_8bit_row, ptr %91, align 8, !tbaa !39
   br label %101
 
 92:                                               ; preds = %87
   %93 = getelementptr inbounds i8, ptr %1, i64 8
-  store ptr @get_24bit_row, ptr %93, align 8, !tbaa !43
+  store ptr @get_24bit_row, ptr %93, align 8, !tbaa !39
   br label %101
 
 94:                                               ; preds = %87
@@ -951,16 +951,16 @@ define internal signext i32 @preload_image(ptr noundef %0, ptr noundef %1) #0 {
   store i32 1002, ptr %96, align 8, !tbaa !24
   %97 = load ptr, ptr %95, align 8, !tbaa !26
   tail call void %97(ptr noundef nonnull %0) #4
-  %98 = load i32, ptr %7, align 4, !tbaa !54
+  %98 = load i32, ptr %7, align 4, !tbaa !50
   %99 = getelementptr inbounds i8, ptr %1, i64 8
-  %100 = load ptr, ptr %99, align 8, !tbaa !43
+  %100 = load ptr, ptr %99, align 8, !tbaa !39
   br label %101
 
 101:                                              ; preds = %94, %92, %90
   %102 = phi ptr [ %100, %94 ], [ @get_24bit_row, %92 ], [ @get_8bit_row, %90 ]
   %103 = phi i32 [ %98, %94 ], [ %81, %92 ], [ %81, %90 ]
   %104 = getelementptr inbounds i8, ptr %1, i64 72
-  store i32 %103, ptr %104, align 8, !tbaa !62
+  store i32 %103, ptr %104, align 8, !tbaa !56
   %105 = tail call signext i32 %102(ptr noundef nonnull %0, ptr noundef nonnull %1) #4
   ret i32 %105
 }
@@ -973,24 +973,24 @@ define internal noundef signext i32 @get_8bit_row(ptr noundef %0, ptr nocapture 
   %3 = getelementptr inbounds i8, ptr %1, i64 56
   %4 = load ptr, ptr %3, align 8, !tbaa !34
   %5 = getelementptr inbounds i8, ptr %1, i64 72
-  %6 = load i32, ptr %5, align 8, !tbaa !62
+  %6 = load i32, ptr %5, align 8, !tbaa !56
   %7 = add i32 %6, -1
-  store i32 %7, ptr %5, align 8, !tbaa !62
+  store i32 %7, ptr %5, align 8, !tbaa !56
   %8 = getelementptr inbounds i8, ptr %0, i64 8
   %9 = load ptr, ptr %8, align 8, !tbaa !6
   %10 = getelementptr inbounds i8, ptr %9, i64 56
-  %11 = load ptr, ptr %10, align 8, !tbaa !55
+  %11 = load ptr, ptr %10, align 8, !tbaa !51
   %12 = getelementptr inbounds i8, ptr %1, i64 64
-  %13 = load ptr, ptr %12, align 8, !tbaa !42
+  %13 = load ptr, ptr %12, align 8, !tbaa !38
   %14 = tail call ptr %11(ptr noundef %0, ptr noundef %13, i32 noundef signext %7, i32 noundef signext 1, i32 noundef signext 0) #4
   %15 = getelementptr inbounds i8, ptr %0, i64 48
-  %16 = load i32, ptr %15, align 8, !tbaa !53
+  %16 = load i32, ptr %15, align 8, !tbaa !49
   %17 = icmp eq i32 %16, 0
   br i1 %17, label %46, label %18
 
 18:                                               ; preds = %2
   %19 = getelementptr inbounds i8, ptr %1, i64 32
-  %20 = load ptr, ptr %19, align 8, !tbaa !48
+  %20 = load ptr, ptr %19, align 8, !tbaa !44
   %21 = load ptr, ptr %20, align 8, !tbaa !35
   %22 = load ptr, ptr %14, align 8, !tbaa !35
   %23 = getelementptr inbounds i8, ptr %4, i64 8
@@ -1021,7 +1021,7 @@ define internal noundef signext i32 @get_8bit_row(ptr noundef %0, ptr nocapture 
   store i8 %42, ptr %39, align 1, !tbaa !27
   %44 = add i32 %26, -1
   %45 = icmp eq i32 %44, 0
-  br i1 %45, label %46, label %25, !llvm.loop !63
+  br i1 %45, label %46, label %25
 
 46:                                               ; preds = %25, %2
   ret i32 1
@@ -1030,24 +1030,24 @@ define internal noundef signext i32 @get_8bit_row(ptr noundef %0, ptr nocapture 
 ; Function Attrs: nounwind
 define internal noundef signext i32 @get_24bit_row(ptr noundef %0, ptr nocapture noundef %1) #0 {
   %3 = getelementptr inbounds i8, ptr %1, i64 72
-  %4 = load i32, ptr %3, align 8, !tbaa !62
+  %4 = load i32, ptr %3, align 8, !tbaa !56
   %5 = add i32 %4, -1
-  store i32 %5, ptr %3, align 8, !tbaa !62
+  store i32 %5, ptr %3, align 8, !tbaa !56
   %6 = getelementptr inbounds i8, ptr %0, i64 8
   %7 = load ptr, ptr %6, align 8, !tbaa !6
   %8 = getelementptr inbounds i8, ptr %7, i64 56
-  %9 = load ptr, ptr %8, align 8, !tbaa !55
+  %9 = load ptr, ptr %8, align 8, !tbaa !51
   %10 = getelementptr inbounds i8, ptr %1, i64 64
-  %11 = load ptr, ptr %10, align 8, !tbaa !42
+  %11 = load ptr, ptr %10, align 8, !tbaa !38
   %12 = tail call ptr %9(ptr noundef %0, ptr noundef %11, i32 noundef signext %5, i32 noundef signext 1, i32 noundef signext 0) #4
   %13 = getelementptr inbounds i8, ptr %0, i64 48
-  %14 = load i32, ptr %13, align 8, !tbaa !53
+  %14 = load i32, ptr %13, align 8, !tbaa !49
   %15 = icmp eq i32 %14, 0
   br i1 %15, label %36, label %16
 
 16:                                               ; preds = %2
   %17 = getelementptr inbounds i8, ptr %1, i64 32
-  %18 = load ptr, ptr %17, align 8, !tbaa !48
+  %18 = load ptr, ptr %17, align 8, !tbaa !44
   %19 = load ptr, ptr %18, align 8, !tbaa !35
   %20 = load ptr, ptr %12, align 8, !tbaa !35
   br label %21
@@ -1070,7 +1070,7 @@ define internal noundef signext i32 @get_24bit_row(ptr noundef %0, ptr nocapture
   %33 = getelementptr inbounds i8, ptr %23, i64 3
   %34 = add i32 %22, -1
   %35 = icmp eq i32 %34, 0
-  br i1 %35, label %36, label %21, !llvm.loop !64
+  br i1 %35, label %36, label %21
 
 36:                                               ; preds = %21, %2
   ret i32 1
@@ -1121,32 +1121,24 @@ attributes #4 = { nounwind }
 !33 = !{!15, !8, i64 16}
 !34 = !{!18, !8, i64 56}
 !35 = !{!8, !8, i64 0}
-!36 = distinct !{!36, !37}
-!37 = !{!"llvm.loop.mustprogress"}
-!38 = distinct !{!38, !37}
-!39 = distinct !{!39, !37}
-!40 = !{!18, !11, i64 76}
-!41 = !{!15, !8, i64 32}
-!42 = !{!18, !8, i64 64}
-!43 = !{!18, !8, i64 8}
-!44 = !{!7, !8, i64 16}
-!45 = !{!46, !11, i64 36}
-!46 = !{!"cdjpeg_progress_mgr", !47, i64 0, !11, i64 32, !11, i64 36, !11, i64 40}
-!47 = !{!"jpeg_progress_mgr", !8, i64 0, !16, i64 8, !16, i64 16, !11, i64 24, !11, i64 28}
-!48 = !{!18, !8, i64 32}
-!49 = !{!18, !11, i64 40}
-!50 = !{!7, !11, i64 60}
-!51 = !{!7, !11, i64 56}
-!52 = !{!7, !11, i64 72}
-!53 = !{!7, !11, i64 48}
-!54 = !{!7, !11, i64 52}
-!55 = !{!15, !8, i64 56}
-!56 = distinct !{!56, !37}
-!57 = distinct !{!57, !37}
-!58 = !{!46, !16, i64 8}
-!59 = !{!46, !16, i64 16}
-!60 = !{!46, !8, i64 0}
-!61 = !{!46, !11, i64 32}
-!62 = !{!18, !11, i64 72}
-!63 = distinct !{!63, !37}
-!64 = distinct !{!64, !37}
+!36 = !{!18, !11, i64 76}
+!37 = !{!15, !8, i64 32}
+!38 = !{!18, !8, i64 64}
+!39 = !{!18, !8, i64 8}
+!40 = !{!7, !8, i64 16}
+!41 = !{!42, !11, i64 36}
+!42 = !{!"cdjpeg_progress_mgr", !43, i64 0, !11, i64 32, !11, i64 36, !11, i64 40}
+!43 = !{!"jpeg_progress_mgr", !8, i64 0, !16, i64 8, !16, i64 16, !11, i64 24, !11, i64 28}
+!44 = !{!18, !8, i64 32}
+!45 = !{!18, !11, i64 40}
+!46 = !{!7, !11, i64 60}
+!47 = !{!7, !11, i64 56}
+!48 = !{!7, !11, i64 72}
+!49 = !{!7, !11, i64 48}
+!50 = !{!7, !11, i64 52}
+!51 = !{!15, !8, i64 56}
+!52 = !{!42, !16, i64 8}
+!53 = !{!42, !16, i64 16}
+!54 = !{!42, !8, i64 0}
+!55 = !{!42, !11, i64 32}
+!56 = !{!18, !11, i64 72}

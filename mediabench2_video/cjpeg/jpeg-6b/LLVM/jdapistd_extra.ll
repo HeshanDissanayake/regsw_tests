@@ -169,12 +169,12 @@ define dso_local noundef signext i32 @jpeg_start_decompress(ptr noundef %0) loca
 
 97:                                               ; preds = %90, %99
   %98 = phi i32 [ %95, %90 ], [ 0, %99 ]
-  br label %76, !llvm.loop !42
+  br label %76
 
 99:                                               ; preds = %76
   %100 = load ptr, ptr %65, align 8, !tbaa !33
   %101 = getelementptr inbounds i8, ptr %100, i64 8
-  %102 = load ptr, ptr %101, align 8, !tbaa !44
+  %102 = load ptr, ptr %101, align 8, !tbaa !42
   tail call void %102(ptr noundef nonnull %0) #4
   %103 = load ptr, ptr %65, align 8, !tbaa !33
   %104 = load ptr, ptr %103, align 8, !tbaa !34
@@ -188,7 +188,7 @@ define dso_local noundef signext i32 @jpeg_start_decompress(ptr noundef %0) loca
 
 109:                                              ; preds = %99, %64
   %110 = getelementptr inbounds i8, ptr %0, i64 92
-  %111 = load i32, ptr %110, align 4, !tbaa !45
+  %111 = load i32, ptr %110, align 4, !tbaa !43
   %112 = icmp eq i32 %111, 0
   %113 = select i1 %112, i32 205, i32 206
   br label %114
@@ -244,7 +244,7 @@ define dso_local signext i32 @jpeg_read_scanlines(ptr noundef %0, ptr noundef %1
   %22 = getelementptr inbounds i8, ptr %21, i64 40
   store i32 123, ptr %22, align 8, !tbaa !29
   %23 = getelementptr inbounds i8, ptr %21, i64 8
-  %24 = load ptr, ptr %23, align 8, !tbaa !46
+  %24 = load ptr, ptr %23, align 8, !tbaa !44
   tail call void %24(ptr noundef nonnull %0, i32 noundef signext -1) #4
   br label %43
 
@@ -266,13 +266,13 @@ define dso_local signext i32 @jpeg_read_scanlines(ptr noundef %0, ptr noundef %1
   br label %35
 
 35:                                               ; preds = %29, %25
-  store i32 0, ptr %4, align 4, !tbaa !47
+  store i32 0, ptr %4, align 4, !tbaa !45
   %36 = getelementptr inbounds i8, ptr %0, i64 552
   %37 = load ptr, ptr %36, align 8, !tbaa !39
   %38 = getelementptr inbounds i8, ptr %37, i64 8
   %39 = load ptr, ptr %38, align 8, !tbaa !40
   call void %39(ptr noundef nonnull %0, ptr noundef %1, ptr noundef nonnull %4, i32 noundef signext %2) #4
-  %40 = load i32, ptr %4, align 4, !tbaa !47
+  %40 = load i32, ptr %4, align 4, !tbaa !45
   %41 = load i32, ptr %15, align 8, !tbaa !36
   %42 = add i32 %41, %40
   store i32 %42, ptr %15, align 8, !tbaa !36
@@ -315,7 +315,7 @@ define dso_local signext i32 @jpeg_read_raw_data(ptr noundef %0, ptr noundef %1,
   %21 = getelementptr inbounds i8, ptr %20, i64 40
   store i32 123, ptr %21, align 8, !tbaa !29
   %22 = getelementptr inbounds i8, ptr %20, i64 8
-  %23 = load ptr, ptr %22, align 8, !tbaa !46
+  %23 = load ptr, ptr %22, align 8, !tbaa !44
   tail call void %23(ptr noundef nonnull %0, i32 noundef signext -1) #4
   br label %55
 
@@ -338,9 +338,9 @@ define dso_local signext i32 @jpeg_read_raw_data(ptr noundef %0, ptr noundef %1,
 
 34:                                               ; preds = %28, %24
   %35 = getelementptr inbounds i8, ptr %0, i64 412
-  %36 = load i32, ptr %35, align 4, !tbaa !48
+  %36 = load i32, ptr %35, align 4, !tbaa !46
   %37 = getelementptr inbounds i8, ptr %0, i64 416
-  %38 = load i32, ptr %37, align 8, !tbaa !49
+  %38 = load i32, ptr %37, align 8, !tbaa !47
   %39 = mul nsw i32 %38, %36
   %40 = icmp ugt i32 %39, %2
   br i1 %40, label %41, label %45
@@ -355,9 +355,9 @@ define dso_local signext i32 @jpeg_read_raw_data(ptr noundef %0, ptr noundef %1,
 
 45:                                               ; preds = %41, %34
   %46 = getelementptr inbounds i8, ptr %0, i64 560
-  %47 = load ptr, ptr %46, align 8, !tbaa !50
+  %47 = load ptr, ptr %46, align 8, !tbaa !48
   %48 = getelementptr inbounds i8, ptr %47, i64 24
-  %49 = load ptr, ptr %48, align 8, !tbaa !51
+  %49 = load ptr, ptr %48, align 8, !tbaa !49
   %50 = tail call signext i32 %49(ptr noundef nonnull %0, ptr noundef %1) #4
   %51 = icmp eq i32 %50, 0
   br i1 %51, label %55, label %52
@@ -398,7 +398,7 @@ define dso_local noundef signext i32 @jpeg_start_output(ptr noundef %0, i32 noun
   %13 = getelementptr inbounds i8, ptr %0, i64 576
   %14 = load ptr, ptr %13, align 8, !tbaa !15
   %15 = getelementptr inbounds i8, ptr %14, i64 36
-  %16 = load i32, ptr %15, align 4, !tbaa !53
+  %16 = load i32, ptr %15, align 4, !tbaa !51
   %17 = icmp eq i32 %16, 0
   br i1 %17, label %22, label %18
 
@@ -477,12 +477,12 @@ define dso_local noundef signext i32 @jpeg_start_output(ptr noundef %0, i32 noun
 
 65:                                               ; preds = %58, %67
   %66 = phi i32 [ %63, %58 ], [ 0, %67 ]
-  br label %44, !llvm.loop !42
+  br label %44
 
 67:                                               ; preds = %44
   %68 = load ptr, ptr %33, align 8, !tbaa !33
   %69 = getelementptr inbounds i8, ptr %68, i64 8
-  %70 = load ptr, ptr %69, align 8, !tbaa !44
+  %70 = load ptr, ptr %69, align 8, !tbaa !42
   tail call void %70(ptr noundef nonnull %0) #4
   %71 = load ptr, ptr %33, align 8, !tbaa !33
   %72 = load ptr, ptr %71, align 8, !tbaa !34
@@ -496,7 +496,7 @@ define dso_local noundef signext i32 @jpeg_start_output(ptr noundef %0, i32 noun
 
 77:                                               ; preds = %67, %32
   %78 = getelementptr inbounds i8, ptr %0, i64 92
-  %79 = load i32, ptr %78, align 4, !tbaa !45
+  %79 = load i32, ptr %78, align 4, !tbaa !43
   %80 = icmp eq i32 %79, 0
   %81 = select i1 %80, i32 205, i32 206
   store i32 %81, ptr %3, align 4, !tbaa !6
@@ -525,7 +525,7 @@ define dso_local signext range(i32 0, 2) i32 @jpeg_finish_output(ptr noundef %0)
   %11 = getelementptr inbounds i8, ptr %0, i64 544
   %12 = load ptr, ptr %11, align 8, !tbaa !33
   %13 = getelementptr inbounds i8, ptr %12, i64 8
-  %14 = load ptr, ptr %13, align 8, !tbaa !44
+  %14 = load ptr, ptr %13, align 8, !tbaa !42
   tail call void %14(ptr noundef nonnull %0) #4
   store i32 208, ptr %2, align 4, !tbaa !6
   br label %23
@@ -560,7 +560,7 @@ define dso_local signext range(i32 0, 2) i32 @jpeg_finish_output(ptr noundef %0)
 31:                                               ; preds = %27
   %32 = load ptr, ptr %26, align 8, !tbaa !15
   %33 = getelementptr inbounds i8, ptr %32, i64 36
-  %34 = load i32, ptr %33, align 4, !tbaa !53
+  %34 = load i32, ptr %33, align 4, !tbaa !51
   %35 = icmp eq i32 %34, 0
   br i1 %35, label %36, label %40
 
@@ -568,7 +568,7 @@ define dso_local signext range(i32 0, 2) i32 @jpeg_finish_output(ptr noundef %0)
   %37 = load ptr, ptr %32, align 8, !tbaa !22
   %38 = tail call signext i32 %37(ptr noundef nonnull %0) #4
   %39 = icmp eq i32 %38, 0
-  br i1 %39, label %41, label %27, !llvm.loop !54
+  br i1 %39, label %41, label %27
 
 40:                                               ; preds = %27, %31
   store i32 207, ptr %2, align 4, !tbaa !6
@@ -636,16 +636,13 @@ attributes #4 = { nounwind }
 !39 = !{!7, !8, i64 552}
 !40 = !{!41, !8, i64 8}
 !41 = !{!"jpeg_d_main_controller", !8, i64 0, !8, i64 8}
-!42 = distinct !{!42, !43}
-!43 = !{!"llvm.loop.mustprogress"}
-!44 = !{!35, !8, i64 8}
-!45 = !{!7, !11, i64 92}
-!46 = !{!30, !8, i64 8}
-!47 = !{!11, !11, i64 0}
-!48 = !{!7, !11, i64 412}
-!49 = !{!7, !11, i64 416}
-!50 = !{!7, !8, i64 560}
-!51 = !{!52, !8, i64 24}
-!52 = !{!"jpeg_d_coef_controller", !8, i64 0, !8, i64 8, !8, i64 16, !8, i64 24, !8, i64 32}
-!53 = !{!17, !11, i64 36}
-!54 = distinct !{!54, !43}
+!42 = !{!35, !8, i64 8}
+!43 = !{!7, !11, i64 92}
+!44 = !{!30, !8, i64 8}
+!45 = !{!11, !11, i64 0}
+!46 = !{!7, !11, i64 412}
+!47 = !{!7, !11, i64 416}
+!48 = !{!7, !8, i64 560}
+!49 = !{!50, !8, i64 24}
+!50 = !{!"jpeg_d_coef_controller", !8, i64 0, !8, i64 8, !8, i64 16, !8, i64 24, !8, i64 32}
+!51 = !{!17, !11, i64 36}

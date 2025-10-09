@@ -487,13 +487,13 @@ define dso_local signext range(i32 0, 2) i32 @jpeg_finish_decompress(ptr noundef
   %41 = load ptr, ptr %36, align 8, !tbaa !31
   %42 = tail call signext i32 %41(ptr noundef nonnull %0) #3
   %43 = icmp eq i32 %42, 0
-  br i1 %43, label %49, label %35, !llvm.loop !66
+  br i1 %43, label %49, label %35
 
 44:                                               ; preds = %35
   %45 = getelementptr inbounds i8, ptr %0, i64 40
   %46 = load ptr, ptr %45, align 8, !tbaa !23
   %47 = getelementptr inbounds i8, ptr %46, i64 48
-  %48 = load ptr, ptr %47, align 8, !tbaa !68
+  %48 = load ptr, ptr %47, align 8, !tbaa !66
   tail call void %48(ptr noundef nonnull %0) #3
   tail call void @jpeg_abort(ptr noundef nonnull %0) #3
   br label %49
@@ -577,6 +577,4 @@ attributes #3 = { nounwind }
 !63 = !{!7, !8, i64 544}
 !64 = !{!65, !8, i64 8}
 !65 = !{!"jpeg_decomp_master", !8, i64 0, !8, i64 8, !11, i64 16}
-!66 = distinct !{!66, !67}
-!67 = !{!"llvm.loop.mustprogress"}
-!68 = !{!30, !8, i64 48}
+!66 = !{!30, !8, i64 48}

@@ -39,7 +39,6 @@ uint64_t read_cycles();
 void sha256_init(SHA256_CTX *ctx);
 void sha256_update(SHA256_CTX *ctx, const BYTE data[], size_t len);
 void sha256_final(SHA256_CTX *ctx, BYTE hash[]);
-void sha256_transform_normal(SHA256_CTX *ctx, const BYTE data[]);
-void sha256_transform_regsw(SHA256_CTX *ctx, const BYTE data[]);
+void sha256_transform(SHA256_CTX *ctx, const BYTE data[]);
 void use_64_registers(int *out);
 #endif   // SHA256_H

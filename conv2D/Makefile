@@ -24,3 +24,5 @@ compile:
 	$(RISCV_GCC)  $(LDFLAGS) $(LINK_SOURCES) -DNORMAL=0 -static  main.c conv2d.o data.c -o main.o 
 
 
+run-spike:
+	/home/heshds/working_dir/cva6-sdk/install64/bin/spike /home/heshds/working_dir/riscv-pk_linux/build/pk main.o

@@ -332,29 +332,29 @@ define dso_local void @jpeg_finish_compress(ptr noundef %0) local_unnamed_addr #
   %63 = load i32, ptr %33, align 8, !tbaa !37
   %64 = zext i32 %63 to i64
   %65 = icmp ult i64 %62, %64
-  br i1 %65, label %41, label %66, !llvm.loop !45
+  br i1 %65, label %41, label %66
 
 66:                                               ; preds = %61, %36
   %67 = load ptr, ptr %27, align 8, !tbaa !33
   %68 = getelementptr inbounds i8, ptr %67, i64 16
-  %69 = load ptr, ptr %68, align 8, !tbaa !47
+  %69 = load ptr, ptr %68, align 8, !tbaa !45
   tail call void %69(ptr noundef nonnull %0) #4
   %70 = load ptr, ptr %27, align 8, !tbaa !33
   %71 = getelementptr inbounds i8, ptr %70, i64 28
   %72 = load i32, ptr %71, align 4, !tbaa !34
   %73 = icmp eq i32 %72, 0
-  br i1 %73, label %36, label %74, !llvm.loop !48
+  br i1 %73, label %36, label %74
 
 74:                                               ; preds = %66, %26
   %75 = getelementptr inbounds i8, ptr %0, i64 464
-  %76 = load ptr, ptr %75, align 8, !tbaa !49
+  %76 = load ptr, ptr %75, align 8, !tbaa !46
   %77 = getelementptr inbounds i8, ptr %76, i64 24
-  %78 = load ptr, ptr %77, align 8, !tbaa !50
+  %78 = load ptr, ptr %77, align 8, !tbaa !47
   tail call void %78(ptr noundef nonnull %0) #4
   %79 = getelementptr inbounds i8, ptr %0, i64 40
   %80 = load ptr, ptr %79, align 8, !tbaa !22
   %81 = getelementptr inbounds i8, ptr %80, i64 32
-  %82 = load ptr, ptr %81, align 8, !tbaa !52
+  %82 = load ptr, ptr %81, align 8, !tbaa !49
   tail call void %82(ptr noundef nonnull %0) #4
   tail call void @jpeg_abort(ptr noundef nonnull %0) #4
   ret void
@@ -385,13 +385,13 @@ define dso_local void @jpeg_write_marker(ptr noundef %0, i32 noundef signext %1,
 
 19:                                               ; preds = %4, %13
   %20 = getelementptr inbounds i8, ptr %0, i64 464
-  %21 = load ptr, ptr %20, align 8, !tbaa !49
+  %21 = load ptr, ptr %20, align 8, !tbaa !46
   %22 = getelementptr inbounds i8, ptr %21, i64 40
-  %23 = load ptr, ptr %22, align 8, !tbaa !54
+  %23 = load ptr, ptr %22, align 8, !tbaa !51
   tail call void %23(ptr noundef nonnull %0, i32 noundef signext %1, i32 noundef signext %3) #4
-  %24 = load ptr, ptr %20, align 8, !tbaa !49
+  %24 = load ptr, ptr %20, align 8, !tbaa !46
   %25 = getelementptr inbounds i8, ptr %24, i64 48
-  %26 = load ptr, ptr %25, align 8, !tbaa !55
+  %26 = load ptr, ptr %25, align 8, !tbaa !52
   %27 = icmp eq i32 %3, 0
   br i1 %27, label %36, label %28
 
@@ -404,7 +404,7 @@ define dso_local void @jpeg_write_marker(ptr noundef %0, i32 noundef signext %1,
   tail call void %26(ptr noundef %0, i32 noundef signext %33) #4
   %34 = getelementptr inbounds i8, ptr %29, i64 1
   %35 = icmp eq i32 %31, 0
-  br i1 %35, label %36, label %28, !llvm.loop !56
+  br i1 %35, label %36, label %28
 
 36:                                               ; preds = %28, %19
   ret void
@@ -435,9 +435,9 @@ define dso_local void @jpeg_write_m_header(ptr noundef %0, i32 noundef signext %
 
 18:                                               ; preds = %3, %12
   %19 = getelementptr inbounds i8, ptr %0, i64 464
-  %20 = load ptr, ptr %19, align 8, !tbaa !49
+  %20 = load ptr, ptr %19, align 8, !tbaa !46
   %21 = getelementptr inbounds i8, ptr %20, i64 40
-  %22 = load ptr, ptr %21, align 8, !tbaa !54
+  %22 = load ptr, ptr %21, align 8, !tbaa !51
   tail call void %22(ptr noundef nonnull %0, i32 noundef signext %1, i32 noundef signext %2) #4
   ret void
 }
@@ -445,9 +445,9 @@ define dso_local void @jpeg_write_m_header(ptr noundef %0, i32 noundef signext %
 ; Function Attrs: nounwind
 define dso_local void @jpeg_write_m_byte(ptr noundef %0, i32 noundef signext %1) local_unnamed_addr #0 {
   %3 = getelementptr inbounds i8, ptr %0, i64 464
-  %4 = load ptr, ptr %3, align 8, !tbaa !49
+  %4 = load ptr, ptr %3, align 8, !tbaa !46
   %5 = getelementptr inbounds i8, ptr %4, i64 48
-  %6 = load ptr, ptr %5, align 8, !tbaa !55
+  %6 = load ptr, ptr %5, align 8, !tbaa !52
   tail call void %6(ptr noundef %0, i32 noundef signext %1) #4
   ret void
 }
@@ -473,22 +473,22 @@ define dso_local void @jpeg_write_tables(ptr noundef %0) local_unnamed_addr #0 {
 11:                                               ; preds = %5, %1
   %12 = load ptr, ptr %0, align 8, !tbaa !14
   %13 = getelementptr inbounds i8, ptr %12, i64 32
-  %14 = load ptr, ptr %13, align 8, !tbaa !57
+  %14 = load ptr, ptr %13, align 8, !tbaa !53
   tail call void %14(ptr noundef nonnull %0) #4
   %15 = getelementptr inbounds i8, ptr %0, i64 40
   %16 = load ptr, ptr %15, align 8, !tbaa !22
   %17 = getelementptr inbounds i8, ptr %16, i64 16
-  %18 = load ptr, ptr %17, align 8, !tbaa !58
+  %18 = load ptr, ptr %17, align 8, !tbaa !54
   tail call void %18(ptr noundef nonnull %0) #4
   tail call void @jinit_marker_writer(ptr noundef nonnull %0) #4
   %19 = getelementptr inbounds i8, ptr %0, i64 464
-  %20 = load ptr, ptr %19, align 8, !tbaa !49
+  %20 = load ptr, ptr %19, align 8, !tbaa !46
   %21 = getelementptr inbounds i8, ptr %20, i64 32
-  %22 = load ptr, ptr %21, align 8, !tbaa !59
+  %22 = load ptr, ptr %21, align 8, !tbaa !55
   tail call void %22(ptr noundef nonnull %0) #4
   %23 = load ptr, ptr %15, align 8, !tbaa !22
   %24 = getelementptr inbounds i8, ptr %23, i64 32
-  %25 = load ptr, ptr %24, align 8, !tbaa !52
+  %25 = load ptr, ptr %24, align 8, !tbaa !49
   tail call void %25(ptr noundef nonnull %0) #4
   ret void
 }
@@ -549,18 +549,14 @@ attributes #4 = { nounwind }
 !42 = !{!7, !8, i64 456}
 !43 = !{!44, !8, i64 8}
 !44 = !{!"jpeg_c_coef_controller", !8, i64 0, !8, i64 8}
-!45 = distinct !{!45, !46}
-!46 = !{!"llvm.loop.mustprogress"}
-!47 = !{!35, !8, i64 16}
-!48 = distinct !{!48, !46}
-!49 = !{!7, !8, i64 464}
-!50 = !{!51, !8, i64 24}
-!51 = !{!"jpeg_marker_writer", !8, i64 0, !8, i64 8, !8, i64 16, !8, i64 24, !8, i64 32, !8, i64 40, !8, i64 48}
-!52 = !{!53, !8, i64 32}
-!53 = !{!"jpeg_destination_mgr", !8, i64 0, !17, i64 8, !8, i64 16, !8, i64 24, !8, i64 32}
-!54 = !{!51, !8, i64 40}
-!55 = !{!51, !8, i64 48}
-!56 = distinct !{!56, !46}
-!57 = !{!16, !8, i64 32}
-!58 = !{!53, !8, i64 16}
-!59 = !{!51, !8, i64 32}
+!45 = !{!35, !8, i64 16}
+!46 = !{!7, !8, i64 464}
+!47 = !{!48, !8, i64 24}
+!48 = !{!"jpeg_marker_writer", !8, i64 0, !8, i64 8, !8, i64 16, !8, i64 24, !8, i64 32, !8, i64 40, !8, i64 48}
+!49 = !{!50, !8, i64 32}
+!50 = !{!"jpeg_destination_mgr", !8, i64 0, !17, i64 8, !8, i64 16, !8, i64 24, !8, i64 32}
+!51 = !{!48, !8, i64 40}
+!52 = !{!48, !8, i64 48}
+!53 = !{!16, !8, i64 32}
+!54 = !{!50, !8, i64 16}
+!55 = !{!48, !8, i64 32}

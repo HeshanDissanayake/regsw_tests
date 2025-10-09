@@ -3,18 +3,18 @@ SYSROOT = --sysroot=/home/heshds/working_dir/cva6-sdk/buildroot/output/host/risc
 export RISCV_CC = /opt/dev/riscv_linux_rv64g_regsw/bin/riscv64-unknown-linux-gnu-gcc
 export RISCV_CFLAGS = -c $(SYSROOT) 
 
-REGSW_COMPILER = ../../scripts/compile_linux.sh
+REGSW_COMPILER = ../scripts/compile_linux.sh
 
 SRC = lchain.c
-OBJ = build/lchain.o  
-ELF = build/lchain.elf build/lchain_regsw.elf
+OBJ = lchain-build/lchain.o  
+ELF = lchain-build/lchain.elf lchain-build/lchain_regsw.elf
 
 ifeq ($(REGSW),true)
-	EXEC = build/lchain_regsw.elf
-	REGSW_COMPILER = ../../scripts/regsw_compile_linux.sh
+	EXEC = lchain-build/lchain_regsw.elf
+	REGSW_COMPILER = ../scripts/regsw_compile_linux.sh
 else
-	EXEC = build/lchain_normal.elf
-	REGSW_COMPILER = ../../scripts/normal_compile_linux.sh
+	EXEC = lchain-build/lchain_normal.elf
+	REGSW_COMPILER = ../scripts/normal_compile_linux.sh
 endif
 
 
@@ -23,11 +23,11 @@ all: increment clean $(EXEC)
 $(EXEC): $(OBJ)
 	$(RISCV_CC) -Wall -Wextra -Werror -Wstrict-prototypes -Wmissing-prototypes -Wformat -O3 $(SYSROOT) -o $(EXEC) $(OBJ)
 
-build/lchain.o: lchain.c | build_dir
-	$(REGSW_COMPILER) lchain.c -o build/lchain.o
+lchain-build/lchain.o: lchain.c | build_dir
+	$(REGSW_COMPILER) lchain.c -o lchain-build/lchain.o
 
 build_dir:
-	mkdir -p build
+	mkdir -p lchain-build
 
 # this updates a build counter that we can use to see whether the linux image has the latest changes
 increment:

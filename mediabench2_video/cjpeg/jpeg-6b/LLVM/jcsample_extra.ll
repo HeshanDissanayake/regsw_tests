@@ -148,7 +148,7 @@ define dso_local void @jinit_downsampler(ptr noundef %0) local_unnamed_addr #0 {
   %86 = getelementptr inbounds i8, ptr %31, i64 96
   %87 = sext i32 %83 to i64
   %88 = icmp slt i64 %85, %87
-  br i1 %88, label %27, label %89, !llvm.loop !37
+  br i1 %88, label %27, label %89
 
 89:                                               ; preds = %82
   %90 = icmp ne i32 %84, 0
@@ -163,7 +163,7 @@ define dso_local void @jinit_downsampler(ptr noundef %0) local_unnamed_addr #0 {
   %97 = getelementptr inbounds i8, ptr %96, i64 40
   store i32 99, ptr %97, align 8, !tbaa !25
   %98 = getelementptr inbounds i8, ptr %96, i64 8
-  %99 = load ptr, ptr %98, align 8, !tbaa !39
+  %99 = load ptr, ptr %98, align 8, !tbaa !37
   tail call void %99(ptr noundef nonnull %0, i32 noundef signext 0) #5
   br label %100
 
@@ -213,7 +213,7 @@ define internal void @sep_downsample(ptr noundef %0, ptr nocapture noundef reado
   %33 = load i32, ptr %6, align 4, !tbaa !28
   %34 = sext i32 %33 to i64
   %35 = icmp slt i64 %31, %34
-  br i1 %35, label %16, label %36, !llvm.loop !40
+  br i1 %35, label %16, label %36
 
 36:                                               ; preds = %16, %5
   ret void
@@ -222,13 +222,13 @@ define internal void @sep_downsample(ptr noundef %0, ptr nocapture noundef reado
 ; Function Attrs: nofree norecurse nosync nounwind memory(readwrite, inaccessiblemem: none)
 define internal void @fullsize_smooth_downsample(ptr nocapture noundef readonly %0, ptr nocapture noundef readonly %1, ptr nocapture noundef readonly %2, ptr nocapture noundef readonly %3) #2 {
   %5 = getelementptr inbounds i8, ptr %1, i64 28
-  %6 = load i32, ptr %5, align 4, !tbaa !41
+  %6 = load i32, ptr %5, align 4, !tbaa !38
   %7 = shl i32 %6, 3
   %8 = getelementptr inbounds i8, ptr %2, i64 -8
   %9 = getelementptr inbounds i8, ptr %0, i64 316
   %10 = load i32, ptr %9, align 4, !tbaa !34
   %11 = getelementptr inbounds i8, ptr %0, i64 48
-  %12 = load i32, ptr %11, align 8, !tbaa !42
+  %12 = load i32, ptr %11, align 8, !tbaa !39
   %13 = sub i32 %7, %12
   %14 = icmp sgt i32 %13, 0
   %15 = icmp sgt i32 %10, -2
@@ -251,11 +251,11 @@ define internal void @fullsize_smooth_downsample(ptr nocapture noundef readonly 
   %28 = load ptr, ptr %27, align 8, !tbaa !36
   %29 = getelementptr inbounds i8, ptr %28, i64 %19
   %30 = getelementptr inbounds i8, ptr %29, i64 -1
-  %31 = load i8, ptr %30, align 1, !tbaa !43
-  tail call void @llvm.memset.p0.i64(ptr noundef nonnull align 1 dereferenceable(1) %29, i8 %31, i64 %23, i1 false), !tbaa !43
+  %31 = load i8, ptr %30, align 1, !tbaa !40
+  tail call void @llvm.memset.p0.i64(ptr noundef nonnull align 1 dereferenceable(1) %29, i8 %31, i64 %23, i1 false), !tbaa !40
   %32 = add nuw nsw i64 %26, 1
   %33 = icmp eq i64 %32, %24
-  br i1 %33, label %34, label %25, !llvm.loop !44
+  br i1 %33, label %34, label %25
 
 34:                                               ; preds = %25, %4
   %35 = getelementptr inbounds i8, ptr %0, i64 272
@@ -286,23 +286,23 @@ define internal void @fullsize_smooth_downsample(ptr nocapture noundef readonly 
   %56 = getelementptr inbounds ptr, ptr %2, i64 %55
   %57 = load ptr, ptr %56, align 8, !tbaa !36
   %58 = getelementptr inbounds i8, ptr %54, i64 1
-  %59 = load i8, ptr %54, align 1, !tbaa !43
+  %59 = load i8, ptr %54, align 1, !tbaa !40
   %60 = zext i8 %59 to i32
   %61 = getelementptr inbounds i8, ptr %57, i64 1
-  %62 = load i8, ptr %57, align 1, !tbaa !43
+  %62 = load i8, ptr %57, align 1, !tbaa !40
   %63 = zext i8 %62 to i32
   %64 = add nuw nsw i32 %63, %60
-  %65 = load i8, ptr %52, align 1, !tbaa !43
+  %65 = load i8, ptr %52, align 1, !tbaa !40
   %66 = zext i8 %65 to i32
   %67 = add nuw nsw i32 %64, %66
   %68 = getelementptr inbounds i8, ptr %52, i64 1
   %69 = zext i8 %65 to i64
-  %70 = load i8, ptr %58, align 1, !tbaa !43
+  %70 = load i8, ptr %58, align 1, !tbaa !40
   %71 = zext i8 %70 to i32
-  %72 = load i8, ptr %61, align 1, !tbaa !43
+  %72 = load i8, ptr %61, align 1, !tbaa !40
   %73 = zext i8 %72 to i32
   %74 = add nuw nsw i32 %73, %71
-  %75 = load i8, ptr %68, align 1, !tbaa !43
+  %75 = load i8, ptr %68, align 1, !tbaa !40
   %76 = zext i8 %75 to i32
   %77 = add nuw nsw i32 %74, %76
   %78 = zext nneg i32 %77 to i64
@@ -316,7 +316,7 @@ define internal void @fullsize_smooth_downsample(ptr nocapture noundef readonly 
   %86 = add i64 %85, %84
   %87 = lshr i64 %86, 16
   %88 = trunc i64 %87 to i8
-  store i8 %88, ptr %50, align 1, !tbaa !43
+  store i8 %88, ptr %50, align 1, !tbaa !40
   %89 = getelementptr inbounds i8, ptr %50, i64 1
   br label %90
 
@@ -329,16 +329,16 @@ define internal void @fullsize_smooth_downsample(ptr nocapture noundef readonly 
   %96 = phi ptr [ %58, %47 ], [ %101, %90 ]
   %97 = phi ptr [ %68, %47 ], [ %98, %90 ]
   %98 = getelementptr inbounds i8, ptr %97, i64 1
-  %99 = load i8, ptr %97, align 1, !tbaa !43
+  %99 = load i8, ptr %97, align 1, !tbaa !40
   %100 = zext i8 %99 to i64
   %101 = getelementptr inbounds i8, ptr %96, i64 1
   %102 = getelementptr inbounds i8, ptr %95, i64 1
-  %103 = load i8, ptr %101, align 1, !tbaa !43
+  %103 = load i8, ptr %101, align 1, !tbaa !40
   %104 = zext i8 %103 to i32
-  %105 = load i8, ptr %102, align 1, !tbaa !43
+  %105 = load i8, ptr %102, align 1, !tbaa !40
   %106 = zext i8 %105 to i32
   %107 = add nuw nsw i32 %106, %104
-  %108 = load i8, ptr %98, align 1, !tbaa !43
+  %108 = load i8, ptr %98, align 1, !tbaa !40
   %109 = zext i8 %108 to i32
   %110 = add nuw nsw i32 %107, %109
   %111 = zext nneg i32 %92 to i64
@@ -353,14 +353,14 @@ define internal void @fullsize_smooth_downsample(ptr nocapture noundef readonly 
   %120 = add i64 %119, %118
   %121 = lshr i64 %120, 16
   %122 = trunc i64 %121 to i8
-  store i8 %122, ptr %91, align 1, !tbaa !43
+  store i8 %122, ptr %91, align 1, !tbaa !40
   %123 = add i32 %94, -1
   %124 = getelementptr inbounds i8, ptr %91, i64 1
   %125 = icmp eq i32 %123, 0
-  br i1 %125, label %126, label %90, !llvm.loop !45
+  br i1 %125, label %126, label %90
 
 126:                                              ; preds = %90
-  %127 = load i8, ptr %98, align 1, !tbaa !43
+  %127 = load i8, ptr %98, align 1, !tbaa !40
   %128 = zext i8 %127 to i64
   %129 = shl nuw nsw i32 %110, 1
   %130 = zext nneg i32 %129 to i64
@@ -372,11 +372,11 @@ define internal void @fullsize_smooth_downsample(ptr nocapture noundef readonly 
   %136 = add i64 %135, %134
   %137 = lshr i64 %136, 16
   %138 = trunc i64 %137 to i8
-  store i8 %138, ptr %124, align 1, !tbaa !43
+  store i8 %138, ptr %124, align 1, !tbaa !40
   %139 = load i32, ptr %42, align 4, !tbaa !33
   %140 = sext i32 %139 to i64
   %141 = icmp slt i64 %55, %140
-  br i1 %141, label %47, label %142, !llvm.loop !46
+  br i1 %141, label %47, label %142
 
 142:                                              ; preds = %126, %34
   ret void
@@ -387,12 +387,12 @@ define internal void @fullsize_downsample(ptr nocapture noundef readonly %0, ptr
   %5 = getelementptr inbounds i8, ptr %0, i64 316
   %6 = load i32, ptr %5, align 4, !tbaa !34
   %7 = getelementptr inbounds i8, ptr %0, i64 48
-  %8 = load i32, ptr %7, align 8, !tbaa !42
+  %8 = load i32, ptr %7, align 8, !tbaa !39
   tail call void @jcopy_sample_rows(ptr noundef %2, i32 noundef signext 0, ptr noundef %3, i32 noundef signext 0, i32 noundef signext %6, i32 noundef signext %8) #5
   %9 = load i32, ptr %5, align 4, !tbaa !34
-  %10 = load i32, ptr %7, align 8, !tbaa !42
+  %10 = load i32, ptr %7, align 8, !tbaa !39
   %11 = getelementptr inbounds i8, ptr %1, i64 28
-  %12 = load i32, ptr %11, align 4, !tbaa !41
+  %12 = load i32, ptr %11, align 4, !tbaa !38
   %13 = shl i32 %12, 3
   %14 = sub i32 %13, %10
   %15 = icmp sgt i32 %14, 0
@@ -415,11 +415,11 @@ define internal void @fullsize_downsample(ptr nocapture noundef readonly %0, ptr
   %28 = load ptr, ptr %27, align 8, !tbaa !36
   %29 = getelementptr inbounds i8, ptr %28, i64 %19
   %30 = getelementptr inbounds i8, ptr %29, i64 -1
-  %31 = load i8, ptr %30, align 1, !tbaa !43
-  tail call void @llvm.memset.p0.i64(ptr noundef nonnull align 1 dereferenceable(1) %29, i8 %31, i64 %23, i1 false), !tbaa !43
+  %31 = load i8, ptr %30, align 1, !tbaa !40
+  tail call void @llvm.memset.p0.i64(ptr noundef nonnull align 1 dereferenceable(1) %29, i8 %31, i64 %23, i1 false), !tbaa !40
   %32 = add nuw nsw i64 %26, 1
   %33 = icmp eq i64 %32, %24
-  br i1 %33, label %34, label %25, !llvm.loop !44
+  br i1 %33, label %34, label %25
 
 34:                                               ; preds = %25, %4
   ret void
@@ -428,12 +428,12 @@ define internal void @fullsize_downsample(ptr nocapture noundef readonly %0, ptr
 ; Function Attrs: nofree norecurse nosync nounwind memory(readwrite, inaccessiblemem: none)
 define internal void @h2v1_downsample(ptr nocapture noundef readonly %0, ptr nocapture noundef readonly %1, ptr nocapture noundef readonly %2, ptr nocapture noundef readonly %3) #2 {
   %5 = getelementptr inbounds i8, ptr %1, i64 28
-  %6 = load i32, ptr %5, align 4, !tbaa !41
+  %6 = load i32, ptr %5, align 4, !tbaa !38
   %7 = shl i32 %6, 3
   %8 = getelementptr inbounds i8, ptr %0, i64 316
   %9 = load i32, ptr %8, align 4, !tbaa !34
   %10 = getelementptr inbounds i8, ptr %0, i64 48
-  %11 = load i32, ptr %10, align 8, !tbaa !42
+  %11 = load i32, ptr %10, align 8, !tbaa !39
   %12 = shl i32 %6, 4
   %13 = sub i32 %12, %11
   %14 = icmp sgt i32 %13, 0
@@ -456,11 +456,11 @@ define internal void @h2v1_downsample(ptr nocapture noundef readonly %0, ptr noc
   %27 = load ptr, ptr %26, align 8, !tbaa !36
   %28 = getelementptr inbounds i8, ptr %27, i64 %18
   %29 = getelementptr inbounds i8, ptr %28, i64 -1
-  %30 = load i8, ptr %29, align 1, !tbaa !43
-  tail call void @llvm.memset.p0.i64(ptr noundef nonnull align 1 dereferenceable(1) %28, i8 %30, i64 %22, i1 false), !tbaa !43
+  %30 = load i8, ptr %29, align 1, !tbaa !40
+  tail call void @llvm.memset.p0.i64(ptr noundef nonnull align 1 dereferenceable(1) %28, i8 %30, i64 %22, i1 false), !tbaa !40
   %31 = add nuw nsw i64 %25, 1
   %32 = icmp eq i64 %31, %23
-  br i1 %32, label %33, label %24, !llvm.loop !44
+  br i1 %32, label %33, label %24
 
 33:                                               ; preds = %24, %4
   %34 = getelementptr inbounds i8, ptr %1, i64 12
@@ -483,29 +483,29 @@ define internal void @h2v1_downsample(ptr nocapture noundef readonly %0, ptr noc
   %47 = phi ptr [ %42, %39 ], [ %59, %45 ]
   %48 = phi ptr [ %44, %39 ], [ %61, %45 ]
   %49 = phi i32 [ 0, %39 ], [ %62, %45 ]
-  %50 = load i8, ptr %48, align 1, !tbaa !43
+  %50 = load i8, ptr %48, align 1, !tbaa !40
   %51 = zext i8 %50 to i32
   %52 = getelementptr inbounds i8, ptr %48, i64 1
-  %53 = load i8, ptr %52, align 1, !tbaa !43
+  %53 = load i8, ptr %52, align 1, !tbaa !40
   %54 = zext i8 %53 to i32
   %55 = add nuw nsw i32 %46, %51
   %56 = add nuw nsw i32 %55, %54
   %57 = lshr i32 %56, 1
   %58 = trunc nuw i32 %57 to i8
   %59 = getelementptr inbounds i8, ptr %47, i64 1
-  store i8 %58, ptr %47, align 1, !tbaa !43
+  store i8 %58, ptr %47, align 1, !tbaa !40
   %60 = xor i32 %46, 1
   %61 = getelementptr inbounds i8, ptr %48, i64 2
   %62 = add nuw i32 %49, 1
   %63 = icmp eq i32 %62, %7
-  br i1 %63, label %64, label %45, !llvm.loop !47
+  br i1 %63, label %64, label %45
 
 64:                                               ; preds = %45
   %65 = add nuw nsw i64 %40, 1
   %66 = load i32, ptr %34, align 4, !tbaa !33
   %67 = sext i32 %66 to i64
   %68 = icmp slt i64 %65, %67
-  br i1 %68, label %39, label %69, !llvm.loop !48
+  br i1 %68, label %39, label %69
 
 69:                                               ; preds = %64, %33
   ret void
@@ -514,13 +514,13 @@ define internal void @h2v1_downsample(ptr nocapture noundef readonly %0, ptr noc
 ; Function Attrs: nofree norecurse nosync nounwind memory(readwrite, inaccessiblemem: none)
 define internal void @h2v2_smooth_downsample(ptr nocapture noundef readonly %0, ptr nocapture noundef readonly %1, ptr nocapture noundef readonly %2, ptr nocapture noundef readonly %3) #2 {
   %5 = getelementptr inbounds i8, ptr %1, i64 28
-  %6 = load i32, ptr %5, align 4, !tbaa !41
+  %6 = load i32, ptr %5, align 4, !tbaa !38
   %7 = shl i32 %6, 3
   %8 = getelementptr inbounds i8, ptr %2, i64 -8
   %9 = getelementptr inbounds i8, ptr %0, i64 316
   %10 = load i32, ptr %9, align 4, !tbaa !34
   %11 = getelementptr inbounds i8, ptr %0, i64 48
-  %12 = load i32, ptr %11, align 8, !tbaa !42
+  %12 = load i32, ptr %11, align 8, !tbaa !39
   %13 = shl i32 %6, 4
   %14 = sub i32 %13, %12
   %15 = icmp sgt i32 %14, 0
@@ -544,11 +544,11 @@ define internal void @h2v2_smooth_downsample(ptr nocapture noundef readonly %0, 
   %29 = load ptr, ptr %28, align 8, !tbaa !36
   %30 = getelementptr inbounds i8, ptr %29, i64 %20
   %31 = getelementptr inbounds i8, ptr %30, i64 -1
-  %32 = load i8, ptr %31, align 1, !tbaa !43
-  tail call void @llvm.memset.p0.i64(ptr noundef nonnull align 1 dereferenceable(1) %30, i8 %32, i64 %24, i1 false), !tbaa !43
+  %32 = load i8, ptr %31, align 1, !tbaa !40
+  tail call void @llvm.memset.p0.i64(ptr noundef nonnull align 1 dereferenceable(1) %30, i8 %32, i64 %24, i1 false), !tbaa !40
   %33 = add nuw nsw i64 %27, 1
   %34 = icmp eq i64 %33, %25
-  br i1 %34, label %35, label %26, !llvm.loop !44
+  br i1 %34, label %35, label %26
 
 35:                                               ; preds = %26, %4
   %36 = getelementptr inbounds i8, ptr %0, i64 272
@@ -582,35 +582,35 @@ define internal void @h2v2_smooth_downsample(ptr nocapture noundef readonly %0, 
   %60 = add nuw nsw i64 %50, 2
   %61 = getelementptr inbounds ptr, ptr %2, i64 %60
   %62 = load ptr, ptr %61, align 8, !tbaa !36
-  %63 = load i8, ptr %54, align 1, !tbaa !43
+  %63 = load i8, ptr %54, align 1, !tbaa !40
   %64 = zext i8 %63 to i32
   %65 = getelementptr inbounds i8, ptr %54, i64 1
-  %66 = load i8, ptr %65, align 1, !tbaa !43
+  %66 = load i8, ptr %65, align 1, !tbaa !40
   %67 = zext i8 %66 to i32
-  %68 = load i8, ptr %57, align 1, !tbaa !43
+  %68 = load i8, ptr %57, align 1, !tbaa !40
   %69 = zext i8 %68 to i32
   %70 = getelementptr inbounds i8, ptr %57, i64 1
-  %71 = load i8, ptr %70, align 1, !tbaa !43
+  %71 = load i8, ptr %70, align 1, !tbaa !40
   %72 = zext i8 %71 to i32
   %73 = add nuw nsw i32 %69, %64
   %74 = add nuw nsw i32 %73, %67
   %75 = add nuw nsw i32 %74, %72
   %76 = zext nneg i32 %75 to i64
-  %77 = load i8, ptr %59, align 1, !tbaa !43
+  %77 = load i8, ptr %59, align 1, !tbaa !40
   %78 = zext i8 %77 to i32
   %79 = getelementptr inbounds i8, ptr %59, i64 1
-  %80 = load i8, ptr %79, align 1, !tbaa !43
+  %80 = load i8, ptr %79, align 1, !tbaa !40
   %81 = zext i8 %80 to i32
-  %82 = load i8, ptr %62, align 1, !tbaa !43
+  %82 = load i8, ptr %62, align 1, !tbaa !40
   %83 = zext i8 %82 to i32
   %84 = getelementptr inbounds i8, ptr %62, i64 1
-  %85 = load i8, ptr %84, align 1, !tbaa !43
+  %85 = load i8, ptr %84, align 1, !tbaa !40
   %86 = zext i8 %85 to i32
   %87 = getelementptr inbounds i8, ptr %54, i64 2
-  %88 = load i8, ptr %87, align 1, !tbaa !43
+  %88 = load i8, ptr %87, align 1, !tbaa !40
   %89 = zext i8 %88 to i32
   %90 = getelementptr inbounds i8, ptr %57, i64 2
-  %91 = load i8, ptr %90, align 1, !tbaa !43
+  %91 = load i8, ptr %90, align 1, !tbaa !40
   %92 = zext i8 %91 to i32
   %93 = add nuw nsw i32 %73, %78
   %94 = add nuw nsw i32 %93, %81
@@ -621,10 +621,10 @@ define internal void @h2v2_smooth_downsample(ptr nocapture noundef readonly %0, 
   %99 = zext nneg i32 %98 to i64
   %100 = shl nuw nsw i64 %99, 1
   %101 = getelementptr inbounds i8, ptr %59, i64 2
-  %102 = load i8, ptr %101, align 1, !tbaa !43
+  %102 = load i8, ptr %101, align 1, !tbaa !40
   %103 = zext i8 %102 to i32
   %104 = getelementptr inbounds i8, ptr %62, i64 2
-  %105 = load i8, ptr %104, align 1, !tbaa !43
+  %105 = load i8, ptr %104, align 1, !tbaa !40
   %106 = zext i8 %105 to i32
   %107 = add nuw nsw i32 %83, %78
   %108 = add nuw nsw i32 %107, %103
@@ -637,7 +637,7 @@ define internal void @h2v2_smooth_downsample(ptr nocapture noundef readonly %0, 
   %115 = add i64 %114, %113
   %116 = lshr i64 %115, 16
   %117 = trunc i64 %116 to i8
-  store i8 %117, ptr %52, align 1, !tbaa !43
+  store i8 %117, ptr %52, align 1, !tbaa !40
   %118 = getelementptr inbounds i8, ptr %52, i64 1
   br label %119
 
@@ -648,63 +648,63 @@ define internal void @h2v2_smooth_downsample(ptr nocapture noundef readonly %0, 
   %123 = phi ptr [ %90, %48 ], [ %164, %119 ]
   %124 = phi ptr [ %87, %48 ], [ %156, %119 ]
   %125 = phi i32 [ %47, %48 ], [ %192, %119 ]
-  %126 = load i8, ptr %124, align 1, !tbaa !43
+  %126 = load i8, ptr %124, align 1, !tbaa !40
   %127 = zext i8 %126 to i64
   %128 = getelementptr inbounds i8, ptr %124, i64 1
-  %129 = load i8, ptr %128, align 1, !tbaa !43
+  %129 = load i8, ptr %128, align 1, !tbaa !40
   %130 = zext i8 %129 to i64
   %131 = add nuw nsw i64 %130, %127
-  %132 = load i8, ptr %123, align 1, !tbaa !43
+  %132 = load i8, ptr %123, align 1, !tbaa !40
   %133 = zext i8 %132 to i64
   %134 = add nuw nsw i64 %131, %133
   %135 = getelementptr inbounds i8, ptr %123, i64 1
-  %136 = load i8, ptr %135, align 1, !tbaa !43
+  %136 = load i8, ptr %135, align 1, !tbaa !40
   %137 = zext i8 %136 to i64
   %138 = add nuw nsw i64 %134, %137
-  %139 = load i8, ptr %122, align 1, !tbaa !43
+  %139 = load i8, ptr %122, align 1, !tbaa !40
   %140 = zext i8 %139 to i64
   %141 = getelementptr inbounds i8, ptr %122, i64 1
-  %142 = load i8, ptr %141, align 1, !tbaa !43
+  %142 = load i8, ptr %141, align 1, !tbaa !40
   %143 = zext i8 %142 to i64
   %144 = add nuw nsw i64 %143, %140
-  %145 = load i8, ptr %121, align 1, !tbaa !43
+  %145 = load i8, ptr %121, align 1, !tbaa !40
   %146 = zext i8 %145 to i64
   %147 = add nuw nsw i64 %144, %146
   %148 = getelementptr inbounds i8, ptr %121, i64 1
-  %149 = load i8, ptr %148, align 1, !tbaa !43
+  %149 = load i8, ptr %148, align 1, !tbaa !40
   %150 = zext i8 %149 to i64
   %151 = add nuw nsw i64 %147, %150
   %152 = getelementptr inbounds i8, ptr %124, i64 -1
-  %153 = load i8, ptr %152, align 1, !tbaa !43
+  %153 = load i8, ptr %152, align 1, !tbaa !40
   %154 = zext i8 %153 to i64
   %155 = add nuw nsw i64 %151, %154
   %156 = getelementptr inbounds i8, ptr %124, i64 2
-  %157 = load i8, ptr %156, align 1, !tbaa !43
+  %157 = load i8, ptr %156, align 1, !tbaa !40
   %158 = zext i8 %157 to i64
   %159 = add nuw nsw i64 %155, %158
   %160 = getelementptr inbounds i8, ptr %123, i64 -1
-  %161 = load i8, ptr %160, align 1, !tbaa !43
+  %161 = load i8, ptr %160, align 1, !tbaa !40
   %162 = zext i8 %161 to i64
   %163 = add nuw nsw i64 %159, %162
   %164 = getelementptr inbounds i8, ptr %123, i64 2
-  %165 = load i8, ptr %164, align 1, !tbaa !43
+  %165 = load i8, ptr %164, align 1, !tbaa !40
   %166 = zext i8 %165 to i64
   %167 = add nuw nsw i64 %163, %166
   %168 = shl nuw nsw i64 %167, 1
   %169 = and i64 %168, 8589934590
   %170 = getelementptr inbounds i8, ptr %122, i64 -1
-  %171 = load i8, ptr %170, align 1, !tbaa !43
+  %171 = load i8, ptr %170, align 1, !tbaa !40
   %172 = zext i8 %171 to i64
   %173 = getelementptr inbounds i8, ptr %122, i64 2
-  %174 = load i8, ptr %173, align 1, !tbaa !43
+  %174 = load i8, ptr %173, align 1, !tbaa !40
   %175 = zext i8 %174 to i64
   %176 = add nuw nsw i64 %175, %172
   %177 = getelementptr inbounds i8, ptr %121, i64 -1
-  %178 = load i8, ptr %177, align 1, !tbaa !43
+  %178 = load i8, ptr %177, align 1, !tbaa !40
   %179 = zext i8 %178 to i64
   %180 = add nuw nsw i64 %176, %179
   %181 = getelementptr inbounds i8, ptr %121, i64 2
-  %182 = load i8, ptr %181, align 1, !tbaa !43
+  %182 = load i8, ptr %181, align 1, !tbaa !40
   %183 = zext i8 %182 to i64
   %184 = add nuw nsw i64 %180, %169
   %185 = add nuw nsw i64 %184, %183
@@ -714,44 +714,44 @@ define internal void @h2v2_smooth_downsample(ptr nocapture noundef readonly %0, 
   %189 = add i64 %188, %187
   %190 = lshr i64 %189, 16
   %191 = trunc i64 %190 to i8
-  store i8 %191, ptr %120, align 1, !tbaa !43
+  store i8 %191, ptr %120, align 1, !tbaa !40
   %192 = add i32 %125, -1
   %193 = getelementptr inbounds i8, ptr %120, i64 1
   %194 = icmp eq i32 %192, 0
-  br i1 %194, label %195, label %119, !llvm.loop !49
+  br i1 %194, label %195, label %119
 
 195:                                              ; preds = %119
   %196 = getelementptr inbounds i8, ptr %124, i64 1
   %197 = getelementptr inbounds i8, ptr %123, i64 1
   %198 = getelementptr inbounds i8, ptr %122, i64 1
   %199 = getelementptr inbounds i8, ptr %121, i64 1
-  %200 = load i8, ptr %156, align 1, !tbaa !43
+  %200 = load i8, ptr %156, align 1, !tbaa !40
   %201 = zext i8 %200 to i32
   %202 = getelementptr inbounds i8, ptr %124, i64 3
-  %203 = load i8, ptr %202, align 1, !tbaa !43
+  %203 = load i8, ptr %202, align 1, !tbaa !40
   %204 = zext i8 %203 to i32
-  %205 = load i8, ptr %164, align 1, !tbaa !43
+  %205 = load i8, ptr %164, align 1, !tbaa !40
   %206 = zext i8 %205 to i32
   %207 = getelementptr inbounds i8, ptr %123, i64 3
-  %208 = load i8, ptr %207, align 1, !tbaa !43
+  %208 = load i8, ptr %207, align 1, !tbaa !40
   %209 = zext i8 %208 to i32
   %210 = add nuw nsw i32 %209, %204
   %211 = add nuw nsw i32 %210, %201
   %212 = add nuw nsw i32 %211, %206
   %213 = zext nneg i32 %212 to i64
-  %214 = load i8, ptr %173, align 1, !tbaa !43
+  %214 = load i8, ptr %173, align 1, !tbaa !40
   %215 = zext i8 %214 to i32
   %216 = getelementptr inbounds i8, ptr %122, i64 3
-  %217 = load i8, ptr %216, align 1, !tbaa !43
+  %217 = load i8, ptr %216, align 1, !tbaa !40
   %218 = zext i8 %217 to i32
-  %219 = load i8, ptr %181, align 1, !tbaa !43
+  %219 = load i8, ptr %181, align 1, !tbaa !40
   %220 = zext i8 %219 to i32
   %221 = getelementptr inbounds i8, ptr %121, i64 3
-  %222 = load i8, ptr %221, align 1, !tbaa !43
+  %222 = load i8, ptr %221, align 1, !tbaa !40
   %223 = zext i8 %222 to i32
-  %224 = load i8, ptr %196, align 1, !tbaa !43
+  %224 = load i8, ptr %196, align 1, !tbaa !40
   %225 = zext i8 %224 to i32
-  %226 = load i8, ptr %197, align 1, !tbaa !43
+  %226 = load i8, ptr %197, align 1, !tbaa !40
   %227 = zext i8 %226 to i32
   %228 = add nuw nsw i32 %210, %215
   %229 = add nuw nsw i32 %228, %218
@@ -761,9 +761,9 @@ define internal void @h2v2_smooth_downsample(ptr nocapture noundef readonly %0, 
   %233 = add nuw nsw i32 %232, %227
   %234 = zext nneg i32 %233 to i64
   %235 = shl nuw nsw i64 %234, 1
-  %236 = load i8, ptr %198, align 1, !tbaa !43
+  %236 = load i8, ptr %198, align 1, !tbaa !40
   %237 = zext i8 %236 to i32
-  %238 = load i8, ptr %199, align 1, !tbaa !43
+  %238 = load i8, ptr %199, align 1, !tbaa !40
   %239 = zext i8 %238 to i32
   %240 = add nuw nsw i32 %223, %218
   %241 = add nuw nsw i32 %240, %237
@@ -776,12 +776,12 @@ define internal void @h2v2_smooth_downsample(ptr nocapture noundef readonly %0, 
   %248 = add i64 %247, %246
   %249 = lshr i64 %248, 16
   %250 = trunc i64 %249 to i8
-  store i8 %250, ptr %193, align 1, !tbaa !43
+  store i8 %250, ptr %193, align 1, !tbaa !40
   %251 = add nuw nsw i64 %49, 1
   %252 = load i32, ptr %43, align 4, !tbaa !33
   %253 = sext i32 %252 to i64
   %254 = icmp slt i64 %251, %253
-  br i1 %254, label %48, label %255, !llvm.loop !50
+  br i1 %254, label %48, label %255
 
 255:                                              ; preds = %195, %35
   ret void
@@ -790,12 +790,12 @@ define internal void @h2v2_smooth_downsample(ptr nocapture noundef readonly %0, 
 ; Function Attrs: nofree norecurse nosync nounwind memory(readwrite, inaccessiblemem: none)
 define internal void @h2v2_downsample(ptr nocapture noundef readonly %0, ptr nocapture noundef readonly %1, ptr nocapture noundef readonly %2, ptr nocapture noundef readonly %3) #2 {
   %5 = getelementptr inbounds i8, ptr %1, i64 28
-  %6 = load i32, ptr %5, align 4, !tbaa !41
+  %6 = load i32, ptr %5, align 4, !tbaa !38
   %7 = shl i32 %6, 3
   %8 = getelementptr inbounds i8, ptr %0, i64 316
   %9 = load i32, ptr %8, align 4, !tbaa !34
   %10 = getelementptr inbounds i8, ptr %0, i64 48
-  %11 = load i32, ptr %10, align 8, !tbaa !42
+  %11 = load i32, ptr %10, align 8, !tbaa !39
   %12 = shl i32 %6, 4
   %13 = sub i32 %12, %11
   %14 = icmp sgt i32 %13, 0
@@ -818,11 +818,11 @@ define internal void @h2v2_downsample(ptr nocapture noundef readonly %0, ptr noc
   %27 = load ptr, ptr %26, align 8, !tbaa !36
   %28 = getelementptr inbounds i8, ptr %27, i64 %18
   %29 = getelementptr inbounds i8, ptr %28, i64 -1
-  %30 = load i8, ptr %29, align 1, !tbaa !43
-  tail call void @llvm.memset.p0.i64(ptr noundef nonnull align 1 dereferenceable(1) %28, i8 %30, i64 %22, i1 false), !tbaa !43
+  %30 = load i8, ptr %29, align 1, !tbaa !40
+  tail call void @llvm.memset.p0.i64(ptr noundef nonnull align 1 dereferenceable(1) %28, i8 %30, i64 %22, i1 false), !tbaa !40
   %31 = add nuw nsw i64 %25, 1
   %32 = icmp eq i64 %31, %23
-  br i1 %32, label %33, label %24, !llvm.loop !44
+  br i1 %32, label %33, label %24
 
 33:                                               ; preds = %24, %4
   %34 = getelementptr inbounds i8, ptr %1, i64 12
@@ -850,15 +850,15 @@ define internal void @h2v2_downsample(ptr nocapture noundef readonly %0, ptr noc
   %52 = phi ptr [ %48, %39 ], [ %74, %49 ]
   %53 = phi ptr [ %45, %39 ], [ %73, %49 ]
   %54 = phi i32 [ 0, %39 ], [ %75, %49 ]
-  %55 = load i8, ptr %53, align 1, !tbaa !43
+  %55 = load i8, ptr %53, align 1, !tbaa !40
   %56 = zext i8 %55 to i32
   %57 = getelementptr inbounds i8, ptr %53, i64 1
-  %58 = load i8, ptr %57, align 1, !tbaa !43
+  %58 = load i8, ptr %57, align 1, !tbaa !40
   %59 = zext i8 %58 to i32
-  %60 = load i8, ptr %52, align 1, !tbaa !43
+  %60 = load i8, ptr %52, align 1, !tbaa !40
   %61 = zext i8 %60 to i32
   %62 = getelementptr inbounds i8, ptr %52, i64 1
-  %63 = load i8, ptr %62, align 1, !tbaa !43
+  %63 = load i8, ptr %62, align 1, !tbaa !40
   %64 = zext i8 %63 to i32
   %65 = add nuw nsw i32 %50, %56
   %66 = add nuw nsw i32 %65, %59
@@ -867,13 +867,13 @@ define internal void @h2v2_downsample(ptr nocapture noundef readonly %0, ptr noc
   %69 = lshr i32 %68, 2
   %70 = trunc nuw i32 %69 to i8
   %71 = getelementptr inbounds i8, ptr %51, i64 1
-  store i8 %70, ptr %51, align 1, !tbaa !43
+  store i8 %70, ptr %51, align 1, !tbaa !40
   %72 = xor i32 %50, 3
   %73 = getelementptr inbounds i8, ptr %53, i64 2
   %74 = getelementptr inbounds i8, ptr %52, i64 2
   %75 = add nuw i32 %54, 1
   %76 = icmp eq i32 %75, %7
-  br i1 %76, label %77, label %49, !llvm.loop !51
+  br i1 %76, label %77, label %49
 
 77:                                               ; preds = %49
   %78 = add nuw nsw i64 %41, 2
@@ -881,7 +881,7 @@ define internal void @h2v2_downsample(ptr nocapture noundef readonly %0, ptr noc
   %80 = load i32, ptr %34, align 4, !tbaa !33
   %81 = sext i32 %80 to i64
   %82 = icmp slt i64 %79, %81
-  br i1 %82, label %39, label %83, !llvm.loop !52
+  br i1 %82, label %39, label %83
 
 83:                                               ; preds = %77, %33
   ret void
@@ -890,7 +890,7 @@ define internal void @h2v2_downsample(ptr nocapture noundef readonly %0, ptr noc
 ; Function Attrs: nofree norecurse nosync nounwind memory(readwrite, inaccessiblemem: none)
 define internal void @int_downsample(ptr nocapture noundef readonly %0, ptr nocapture noundef readonly %1, ptr nocapture noundef readonly %2, ptr nocapture noundef readonly %3) #2 {
   %5 = getelementptr inbounds i8, ptr %1, i64 28
-  %6 = load i32, ptr %5, align 4, !tbaa !41
+  %6 = load i32, ptr %5, align 4, !tbaa !38
   %7 = shl i32 %6, 3
   %8 = getelementptr inbounds i8, ptr %0, i64 312
   %9 = load i32, ptr %8, align 8, !tbaa !32
@@ -905,7 +905,7 @@ define internal void @int_downsample(ptr nocapture noundef readonly %0, ptr noca
   %18 = mul nsw i32 %17, %12
   %19 = sdiv i32 %18, 2
   %20 = getelementptr inbounds i8, ptr %0, i64 48
-  %21 = load i32, ptr %20, align 8, !tbaa !42
+  %21 = load i32, ptr %20, align 8, !tbaa !39
   %22 = mul i32 %12, %7
   %23 = sub i32 %22, %21
   %24 = icmp sgt i32 %23, 0
@@ -928,11 +928,11 @@ define internal void @int_downsample(ptr nocapture noundef readonly %0, ptr noca
   %37 = load ptr, ptr %36, align 8, !tbaa !36
   %38 = getelementptr inbounds i8, ptr %37, i64 %28
   %39 = getelementptr inbounds i8, ptr %38, i64 -1
-  %40 = load i8, ptr %39, align 1, !tbaa !43
-  tail call void @llvm.memset.p0.i64(ptr noundef nonnull align 1 dereferenceable(1) %38, i8 %40, i64 %32, i1 false), !tbaa !43
+  %40 = load i8, ptr %39, align 1, !tbaa !40
+  tail call void @llvm.memset.p0.i64(ptr noundef nonnull align 1 dereferenceable(1) %38, i8 %40, i64 %32, i1 false), !tbaa !40
   %41 = add nuw nsw i64 %35, 1
   %42 = icmp eq i64 %41, %33
-  br i1 %42, label %43, label %34, !llvm.loop !44
+  br i1 %42, label %43, label %34
 
 43:                                               ; preds = %34
   %44 = load i32, ptr %15, align 4, !tbaa !33
@@ -989,28 +989,28 @@ define internal void @int_downsample(ptr nocapture noundef readonly %0, ptr noca
   %77 = phi ptr [ %74, %69 ], [ %79, %75 ]
   %78 = phi i32 [ 0, %69 ], [ %83, %75 ]
   %79 = getelementptr inbounds i8, ptr %77, i64 1
-  %80 = load i8, ptr %77, align 1, !tbaa !43
+  %80 = load i8, ptr %77, align 1, !tbaa !40
   %81 = zext i8 %80 to i64
   %82 = add nsw i64 %76, %81
   %83 = add nuw nsw i32 %78, 1
   %84 = icmp eq i32 %83, %12
-  br i1 %84, label %85, label %75, !llvm.loop !53
+  br i1 %84, label %85, label %75
 
 85:                                               ; preds = %75
   %86 = add nuw nsw i64 %70, 1
   %87 = icmp eq i64 %86, %57
-  br i1 %87, label %88, label %69, !llvm.loop !54
+  br i1 %87, label %88, label %69
 
 88:                                               ; preds = %85
   %89 = add nsw i64 %82, %51
   %90 = sdiv i64 %89, %52
   %91 = trunc i64 %90 to i8
   %92 = getelementptr inbounds i8, ptr %65, i64 1
-  store i8 %91, ptr %65, align 1, !tbaa !43
+  store i8 %91, ptr %65, align 1, !tbaa !40
   %93 = add nuw i32 %67, 1
   %94 = add i32 %66, %12
   %95 = icmp eq i32 %93, %7
-  br i1 %95, label %96, label %64, !llvm.loop !55
+  br i1 %95, label %96, label %64
 
 96:                                               ; preds = %88
   %97 = add nuw nsw i64 %60, %57
@@ -1018,7 +1018,7 @@ define internal void @int_downsample(ptr nocapture noundef readonly %0, ptr noca
   %99 = load i32, ptr %15, align 4, !tbaa !33
   %100 = sext i32 %99 to i64
   %101 = icmp slt i64 %98, %100
-  br i1 %101, label %58, label %126, !llvm.loop !56
+  br i1 %101, label %58, label %126
 
 102:                                              ; preds = %55
   %103 = sdiv i64 %51, %52
@@ -1030,12 +1030,12 @@ define internal void @int_downsample(ptr nocapture noundef readonly %0, ptr noca
   %107 = phi i64 [ %110, %106 ], [ 0, %102 ]
   %108 = getelementptr inbounds ptr, ptr %3, i64 %107
   %109 = load ptr, ptr %108, align 8, !tbaa !36
-  tail call void @llvm.memset.p0.i64(ptr align 1 %109, i8 %104, i64 %105, i1 false), !tbaa !43
+  tail call void @llvm.memset.p0.i64(ptr align 1 %109, i8 %104, i64 %105, i1 false), !tbaa !40
   %110 = add nuw nsw i64 %107, 1
   %111 = load i32, ptr %15, align 4, !tbaa !33
   %112 = sext i32 %111 to i64
   %113 = icmp slt i64 %110, %112
-  br i1 %113, label %106, label %126, !llvm.loop !56
+  br i1 %113, label %106, label %126
 
 114:                                              ; preds = %53
   %115 = sdiv i64 %51, %52
@@ -1047,12 +1047,12 @@ define internal void @int_downsample(ptr nocapture noundef readonly %0, ptr noca
   %119 = phi i64 [ %122, %118 ], [ 0, %114 ]
   %120 = getelementptr inbounds ptr, ptr %3, i64 %119
   %121 = load ptr, ptr %120, align 8, !tbaa !36
-  tail call void @llvm.memset.p0.i64(ptr align 1 %121, i8 %116, i64 %117, i1 false), !tbaa !43
+  tail call void @llvm.memset.p0.i64(ptr align 1 %121, i8 %116, i64 %117, i1 false), !tbaa !40
   %122 = add nuw nsw i64 %119, 1
   %123 = load i32, ptr %15, align 4, !tbaa !33
   %124 = sext i32 %123 to i64
   %125 = icmp slt i64 %122, %124
-  br i1 %125, label %118, label %126, !llvm.loop !56
+  br i1 %125, label %118, label %126
 
 126:                                              ; preds = %118, %106, %96, %48, %45
   ret void
@@ -1110,23 +1110,7 @@ attributes #5 = { nounwind }
 !34 = !{!7, !11, i64 316}
 !35 = !{!7, !11, i64 272}
 !36 = !{!8, !8, i64 0}
-!37 = distinct !{!37, !38}
-!38 = !{!"llvm.loop.mustprogress"}
-!39 = !{!26, !8, i64 8}
-!40 = distinct !{!40, !38}
-!41 = !{!31, !11, i64 28}
-!42 = !{!7, !11, i64 48}
-!43 = !{!9, !9, i64 0}
-!44 = distinct !{!44, !38}
-!45 = distinct !{!45, !38}
-!46 = distinct !{!46, !38}
-!47 = distinct !{!47, !38}
-!48 = distinct !{!48, !38}
-!49 = distinct !{!49, !38}
-!50 = distinct !{!50, !38}
-!51 = distinct !{!51, !38}
-!52 = distinct !{!52, !38}
-!53 = distinct !{!53, !38}
-!54 = distinct !{!54, !38}
-!55 = distinct !{!55, !38}
-!56 = distinct !{!56, !38}
+!37 = !{!26, !8, i64 8}
+!38 = !{!31, !11, i64 28}
+!39 = !{!7, !11, i64 48}
+!40 = !{!9, !9, i64 0}

@@ -657,7 +657,7 @@ jtransform_execute_transformation:      # @jtransform_execute_transformation
 	li	a5, 6
 	sd	a2, 40(sp)                      # 8-byte Folded Spill
 	bgeu	a5, a4, .LBB3_1
-	j	.LBB3_158
+	j	.LBB3_156
 .LBB3_1:
 	mv	a6, a1
 	mv	s2, a0
@@ -673,7 +673,7 @@ jtransform_execute_transformation:      # @jtransform_execute_transformation
 .LBB3_2:
 	lw	a0, 76(a6)
 	bgtz	a0, .LBB3_3
-	j	.LBB3_158
+	j	.LBB3_156
 .LBB3_3:
 	lw	a0, 312(a6)
 	lw	a1, 48(a6)
@@ -687,13 +687,13 @@ jtransform_execute_transformation:      # @jtransform_execute_transformation
 	lw	a0, 76(a6)
 	addi	s0, s0, 1
 	blt	s0, a0, .LBB3_5
-	j	.LBB3_158
+	j	.LBB3_156
 .LBB3_5:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB3_9 Depth 2
                                         #       Child Loop BB3_11 Depth 3
                                         #         Child Loop BB3_12 Depth 4
                                         #           Child Loop BB3_13 Depth 5
-                                        #     Child Loop BB3_17 Depth 2
+                                        #     Child Loop BB3_7 Depth 2
 	ld	s5, 88(a6)
 	mul	a0, s0, s4
 	add	s5, s5, a0
@@ -701,18 +701,27 @@ jtransform_execute_transformation:      # @jtransform_execute_transformation
 	beqz	a0, .LBB3_4
 # %bb.6:                                #   in Loop: Header=BB3_5 Depth=1
 	lw	a0, 8(s5)
+	lw	a3, 12(s5)
 	mulw	s7, a0, s1
 	slli	s6, s0, 3
 	ld	a0, 40(sp)                      # 8-byte Folded Reload
 	add	s6, a0, s6
-	beqz	s7, .LBB3_16
-# %bb.7:                                #   in Loop: Header=BB3_5 Depth=1
 	li	s3, 0
+	bnez	s7, .LBB3_9
+.LBB3_7:                                #   Parent Loop BB3_5 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	ld	a0, 8(s2)
+	ld	a5, 64(a0)
+	ld	a1, 0(s6)
+	li	a4, 1
+	mv	a0, s2
+	mv	a2, s3
+	jalr	a5
 	lw	a3, 12(s5)
-	addi	a0, s7, -1
-	srliw	s8, a0, 1
-	addi	s8, s8, 1
-	j	.LBB3_9
+	lw	a0, 32(s5)
+	addw	s3, a3, s3
+	bltu	s3, a0, .LBB3_7
+	j	.LBB3_4
 .LBB3_8:                                #   in Loop: Header=BB3_9 Depth=2
 	lw	a0, 32(s5)
 	addw	s3, a3, s3
@@ -742,93 +751,79 @@ jtransform_execute_transformation:      # @jtransform_execute_transformation
 	add	a2, a0, a2
 	ld	a2, 0(a2)
 	li	a4, 0
+	addi	a5, a2, 128
 .LBB3_12:                               #   Parent Loop BB3_5 Depth=1
                                         #     Parent Loop BB3_9 Depth=2
                                         #       Parent Loop BB3_11 Depth=3
                                         # =>      This Loop Header: Depth=4
                                         #           Child Loop BB3_13 Depth 5
-	slli	a5, a4, 7
-	add	a5, a2, a5
-	addi	a6, a5, 128
-	not	a7, a4
-	add	a7, s7, a7
-	slli	a7, a7, 32
-	srli	a7, a7, 25
+	slli	a6, a4, 32
+	srli	a7, a6, 25
+	add	a6, a5, a7
 	add	a7, a2, a7
+	not	t0, a4
+	add	t0, s7, t0
+	slli	t0, t0, 32
+	srli	t0, t0, 25
+	add	t0, a2, t0
 .LBB3_13:                               #   Parent Loop BB3_5 Depth=1
                                         #     Parent Loop BB3_9 Depth=2
                                         #       Parent Loop BB3_11 Depth=3
                                         #         Parent Loop BB3_12 Depth=4
                                         # =>        This Inner Loop Header: Depth=5
-	lh	t0, 0(a7)
-	lh	t1, 0(a5)
-	sh	t0, 0(a5)
-	lh	t0, 2(a7)
+	lh	t1, 0(t0)
+	lh	t2, 0(a7)
 	sh	t1, 0(a7)
-	lh	t1, 2(a5)
-	negw	t0, t0
-	sh	t0, 2(a5)
-	negw	t0, t1
-	sh	t0, 2(a7)
-	addi	a5, a5, 4
+	lh	t1, 2(t0)
+	sh	t2, 0(t0)
+	lh	t2, 2(a7)
+	negw	t1, t1
+	sh	t1, 2(a7)
+	negw	t1, t2
+	sh	t1, 2(t0)
 	addi	a7, a7, 4
-	bne	a5, a6, .LBB3_13
+	addi	t0, t0, 4
+	bne	a7, a6, .LBB3_13
 # %bb.14:                               #   in Loop: Header=BB3_12 Depth=4
 	addi	a4, a4, 1
-	bne	a4, s8, .LBB3_12
+	slliw	a6, a4, 1
+	bltu	a6, s7, .LBB3_12
 # %bb.15:                               #   in Loop: Header=BB3_11 Depth=3
 	addi	a1, a1, 1
 	bne	a1, a3, .LBB3_11
 	j	.LBB3_8
-.LBB3_16:                               #   in Loop: Header=BB3_5 Depth=1
-	lw	a3, 12(s5)
-	li	s3, 0
-.LBB3_17:                               #   Parent Loop BB3_5 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	ld	a0, 8(s2)
-	ld	a5, 64(a0)
-	ld	a1, 0(s6)
-	li	a4, 1
-	mv	a0, s2
-	mv	a2, s3
-	jalr	a5
-	lw	a3, 12(s5)
-	lw	a0, 32(s5)
-	addw	s3, a3, s3
-	bltu	s3, a0, .LBB3_17
-	j	.LBB3_4
-.LBB3_18:
+.LBB3_16:
 	lw	a0, 76(a6)
-	bgtz	a0, .LBB3_19
-	j	.LBB3_158
-.LBB3_19:
+	bgtz	a0, .LBB3_17
+	j	.LBB3_156
+.LBB3_17:
 	lw	a1, 312(a6)
 	lw	a2, 48(a6)
 	li	s0, 0
 	slli	a1, a1, 3
 	divuw	a1, a2, a1
 	sd	a1, 24(sp)                      # 8-byte Folded Spill
-	j	.LBB3_22
-.LBB3_20:                               #   in Loop: Header=BB3_22 Depth=1
+	j	.LBB3_20
+.LBB3_18:                               #   in Loop: Header=BB3_20 Depth=1
 	ld	a6, 48(sp)                      # 8-byte Folded Reload
 	lw	a0, 76(a6)
-.LBB3_21:                               #   in Loop: Header=BB3_22 Depth=1
+.LBB3_19:                               #   in Loop: Header=BB3_20 Depth=1
 	addi	s0, s0, 1
-	blt	s0, a0, .LBB3_22
-	j	.LBB3_158
-.LBB3_22:                               # =>This Loop Header: Depth=1
-                                        #     Child Loop BB3_25 Depth 2
-                                        #       Child Loop BB3_30 Depth 3
-                                        #         Child Loop BB3_33 Depth 4
-                                        #           Child Loop BB3_38 Depth 5
+	blt	s0, a0, .LBB3_20
+	j	.LBB3_156
+.LBB3_20:                               # =>This Loop Header: Depth=1
+                                        #     Child Loop BB3_23 Depth 2
+                                        #       Child Loop BB3_28 Depth 3
+                                        #         Child Loop BB3_31 Depth 4
                                         #           Child Loop BB3_36 Depth 5
+                                        #           Child Loop BB3_34 Depth 5
 	ld	s8, 88(a6)
 	li	a1, 96
 	mul	a1, s0, a1
 	add	s8, s8, a1
 	lw	a1, 32(s8)
-	beqz	a1, .LBB3_21
-# %bb.23:                               #   in Loop: Header=BB3_22 Depth=1
+	beqz	a1, .LBB3_19
+# %bb.21:                               #   in Loop: Header=BB3_20 Depth=1
 	lw	a0, 8(s8)
 	li	s3, 0
 	ld	a1, 24(sp)                      # 8-byte Folded Reload
@@ -839,17 +834,17 @@ jtransform_execute_transformation:      # @jtransform_execute_transformation
 	add	s10, s10, s11
 	ld	a0, 40(sp)                      # 8-byte Folded Reload
 	add	s11, a0, s11
-	j	.LBB3_25
-.LBB3_24:                               #   in Loop: Header=BB3_25 Depth=2
+	j	.LBB3_23
+.LBB3_22:                               #   in Loop: Header=BB3_23 Depth=2
 	lw	a0, 32(s8)
 	addw	s3, a3, s3
-	bgeu	s3, a0, .LBB3_20
-.LBB3_25:                               #   Parent Loop BB3_22 Depth=1
+	bgeu	s3, a0, .LBB3_18
+.LBB3_23:                               #   Parent Loop BB3_20 Depth=1
                                         # =>  This Loop Header: Depth=2
-                                        #       Child Loop BB3_30 Depth 3
-                                        #         Child Loop BB3_33 Depth 4
-                                        #           Child Loop BB3_38 Depth 5
+                                        #       Child Loop BB3_28 Depth 3
+                                        #         Child Loop BB3_31 Depth 4
                                         #           Child Loop BB3_36 Depth 5
+                                        #           Child Loop BB3_34 Depth 5
 	ld	a0, 8(s2)
 	ld	a5, 64(a0)
 	ld	a1, 0(s10)
@@ -858,29 +853,29 @@ jtransform_execute_transformation:      # @jtransform_execute_transformation
 	mv	a2, s3
 	jalr	a5
 	lw	a3, 12(s8)
-	blez	a3, .LBB3_24
-# %bb.26:                               #   in Loop: Header=BB3_25 Depth=2
+	blez	a3, .LBB3_22
+# %bb.24:                               #   in Loop: Header=BB3_23 Depth=2
 	mv	s4, a0
 	lw	a0, 28(s8)
-	beqz	a0, .LBB3_24
-# %bb.27:                               # %.preheader35
-                                        #   in Loop: Header=BB3_25 Depth=2
+	beqz	a0, .LBB3_22
+# %bb.25:                               # %.preheader37
+                                        #   in Loop: Header=BB3_23 Depth=2
 	li	s7, 0
 	li	a0, 1
-	j	.LBB3_30
-.LBB3_28:                               #   in Loop: Header=BB3_30 Depth=3
+	j	.LBB3_28
+.LBB3_26:                               #   in Loop: Header=BB3_28 Depth=3
 	lw	a3, 12(s8)
-.LBB3_29:                               #   in Loop: Header=BB3_30 Depth=3
+.LBB3_27:                               #   in Loop: Header=BB3_28 Depth=3
 	addi	s7, s7, 1
-	bge	s7, a3, .LBB3_24
-.LBB3_30:                               #   Parent Loop BB3_22 Depth=1
-                                        #     Parent Loop BB3_25 Depth=2
+	bge	s7, a3, .LBB3_22
+.LBB3_28:                               #   Parent Loop BB3_20 Depth=1
+                                        #     Parent Loop BB3_23 Depth=2
                                         # =>    This Loop Header: Depth=3
-                                        #         Child Loop BB3_33 Depth 4
-                                        #           Child Loop BB3_38 Depth 5
+                                        #         Child Loop BB3_31 Depth 4
                                         #           Child Loop BB3_36 Depth 5
-	beqz	a0, .LBB3_29
-# %bb.31:                               #   in Loop: Header=BB3_30 Depth=3
+                                        #           Child Loop BB3_34 Depth 5
+	beqz	a0, .LBB3_27
+# %bb.29:                               #   in Loop: Header=BB3_28 Depth=3
 	li	s5, 0
 	add	a0, s3, s7
 	slli	a0, a0, 32
@@ -888,17 +883,17 @@ jtransform_execute_transformation:      # @jtransform_execute_transformation
 	slli	s1, s7, 3
 	add	s1, s4, s1
 	slli	s6, a0, 7
-	j	.LBB3_33
-.LBB3_32:                               #   in Loop: Header=BB3_33 Depth=4
+	j	.LBB3_31
+.LBB3_30:                               #   in Loop: Header=BB3_31 Depth=4
 	lw	a0, 28(s8)
 	addw	s5, a1, s5
-	bgeu	s5, a0, .LBB3_28
-.LBB3_33:                               #   Parent Loop BB3_22 Depth=1
-                                        #     Parent Loop BB3_25 Depth=2
-                                        #       Parent Loop BB3_30 Depth=3
+	bgeu	s5, a0, .LBB3_26
+.LBB3_31:                               #   Parent Loop BB3_20 Depth=1
+                                        #     Parent Loop BB3_23 Depth=2
+                                        #       Parent Loop BB3_28 Depth=3
                                         # =>      This Loop Header: Depth=4
-                                        #           Child Loop BB3_38 Depth 5
                                         #           Child Loop BB3_36 Depth 5
+                                        #           Child Loop BB3_34 Depth 5
 	ld	a0, 8(s2)
 	ld	a5, 64(a0)
 	ld	a1, 0(s11)
@@ -908,17 +903,17 @@ jtransform_execute_transformation:      # @jtransform_execute_transformation
 	li	a4, 0
 	jalr	a5
 	lw	a1, 8(s8)
-	blez	a1, .LBB3_32
-# %bb.34:                               #   in Loop: Header=BB3_33 Depth=4
+	blez	a1, .LBB3_30
+# %bb.32:                               #   in Loop: Header=BB3_31 Depth=4
 	ld	a2, 0(s1)
-	bgeu	s5, s9, .LBB3_37
-# %bb.35:                               # %.preheader31
-                                        #   in Loop: Header=BB3_33 Depth=4
+	bgeu	s5, s9, .LBB3_35
+# %bb.33:                               # %.preheader33
+                                        #   in Loop: Header=BB3_31 Depth=4
 	li	a3, 0
-.LBB3_36:                               #   Parent Loop BB3_22 Depth=1
-                                        #     Parent Loop BB3_25 Depth=2
-                                        #       Parent Loop BB3_30 Depth=3
-                                        #         Parent Loop BB3_33 Depth=4
+.LBB3_34:                               #   Parent Loop BB3_20 Depth=1
+                                        #     Parent Loop BB3_23 Depth=2
+                                        #       Parent Loop BB3_28 Depth=3
+                                        #         Parent Loop BB3_31 Depth=4
                                         # =>        This Inner Loop Header: Depth=5
 	ld	a4, 0(a0)
 	add	a4, a4, s6
@@ -1090,17 +1085,17 @@ jtransform_execute_transformation:      # @jtransform_execute_transformation
 	sh	a4, 126(a5)
 	addi	a3, a3, 1
 	addi	a0, a0, 8
-	bne	a3, a1, .LBB3_36
-	j	.LBB3_32
-.LBB3_37:                               # %.preheader33
-                                        #   in Loop: Header=BB3_33 Depth=4
+	bne	a3, a1, .LBB3_34
+	j	.LBB3_30
+.LBB3_35:                               # %.preheader35
+                                        #   in Loop: Header=BB3_31 Depth=4
 	slli	a3, a1, 3
 	add	a3, a0, a3
 	mv	a4, s5
-.LBB3_38:                               #   Parent Loop BB3_22 Depth=1
-                                        #     Parent Loop BB3_25 Depth=2
-                                        #       Parent Loop BB3_30 Depth=3
-                                        #         Parent Loop BB3_33 Depth=4
+.LBB3_36:                               #   Parent Loop BB3_20 Depth=1
+                                        #     Parent Loop BB3_23 Depth=2
+                                        #       Parent Loop BB3_28 Depth=3
+                                        #         Parent Loop BB3_31 Depth=4
                                         # =>        This Inner Loop Header: Depth=5
 	ld	a5, 0(a0)
 	add	a5, a5, s6
@@ -1237,34 +1232,34 @@ jtransform_execute_transformation:      # @jtransform_execute_transformation
 	sh	a5, 126(a6)
 	addi	a0, a0, 8
 	addi	a4, a4, 1
-	bne	a0, a3, .LBB3_38
-	j	.LBB3_32
-.LBB3_39:
+	bne	a0, a3, .LBB3_36
+	j	.LBB3_30
+.LBB3_37:
 	lw	a0, 76(a6)
-	bgtz	a0, .LBB3_40
-	j	.LBB3_158
-.LBB3_40:
+	bgtz	a0, .LBB3_38
+	j	.LBB3_156
+.LBB3_38:
 	li	s0, 0
 	li	s1, 96
-	j	.LBB3_43
-.LBB3_41:                               #   in Loop: Header=BB3_43 Depth=1
+	j	.LBB3_41
+.LBB3_39:                               #   in Loop: Header=BB3_41 Depth=1
 	ld	a6, 48(sp)                      # 8-byte Folded Reload
 	lw	a0, 76(a6)
-.LBB3_42:                               #   in Loop: Header=BB3_43 Depth=1
+.LBB3_40:                               #   in Loop: Header=BB3_41 Depth=1
 	addi	s0, s0, 1
-	blt	s0, a0, .LBB3_43
-	j	.LBB3_158
-.LBB3_43:                               # =>This Loop Header: Depth=1
-                                        #     Child Loop BB3_46 Depth 2
-                                        #       Child Loop BB3_51 Depth 3
-                                        #         Child Loop BB3_54 Depth 4
-                                        #           Child Loop BB3_56 Depth 5
+	blt	s0, a0, .LBB3_41
+	j	.LBB3_156
+.LBB3_41:                               # =>This Loop Header: Depth=1
+                                        #     Child Loop BB3_44 Depth 2
+                                        #       Child Loop BB3_49 Depth 3
+                                        #         Child Loop BB3_52 Depth 4
+                                        #           Child Loop BB3_54 Depth 5
 	ld	s6, 88(a6)
 	mul	a1, s0, s1
 	add	s6, s6, a1
 	lw	a1, 32(s6)
-	beqz	a1, .LBB3_42
-# %bb.44:                               #   in Loop: Header=BB3_43 Depth=1
+	beqz	a1, .LBB3_40
+# %bb.42:                               #   in Loop: Header=BB3_41 Depth=1
 	li	s3, 0
 	lw	a3, 12(s6)
 	slli	s8, s0, 3
@@ -1272,16 +1267,16 @@ jtransform_execute_transformation:      # @jtransform_execute_transformation
 	add	s7, s7, s8
 	ld	a0, 40(sp)                      # 8-byte Folded Reload
 	add	s8, a0, s8
-	j	.LBB3_46
-.LBB3_45:                               #   in Loop: Header=BB3_46 Depth=2
+	j	.LBB3_44
+.LBB3_43:                               #   in Loop: Header=BB3_44 Depth=2
 	lw	a0, 32(s6)
 	addw	s3, a3, s3
-	bgeu	s3, a0, .LBB3_41
-.LBB3_46:                               #   Parent Loop BB3_43 Depth=1
+	bgeu	s3, a0, .LBB3_39
+.LBB3_44:                               #   Parent Loop BB3_41 Depth=1
                                         # =>  This Loop Header: Depth=2
-                                        #       Child Loop BB3_51 Depth 3
-                                        #         Child Loop BB3_54 Depth 4
-                                        #           Child Loop BB3_56 Depth 5
+                                        #       Child Loop BB3_49 Depth 3
+                                        #         Child Loop BB3_52 Depth 4
+                                        #           Child Loop BB3_54 Depth 5
 	ld	a0, 8(s2)
 	ld	a5, 64(a0)
 	ld	a1, 0(s7)
@@ -1290,28 +1285,28 @@ jtransform_execute_transformation:      # @jtransform_execute_transformation
 	mv	a2, s3
 	jalr	a5
 	lw	a3, 12(s6)
-	blez	a3, .LBB3_45
-# %bb.47:                               #   in Loop: Header=BB3_46 Depth=2
+	blez	a3, .LBB3_43
+# %bb.45:                               #   in Loop: Header=BB3_44 Depth=2
 	mv	s4, a0
 	lw	a0, 28(s6)
-	beqz	a0, .LBB3_45
-# %bb.48:                               # %.preheader15
-                                        #   in Loop: Header=BB3_46 Depth=2
+	beqz	a0, .LBB3_43
+# %bb.46:                               # %.preheader17
+                                        #   in Loop: Header=BB3_44 Depth=2
 	li	s9, 0
 	li	a0, 1
-	j	.LBB3_51
-.LBB3_49:                               #   in Loop: Header=BB3_51 Depth=3
+	j	.LBB3_49
+.LBB3_47:                               #   in Loop: Header=BB3_49 Depth=3
 	lw	a3, 12(s6)
-.LBB3_50:                               #   in Loop: Header=BB3_51 Depth=3
+.LBB3_48:                               #   in Loop: Header=BB3_49 Depth=3
 	addi	s9, s9, 1
-	bge	s9, a3, .LBB3_45
-.LBB3_51:                               #   Parent Loop BB3_43 Depth=1
-                                        #     Parent Loop BB3_46 Depth=2
+	bge	s9, a3, .LBB3_43
+.LBB3_49:                               #   Parent Loop BB3_41 Depth=1
+                                        #     Parent Loop BB3_44 Depth=2
                                         # =>    This Loop Header: Depth=3
-                                        #         Child Loop BB3_54 Depth 4
-                                        #           Child Loop BB3_56 Depth 5
-	beqz	a0, .LBB3_50
-# %bb.52:                               #   in Loop: Header=BB3_51 Depth=3
+                                        #         Child Loop BB3_52 Depth 4
+                                        #           Child Loop BB3_54 Depth 5
+	beqz	a0, .LBB3_48
+# %bb.50:                               #   in Loop: Header=BB3_49 Depth=3
 	li	s5, 0
 	add	a0, s3, s9
 	slli	a0, a0, 32
@@ -1319,16 +1314,16 @@ jtransform_execute_transformation:      # @jtransform_execute_transformation
 	slli	s10, s9, 3
 	add	s10, s4, s10
 	slli	s11, a0, 7
-	j	.LBB3_54
-.LBB3_53:                               #   in Loop: Header=BB3_54 Depth=4
+	j	.LBB3_52
+.LBB3_51:                               #   in Loop: Header=BB3_52 Depth=4
 	lw	a0, 28(s6)
 	addw	s5, a1, s5
-	bgeu	s5, a0, .LBB3_49
-.LBB3_54:                               #   Parent Loop BB3_43 Depth=1
-                                        #     Parent Loop BB3_46 Depth=2
-                                        #       Parent Loop BB3_51 Depth=3
+	bgeu	s5, a0, .LBB3_47
+.LBB3_52:                               #   Parent Loop BB3_41 Depth=1
+                                        #     Parent Loop BB3_44 Depth=2
+                                        #       Parent Loop BB3_49 Depth=3
                                         # =>      This Loop Header: Depth=4
-                                        #           Child Loop BB3_56 Depth 5
+                                        #           Child Loop BB3_54 Depth 5
 	ld	a0, 8(s2)
 	ld	a5, 64(a0)
 	ld	a1, 0(s8)
@@ -1338,16 +1333,16 @@ jtransform_execute_transformation:      # @jtransform_execute_transformation
 	li	a4, 0
 	jalr	a5
 	lw	a1, 8(s6)
-	blez	a1, .LBB3_53
-# %bb.55:                               #   in Loop: Header=BB3_54 Depth=4
+	blez	a1, .LBB3_51
+# %bb.53:                               #   in Loop: Header=BB3_52 Depth=4
 	ld	a2, 0(s10)
 	slli	a3, a1, 3
 	add	a3, a0, a3
 	mv	a4, s5
-.LBB3_56:                               #   Parent Loop BB3_43 Depth=1
-                                        #     Parent Loop BB3_46 Depth=2
-                                        #       Parent Loop BB3_51 Depth=3
-                                        #         Parent Loop BB3_54 Depth=4
+.LBB3_54:                               #   Parent Loop BB3_41 Depth=1
+                                        #     Parent Loop BB3_44 Depth=2
+                                        #       Parent Loop BB3_49 Depth=3
+                                        #         Parent Loop BB3_52 Depth=4
                                         # =>        This Inner Loop Header: Depth=5
 	ld	a5, 0(a0)
 	add	a5, a5, s11
@@ -1484,13 +1479,13 @@ jtransform_execute_transformation:      # @jtransform_execute_transformation
 	sh	a5, 126(a6)
 	addi	a0, a0, 8
 	addi	a4, a4, 1
-	bne	a0, a3, .LBB3_56
-	j	.LBB3_53
-.LBB3_57:
+	bne	a0, a3, .LBB3_54
+	j	.LBB3_51
+.LBB3_55:
 	lw	a0, 76(a6)
-	bgtz	a0, .LBB3_58
-	j	.LBB3_158
-.LBB3_58:
+	bgtz	a0, .LBB3_56
+	j	.LBB3_156
+.LBB3_56:
 	li	a5, 0
 	lw	a1, 312(a6)
 	lw	a2, 48(a6)
@@ -1502,32 +1497,32 @@ jtransform_execute_transformation:      # @jtransform_execute_transformation
 	slli	a3, a3, 3
 	divuw	a1, a4, a3
 	sd	a1, 8(sp)                       # 8-byte Folded Spill
-	j	.LBB3_61
-.LBB3_59:                               #   in Loop: Header=BB3_61 Depth=1
+	j	.LBB3_59
+.LBB3_57:                               #   in Loop: Header=BB3_59 Depth=1
 	ld	a6, 48(sp)                      # 8-byte Folded Reload
 	lw	a0, 76(a6)
 	ld	a5, 24(sp)                      # 8-byte Folded Reload
-.LBB3_60:                               #   in Loop: Header=BB3_61 Depth=1
+.LBB3_58:                               #   in Loop: Header=BB3_59 Depth=1
 	addi	a5, a5, 1
-	blt	a5, a0, .LBB3_61
-	j	.LBB3_158
-.LBB3_61:                               # =>This Loop Header: Depth=1
-                                        #     Child Loop BB3_64 Depth 2
-                                        #       Child Loop BB3_80 Depth 3
-                                        #         Child Loop BB3_83 Depth 4
-                                        #           Child Loop BB3_88 Depth 5
+	blt	a5, a0, .LBB3_59
+	j	.LBB3_156
+.LBB3_59:                               # =>This Loop Header: Depth=1
+                                        #     Child Loop BB3_62 Depth 2
+                                        #       Child Loop BB3_78 Depth 3
+                                        #         Child Loop BB3_81 Depth 4
                                         #           Child Loop BB3_86 Depth 5
-                                        #       Child Loop BB3_69 Depth 3
-                                        #         Child Loop BB3_72 Depth 4
-                                        #           Child Loop BB3_77 Depth 5
+                                        #           Child Loop BB3_84 Depth 5
+                                        #       Child Loop BB3_67 Depth 3
+                                        #         Child Loop BB3_70 Depth 4
                                         #           Child Loop BB3_75 Depth 5
+                                        #           Child Loop BB3_73 Depth 5
 	ld	s11, 88(a6)
 	li	a1, 96
 	mul	a1, a5, a1
 	add	s11, s11, a1
 	lw	a1, 32(s11)
-	beqz	a1, .LBB3_60
-# %bb.62:                               #   in Loop: Header=BB3_61 Depth=1
+	beqz	a1, .LBB3_58
+# %bb.60:                               #   in Loop: Header=BB3_59 Depth=1
 	lw	a0, 8(s11)
 	lw	a3, 12(s11)
 	li	s3, 0
@@ -1541,21 +1536,21 @@ jtransform_execute_transformation:      # @jtransform_execute_transformation
 	add	s6, s6, s0
 	ld	a0, 40(sp)                      # 8-byte Folded Reload
 	add	s0, a0, s0
-	j	.LBB3_64
-.LBB3_63:                               #   in Loop: Header=BB3_64 Depth=2
+	j	.LBB3_62
+.LBB3_61:                               #   in Loop: Header=BB3_62 Depth=2
 	lw	a0, 32(s11)
 	addw	s3, a3, s3
-	bgeu	s3, a0, .LBB3_59
-.LBB3_64:                               #   Parent Loop BB3_61 Depth=1
+	bgeu	s3, a0, .LBB3_57
+.LBB3_62:                               #   Parent Loop BB3_59 Depth=1
                                         # =>  This Loop Header: Depth=2
-                                        #       Child Loop BB3_80 Depth 3
-                                        #         Child Loop BB3_83 Depth 4
-                                        #           Child Loop BB3_88 Depth 5
+                                        #       Child Loop BB3_78 Depth 3
+                                        #         Child Loop BB3_81 Depth 4
                                         #           Child Loop BB3_86 Depth 5
-                                        #       Child Loop BB3_69 Depth 3
-                                        #         Child Loop BB3_72 Depth 4
-                                        #           Child Loop BB3_77 Depth 5
+                                        #           Child Loop BB3_84 Depth 5
+                                        #       Child Loop BB3_67 Depth 3
+                                        #         Child Loop BB3_70 Depth 4
                                         #           Child Loop BB3_75 Depth 5
+                                        #           Child Loop BB3_73 Depth 5
 	ld	a0, 8(s2)
 	ld	a5, 64(a0)
 	ld	a1, 0(s6)
@@ -1564,29 +1559,29 @@ jtransform_execute_transformation:      # @jtransform_execute_transformation
 	mv	a2, s3
 	jalr	a5
 	lw	a3, 12(s11)
-	blez	a3, .LBB3_63
-# %bb.65:                               #   in Loop: Header=BB3_64 Depth=2
+	blez	a3, .LBB3_61
+# %bb.63:                               #   in Loop: Header=BB3_62 Depth=2
 	mv	s1, a0
 	lw	a0, 28(s11)
-	beqz	a0, .LBB3_63
-# %bb.66:                               #   in Loop: Header=BB3_64 Depth=2
+	beqz	a0, .LBB3_61
+# %bb.64:                               #   in Loop: Header=BB3_62 Depth=2
 	li	s9, 0
 	li	a0, 1
-	bltu	s3, s8, .LBB3_69
-	j	.LBB3_80
-.LBB3_67:                               #   in Loop: Header=BB3_69 Depth=3
+	bltu	s3, s8, .LBB3_67
+	j	.LBB3_78
+.LBB3_65:                               #   in Loop: Header=BB3_67 Depth=3
 	lw	a3, 12(s11)
-.LBB3_68:                               #   in Loop: Header=BB3_69 Depth=3
+.LBB3_66:                               #   in Loop: Header=BB3_67 Depth=3
 	addi	s9, s9, 1
-	bge	s9, a3, .LBB3_63
-.LBB3_69:                               #   Parent Loop BB3_61 Depth=1
-                                        #     Parent Loop BB3_64 Depth=2
+	bge	s9, a3, .LBB3_61
+.LBB3_67:                               #   Parent Loop BB3_59 Depth=1
+                                        #     Parent Loop BB3_62 Depth=2
                                         # =>    This Loop Header: Depth=3
-                                        #         Child Loop BB3_72 Depth 4
-                                        #           Child Loop BB3_77 Depth 5
+                                        #         Child Loop BB3_70 Depth 4
                                         #           Child Loop BB3_75 Depth 5
-	beqz	a0, .LBB3_68
-# %bb.70:                               #   in Loop: Header=BB3_69 Depth=3
+                                        #           Child Loop BB3_73 Depth 5
+	beqz	a0, .LBB3_66
+# %bb.68:                               #   in Loop: Header=BB3_67 Depth=3
 	li	s5, 0
 	add	a0, s3, s9
 	slli	s4, s9, 3
@@ -1595,17 +1590,17 @@ jtransform_execute_transformation:      # @jtransform_execute_transformation
 	add	a0, s8, a0
 	slli	a0, a0, 32
 	srli	s7, a0, 32
-	j	.LBB3_72
-.LBB3_71:                               #   in Loop: Header=BB3_72 Depth=4
+	j	.LBB3_70
+.LBB3_69:                               #   in Loop: Header=BB3_70 Depth=4
 	lw	a0, 28(s11)
 	addw	s5, a1, s5
-	bgeu	s5, a0, .LBB3_67
-.LBB3_72:                               #   Parent Loop BB3_61 Depth=1
-                                        #     Parent Loop BB3_64 Depth=2
-                                        #       Parent Loop BB3_69 Depth=3
+	bgeu	s5, a0, .LBB3_65
+.LBB3_70:                               #   Parent Loop BB3_59 Depth=1
+                                        #     Parent Loop BB3_62 Depth=2
+                                        #       Parent Loop BB3_67 Depth=3
                                         # =>      This Loop Header: Depth=4
-                                        #           Child Loop BB3_77 Depth 5
                                         #           Child Loop BB3_75 Depth 5
+                                        #           Child Loop BB3_73 Depth 5
 	ld	a0, 8(s2)
 	ld	a5, 64(a0)
 	ld	a1, 0(s0)
@@ -1615,18 +1610,18 @@ jtransform_execute_transformation:      # @jtransform_execute_transformation
 	li	a4, 0
 	jalr	a5
 	lw	a1, 8(s11)
-	blez	a1, .LBB3_71
-# %bb.73:                               #   in Loop: Header=BB3_72 Depth=4
+	blez	a1, .LBB3_69
+# %bb.71:                               #   in Loop: Header=BB3_70 Depth=4
 	ld	a2, 0(s4)
 	slli	a3, s7, 7
-	bgeu	s5, s10, .LBB3_76
-# %bb.74:                               # %.preheader18
-                                        #   in Loop: Header=BB3_72 Depth=4
+	bgeu	s5, s10, .LBB3_74
+# %bb.72:                               # %.preheader20
+                                        #   in Loop: Header=BB3_70 Depth=4
 	li	a4, 0
-.LBB3_75:                               #   Parent Loop BB3_61 Depth=1
-                                        #     Parent Loop BB3_64 Depth=2
-                                        #       Parent Loop BB3_69 Depth=3
-                                        #         Parent Loop BB3_72 Depth=4
+.LBB3_73:                               #   Parent Loop BB3_59 Depth=1
+                                        #     Parent Loop BB3_62 Depth=2
+                                        #       Parent Loop BB3_67 Depth=3
+                                        #         Parent Loop BB3_70 Depth=4
                                         # =>        This Inner Loop Header: Depth=5
 	ld	a5, 0(a0)
 	add	a5, a5, a3
@@ -1798,17 +1793,17 @@ jtransform_execute_transformation:      # @jtransform_execute_transformation
 	sh	a5, 126(a6)
 	addi	a4, a4, 1
 	addi	a0, a0, 8
-	bne	a4, a1, .LBB3_75
-	j	.LBB3_71
-.LBB3_76:                               # %.preheader20
-                                        #   in Loop: Header=BB3_72 Depth=4
+	bne	a4, a1, .LBB3_73
+	j	.LBB3_69
+.LBB3_74:                               # %.preheader22
+                                        #   in Loop: Header=BB3_70 Depth=4
 	slli	a4, a1, 3
 	add	a4, a0, a4
 	mv	a5, s5
-.LBB3_77:                               #   Parent Loop BB3_61 Depth=1
-                                        #     Parent Loop BB3_64 Depth=2
-                                        #       Parent Loop BB3_69 Depth=3
-                                        #         Parent Loop BB3_72 Depth=4
+.LBB3_75:                               #   Parent Loop BB3_59 Depth=1
+                                        #     Parent Loop BB3_62 Depth=2
+                                        #       Parent Loop BB3_67 Depth=3
+                                        #         Parent Loop BB3_70 Depth=4
                                         # =>        This Inner Loop Header: Depth=5
 	ld	a6, 0(a0)
 	add	a6, a6, a3
@@ -1977,38 +1972,38 @@ jtransform_execute_transformation:      # @jtransform_execute_transformation
 	sh	a6, 126(a7)
 	addi	a0, a0, 8
 	addi	a5, a5, 1
-	bne	a0, a4, .LBB3_77
-	j	.LBB3_71
-.LBB3_78:                               #   in Loop: Header=BB3_80 Depth=3
+	bne	a0, a4, .LBB3_75
+	j	.LBB3_69
+.LBB3_76:                               #   in Loop: Header=BB3_78 Depth=3
 	lw	a3, 12(s11)
-.LBB3_79:                               #   in Loop: Header=BB3_80 Depth=3
+.LBB3_77:                               #   in Loop: Header=BB3_78 Depth=3
 	addi	s9, s9, 1
-	bge	s9, a3, .LBB3_63
-.LBB3_80:                               #   Parent Loop BB3_61 Depth=1
-                                        #     Parent Loop BB3_64 Depth=2
+	bge	s9, a3, .LBB3_61
+.LBB3_78:                               #   Parent Loop BB3_59 Depth=1
+                                        #     Parent Loop BB3_62 Depth=2
                                         # =>    This Loop Header: Depth=3
-                                        #         Child Loop BB3_83 Depth 4
-                                        #           Child Loop BB3_88 Depth 5
+                                        #         Child Loop BB3_81 Depth 4
                                         #           Child Loop BB3_86 Depth 5
-	beqz	a0, .LBB3_79
-# %bb.81:                               #   in Loop: Header=BB3_80 Depth=3
+                                        #           Child Loop BB3_84 Depth 5
+	beqz	a0, .LBB3_77
+# %bb.79:                               #   in Loop: Header=BB3_78 Depth=3
 	li	s5, 0
 	add	a0, s3, s9
 	slli	a0, a0, 32
 	srli	s4, a0, 32
 	slli	s7, s9, 3
 	add	s7, s1, s7
-	j	.LBB3_83
-.LBB3_82:                               #   in Loop: Header=BB3_83 Depth=4
+	j	.LBB3_81
+.LBB3_80:                               #   in Loop: Header=BB3_81 Depth=4
 	lw	a0, 28(s11)
 	addw	s5, a1, s5
-	bgeu	s5, a0, .LBB3_78
-.LBB3_83:                               #   Parent Loop BB3_61 Depth=1
-                                        #     Parent Loop BB3_64 Depth=2
-                                        #       Parent Loop BB3_80 Depth=3
+	bgeu	s5, a0, .LBB3_76
+.LBB3_81:                               #   Parent Loop BB3_59 Depth=1
+                                        #     Parent Loop BB3_62 Depth=2
+                                        #       Parent Loop BB3_78 Depth=3
                                         # =>      This Loop Header: Depth=4
-                                        #           Child Loop BB3_88 Depth 5
                                         #           Child Loop BB3_86 Depth 5
+                                        #           Child Loop BB3_84 Depth 5
 	ld	a0, 8(s2)
 	ld	a5, 64(a0)
 	ld	a1, 0(s0)
@@ -2018,18 +2013,18 @@ jtransform_execute_transformation:      # @jtransform_execute_transformation
 	li	a4, 0
 	jalr	a5
 	lw	a1, 8(s11)
-	blez	a1, .LBB3_82
-# %bb.84:                               #   in Loop: Header=BB3_83 Depth=4
+	blez	a1, .LBB3_80
+# %bb.82:                               #   in Loop: Header=BB3_81 Depth=4
 	ld	a2, 0(s7)
 	slli	a3, s4, 7
-	bgeu	s5, s10, .LBB3_87
-# %bb.85:                               # %.preheader22
-                                        #   in Loop: Header=BB3_83 Depth=4
+	bgeu	s5, s10, .LBB3_85
+# %bb.83:                               # %.preheader24
+                                        #   in Loop: Header=BB3_81 Depth=4
 	li	a4, 0
-.LBB3_86:                               #   Parent Loop BB3_61 Depth=1
-                                        #     Parent Loop BB3_64 Depth=2
-                                        #       Parent Loop BB3_80 Depth=3
-                                        #         Parent Loop BB3_83 Depth=4
+.LBB3_84:                               #   Parent Loop BB3_59 Depth=1
+                                        #     Parent Loop BB3_62 Depth=2
+                                        #       Parent Loop BB3_78 Depth=3
+                                        #         Parent Loop BB3_81 Depth=4
                                         # =>        This Inner Loop Header: Depth=5
 	ld	a5, 0(a0)
 	add	a5, a5, a3
@@ -2201,17 +2196,17 @@ jtransform_execute_transformation:      # @jtransform_execute_transformation
 	sh	a5, 126(a6)
 	addi	a4, a4, 1
 	addi	a0, a0, 8
-	bne	a4, a1, .LBB3_86
-	j	.LBB3_82
-.LBB3_87:                               # %.preheader24
-                                        #   in Loop: Header=BB3_83 Depth=4
+	bne	a4, a1, .LBB3_84
+	j	.LBB3_80
+.LBB3_85:                               # %.preheader26
+                                        #   in Loop: Header=BB3_81 Depth=4
 	slli	a4, a1, 3
 	add	a4, a0, a4
 	mv	a5, s5
-.LBB3_88:                               #   Parent Loop BB3_61 Depth=1
-                                        #     Parent Loop BB3_64 Depth=2
-                                        #       Parent Loop BB3_80 Depth=3
-                                        #         Parent Loop BB3_83 Depth=4
+.LBB3_86:                               #   Parent Loop BB3_59 Depth=1
+                                        #     Parent Loop BB3_62 Depth=2
+                                        #       Parent Loop BB3_78 Depth=3
+                                        #         Parent Loop BB3_81 Depth=4
                                         # =>        This Inner Loop Header: Depth=5
 	ld	a6, 0(a0)
 	add	a6, a6, a3
@@ -2348,38 +2343,38 @@ jtransform_execute_transformation:      # @jtransform_execute_transformation
 	sh	a6, 126(a7)
 	addi	a0, a0, 8
 	addi	a5, a5, 1
-	bne	a0, a4, .LBB3_88
-	j	.LBB3_82
-.LBB3_89:
+	bne	a0, a4, .LBB3_86
+	j	.LBB3_80
+.LBB3_87:
 	lw	a0, 76(a6)
-	bgtz	a0, .LBB3_90
-	j	.LBB3_158
-.LBB3_90:
+	bgtz	a0, .LBB3_88
+	j	.LBB3_156
+.LBB3_88:
 	lw	a1, 316(a6)
 	lw	a2, 52(a6)
 	li	s0, 0
 	slli	a1, a1, 3
 	divuw	s1, a2, a1
 	li	s6, 96
-	j	.LBB3_93
-.LBB3_91:                               #   in Loop: Header=BB3_93 Depth=1
+	j	.LBB3_91
+.LBB3_89:                               #   in Loop: Header=BB3_91 Depth=1
 	ld	a6, 48(sp)                      # 8-byte Folded Reload
 	lw	a0, 76(a6)
-.LBB3_92:                               #   in Loop: Header=BB3_93 Depth=1
+.LBB3_90:                               #   in Loop: Header=BB3_91 Depth=1
 	addi	s0, s0, 1
-	blt	s0, a0, .LBB3_93
-	j	.LBB3_158
-.LBB3_93:                               # =>This Loop Header: Depth=1
-                                        #     Child Loop BB3_96 Depth 2
-                                        #       Child Loop BB3_105 Depth 3
-                                        #       Child Loop BB3_100 Depth 3
-                                        #         Child Loop BB3_101 Depth 4
+	blt	s0, a0, .LBB3_91
+	j	.LBB3_156
+.LBB3_91:                               # =>This Loop Header: Depth=1
+                                        #     Child Loop BB3_94 Depth 2
+                                        #       Child Loop BB3_103 Depth 3
+                                        #       Child Loop BB3_98 Depth 3
+                                        #         Child Loop BB3_99 Depth 4
 	ld	s7, 88(a6)
 	mul	a1, s0, s6
 	add	s7, s7, a1
 	lw	a1, 32(s7)
-	beqz	a1, .LBB3_92
-# %bb.94:                               #   in Loop: Header=BB3_93 Depth=1
+	beqz	a1, .LBB3_90
+# %bb.92:                               #   in Loop: Header=BB3_91 Depth=1
 	lw	a0, 12(s7)
 	li	s3, 0
 	mulw	s8, a0, s1
@@ -2388,16 +2383,16 @@ jtransform_execute_transformation:      # @jtransform_execute_transformation
 	add	s9, s9, s10
 	ld	a0, 40(sp)                      # 8-byte Folded Reload
 	add	s10, a0, s10
-	j	.LBB3_96
-.LBB3_95:                               #   in Loop: Header=BB3_96 Depth=2
+	j	.LBB3_94
+.LBB3_93:                               #   in Loop: Header=BB3_94 Depth=2
 	lw	a0, 32(s7)
 	addw	s3, a1, s3
-	bgeu	s3, a0, .LBB3_91
-.LBB3_96:                               #   Parent Loop BB3_93 Depth=1
+	bgeu	s3, a0, .LBB3_89
+.LBB3_94:                               #   Parent Loop BB3_91 Depth=1
                                         # =>  This Loop Header: Depth=2
-                                        #       Child Loop BB3_105 Depth 3
-                                        #       Child Loop BB3_100 Depth 3
-                                        #         Child Loop BB3_101 Depth 4
+                                        #       Child Loop BB3_103 Depth 3
+                                        #       Child Loop BB3_98 Depth 3
+                                        #         Child Loop BB3_99 Depth 4
 	ld	a0, 8(s2)
 	ld	a5, 64(a0)
 	ld	a1, 0(s9)
@@ -2411,25 +2406,25 @@ jtransform_execute_transformation:      # @jtransform_execute_transformation
 	ld	a1, 0(s10)
 	lw	a3, 12(s7)
 	mv	s4, a0
-	bgeu	s3, s8, .LBB3_103
-# %bb.97:                               #   in Loop: Header=BB3_96 Depth=2
+	bgeu	s3, s8, .LBB3_101
+# %bb.95:                               #   in Loop: Header=BB3_94 Depth=2
 	add	a0, s3, a3
 	subw	a2, s8, a0
 	mv	a0, s2
 	li	a4, 0
 	jalr	a5
 	lw	a1, 12(s7)
-	blez	a1, .LBB3_95
-# %bb.98:                               #   in Loop: Header=BB3_96 Depth=2
+	blez	a1, .LBB3_93
+# %bb.96:                               #   in Loop: Header=BB3_94 Depth=2
 	lwu	a3, 28(s7)
-	beqz	a3, .LBB3_95
-# %bb.99:                               #   in Loop: Header=BB3_96 Depth=2
+	beqz	a3, .LBB3_93
+# %bb.97:                               #   in Loop: Header=BB3_94 Depth=2
 	li	a2, 0
 	slli	a3, a3, 7
-.LBB3_100:                              #   Parent Loop BB3_93 Depth=1
-                                        #     Parent Loop BB3_96 Depth=2
+.LBB3_98:                               #   Parent Loop BB3_91 Depth=1
+                                        #     Parent Loop BB3_94 Depth=2
                                         # =>    This Loop Header: Depth=3
-                                        #         Child Loop BB3_101 Depth 4
+                                        #         Child Loop BB3_99 Depth 4
 	slli	a4, a2, 3
 	add	a4, s4, a4
 	ld	a4, 0(a4)
@@ -2441,9 +2436,9 @@ jtransform_execute_transformation:      # @jtransform_execute_transformation
 	addi	a4, a4, 64
 	addi	a5, a5, 64
 	add	a6, a4, a3
-.LBB3_101:                              #   Parent Loop BB3_93 Depth=1
-                                        #     Parent Loop BB3_96 Depth=2
-                                        #       Parent Loop BB3_100 Depth=3
+.LBB3_99:                               #   Parent Loop BB3_91 Depth=1
+                                        #     Parent Loop BB3_94 Depth=2
+                                        #       Parent Loop BB3_98 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
 	lh	a7, -64(a5)
 	sh	a7, -64(a4)
@@ -2607,24 +2602,24 @@ jtransform_execute_transformation:      # @jtransform_execute_transformation
 	sh	a7, 62(a4)
 	addi	a4, a4, 128
 	addi	a5, a5, 128
-	bne	a4, a6, .LBB3_101
-# %bb.102:                              #   in Loop: Header=BB3_100 Depth=3
+	bne	a4, a6, .LBB3_99
+# %bb.100:                              #   in Loop: Header=BB3_98 Depth=3
 	addi	a2, a2, 1
-	bne	a2, a1, .LBB3_100
-	j	.LBB3_95
-.LBB3_103:                              #   in Loop: Header=BB3_96 Depth=2
+	bne	a2, a1, .LBB3_98
+	j	.LBB3_93
+.LBB3_101:                              #   in Loop: Header=BB3_94 Depth=2
 	mv	a0, s2
 	mv	a2, s3
 	li	a4, 0
 	jalr	a5
 	lw	a1, 12(s7)
-	blez	a1, .LBB3_95
-# %bb.104:                              # %.preheader11
-                                        #   in Loop: Header=BB3_96 Depth=2
+	blez	a1, .LBB3_93
+# %bb.102:                              # %.preheader13
+                                        #   in Loop: Header=BB3_94 Depth=2
 	mv	s5, a0
 	li	s11, 0
-.LBB3_105:                              #   Parent Loop BB3_93 Depth=1
-                                        #     Parent Loop BB3_96 Depth=2
+.LBB3_103:                              #   Parent Loop BB3_91 Depth=1
+                                        #     Parent Loop BB3_94 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	ld	a0, 0(s5)
 	ld	a1, 0(s4)
@@ -2634,13 +2629,13 @@ jtransform_execute_transformation:      # @jtransform_execute_transformation
 	addi	s11, s11, 1
 	addi	s4, s4, 8
 	addi	s5, s5, 8
-	blt	s11, a1, .LBB3_105
-	j	.LBB3_95
-.LBB3_106:
+	blt	s11, a1, .LBB3_103
+	j	.LBB3_93
+.LBB3_104:
 	lw	a0, 76(a6)
-	bgtz	a0, .LBB3_107
-	j	.LBB3_158
-.LBB3_107:
+	bgtz	a0, .LBB3_105
+	j	.LBB3_156
+.LBB3_105:
 	li	s0, 0
 	lw	a1, 312(a6)
 	lw	a2, 48(a6)
@@ -2650,29 +2645,29 @@ jtransform_execute_transformation:      # @jtransform_execute_transformation
 	divuw	s1, a2, a1
 	slli	a3, a3, 3
 	divuw	s6, a4, a3
-	j	.LBB3_110
-.LBB3_108:                              #   in Loop: Header=BB3_110 Depth=1
+	j	.LBB3_108
+.LBB3_106:                              #   in Loop: Header=BB3_108 Depth=1
 	ld	a6, 48(sp)                      # 8-byte Folded Reload
 	lw	a0, 76(a6)
-.LBB3_109:                              #   in Loop: Header=BB3_110 Depth=1
+.LBB3_107:                              #   in Loop: Header=BB3_108 Depth=1
 	addi	s0, s0, 1
-	blt	s0, a0, .LBB3_110
-	j	.LBB3_158
-.LBB3_110:                              # =>This Loop Header: Depth=1
-                                        #     Child Loop BB3_113 Depth 2
-                                        #       Child Loop BB3_126 Depth 3
-                                        #         Child Loop BB3_128 Depth 4
-                                        #         Child Loop BB3_131 Depth 4
-                                        #       Child Loop BB3_117 Depth 3
-                                        #         Child Loop BB3_119 Depth 4
-                                        #         Child Loop BB3_122 Depth 4
+	blt	s0, a0, .LBB3_108
+	j	.LBB3_156
+.LBB3_108:                              # =>This Loop Header: Depth=1
+                                        #     Child Loop BB3_111 Depth 2
+                                        #       Child Loop BB3_124 Depth 3
+                                        #         Child Loop BB3_126 Depth 4
+                                        #         Child Loop BB3_129 Depth 4
+                                        #       Child Loop BB3_115 Depth 3
+                                        #         Child Loop BB3_117 Depth 4
+                                        #         Child Loop BB3_120 Depth 4
 	ld	s8, 88(a6)
 	li	a1, 96
 	mul	a1, s0, a1
 	add	s8, s8, a1
 	lw	a1, 32(s8)
-	beqz	a1, .LBB3_109
-# %bb.111:                              #   in Loop: Header=BB3_110 Depth=1
+	beqz	a1, .LBB3_107
+# %bb.109:                              #   in Loop: Header=BB3_108 Depth=1
 	lw	a0, 8(s8)
 	lw	a1, 12(s8)
 	li	s3, 0
@@ -2685,19 +2680,19 @@ jtransform_execute_transformation:      # @jtransform_execute_transformation
 	add	s9, a0, s9
 	slli	a0, s10, 32
 	srli	s5, a0, 32
-	j	.LBB3_113
-.LBB3_112:                              #   in Loop: Header=BB3_113 Depth=2
+	j	.LBB3_111
+.LBB3_110:                              #   in Loop: Header=BB3_111 Depth=2
 	lw	a0, 32(s8)
 	addw	s3, a1, s3
-	bgeu	s3, a0, .LBB3_108
-.LBB3_113:                              #   Parent Loop BB3_110 Depth=1
+	bgeu	s3, a0, .LBB3_106
+.LBB3_111:                              #   Parent Loop BB3_108 Depth=1
                                         # =>  This Loop Header: Depth=2
-                                        #       Child Loop BB3_126 Depth 3
-                                        #         Child Loop BB3_128 Depth 4
-                                        #         Child Loop BB3_131 Depth 4
-                                        #       Child Loop BB3_117 Depth 3
-                                        #         Child Loop BB3_119 Depth 4
-                                        #         Child Loop BB3_122 Depth 4
+                                        #       Child Loop BB3_124 Depth 3
+                                        #         Child Loop BB3_126 Depth 4
+                                        #         Child Loop BB3_129 Depth 4
+                                        #       Child Loop BB3_115 Depth 3
+                                        #         Child Loop BB3_117 Depth 4
+                                        #         Child Loop BB3_120 Depth 4
 	ld	a0, 8(s2)
 	ld	a5, 64(a0)
 	ld	a1, 0(s7)
@@ -2711,30 +2706,30 @@ jtransform_execute_transformation:      # @jtransform_execute_transformation
 	ld	a1, 0(s9)
 	lw	a3, 12(s8)
 	mv	s4, a0
-	bgeu	s3, s11, .LBB3_123
-# %bb.114:                              #   in Loop: Header=BB3_113 Depth=2
+	bgeu	s3, s11, .LBB3_121
+# %bb.112:                              #   in Loop: Header=BB3_111 Depth=2
 	add	a0, s3, a3
 	subw	a2, s11, a0
 	mv	a0, s2
 	li	a4, 0
 	jalr	a5
 	lw	a1, 12(s8)
-	blez	a1, .LBB3_112
-# %bb.115:                              #   in Loop: Header=BB3_113 Depth=2
+	blez	a1, .LBB3_110
+# %bb.113:                              #   in Loop: Header=BB3_111 Depth=2
 	lwu	a2, 28(s8)
 	li	a3, 0
 	slli	a4, a1, 3
 	add	a0, a0, a4
 	slli	a4, a2, 7
-	j	.LBB3_117
-.LBB3_116:                              #   in Loop: Header=BB3_117 Depth=3
+	j	.LBB3_115
+.LBB3_114:                              #   in Loop: Header=BB3_115 Depth=3
 	addi	a3, a3, 1
-	beq	a3, a1, .LBB3_112
-.LBB3_117:                              #   Parent Loop BB3_110 Depth=1
-                                        #     Parent Loop BB3_113 Depth=2
+	beq	a3, a1, .LBB3_110
+.LBB3_115:                              #   Parent Loop BB3_108 Depth=1
+                                        #     Parent Loop BB3_111 Depth=2
                                         # =>    This Loop Header: Depth=3
-                                        #         Child Loop BB3_119 Depth 4
-                                        #         Child Loop BB3_122 Depth 4
+                                        #         Child Loop BB3_117 Depth 4
+                                        #         Child Loop BB3_120 Depth 4
 	slli	a5, a3, 3
 	add	a5, s4, a5
 	ld	a5, 0(a5)
@@ -2743,14 +2738,14 @@ jtransform_execute_transformation:      # @jtransform_execute_transformation
 	add	a6, a0, a6
 	ld	a6, 0(a6)
 	li	a7, 0
-	beqz	s10, .LBB3_120
-# %bb.118:                              # %.preheader39
-                                        #   in Loop: Header=BB3_117 Depth=3
+	beqz	s10, .LBB3_118
+# %bb.116:                              # %.preheader41
+                                        #   in Loop: Header=BB3_115 Depth=3
 	li	t0, 0
 	addi	t1, a5, 64
-.LBB3_119:                              #   Parent Loop BB3_110 Depth=1
-                                        #     Parent Loop BB3_113 Depth=2
-                                        #       Parent Loop BB3_117 Depth=3
+.LBB3_117:                              #   Parent Loop BB3_108 Depth=1
+                                        #     Parent Loop BB3_111 Depth=2
+                                        #       Parent Loop BB3_115 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
 	not	t2, t0
 	add	t2, s10, t2
@@ -2920,19 +2915,19 @@ jtransform_execute_transformation:      # @jtransform_execute_transformation
 	addi	t0, t0, 1
 	addi	a7, a7, 1
 	addi	t1, t1, 128
-	bltu	t0, s5, .LBB3_119
-.LBB3_120:                              #   in Loop: Header=BB3_117 Depth=3
-	bgeu	a7, a2, .LBB3_116
-# %bb.121:                              #   in Loop: Header=BB3_117 Depth=3
+	bltu	t0, s5, .LBB3_117
+.LBB3_118:                              #   in Loop: Header=BB3_115 Depth=3
+	bgeu	a7, a2, .LBB3_114
+# %bb.119:                              #   in Loop: Header=BB3_115 Depth=3
 	addi	t0, a5, 64
 	slli	a7, a7, 7
 	add	a5, t0, a7
 	add	a6, a6, a7
 	addi	a6, a6, 64
 	add	a7, t0, a4
-.LBB3_122:                              #   Parent Loop BB3_110 Depth=1
-                                        #     Parent Loop BB3_113 Depth=2
-                                        #       Parent Loop BB3_117 Depth=3
+.LBB3_120:                              #   Parent Loop BB3_108 Depth=1
+                                        #     Parent Loop BB3_111 Depth=2
+                                        #       Parent Loop BB3_115 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
 	lh	t0, -64(a6)
 	sh	t0, -64(a5)
@@ -3096,42 +3091,42 @@ jtransform_execute_transformation:      # @jtransform_execute_transformation
 	sh	t0, 62(a5)
 	addi	a5, a5, 128
 	addi	a6, a6, 128
-	bne	a5, a7, .LBB3_122
-	j	.LBB3_116
-.LBB3_123:                              #   in Loop: Header=BB3_113 Depth=2
+	bne	a5, a7, .LBB3_120
+	j	.LBB3_114
+.LBB3_121:                              #   in Loop: Header=BB3_111 Depth=2
 	mv	a0, s2
 	mv	a2, s3
 	li	a4, 0
 	jalr	a5
 	lw	a1, 12(s8)
-	blez	a1, .LBB3_112
-# %bb.124:                              #   in Loop: Header=BB3_113 Depth=2
+	blez	a1, .LBB3_110
+# %bb.122:                              #   in Loop: Header=BB3_111 Depth=2
 	lwu	a2, 28(s8)
 	li	a3, 0
 	slli	a4, a2, 7
-	j	.LBB3_126
-.LBB3_125:                              #   in Loop: Header=BB3_126 Depth=3
+	j	.LBB3_124
+.LBB3_123:                              #   in Loop: Header=BB3_124 Depth=3
 	addi	a3, a3, 1
-	beq	a3, a1, .LBB3_112
-.LBB3_126:                              #   Parent Loop BB3_110 Depth=1
-                                        #     Parent Loop BB3_113 Depth=2
+	beq	a3, a1, .LBB3_110
+.LBB3_124:                              #   Parent Loop BB3_108 Depth=1
+                                        #     Parent Loop BB3_111 Depth=2
                                         # =>    This Loop Header: Depth=3
-                                        #         Child Loop BB3_128 Depth 4
-                                        #         Child Loop BB3_131 Depth 4
+                                        #         Child Loop BB3_126 Depth 4
+                                        #         Child Loop BB3_129 Depth 4
 	slli	a5, a3, 3
 	add	a6, s4, a5
 	ld	a6, 0(a6)
 	add	a5, a0, a5
 	ld	a5, 0(a5)
 	li	a7, 0
-	beqz	s10, .LBB3_129
-# %bb.127:                              # %.preheader41
-                                        #   in Loop: Header=BB3_126 Depth=3
+	beqz	s10, .LBB3_127
+# %bb.125:                              # %.preheader43
+                                        #   in Loop: Header=BB3_124 Depth=3
 	li	t0, 0
 	addi	t1, a6, 64
-.LBB3_128:                              #   Parent Loop BB3_110 Depth=1
-                                        #     Parent Loop BB3_113 Depth=2
-                                        #       Parent Loop BB3_126 Depth=3
+.LBB3_126:                              #   Parent Loop BB3_108 Depth=1
+                                        #     Parent Loop BB3_111 Depth=2
+                                        #       Parent Loop BB3_124 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
 	not	t2, t0
 	add	t2, s10, t2
@@ -3301,19 +3296,19 @@ jtransform_execute_transformation:      # @jtransform_execute_transformation
 	addi	t0, t0, 1
 	addi	a7, a7, 1
 	addi	t1, t1, 128
-	bltu	t0, s5, .LBB3_128
-.LBB3_129:                              #   in Loop: Header=BB3_126 Depth=3
-	bgeu	a7, a2, .LBB3_125
-# %bb.130:                              #   in Loop: Header=BB3_126 Depth=3
+	bltu	t0, s5, .LBB3_126
+.LBB3_127:                              #   in Loop: Header=BB3_124 Depth=3
+	bgeu	a7, a2, .LBB3_123
+# %bb.128:                              #   in Loop: Header=BB3_124 Depth=3
 	addi	t0, a6, 64
 	slli	a7, a7, 7
 	add	a6, t0, a7
 	add	a5, a5, a7
 	addi	a5, a5, 64
 	add	a7, t0, a4
-.LBB3_131:                              #   Parent Loop BB3_110 Depth=1
-                                        #     Parent Loop BB3_113 Depth=2
-                                        #       Parent Loop BB3_126 Depth=3
+.LBB3_129:                              #   Parent Loop BB3_108 Depth=1
+                                        #     Parent Loop BB3_111 Depth=2
+                                        #       Parent Loop BB3_124 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
 	lh	t0, -64(a5)
 	sh	t0, -64(a6)
@@ -3445,40 +3440,40 @@ jtransform_execute_transformation:      # @jtransform_execute_transformation
 	sh	t0, 62(a6)
 	addi	a6, a6, 128
 	addi	a5, a5, 128
-	bne	a6, a7, .LBB3_131
-	j	.LBB3_125
-.LBB3_132:
+	bne	a6, a7, .LBB3_129
+	j	.LBB3_123
+.LBB3_130:
 	lw	a0, 76(a6)
-	blez	a0, .LBB3_158
-# %bb.133:
+	blez	a0, .LBB3_156
+# %bb.131:
 	lw	a1, 316(a6)
 	lw	a2, 52(a6)
 	li	s0, 0
 	slli	a1, a1, 3
 	divuw	a1, a2, a1
 	sd	a1, 24(sp)                      # 8-byte Folded Spill
-	j	.LBB3_136
-.LBB3_134:                              #   in Loop: Header=BB3_136 Depth=1
+	j	.LBB3_134
+.LBB3_132:                              #   in Loop: Header=BB3_134 Depth=1
 	ld	a6, 48(sp)                      # 8-byte Folded Reload
 	lw	a0, 76(a6)
-.LBB3_135:                              #   in Loop: Header=BB3_136 Depth=1
+.LBB3_133:                              #   in Loop: Header=BB3_134 Depth=1
 	addi	s0, s0, 1
-	bge	s0, a0, .LBB3_158
-.LBB3_136:                              # =>This Loop Header: Depth=1
-                                        #     Child Loop BB3_139 Depth 2
-                                        #       Child Loop BB3_152 Depth 3
-                                        #         Child Loop BB3_155 Depth 4
-                                        #           Child Loop BB3_157 Depth 5
-                                        #       Child Loop BB3_144 Depth 3
-                                        #         Child Loop BB3_147 Depth 4
-                                        #           Child Loop BB3_149 Depth 5
+	bge	s0, a0, .LBB3_156
+.LBB3_134:                              # =>This Loop Header: Depth=1
+                                        #     Child Loop BB3_137 Depth 2
+                                        #       Child Loop BB3_150 Depth 3
+                                        #         Child Loop BB3_153 Depth 4
+                                        #           Child Loop BB3_155 Depth 5
+                                        #       Child Loop BB3_142 Depth 3
+                                        #         Child Loop BB3_145 Depth 4
+                                        #           Child Loop BB3_147 Depth 5
 	ld	s8, 88(a6)
 	li	a1, 96
 	mul	a1, s0, a1
 	add	s8, s8, a1
 	lw	a1, 32(s8)
-	beqz	a1, .LBB3_135
-# %bb.137:                              #   in Loop: Header=BB3_136 Depth=1
+	beqz	a1, .LBB3_133
+# %bb.135:                              #   in Loop: Header=BB3_134 Depth=1
 	lw	a3, 12(s8)
 	li	s3, 0
 	ld	a0, 24(sp)                      # 8-byte Folded Reload
@@ -3488,19 +3483,19 @@ jtransform_execute_transformation:      # @jtransform_execute_transformation
 	add	s10, s10, s11
 	ld	a0, 40(sp)                      # 8-byte Folded Reload
 	add	s11, a0, s11
-	j	.LBB3_139
-.LBB3_138:                              #   in Loop: Header=BB3_139 Depth=2
+	j	.LBB3_137
+.LBB3_136:                              #   in Loop: Header=BB3_137 Depth=2
 	lw	a0, 32(s8)
 	addw	s3, a3, s3
-	bgeu	s3, a0, .LBB3_134
-.LBB3_139:                              #   Parent Loop BB3_136 Depth=1
+	bgeu	s3, a0, .LBB3_132
+.LBB3_137:                              #   Parent Loop BB3_134 Depth=1
                                         # =>  This Loop Header: Depth=2
-                                        #       Child Loop BB3_152 Depth 3
-                                        #         Child Loop BB3_155 Depth 4
-                                        #           Child Loop BB3_157 Depth 5
-                                        #       Child Loop BB3_144 Depth 3
-                                        #         Child Loop BB3_147 Depth 4
-                                        #           Child Loop BB3_149 Depth 5
+                                        #       Child Loop BB3_150 Depth 3
+                                        #         Child Loop BB3_153 Depth 4
+                                        #           Child Loop BB3_155 Depth 5
+                                        #       Child Loop BB3_142 Depth 3
+                                        #         Child Loop BB3_145 Depth 4
+                                        #           Child Loop BB3_147 Depth 5
 	ld	a0, 8(s2)
 	ld	a5, 64(a0)
 	ld	a1, 0(s10)
@@ -3509,28 +3504,28 @@ jtransform_execute_transformation:      # @jtransform_execute_transformation
 	mv	a2, s3
 	jalr	a5
 	lw	a3, 12(s8)
-	blez	a3, .LBB3_138
-# %bb.140:                              #   in Loop: Header=BB3_139 Depth=2
+	blez	a3, .LBB3_136
+# %bb.138:                              #   in Loop: Header=BB3_137 Depth=2
 	mv	s7, a0
 	lw	a0, 28(s8)
-	beqz	a0, .LBB3_138
-# %bb.141:                              #   in Loop: Header=BB3_139 Depth=2
+	beqz	a0, .LBB3_136
+# %bb.139:                              #   in Loop: Header=BB3_137 Depth=2
 	li	s1, 0
 	li	a0, 1
-	bltu	s3, s9, .LBB3_144
-	j	.LBB3_152
-.LBB3_142:                              #   in Loop: Header=BB3_144 Depth=3
+	bltu	s3, s9, .LBB3_142
+	j	.LBB3_150
+.LBB3_140:                              #   in Loop: Header=BB3_142 Depth=3
 	lw	a3, 12(s8)
-.LBB3_143:                              #   in Loop: Header=BB3_144 Depth=3
+.LBB3_141:                              #   in Loop: Header=BB3_142 Depth=3
 	addi	s1, s1, 1
-	bge	s1, a3, .LBB3_138
-.LBB3_144:                              #   Parent Loop BB3_136 Depth=1
-                                        #     Parent Loop BB3_139 Depth=2
+	bge	s1, a3, .LBB3_136
+.LBB3_142:                              #   Parent Loop BB3_134 Depth=1
+                                        #     Parent Loop BB3_137 Depth=2
                                         # =>    This Loop Header: Depth=3
-                                        #         Child Loop BB3_147 Depth 4
-                                        #           Child Loop BB3_149 Depth 5
-	beqz	a0, .LBB3_143
-# %bb.145:                              #   in Loop: Header=BB3_144 Depth=3
+                                        #         Child Loop BB3_145 Depth 4
+                                        #           Child Loop BB3_147 Depth 5
+	beqz	a0, .LBB3_141
+# %bb.143:                              #   in Loop: Header=BB3_142 Depth=3
 	li	s5, 0
 	slli	s4, s1, 3
 	add	s4, s7, s4
@@ -3540,16 +3535,16 @@ jtransform_execute_transformation:      # @jtransform_execute_transformation
 	slli	a0, a0, 32
 	srli	a0, a0, 32
 	slli	s6, a0, 7
-	j	.LBB3_147
-.LBB3_146:                              #   in Loop: Header=BB3_147 Depth=4
+	j	.LBB3_145
+.LBB3_144:                              #   in Loop: Header=BB3_145 Depth=4
 	lw	a0, 28(s8)
 	addw	s5, a1, s5
-	bgeu	s5, a0, .LBB3_142
-.LBB3_147:                              #   Parent Loop BB3_136 Depth=1
-                                        #     Parent Loop BB3_139 Depth=2
-                                        #       Parent Loop BB3_144 Depth=3
+	bgeu	s5, a0, .LBB3_140
+.LBB3_145:                              #   Parent Loop BB3_134 Depth=1
+                                        #     Parent Loop BB3_137 Depth=2
+                                        #       Parent Loop BB3_142 Depth=3
                                         # =>      This Loop Header: Depth=4
-                                        #           Child Loop BB3_149 Depth 5
+                                        #           Child Loop BB3_147 Depth 5
 	ld	a0, 8(s2)
 	ld	a5, 64(a0)
 	ld	a1, 0(s11)
@@ -3559,16 +3554,16 @@ jtransform_execute_transformation:      # @jtransform_execute_transformation
 	li	a4, 0
 	jalr	a5
 	lw	a1, 8(s8)
-	blez	a1, .LBB3_146
-# %bb.148:                              #   in Loop: Header=BB3_147 Depth=4
+	blez	a1, .LBB3_144
+# %bb.146:                              #   in Loop: Header=BB3_145 Depth=4
 	ld	a2, 0(s4)
 	slli	a3, a1, 3
 	add	a3, a0, a3
 	mv	a4, s5
-.LBB3_149:                              #   Parent Loop BB3_136 Depth=1
-                                        #     Parent Loop BB3_139 Depth=2
-                                        #       Parent Loop BB3_144 Depth=3
-                                        #         Parent Loop BB3_147 Depth=4
+.LBB3_147:                              #   Parent Loop BB3_134 Depth=1
+                                        #     Parent Loop BB3_137 Depth=2
+                                        #       Parent Loop BB3_142 Depth=3
+                                        #         Parent Loop BB3_145 Depth=4
                                         # =>        This Inner Loop Header: Depth=5
 	ld	a5, 0(a0)
 	add	a5, a5, s6
@@ -3737,20 +3732,20 @@ jtransform_execute_transformation:      # @jtransform_execute_transformation
 	sh	a5, 126(a6)
 	addi	a0, a0, 8
 	addi	a4, a4, 1
-	bne	a0, a3, .LBB3_149
-	j	.LBB3_146
-.LBB3_150:                              #   in Loop: Header=BB3_152 Depth=3
+	bne	a0, a3, .LBB3_147
+	j	.LBB3_144
+.LBB3_148:                              #   in Loop: Header=BB3_150 Depth=3
 	lw	a3, 12(s8)
-.LBB3_151:                              #   in Loop: Header=BB3_152 Depth=3
+.LBB3_149:                              #   in Loop: Header=BB3_150 Depth=3
 	addi	s1, s1, 1
-	bge	s1, a3, .LBB3_138
-.LBB3_152:                              #   Parent Loop BB3_136 Depth=1
-                                        #     Parent Loop BB3_139 Depth=2
+	bge	s1, a3, .LBB3_136
+.LBB3_150:                              #   Parent Loop BB3_134 Depth=1
+                                        #     Parent Loop BB3_137 Depth=2
                                         # =>    This Loop Header: Depth=3
-                                        #         Child Loop BB3_155 Depth 4
-                                        #           Child Loop BB3_157 Depth 5
-	beqz	a0, .LBB3_151
-# %bb.153:                              #   in Loop: Header=BB3_152 Depth=3
+                                        #         Child Loop BB3_153 Depth 4
+                                        #           Child Loop BB3_155 Depth 5
+	beqz	a0, .LBB3_149
+# %bb.151:                              #   in Loop: Header=BB3_150 Depth=3
 	li	s5, 0
 	slli	s4, s1, 3
 	add	s4, s7, s4
@@ -3758,16 +3753,16 @@ jtransform_execute_transformation:      # @jtransform_execute_transformation
 	slli	a0, a0, 32
 	srli	a0, a0, 32
 	slli	s6, a0, 7
-	j	.LBB3_155
-.LBB3_154:                              #   in Loop: Header=BB3_155 Depth=4
+	j	.LBB3_153
+.LBB3_152:                              #   in Loop: Header=BB3_153 Depth=4
 	lw	a0, 28(s8)
 	addw	s5, a1, s5
-	bgeu	s5, a0, .LBB3_150
-.LBB3_155:                              #   Parent Loop BB3_136 Depth=1
-                                        #     Parent Loop BB3_139 Depth=2
-                                        #       Parent Loop BB3_152 Depth=3
+	bgeu	s5, a0, .LBB3_148
+.LBB3_153:                              #   Parent Loop BB3_134 Depth=1
+                                        #     Parent Loop BB3_137 Depth=2
+                                        #       Parent Loop BB3_150 Depth=3
                                         # =>      This Loop Header: Depth=4
-                                        #           Child Loop BB3_157 Depth 5
+                                        #           Child Loop BB3_155 Depth 5
 	ld	a0, 8(s2)
 	ld	a5, 64(a0)
 	ld	a1, 0(s11)
@@ -3777,16 +3772,16 @@ jtransform_execute_transformation:      # @jtransform_execute_transformation
 	li	a4, 0
 	jalr	a5
 	lw	a1, 8(s8)
-	blez	a1, .LBB3_154
-# %bb.156:                              #   in Loop: Header=BB3_155 Depth=4
+	blez	a1, .LBB3_152
+# %bb.154:                              #   in Loop: Header=BB3_153 Depth=4
 	ld	a2, 0(s4)
 	slli	a3, a1, 3
 	add	a3, a0, a3
 	mv	a4, s5
-.LBB3_157:                              #   Parent Loop BB3_136 Depth=1
-                                        #     Parent Loop BB3_139 Depth=2
-                                        #       Parent Loop BB3_152 Depth=3
-                                        #         Parent Loop BB3_155 Depth=4
+.LBB3_155:                              #   Parent Loop BB3_134 Depth=1
+                                        #     Parent Loop BB3_137 Depth=2
+                                        #       Parent Loop BB3_150 Depth=3
+                                        #         Parent Loop BB3_153 Depth=4
                                         # =>        This Inner Loop Header: Depth=5
 	ld	a5, 0(a0)
 	add	a5, a5, s6
@@ -3923,9 +3918,9 @@ jtransform_execute_transformation:      # @jtransform_execute_transformation
 	sh	a5, 126(a6)
 	addi	a0, a0, 8
 	addi	a4, a4, 1
-	bne	a0, a3, .LBB3_157
-	j	.LBB3_154
-.LBB3_158:
+	bne	a0, a3, .LBB3_155
+	j	.LBB3_152
+.LBB3_156:
 	ld	ra, 152(sp)                     # 8-byte Folded Reload
 	ld	s0, 144(sp)                     # 8-byte Folded Reload
 	ld	s1, 136(sp)                     # 8-byte Folded Reload
@@ -3947,12 +3942,12 @@ jtransform_execute_transformation:      # @jtransform_execute_transformation
 	.p2align	2, 0x0
 .LJTI3_0:
 	.word	.LBB3_2
-	.word	.LBB3_89
-	.word	.LBB3_39
-	.word	.LBB3_57
-	.word	.LBB3_18
-	.word	.LBB3_106
-	.word	.LBB3_132
+	.word	.LBB3_87
+	.word	.LBB3_37
+	.word	.LBB3_55
+	.word	.LBB3_16
+	.word	.LBB3_104
+	.word	.LBB3_130
                                         # -- End function
 	.option	pop
 	.option	push

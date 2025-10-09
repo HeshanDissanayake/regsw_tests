@@ -1,7 +1,7 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
-#define N 132
-#define K 3
+#define N 256
+#define K 9
 
 #endif

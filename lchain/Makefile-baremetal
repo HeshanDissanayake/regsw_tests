@@ -1,0 +1,49 @@
+RISCV_GCC := /opt/dev/cva6_riscv_regsw/bin/riscv-none-elf-gcc
+RUN_REGSW = ../run.sh
+
+MODE = regsw
+
+SRC = lchain.c
+OBJ = obj/lchain_extra.o
+
+ifeq ($(MODE), regsw)
+  EXEC = lchain_regsw_bare.o
+else
+  EXEC = lchain_normal_bare.o
+endif
+
+# CFLAGS = 
+# Linker flags
+LDFLAGS := -I/home/heshds/working_dir/cva6/verif/sim/../env/corev-dv/user_extension \
+           -static \
+           -mcmodel=medany \
+           -fvisibility=hidden \
+           -nostdlib \
+           -nostartfiles \
+           -g \
+           -I/home/heshds/working_dir/regsw_tests/env \
+           -lgcc \
+           -T /home/heshds/working_dir/regsw_tests/common/test.ld \
+           -march=rv64g_zba_zbb_zbs_zbc \
+           -mabi=lp64d
+
+# Additional source files for linking
+LINK_SOURCES := /home/heshds/working_dir/regsw_tests/common/syscalls.c \
+                /home/heshds/working_dir/regsw_tests/common/crt.S
+
+all: clean $(EXEC)
+
+$(EXEC): $(OBJ)
+	$(RISCV_GCC) $(LDFLAGS) $(LINK_SOURCES) -DNOPRINT=1 -o $(EXEC) $(OBJ)
+
+
+
+obj/lchain_extra.o: lchain.c
+	$(RUN_REGSW) lchain.c $(MODE)
+
+
+
+clean:
+	rm -f $(OBJ) $(EXEC)
+
+.PHONY: all clean

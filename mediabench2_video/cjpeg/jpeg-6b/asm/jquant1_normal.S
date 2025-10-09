@@ -49,7 +49,7 @@ jinit_1pass_quantizer:                  # @jinit_1pass_quantizer
 	lw	s5, 144(s0)
 	li	a0, 2
 	blt	s5, a0, .LBB0_19
-.LBB0_3:                                # %.preheader7
+.LBB0_3:                                # %.preheader9
 	addi	a1, s5, -1
 	li	a2, 1
 .LBB0_4:                                # =>This Loop Header: Depth=1
@@ -106,7 +106,7 @@ jinit_1pass_quantizer:                  # @jinit_1pass_quantizer
 	blt	s1, a2, .LBB0_15
 # %bb.13:
 	li	a0, 1
-	bne	s5, a0, .LBB0_41
+	bne	s5, a0, .LBB0_44
 .LBB0_14:                               # =>This Inner Loop Header: Depth=1
 	sw	a4, 0(a3)
 	lw	a0, 64(s0)
@@ -192,7 +192,7 @@ jinit_1pass_quantizer:                  # @jinit_1pass_quantizer
 	mv	a2, s1
 	jalr	a4
 	lw	a4, 144(s0)
-	blez	a4, .LBB0_36
+	blez	a4, .LBB0_39
 # %bb.24:
 	li	a1, 0
 	mv	a2, s4
@@ -201,8 +201,9 @@ jinit_1pass_quantizer:                  # @jinit_1pass_quantizer
 	lw	a4, 144(s0)
 .LBB0_26:                               #   in Loop: Header=BB0_27 Depth=1
 	addi	a1, a1, 1
-	bge	a1, a4, .LBB0_36
+	bge	a1, a4, .LBB0_39
 .LBB0_27:                               # =>This Loop Header: Depth=1
+                                        #     Child Loop BB0_38 Depth 2
                                         #     Child Loop BB0_31 Depth 2
                                         #       Child Loop BB0_33 Depth 3
                                         #         Child Loop BB0_34 Depth 4
@@ -213,7 +214,7 @@ jinit_1pass_quantizer:                  # @jinit_1pass_quantizer
 	divw	a2, a2, a3
 	blez	a3, .LBB0_26
 # %bb.28:                               #   in Loop: Header=BB0_27 Depth=1
-	blez	a2, .LBB0_26
+	blez	a2, .LBB0_36
 # %bb.29:                               #   in Loop: Header=BB0_27 Depth=1
 	li	a4, 0
 	li	a5, 0
@@ -263,18 +264,28 @@ jinit_1pass_quantizer:                  # @jinit_1pass_quantizer
 	addi	t2, t2, 1
 	blt	t5, s1, .LBB0_33
 	j	.LBB0_30
-.LBB0_36:
+.LBB0_36:                               #   in Loop: Header=BB0_27 Depth=1
+	blez	s1, .LBB0_26
+# %bb.37:                               # %.preheader
+                                        #   in Loop: Header=BB0_27 Depth=1
+	li	a3, 0
+.LBB0_38:                               #   Parent Loop BB0_27 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	addw	a3, a3, t1
+	blt	a3, s1, .LBB0_38
+	j	.LBB0_26
+.LBB0_39:
 	sd	a0, 32(s2)
 	sw	s4, 40(s2)
 	mv	a0, s0
 	call	create_colorindex
 	lw	a0, 112(s0)
 	li	a1, 2
-	bne	a0, a1, .LBB0_40
-# %bb.37:
+	bne	a0, a1, .LBB0_43
+# %bb.40:
 	lw	a0, 144(s0)
-	blez	a0, .LBB0_40
-# %bb.38:
+	blez	a0, .LBB0_43
+# %bb.41:
 	lw	a0, 136(s0)
 	li	s2, 0
 	ld	a1, 624(s0)
@@ -282,7 +293,7 @@ jinit_1pass_quantizer:                  # @jinit_1pass_quantizer
 	slli	a0, a0, 32
 	srli	s1, a0, 31
 	addi	s3, a1, 112
-.LBB0_39:                               # =>This Inner Loop Header: Depth=1
+.LBB0_42:                               # =>This Inner Loop Header: Depth=1
 	ld	a0, 8(s0)
 	ld	a3, 8(a0)
 	li	a1, 1
@@ -293,8 +304,8 @@ jinit_1pass_quantizer:                  # @jinit_1pass_quantizer
 	sd	a0, 0(s3)
 	addi	s2, s2, 1
 	addi	s3, s3, 8
-	blt	s2, a1, .LBB0_39
-.LBB0_40:
+	blt	s2, a1, .LBB0_42
+.LBB0_43:
 	ld	ra, 56(sp)                      # 8-byte Folded Reload
 	ld	s0, 48(sp)                      # 8-byte Folded Reload
 	ld	s1, 40(sp)                      # 8-byte Folded Reload
@@ -305,16 +316,16 @@ jinit_1pass_quantizer:                  # @jinit_1pass_quantizer
 	ld	s6, 0(sp)                       # 8-byte Folded Reload
 	addi	sp, sp, 64
 	ret
-.LBB0_41:                               # %.preheader5
+.LBB0_44:                               # %.preheader7
 	addi	s5, s5, -1
 	lui	a0, %hi(select_ncolors.RGB_order+4)
 	addi	a0, a0, %lo(select_ncolors.RGB_order+4)
 	li	a1, 2
-	j	.LBB0_44
-.LBB0_42:                               #   in Loop: Header=BB0_44 Depth=1
+	j	.LBB0_47
+.LBB0_45:                               #   in Loop: Header=BB0_47 Depth=1
 	lw	a2, 64(s0)
 	mv	s4, a6
-.LBB0_43:                               #   in Loop: Header=BB0_44 Depth=1
+.LBB0_46:                               #   in Loop: Header=BB0_47 Depth=1
 	addi	a2, a2, -2
 	seqz	a2, a2
 	slli	a2, a2, 2
@@ -324,36 +335,36 @@ jinit_1pass_quantizer:                  # @jinit_1pass_quantizer
 	addiw	a4, a4, 1
 	mul	a2, a2, a4
 	blt	s1, a2, .LBB0_15
-.LBB0_44:                               # =>This Loop Header: Depth=1
-                                        #     Child Loop BB0_45 Depth 2
+.LBB0_47:                               # =>This Loop Header: Depth=1
+                                        #     Child Loop BB0_48 Depth 2
 	sw	a4, 0(a3)
 	li	a3, 1
 	mv	a4, a0
 	mv	a5, s5
 	mv	s4, a2
-.LBB0_45:                               #   Parent Loop BB0_44 Depth=1
+.LBB0_48:                               #   Parent Loop BB0_47 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	lw	a2, 64(s0)
 	mv	a6, a3
-	bne	a2, a1, .LBB0_47
-# %bb.46:                               #   in Loop: Header=BB0_45 Depth=2
+	bne	a2, a1, .LBB0_50
+# %bb.49:                               #   in Loop: Header=BB0_48 Depth=2
 	lw	a6, 0(a4)
-.LBB0_47:                               #   in Loop: Header=BB0_45 Depth=2
+.LBB0_50:                               #   in Loop: Header=BB0_48 Depth=2
 	slli	a6, a6, 2
 	add	a7, s3, a6
 	lw	t0, 0(a7)
 	divw	a6, s4, t0
 	addiw	t0, t0, 1
 	mul	a6, a6, t0
-	blt	s1, a6, .LBB0_43
-# %bb.48:                               #   in Loop: Header=BB0_45 Depth=2
+	blt	s1, a6, .LBB0_46
+# %bb.51:                               #   in Loop: Header=BB0_48 Depth=2
 	sw	t0, 0(a7)
 	addi	a5, a5, -1
 	addi	a4, a4, 4
 	addiw	a3, a3, 1
 	mv	s4, a6
-	bnez	a5, .LBB0_45
-	j	.LBB0_42
+	bnez	a5, .LBB0_48
+	j	.LBB0_45
 .Lfunc_end0:
 	.size	jinit_1pass_quantizer, .Lfunc_end0-jinit_1pass_quantizer
                                         # -- End function

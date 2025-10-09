@@ -4,6 +4,24 @@
 	.file	"sha.c"
 	.option	push
 	.option	arch, +a, +m, +zifencei
+	.globl	read_cycles                     # -- Begin function read_cycles
+	.p2align	2
+	.type	read_cycles,@function
+read_cycles:                            # @read_cycles
+.Lread_cycles$local:
+	.type	.Lread_cycles$local,@function
+# %bb.0:
+	#APP
+	rdcycle	a0
+	#NO_APP
+	ret
+.Lfunc_end0:
+	.size	read_cycles, .Lfunc_end0-read_cycles
+	.size	.Lread_cycles$local, .Lfunc_end0-read_cycles
+                                        # -- End function
+	.option	pop
+	.option	push
+	.option	arch, +a, +m, +zifencei
 	.globl	sha256_transform                # -- Begin function sha256_transform
 	.p2align	2
 	.type	sha256_transform,@function
@@ -15,7 +33,7 @@ sha256_transform:                       # @sha256_transform
 	addi	a1, a1, 3
 	mv	a3, sp
 	addi	a2, sp, 64
-.LBB0_1:                                # =>This Inner Loop Header: Depth=1
+.LBB1_1:                                # =>This Inner Loop Header: Depth=1
 	lbu	a4, -3(a1)
 	lbu	a5, -2(a1)
 	slli	a4, a4, 24
@@ -29,11 +47,11 @@ sha256_transform:                       # @sha256_transform
 	sw	a4, 0(a3)
 	addi	a3, a3, 4
 	addi	a1, a1, 4
-	bne	a3, a2, .LBB0_1
+	bne	a3, a2, .LBB1_1
 # %bb.2:
 	lw	a3, 0(sp)
 	addi	a1, sp, 256
-.LBB0_3:                                # =>This Inner Loop Header: Depth=1
+.LBB1_3:                                # =>This Inner Loop Header: Depth=1
 	lw	a4, -8(a2)
 	srliw	a5, a4, 17
 	slli	a6, a4, 15
@@ -61,7 +79,7 @@ sha256_transform:                       # @sha256_transform
 	sw	a3, 0(a2)
 	addi	a2, a2, 4
 	mv	a3, a6
-	bne	a2, a1, .LBB0_3
+	bne	a2, a1, .LBB1_3
 # %bb.4:
 	lw	t1, 80(a0)
 	lw	t0, 84(a0)
@@ -83,7 +101,7 @@ sha256_transform:                       # @sha256_transform
 	mv	n7, a5
 	mv	n4, a6
 	mv	n3, a7
-.LBB0_5:                                # =>This Inner Loop Header: Depth=1
+.LBB1_5:                                # =>This Inner Loop Header: Depth=1
 	mv	n2, n3
 	mv	n1, n7
 	mv	t5, n9
@@ -135,7 +153,7 @@ sha256_transform:                       # @sha256_transform
 	mv	n8, t5
 	mv	n9, n1
 	mv	n4, n2
-	bne	t2, a1, .LBB0_5
+	bne	t2, a1, .LBB1_5
 # %bb.6:
 	add	t1, n6, t1
 	sw	t1, 80(a0)
@@ -155,22 +173,22 @@ sha256_transform:                       # @sha256_transform
 	sw	a2, 108(a0)
 	addi	sp, sp, 256
 	ret
-.Lfunc_end0:
-	.size	sha256_transform, .Lfunc_end0-sha256_transform
-	.size	.Lsha256_transform$local, .Lfunc_end0-sha256_transform
+.Lfunc_end1:
+	.size	sha256_transform, .Lfunc_end1-sha256_transform
+	.size	.Lsha256_transform$local, .Lfunc_end1-sha256_transform
                                         # -- End function
 	.option	pop
 	.option	push
 	.option	arch, +a, +m, +zifencei
 	.section	.srodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0                          # -- Begin function sha256_init
-.LCPI1_0:
+.LCPI2_0:
 	.quad	-4942790177982912921            # 0xbb67ae856a09e667
-.LCPI1_1:
+.LCPI2_1:
 	.quad	-6534734903820487822            # 0xa54ff53a3c6ef372
-.LCPI1_2:
+.LCPI2_2:
 	.quad	-7276294671082564993            # 0x9b05688c510e527f
-.LCPI1_3:
+.LCPI2_3:
 	.quad	6620516960021240235             # 0x5be0cd191f83d9ab
 	.text
 	.globl	sha256_init
@@ -183,25 +201,25 @@ sha256_init:                            # @sha256_init
 	sw	zero, 64(a0)
 	sd	zero, 72(a0)
 .Lpcrel_hi1:
-	auipc	a1, %pcrel_hi(.LCPI1_0)
+	auipc	a1, %pcrel_hi(.LCPI2_0)
 	ld	a1, %pcrel_lo(.Lpcrel_hi1)(a1)
 .Lpcrel_hi2:
-	auipc	a2, %pcrel_hi(.LCPI1_1)
+	auipc	a2, %pcrel_hi(.LCPI2_1)
 	ld	a2, %pcrel_lo(.Lpcrel_hi2)(a2)
 .Lpcrel_hi3:
-	auipc	a3, %pcrel_hi(.LCPI1_2)
+	auipc	a3, %pcrel_hi(.LCPI2_2)
 	ld	a3, %pcrel_lo(.Lpcrel_hi3)(a3)
 .Lpcrel_hi4:
-	auipc	a4, %pcrel_hi(.LCPI1_3)
+	auipc	a4, %pcrel_hi(.LCPI2_3)
 	ld	a4, %pcrel_lo(.Lpcrel_hi4)(a4)
 	sd	a1, 80(a0)
 	sd	a2, 88(a0)
 	sd	a3, 96(a0)
 	sd	a4, 104(a0)
 	ret
-.Lfunc_end1:
-	.size	sha256_init, .Lfunc_end1-sha256_init
-	.size	.Lsha256_init$local, .Lfunc_end1-sha256_init
+.Lfunc_end2:
+	.size	sha256_init, .Lfunc_end2-sha256_init
+	.size	.Lsha256_init$local, .Lfunc_end2-sha256_init
                                         # -- End function
 	.option	pop
 	.option	push
@@ -213,7 +231,7 @@ sha256_update:                          # @sha256_update
 .Lsha256_update$local:
 	.type	.Lsha256_update$local,@function
 # %bb.0:
-	beqz	a2, .LBB2_6
+	beqz	a2, .LBB3_6
 # %bb.1:
 	addi	sp, sp, -16
 	sd	ra, 8(sp)                       # 8-byte Folded Spill
@@ -223,13 +241,13 @@ sha256_update:                          # @sha256_update
 	li	a2, 0
 	li	n13, 1
 	li	n14, 64
-	j	.LBB2_3
-.LBB2_2:                                #   in Loop: Header=BB2_3 Depth=1
+	j	.LBB3_3
+.LBB3_2:                                #   in Loop: Header=BB3_3 Depth=1
 	slli	a2, n13, 32
 	srli	a2, a2, 32
 	addi	n13, n13, 1
-	bgeu	a2, n11, .LBB2_5
-.LBB2_3:                                # =>This Inner Loop Header: Depth=1
+	bgeu	a2, n11, .LBB3_5
+.LBB3_3:                                # =>This Inner Loop Header: Depth=1
 	add	a2, n12, a2
 	lbu	a2, 0(a2)
 	slli	a1, a1, 32
@@ -239,8 +257,8 @@ sha256_update:                          # @sha256_update
 	lw	a1, 64(a0)
 	addiw	a1, a1, 1
 	sw	a1, 64(a0)
-	bne	a1, n14, .LBB2_2
-# %bb.4:                                #   in Loop: Header=BB2_3 Depth=1
+	bne	a1, n14, .LBB3_2
+# %bb.4:                                #   in Loop: Header=BB3_3 Depth=1
 	mv	a1, a0
 	call	.Lsha256_transform$local
 	ld	a2, 72(a0)
@@ -248,15 +266,15 @@ sha256_update:                          # @sha256_update
 	addi	a2, a2, 512
 	sd	a2, 72(a0)
 	sw	zero, 64(a0)
-	j	.LBB2_2
-.LBB2_5:
+	j	.LBB3_2
+.LBB3_5:
 	ld	ra, 8(sp)                       # 8-byte Folded Reload
 	addi	sp, sp, 16
-.LBB2_6:
+.LBB3_6:
 	ret
-.Lfunc_end2:
-	.size	sha256_update, .Lfunc_end2-sha256_update
-	.size	.Lsha256_update$local, .Lfunc_end2-sha256_update
+.Lfunc_end3:
+	.size	sha256_update, .Lfunc_end3-sha256_update
+	.size	.Lsha256_update$local, .Lfunc_end3-sha256_update
                                         # -- End function
 	.option	pop
 	.option	push
@@ -279,20 +297,20 @@ sha256_final:                           # @sha256_final
 	li	a3, 128
 	li	a1, 55
 	sb	a3, 0(a0)
-	bltu	a1, a2, .LBB3_3
+	bltu	a1, a2, .LBB4_3
 # %bb.1:
-	beq	a2, a1, .LBB3_6
+	beq	a2, a1, .LBB4_6
 # %bb.2:
 	addi	a0, a0, 1
 	li	a1, 55
 	subw	a2, a1, a2
 	li	a1, 0
 	call	memset
-	j	.LBB3_6
-.LBB3_3:
+	j	.LBB4_6
+.LBB4_3:
 	addiw	a0, a2, 1
 	li	a1, 63
-	bltu	a1, a0, .LBB3_5
+	bltu	a1, a0, .LBB4_5
 # %bb.4:
 	add	a0, s0, a0
 	li	a1, 62
@@ -300,7 +318,7 @@ sha256_final:                           # @sha256_final
 	addi	a2, a1, 1
 	li	a1, 0
 	call	memset
-.LBB3_5:
+.LBB4_5:
 	mv	a0, s0
 	mv	a1, s0
 	call	.Lsha256_transform$local
@@ -311,7 +329,7 @@ sha256_final:                           # @sha256_final
 	sd	zero, 16(s0)
 	sd	zero, 8(s0)
 	sd	zero, 0(s0)
-.LBB3_6:
+.LBB4_6:
 	lw	a0, 64(s0)
 	ld	a1, 72(s0)
 	slli	a0, a0, 35
@@ -405,26 +423,9 @@ sha256_final:                           # @sha256_final
 	ld	s1, 8(sp)                       # 8-byte Folded Reload
 	addi	sp, sp, 32
 	ret
-.Lfunc_end3:
-	.size	sha256_final, .Lfunc_end3-sha256_final
-	.size	.Lsha256_final$local, .Lfunc_end3-sha256_final
-                                        # -- End function
-	.option	pop
-	.option	push
-	.option	arch, +a, +m, +zifencei
-	.globl	use_64_registers                # -- Begin function use_64_registers
-	.p2align	2
-	.type	use_64_registers,@function
-use_64_registers:                       # @use_64_registers
-.Luse_64_registers$local:
-	.type	.Luse_64_registers$local,@function
-# %bb.0:
-	li	a1, 2016
-	sw	a1, 0(a0)
-	ret
 .Lfunc_end4:
-	.size	use_64_registers, .Lfunc_end4-use_64_registers
-	.size	.Luse_64_registers$local, .Lfunc_end4-use_64_registers
+	.size	sha256_final, .Lfunc_end4-sha256_final
+	.size	.Lsha256_final$local, .Lfunc_end4-sha256_final
                                         # -- End function
 	.option	pop
 	.type	k,@object                       # @k

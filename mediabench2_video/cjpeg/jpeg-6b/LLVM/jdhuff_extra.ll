@@ -107,7 +107,7 @@ define dso_local void @jpeg_make_d_derived_tbl(ptr noundef %0, i32 noundef signe
   %62 = phi i32 [ %43, %53 ], [ %60, %55 ]
   %63 = add nuw nsw i64 %42, 1
   %64 = icmp eq i64 %63, 17
-  br i1 %64, label %65, label %41, !llvm.loop !25
+  br i1 %64, label %65, label %41
 
 65:                                               ; preds = %61
   %66 = sext i32 %62 to i64
@@ -143,13 +143,13 @@ define dso_local void @jpeg_make_d_derived_tbl(ptr noundef %0, i32 noundef signe
   %85 = phi i32 [ %76, %79 ], [ %88, %83 ]
   %86 = add nsw i64 %84, 1
   %87 = getelementptr inbounds [257 x i32], ptr %6, i64 0, i64 %84
-  store i32 %85, ptr %87, align 4, !tbaa !27
+  store i32 %85, ptr %87, align 4, !tbaa !25
   %88 = add i32 %85, 1
   %89 = getelementptr inbounds [257 x i8], ptr %5, i64 0, i64 %86
   %90 = load i8, ptr %89, align 1, !tbaa !17
   %91 = zext i8 %90 to i64
   %92 = icmp eq i64 %74, %91
-  br i1 %92, label %83, label %93, !llvm.loop !28
+  br i1 %92, label %83, label %93
 
 93:                                               ; preds = %83
   %94 = trunc nsw i64 %86 to i32
@@ -178,7 +178,7 @@ define dso_local void @jpeg_make_d_derived_tbl(ptr noundef %0, i32 noundef signe
   %109 = getelementptr inbounds [257 x i8], ptr %5, i64 0, i64 %108
   %110 = load i8, ptr %109, align 1, !tbaa !17
   %111 = icmp eq i8 %110, 0
-  br i1 %111, label %81, label %72, !llvm.loop !29
+  br i1 %111, label %81, label %72
 
 112:                                              ; preds = %81, %133
   %113 = phi i64 [ 1, %81 ], [ %137, %133 ]
@@ -191,18 +191,18 @@ define dso_local void @jpeg_make_d_derived_tbl(ptr noundef %0, i32 noundef signe
 118:                                              ; preds = %112
   %119 = sext i32 %114 to i64
   %120 = getelementptr inbounds [257 x i32], ptr %6, i64 0, i64 %119
-  %121 = load i32, ptr %120, align 4, !tbaa !27
+  %121 = load i32, ptr %120, align 4, !tbaa !25
   %122 = zext i32 %121 to i64
   %123 = sub nsw i64 %119, %122
   %124 = getelementptr inbounds [17 x i64], ptr %82, i64 0, i64 %113
-  store i64 %123, ptr %124, align 8, !tbaa !30
+  store i64 %123, ptr %124, align 8, !tbaa !26
   %125 = load i8, ptr %115, align 1, !tbaa !17
   %126 = zext i8 %125 to i32
   %127 = add nsw i32 %114, %126
   %128 = add nsw i32 %127, -1
   %129 = sext i32 %128 to i64
   %130 = getelementptr inbounds [257 x i32], ptr %6, i64 0, i64 %129
-  %131 = load i32, ptr %130, align 4, !tbaa !27
+  %131 = load i32, ptr %130, align 4, !tbaa !25
   %132 = zext i32 %131 to i64
   br label %133
 
@@ -213,11 +213,11 @@ define dso_local void @jpeg_make_d_derived_tbl(ptr noundef %0, i32 noundef signe
   store i64 %134, ptr %136, align 8
   %137 = add nuw nsw i64 %113, 1
   %138 = icmp eq i64 %137, 17
-  br i1 %138, label %139, label %112, !llvm.loop !31
+  br i1 %138, label %139, label %112
 
 139:                                              ; preds = %133
   %140 = getelementptr inbounds i8, ptr %39, i64 136
-  store i64 1048575, ptr %140, align 8, !tbaa !30
+  store i64 1048575, ptr %140, align 8, !tbaa !26
   %141 = getelementptr inbounds i8, ptr %39, i64 288
   tail call void @llvm.memset.p0.i64(ptr noundef nonnull align 8 dereferenceable(1024) %141, i8 0, i64 1024, i1 false)
   %142 = getelementptr inbounds i8, ptr %22, i64 17
@@ -231,7 +231,7 @@ define dso_local void @jpeg_make_d_derived_tbl(ptr noundef %0, i32 noundef signe
   %148 = phi i64 [ %166, %164 ], [ 0, %139 ]
   %149 = phi i32 [ %165, %164 ], [ 1, %139 ]
   %150 = getelementptr inbounds [257 x i32], ptr %6, i64 0, i64 %148
-  %151 = load i32, ptr %150, align 4, !tbaa !27
+  %151 = load i32, ptr %150, align 4, !tbaa !25
   %152 = shl i32 %151, 7
   %153 = getelementptr inbounds [256 x i8], ptr %142, i64 0, i64 %148
   %154 = sext i32 %152 to i64
@@ -241,14 +241,14 @@ define dso_local void @jpeg_make_d_derived_tbl(ptr noundef %0, i32 noundef signe
   %156 = phi i64 [ %154, %147 ], [ %161, %155 ]
   %157 = phi i32 [ 128, %147 ], [ %162, %155 ]
   %158 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %156
-  store i32 1, ptr %158, align 4, !tbaa !27
+  store i32 1, ptr %158, align 4, !tbaa !25
   %159 = load i8, ptr %153, align 1, !tbaa !17
   %160 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %156
   store i8 %159, ptr %160, align 1, !tbaa !17
   %161 = add nsw i64 %156, 1
   %162 = add nsw i32 %157, -1
   %163 = icmp ugt i32 %157, 1
-  br i1 %163, label %155, label %164, !llvm.loop !32
+  br i1 %163, label %155, label %164
 
 164:                                              ; preds = %155
   %165 = add nuw nsw i32 %149, 1
@@ -256,7 +256,7 @@ define dso_local void @jpeg_make_d_derived_tbl(ptr noundef %0, i32 noundef signe
   %167 = load i8, ptr %144, align 1, !tbaa !17
   %168 = zext i8 %167 to i32
   %169 = icmp ult i32 %149, %168
-  br i1 %169, label %147, label %170, !llvm.loop !33
+  br i1 %169, label %147, label %170
 
 170:                                              ; preds = %164
   %171 = trunc nsw i64 %166 to i32
@@ -277,7 +277,7 @@ define dso_local void @jpeg_make_d_derived_tbl(ptr noundef %0, i32 noundef signe
   %180 = phi i64 [ %178, %177 ], [ %198, %196 ]
   %181 = phi i32 [ 1, %177 ], [ %197, %196 ]
   %182 = getelementptr inbounds [257 x i32], ptr %6, i64 0, i64 %180
-  %183 = load i32, ptr %182, align 4, !tbaa !27
+  %183 = load i32, ptr %182, align 4, !tbaa !25
   %184 = shl i32 %183, 6
   %185 = getelementptr inbounds [256 x i8], ptr %142, i64 0, i64 %180
   %186 = sext i32 %184 to i64
@@ -287,14 +287,14 @@ define dso_local void @jpeg_make_d_derived_tbl(ptr noundef %0, i32 noundef signe
   %188 = phi i64 [ %186, %179 ], [ %193, %187 ]
   %189 = phi i32 [ 64, %179 ], [ %194, %187 ]
   %190 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %188
-  store i32 2, ptr %190, align 4, !tbaa !27
+  store i32 2, ptr %190, align 4, !tbaa !25
   %191 = load i8, ptr %185, align 1, !tbaa !17
   %192 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %188
   store i8 %191, ptr %192, align 1, !tbaa !17
   %193 = add nsw i64 %188, 1
   %194 = add nsw i32 %189, -1
   %195 = icmp ugt i32 %189, 1
-  br i1 %195, label %187, label %196, !llvm.loop !32
+  br i1 %195, label %187, label %196
 
 196:                                              ; preds = %187
   %197 = add nuw nsw i32 %181, 1
@@ -302,7 +302,7 @@ define dso_local void @jpeg_make_d_derived_tbl(ptr noundef %0, i32 noundef signe
   %199 = load i8, ptr %174, align 1, !tbaa !17
   %200 = zext i8 %199 to i32
   %201 = icmp ult i32 %181, %200
-  br i1 %201, label %179, label %202, !llvm.loop !33
+  br i1 %201, label %179, label %202
 
 202:                                              ; preds = %196
   %203 = trunc nsw i64 %198 to i32
@@ -323,198 +323,198 @@ define dso_local void @jpeg_make_d_derived_tbl(ptr noundef %0, i32 noundef signe
   %212 = phi i64 [ %210, %209 ], [ %347, %211 ]
   %213 = phi i32 [ 1, %209 ], [ %346, %211 ]
   %214 = getelementptr inbounds [257 x i32], ptr %6, i64 0, i64 %212
-  %215 = load i32, ptr %214, align 4, !tbaa !27
+  %215 = load i32, ptr %214, align 4, !tbaa !25
   %216 = shl i32 %215, 5
   %217 = getelementptr inbounds [256 x i8], ptr %142, i64 0, i64 %212
   %218 = sext i32 %216 to i64
   %219 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %218
-  store i32 3, ptr %219, align 4, !tbaa !27
+  store i32 3, ptr %219, align 4, !tbaa !25
   %220 = load i8, ptr %217, align 1, !tbaa !17
   %221 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %218
   store i8 %220, ptr %221, align 1, !tbaa !17
   %222 = or disjoint i64 %218, 1
   %223 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %222
-  store i32 3, ptr %223, align 4, !tbaa !27
+  store i32 3, ptr %223, align 4, !tbaa !25
   %224 = load i8, ptr %217, align 1, !tbaa !17
   %225 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %222
   store i8 %224, ptr %225, align 1, !tbaa !17
   %226 = or disjoint i64 %218, 2
   %227 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %226
-  store i32 3, ptr %227, align 4, !tbaa !27
+  store i32 3, ptr %227, align 4, !tbaa !25
   %228 = load i8, ptr %217, align 1, !tbaa !17
   %229 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %226
   store i8 %228, ptr %229, align 1, !tbaa !17
   %230 = or disjoint i64 %218, 3
   %231 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %230
-  store i32 3, ptr %231, align 4, !tbaa !27
+  store i32 3, ptr %231, align 4, !tbaa !25
   %232 = load i8, ptr %217, align 1, !tbaa !17
   %233 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %230
   store i8 %232, ptr %233, align 1, !tbaa !17
   %234 = or disjoint i64 %218, 4
   %235 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %234
-  store i32 3, ptr %235, align 4, !tbaa !27
+  store i32 3, ptr %235, align 4, !tbaa !25
   %236 = load i8, ptr %217, align 1, !tbaa !17
   %237 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %234
   store i8 %236, ptr %237, align 1, !tbaa !17
   %238 = or disjoint i64 %218, 5
   %239 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %238
-  store i32 3, ptr %239, align 4, !tbaa !27
+  store i32 3, ptr %239, align 4, !tbaa !25
   %240 = load i8, ptr %217, align 1, !tbaa !17
   %241 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %238
   store i8 %240, ptr %241, align 1, !tbaa !17
   %242 = or disjoint i64 %218, 6
   %243 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %242
-  store i32 3, ptr %243, align 4, !tbaa !27
+  store i32 3, ptr %243, align 4, !tbaa !25
   %244 = load i8, ptr %217, align 1, !tbaa !17
   %245 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %242
   store i8 %244, ptr %245, align 1, !tbaa !17
   %246 = or disjoint i64 %218, 7
   %247 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %246
-  store i32 3, ptr %247, align 4, !tbaa !27
+  store i32 3, ptr %247, align 4, !tbaa !25
   %248 = load i8, ptr %217, align 1, !tbaa !17
   %249 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %246
   store i8 %248, ptr %249, align 1, !tbaa !17
   %250 = or disjoint i64 %218, 8
   %251 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %250
-  store i32 3, ptr %251, align 4, !tbaa !27
+  store i32 3, ptr %251, align 4, !tbaa !25
   %252 = load i8, ptr %217, align 1, !tbaa !17
   %253 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %250
   store i8 %252, ptr %253, align 1, !tbaa !17
   %254 = or disjoint i64 %218, 9
   %255 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %254
-  store i32 3, ptr %255, align 4, !tbaa !27
+  store i32 3, ptr %255, align 4, !tbaa !25
   %256 = load i8, ptr %217, align 1, !tbaa !17
   %257 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %254
   store i8 %256, ptr %257, align 1, !tbaa !17
   %258 = or disjoint i64 %218, 10
   %259 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %258
-  store i32 3, ptr %259, align 4, !tbaa !27
+  store i32 3, ptr %259, align 4, !tbaa !25
   %260 = load i8, ptr %217, align 1, !tbaa !17
   %261 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %258
   store i8 %260, ptr %261, align 1, !tbaa !17
   %262 = or disjoint i64 %218, 11
   %263 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %262
-  store i32 3, ptr %263, align 4, !tbaa !27
+  store i32 3, ptr %263, align 4, !tbaa !25
   %264 = load i8, ptr %217, align 1, !tbaa !17
   %265 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %262
   store i8 %264, ptr %265, align 1, !tbaa !17
   %266 = or disjoint i64 %218, 12
   %267 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %266
-  store i32 3, ptr %267, align 4, !tbaa !27
+  store i32 3, ptr %267, align 4, !tbaa !25
   %268 = load i8, ptr %217, align 1, !tbaa !17
   %269 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %266
   store i8 %268, ptr %269, align 1, !tbaa !17
   %270 = or disjoint i64 %218, 13
   %271 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %270
-  store i32 3, ptr %271, align 4, !tbaa !27
+  store i32 3, ptr %271, align 4, !tbaa !25
   %272 = load i8, ptr %217, align 1, !tbaa !17
   %273 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %270
   store i8 %272, ptr %273, align 1, !tbaa !17
   %274 = or disjoint i64 %218, 14
   %275 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %274
-  store i32 3, ptr %275, align 4, !tbaa !27
+  store i32 3, ptr %275, align 4, !tbaa !25
   %276 = load i8, ptr %217, align 1, !tbaa !17
   %277 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %274
   store i8 %276, ptr %277, align 1, !tbaa !17
   %278 = or disjoint i64 %218, 15
   %279 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %278
-  store i32 3, ptr %279, align 4, !tbaa !27
+  store i32 3, ptr %279, align 4, !tbaa !25
   %280 = load i8, ptr %217, align 1, !tbaa !17
   %281 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %278
   store i8 %280, ptr %281, align 1, !tbaa !17
   %282 = or disjoint i64 %218, 16
   %283 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %282
-  store i32 3, ptr %283, align 4, !tbaa !27
+  store i32 3, ptr %283, align 4, !tbaa !25
   %284 = load i8, ptr %217, align 1, !tbaa !17
   %285 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %282
   store i8 %284, ptr %285, align 1, !tbaa !17
   %286 = or disjoint i64 %218, 17
   %287 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %286
-  store i32 3, ptr %287, align 4, !tbaa !27
+  store i32 3, ptr %287, align 4, !tbaa !25
   %288 = load i8, ptr %217, align 1, !tbaa !17
   %289 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %286
   store i8 %288, ptr %289, align 1, !tbaa !17
   %290 = or disjoint i64 %218, 18
   %291 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %290
-  store i32 3, ptr %291, align 4, !tbaa !27
+  store i32 3, ptr %291, align 4, !tbaa !25
   %292 = load i8, ptr %217, align 1, !tbaa !17
   %293 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %290
   store i8 %292, ptr %293, align 1, !tbaa !17
   %294 = or disjoint i64 %218, 19
   %295 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %294
-  store i32 3, ptr %295, align 4, !tbaa !27
+  store i32 3, ptr %295, align 4, !tbaa !25
   %296 = load i8, ptr %217, align 1, !tbaa !17
   %297 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %294
   store i8 %296, ptr %297, align 1, !tbaa !17
   %298 = or disjoint i64 %218, 20
   %299 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %298
-  store i32 3, ptr %299, align 4, !tbaa !27
+  store i32 3, ptr %299, align 4, !tbaa !25
   %300 = load i8, ptr %217, align 1, !tbaa !17
   %301 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %298
   store i8 %300, ptr %301, align 1, !tbaa !17
   %302 = or disjoint i64 %218, 21
   %303 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %302
-  store i32 3, ptr %303, align 4, !tbaa !27
+  store i32 3, ptr %303, align 4, !tbaa !25
   %304 = load i8, ptr %217, align 1, !tbaa !17
   %305 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %302
   store i8 %304, ptr %305, align 1, !tbaa !17
   %306 = or disjoint i64 %218, 22
   %307 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %306
-  store i32 3, ptr %307, align 4, !tbaa !27
+  store i32 3, ptr %307, align 4, !tbaa !25
   %308 = load i8, ptr %217, align 1, !tbaa !17
   %309 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %306
   store i8 %308, ptr %309, align 1, !tbaa !17
   %310 = or disjoint i64 %218, 23
   %311 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %310
-  store i32 3, ptr %311, align 4, !tbaa !27
+  store i32 3, ptr %311, align 4, !tbaa !25
   %312 = load i8, ptr %217, align 1, !tbaa !17
   %313 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %310
   store i8 %312, ptr %313, align 1, !tbaa !17
   %314 = or disjoint i64 %218, 24
   %315 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %314
-  store i32 3, ptr %315, align 4, !tbaa !27
+  store i32 3, ptr %315, align 4, !tbaa !25
   %316 = load i8, ptr %217, align 1, !tbaa !17
   %317 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %314
   store i8 %316, ptr %317, align 1, !tbaa !17
   %318 = or disjoint i64 %218, 25
   %319 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %318
-  store i32 3, ptr %319, align 4, !tbaa !27
+  store i32 3, ptr %319, align 4, !tbaa !25
   %320 = load i8, ptr %217, align 1, !tbaa !17
   %321 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %318
   store i8 %320, ptr %321, align 1, !tbaa !17
   %322 = or disjoint i64 %218, 26
   %323 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %322
-  store i32 3, ptr %323, align 4, !tbaa !27
+  store i32 3, ptr %323, align 4, !tbaa !25
   %324 = load i8, ptr %217, align 1, !tbaa !17
   %325 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %322
   store i8 %324, ptr %325, align 1, !tbaa !17
   %326 = or disjoint i64 %218, 27
   %327 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %326
-  store i32 3, ptr %327, align 4, !tbaa !27
+  store i32 3, ptr %327, align 4, !tbaa !25
   %328 = load i8, ptr %217, align 1, !tbaa !17
   %329 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %326
   store i8 %328, ptr %329, align 1, !tbaa !17
   %330 = or disjoint i64 %218, 28
   %331 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %330
-  store i32 3, ptr %331, align 4, !tbaa !27
+  store i32 3, ptr %331, align 4, !tbaa !25
   %332 = load i8, ptr %217, align 1, !tbaa !17
   %333 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %330
   store i8 %332, ptr %333, align 1, !tbaa !17
   %334 = or disjoint i64 %218, 29
   %335 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %334
-  store i32 3, ptr %335, align 4, !tbaa !27
+  store i32 3, ptr %335, align 4, !tbaa !25
   %336 = load i8, ptr %217, align 1, !tbaa !17
   %337 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %334
   store i8 %336, ptr %337, align 1, !tbaa !17
   %338 = or disjoint i64 %218, 30
   %339 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %338
-  store i32 3, ptr %339, align 4, !tbaa !27
+  store i32 3, ptr %339, align 4, !tbaa !25
   %340 = load i8, ptr %217, align 1, !tbaa !17
   %341 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %338
   store i8 %340, ptr %341, align 1, !tbaa !17
   %342 = or disjoint i64 %218, 31
   %343 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %342
-  store i32 3, ptr %343, align 4, !tbaa !27
+  store i32 3, ptr %343, align 4, !tbaa !25
   %344 = load i8, ptr %217, align 1, !tbaa !17
   %345 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %342
   store i8 %344, ptr %345, align 1, !tbaa !17
@@ -523,7 +523,7 @@ define dso_local void @jpeg_make_d_derived_tbl(ptr noundef %0, i32 noundef signe
   %348 = load i8, ptr %206, align 1, !tbaa !17
   %349 = zext i8 %348 to i32
   %350 = icmp ult i32 %213, %349
-  br i1 %350, label %211, label %351, !llvm.loop !33
+  br i1 %350, label %211, label %351
 
 351:                                              ; preds = %211
   %352 = trunc nsw i64 %347 to i32
@@ -544,102 +544,102 @@ define dso_local void @jpeg_make_d_derived_tbl(ptr noundef %0, i32 noundef signe
   %361 = phi i64 [ %359, %358 ], [ %432, %360 ]
   %362 = phi i32 [ 1, %358 ], [ %431, %360 ]
   %363 = getelementptr inbounds [257 x i32], ptr %6, i64 0, i64 %361
-  %364 = load i32, ptr %363, align 4, !tbaa !27
+  %364 = load i32, ptr %363, align 4, !tbaa !25
   %365 = shl i32 %364, 4
   %366 = getelementptr inbounds [256 x i8], ptr %142, i64 0, i64 %361
   %367 = sext i32 %365 to i64
   %368 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %367
-  store i32 4, ptr %368, align 4, !tbaa !27
+  store i32 4, ptr %368, align 4, !tbaa !25
   %369 = load i8, ptr %366, align 1, !tbaa !17
   %370 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %367
   store i8 %369, ptr %370, align 1, !tbaa !17
   %371 = or disjoint i64 %367, 1
   %372 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %371
-  store i32 4, ptr %372, align 4, !tbaa !27
+  store i32 4, ptr %372, align 4, !tbaa !25
   %373 = load i8, ptr %366, align 1, !tbaa !17
   %374 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %371
   store i8 %373, ptr %374, align 1, !tbaa !17
   %375 = or disjoint i64 %367, 2
   %376 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %375
-  store i32 4, ptr %376, align 4, !tbaa !27
+  store i32 4, ptr %376, align 4, !tbaa !25
   %377 = load i8, ptr %366, align 1, !tbaa !17
   %378 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %375
   store i8 %377, ptr %378, align 1, !tbaa !17
   %379 = or disjoint i64 %367, 3
   %380 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %379
-  store i32 4, ptr %380, align 4, !tbaa !27
+  store i32 4, ptr %380, align 4, !tbaa !25
   %381 = load i8, ptr %366, align 1, !tbaa !17
   %382 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %379
   store i8 %381, ptr %382, align 1, !tbaa !17
   %383 = or disjoint i64 %367, 4
   %384 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %383
-  store i32 4, ptr %384, align 4, !tbaa !27
+  store i32 4, ptr %384, align 4, !tbaa !25
   %385 = load i8, ptr %366, align 1, !tbaa !17
   %386 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %383
   store i8 %385, ptr %386, align 1, !tbaa !17
   %387 = or disjoint i64 %367, 5
   %388 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %387
-  store i32 4, ptr %388, align 4, !tbaa !27
+  store i32 4, ptr %388, align 4, !tbaa !25
   %389 = load i8, ptr %366, align 1, !tbaa !17
   %390 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %387
   store i8 %389, ptr %390, align 1, !tbaa !17
   %391 = or disjoint i64 %367, 6
   %392 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %391
-  store i32 4, ptr %392, align 4, !tbaa !27
+  store i32 4, ptr %392, align 4, !tbaa !25
   %393 = load i8, ptr %366, align 1, !tbaa !17
   %394 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %391
   store i8 %393, ptr %394, align 1, !tbaa !17
   %395 = or disjoint i64 %367, 7
   %396 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %395
-  store i32 4, ptr %396, align 4, !tbaa !27
+  store i32 4, ptr %396, align 4, !tbaa !25
   %397 = load i8, ptr %366, align 1, !tbaa !17
   %398 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %395
   store i8 %397, ptr %398, align 1, !tbaa !17
   %399 = or disjoint i64 %367, 8
   %400 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %399
-  store i32 4, ptr %400, align 4, !tbaa !27
+  store i32 4, ptr %400, align 4, !tbaa !25
   %401 = load i8, ptr %366, align 1, !tbaa !17
   %402 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %399
   store i8 %401, ptr %402, align 1, !tbaa !17
   %403 = or disjoint i64 %367, 9
   %404 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %403
-  store i32 4, ptr %404, align 4, !tbaa !27
+  store i32 4, ptr %404, align 4, !tbaa !25
   %405 = load i8, ptr %366, align 1, !tbaa !17
   %406 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %403
   store i8 %405, ptr %406, align 1, !tbaa !17
   %407 = or disjoint i64 %367, 10
   %408 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %407
-  store i32 4, ptr %408, align 4, !tbaa !27
+  store i32 4, ptr %408, align 4, !tbaa !25
   %409 = load i8, ptr %366, align 1, !tbaa !17
   %410 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %407
   store i8 %409, ptr %410, align 1, !tbaa !17
   %411 = or disjoint i64 %367, 11
   %412 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %411
-  store i32 4, ptr %412, align 4, !tbaa !27
+  store i32 4, ptr %412, align 4, !tbaa !25
   %413 = load i8, ptr %366, align 1, !tbaa !17
   %414 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %411
   store i8 %413, ptr %414, align 1, !tbaa !17
   %415 = or disjoint i64 %367, 12
   %416 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %415
-  store i32 4, ptr %416, align 4, !tbaa !27
+  store i32 4, ptr %416, align 4, !tbaa !25
   %417 = load i8, ptr %366, align 1, !tbaa !17
   %418 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %415
   store i8 %417, ptr %418, align 1, !tbaa !17
   %419 = or disjoint i64 %367, 13
   %420 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %419
-  store i32 4, ptr %420, align 4, !tbaa !27
+  store i32 4, ptr %420, align 4, !tbaa !25
   %421 = load i8, ptr %366, align 1, !tbaa !17
   %422 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %419
   store i8 %421, ptr %422, align 1, !tbaa !17
   %423 = or disjoint i64 %367, 14
   %424 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %423
-  store i32 4, ptr %424, align 4, !tbaa !27
+  store i32 4, ptr %424, align 4, !tbaa !25
   %425 = load i8, ptr %366, align 1, !tbaa !17
   %426 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %423
   store i8 %425, ptr %426, align 1, !tbaa !17
   %427 = or disjoint i64 %367, 15
   %428 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %427
-  store i32 4, ptr %428, align 4, !tbaa !27
+  store i32 4, ptr %428, align 4, !tbaa !25
   %429 = load i8, ptr %366, align 1, !tbaa !17
   %430 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %427
   store i8 %429, ptr %430, align 1, !tbaa !17
@@ -648,7 +648,7 @@ define dso_local void @jpeg_make_d_derived_tbl(ptr noundef %0, i32 noundef signe
   %433 = load i8, ptr %355, align 1, !tbaa !17
   %434 = zext i8 %433 to i32
   %435 = icmp ult i32 %362, %434
-  br i1 %435, label %360, label %436, !llvm.loop !33
+  br i1 %435, label %360, label %436
 
 436:                                              ; preds = %360
   %437 = trunc nsw i64 %432 to i32
@@ -669,54 +669,54 @@ define dso_local void @jpeg_make_d_derived_tbl(ptr noundef %0, i32 noundef signe
   %446 = phi i64 [ %444, %443 ], [ %485, %445 ]
   %447 = phi i32 [ 1, %443 ], [ %484, %445 ]
   %448 = getelementptr inbounds [257 x i32], ptr %6, i64 0, i64 %446
-  %449 = load i32, ptr %448, align 4, !tbaa !27
+  %449 = load i32, ptr %448, align 4, !tbaa !25
   %450 = shl i32 %449, 3
   %451 = getelementptr inbounds [256 x i8], ptr %142, i64 0, i64 %446
   %452 = sext i32 %450 to i64
   %453 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %452
-  store i32 5, ptr %453, align 4, !tbaa !27
+  store i32 5, ptr %453, align 4, !tbaa !25
   %454 = load i8, ptr %451, align 1, !tbaa !17
   %455 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %452
   store i8 %454, ptr %455, align 1, !tbaa !17
   %456 = or disjoint i64 %452, 1
   %457 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %456
-  store i32 5, ptr %457, align 4, !tbaa !27
+  store i32 5, ptr %457, align 4, !tbaa !25
   %458 = load i8, ptr %451, align 1, !tbaa !17
   %459 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %456
   store i8 %458, ptr %459, align 1, !tbaa !17
   %460 = or disjoint i64 %452, 2
   %461 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %460
-  store i32 5, ptr %461, align 4, !tbaa !27
+  store i32 5, ptr %461, align 4, !tbaa !25
   %462 = load i8, ptr %451, align 1, !tbaa !17
   %463 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %460
   store i8 %462, ptr %463, align 1, !tbaa !17
   %464 = or disjoint i64 %452, 3
   %465 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %464
-  store i32 5, ptr %465, align 4, !tbaa !27
+  store i32 5, ptr %465, align 4, !tbaa !25
   %466 = load i8, ptr %451, align 1, !tbaa !17
   %467 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %464
   store i8 %466, ptr %467, align 1, !tbaa !17
   %468 = or disjoint i64 %452, 4
   %469 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %468
-  store i32 5, ptr %469, align 4, !tbaa !27
+  store i32 5, ptr %469, align 4, !tbaa !25
   %470 = load i8, ptr %451, align 1, !tbaa !17
   %471 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %468
   store i8 %470, ptr %471, align 1, !tbaa !17
   %472 = or disjoint i64 %452, 5
   %473 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %472
-  store i32 5, ptr %473, align 4, !tbaa !27
+  store i32 5, ptr %473, align 4, !tbaa !25
   %474 = load i8, ptr %451, align 1, !tbaa !17
   %475 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %472
   store i8 %474, ptr %475, align 1, !tbaa !17
   %476 = or disjoint i64 %452, 6
   %477 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %476
-  store i32 5, ptr %477, align 4, !tbaa !27
+  store i32 5, ptr %477, align 4, !tbaa !25
   %478 = load i8, ptr %451, align 1, !tbaa !17
   %479 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %476
   store i8 %478, ptr %479, align 1, !tbaa !17
   %480 = or disjoint i64 %452, 7
   %481 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %480
-  store i32 5, ptr %481, align 4, !tbaa !27
+  store i32 5, ptr %481, align 4, !tbaa !25
   %482 = load i8, ptr %451, align 1, !tbaa !17
   %483 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %480
   store i8 %482, ptr %483, align 1, !tbaa !17
@@ -725,7 +725,7 @@ define dso_local void @jpeg_make_d_derived_tbl(ptr noundef %0, i32 noundef signe
   %486 = load i8, ptr %440, align 1, !tbaa !17
   %487 = zext i8 %486 to i32
   %488 = icmp ult i32 %447, %487
-  br i1 %488, label %445, label %489, !llvm.loop !33
+  br i1 %488, label %445, label %489
 
 489:                                              ; preds = %445
   %490 = trunc nsw i64 %485 to i32
@@ -746,30 +746,30 @@ define dso_local void @jpeg_make_d_derived_tbl(ptr noundef %0, i32 noundef signe
   %499 = phi i64 [ %497, %496 ], [ %522, %498 ]
   %500 = phi i32 [ 1, %496 ], [ %521, %498 ]
   %501 = getelementptr inbounds [257 x i32], ptr %6, i64 0, i64 %499
-  %502 = load i32, ptr %501, align 4, !tbaa !27
+  %502 = load i32, ptr %501, align 4, !tbaa !25
   %503 = shl i32 %502, 2
   %504 = getelementptr inbounds [256 x i8], ptr %142, i64 0, i64 %499
   %505 = sext i32 %503 to i64
   %506 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %505
-  store i32 6, ptr %506, align 4, !tbaa !27
+  store i32 6, ptr %506, align 4, !tbaa !25
   %507 = load i8, ptr %504, align 1, !tbaa !17
   %508 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %505
   store i8 %507, ptr %508, align 1, !tbaa !17
   %509 = or disjoint i64 %505, 1
   %510 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %509
-  store i32 6, ptr %510, align 4, !tbaa !27
+  store i32 6, ptr %510, align 4, !tbaa !25
   %511 = load i8, ptr %504, align 1, !tbaa !17
   %512 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %509
   store i8 %511, ptr %512, align 1, !tbaa !17
   %513 = or disjoint i64 %505, 2
   %514 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %513
-  store i32 6, ptr %514, align 4, !tbaa !27
+  store i32 6, ptr %514, align 4, !tbaa !25
   %515 = load i8, ptr %504, align 1, !tbaa !17
   %516 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %513
   store i8 %515, ptr %516, align 1, !tbaa !17
   %517 = or disjoint i64 %505, 3
   %518 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %517
-  store i32 6, ptr %518, align 4, !tbaa !27
+  store i32 6, ptr %518, align 4, !tbaa !25
   %519 = load i8, ptr %504, align 1, !tbaa !17
   %520 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %517
   store i8 %519, ptr %520, align 1, !tbaa !17
@@ -778,7 +778,7 @@ define dso_local void @jpeg_make_d_derived_tbl(ptr noundef %0, i32 noundef signe
   %523 = load i8, ptr %493, align 1, !tbaa !17
   %524 = zext i8 %523 to i32
   %525 = icmp ult i32 %500, %524
-  br i1 %525, label %498, label %526, !llvm.loop !33
+  br i1 %525, label %498, label %526
 
 526:                                              ; preds = %498
   %527 = trunc nsw i64 %522 to i32
@@ -799,18 +799,18 @@ define dso_local void @jpeg_make_d_derived_tbl(ptr noundef %0, i32 noundef signe
   %536 = phi i64 [ %534, %533 ], [ %551, %535 ]
   %537 = phi i32 [ 1, %533 ], [ %550, %535 ]
   %538 = getelementptr inbounds [257 x i32], ptr %6, i64 0, i64 %536
-  %539 = load i32, ptr %538, align 4, !tbaa !27
+  %539 = load i32, ptr %538, align 4, !tbaa !25
   %540 = shl i32 %539, 1
   %541 = getelementptr inbounds [256 x i8], ptr %142, i64 0, i64 %536
   %542 = sext i32 %540 to i64
   %543 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %542
-  store i32 7, ptr %543, align 4, !tbaa !27
+  store i32 7, ptr %543, align 4, !tbaa !25
   %544 = load i8, ptr %541, align 1, !tbaa !17
   %545 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %542
   store i8 %544, ptr %545, align 1, !tbaa !17
   %546 = or disjoint i64 %542, 1
   %547 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %546
-  store i32 7, ptr %547, align 4, !tbaa !27
+  store i32 7, ptr %547, align 4, !tbaa !25
   %548 = load i8, ptr %541, align 1, !tbaa !17
   %549 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %546
   store i8 %548, ptr %549, align 1, !tbaa !17
@@ -819,7 +819,7 @@ define dso_local void @jpeg_make_d_derived_tbl(ptr noundef %0, i32 noundef signe
   %552 = load i8, ptr %530, align 1, !tbaa !17
   %553 = zext i8 %552 to i32
   %554 = icmp ult i32 %537, %553
-  br i1 %554, label %535, label %555, !llvm.loop !33
+  br i1 %554, label %535, label %555
 
 555:                                              ; preds = %535
   %556 = trunc nsw i64 %551 to i32
@@ -840,11 +840,11 @@ define dso_local void @jpeg_make_d_derived_tbl(ptr noundef %0, i32 noundef signe
   %565 = phi i64 [ %563, %562 ], [ %575, %564 ]
   %566 = phi i32 [ 1, %562 ], [ %574, %564 ]
   %567 = getelementptr inbounds [257 x i32], ptr %6, i64 0, i64 %565
-  %568 = load i32, ptr %567, align 4, !tbaa !27
+  %568 = load i32, ptr %567, align 4, !tbaa !25
   %569 = getelementptr inbounds [256 x i8], ptr %142, i64 0, i64 %565
   %570 = sext i32 %568 to i64
   %571 = getelementptr inbounds [256 x i32], ptr %141, i64 0, i64 %570
-  store i32 8, ptr %571, align 4, !tbaa !27
+  store i32 8, ptr %571, align 4, !tbaa !25
   %572 = load i8, ptr %569, align 1, !tbaa !17
   %573 = getelementptr inbounds [256 x i8], ptr %143, i64 0, i64 %570
   store i8 %572, ptr %573, align 1, !tbaa !17
@@ -853,7 +853,7 @@ define dso_local void @jpeg_make_d_derived_tbl(ptr noundef %0, i32 noundef signe
   %576 = load i8, ptr %559, align 1, !tbaa !17
   %577 = zext i8 %576 to i32
   %578 = icmp ult i32 %566, %577
-  br i1 %578, label %564, label %579, !llvm.loop !33
+  br i1 %578, label %564, label %579
 
 579:                                              ; preds = %564, %557
   %580 = icmp sgt i32 %62, 0
@@ -882,7 +882,7 @@ define dso_local void @jpeg_make_d_derived_tbl(ptr noundef %0, i32 noundef signe
 593:                                              ; preds = %584, %589
   %594 = add nuw nsw i64 %585, 1
   %595 = icmp eq i64 %594, %583
-  br i1 %595, label %596, label %584, !llvm.loop !34
+  br i1 %595, label %596, label %584
 
 596:                                              ; preds = %593, %579
   call void @llvm.lifetime.end.p0(i64 1028, ptr nonnull %6) #4
@@ -901,13 +901,13 @@ declare void @llvm.lifetime.end.p0(i64 immarg, ptr nocapture) #1
 
 ; Function Attrs: nounwind
 define dso_local noundef signext i32 @jpeg_fill_bit_buffer(ptr nocapture noundef %0, i64 noundef %1, i32 noundef signext %2, i32 noundef signext %3) local_unnamed_addr #0 {
-  %5 = load ptr, ptr %0, align 8, !tbaa !35
+  %5 = load ptr, ptr %0, align 8, !tbaa !27
   %6 = getelementptr inbounds i8, ptr %0, i64 8
-  %7 = load i64, ptr %6, align 8, !tbaa !37
+  %7 = load i64, ptr %6, align 8, !tbaa !29
   %8 = getelementptr inbounds i8, ptr %0, i64 32
-  %9 = load ptr, ptr %8, align 8, !tbaa !38
+  %9 = load ptr, ptr %8, align 8, !tbaa !30
   %10 = getelementptr inbounds i8, ptr %9, i64 540
-  %11 = load i32, ptr %10, align 4, !tbaa !39
+  %11 = load i32, ptr %10, align 4, !tbaa !31
   %12 = icmp eq i32 %11, 0
   br i1 %12, label %13, label %73
 
@@ -928,18 +928,18 @@ define dso_local noundef signext i32 @jpeg_fill_bit_buffer(ptr nocapture noundef
   br i1 %22, label %23, label %34
 
 23:                                               ; preds = %17
-  %24 = load ptr, ptr %16, align 8, !tbaa !40
+  %24 = load ptr, ptr %16, align 8, !tbaa !32
   %25 = getelementptr inbounds i8, ptr %24, i64 24
-  %26 = load ptr, ptr %25, align 8, !tbaa !41
+  %26 = load ptr, ptr %25, align 8, !tbaa !33
   %27 = tail call signext i32 %26(ptr noundef %9) #4
   %28 = icmp eq i32 %27, 0
   br i1 %28, label %103, label %29
 
 29:                                               ; preds = %23
-  %30 = load ptr, ptr %16, align 8, !tbaa !40
-  %31 = load ptr, ptr %30, align 8, !tbaa !43
+  %30 = load ptr, ptr %16, align 8, !tbaa !32
+  %31 = load ptr, ptr %30, align 8, !tbaa !35
   %32 = getelementptr inbounds i8, ptr %30, i64 8
-  %33 = load i64, ptr %32, align 8, !tbaa !44
+  %33 = load i64, ptr %32, align 8, !tbaa !36
   br label %34
 
 34:                                               ; preds = %29, %17
@@ -959,18 +959,18 @@ define dso_local noundef signext i32 @jpeg_fill_bit_buffer(ptr nocapture noundef
   br i1 %45, label %46, label %57
 
 46:                                               ; preds = %42
-  %47 = load ptr, ptr %16, align 8, !tbaa !40
+  %47 = load ptr, ptr %16, align 8, !tbaa !32
   %48 = getelementptr inbounds i8, ptr %47, i64 24
-  %49 = load ptr, ptr %48, align 8, !tbaa !41
+  %49 = load ptr, ptr %48, align 8, !tbaa !33
   %50 = tail call signext i32 %49(ptr noundef %9) #4
   %51 = icmp eq i32 %50, 0
   br i1 %51, label %103, label %52
 
 52:                                               ; preds = %46
-  %53 = load ptr, ptr %16, align 8, !tbaa !40
-  %54 = load ptr, ptr %53, align 8, !tbaa !43
+  %53 = load ptr, ptr %16, align 8, !tbaa !32
+  %54 = load ptr, ptr %53, align 8, !tbaa !35
   %55 = getelementptr inbounds i8, ptr %53, i64 8
-  %56 = load i64, ptr %55, align 8, !tbaa !44
+  %56 = load i64, ptr %55, align 8, !tbaa !36
   br label %57
 
 57:                                               ; preds = %52, %42
@@ -986,7 +986,7 @@ define dso_local noundef signext i32 @jpeg_fill_bit_buffer(ptr nocapture noundef
 
 63:                                               ; preds = %57
   %64 = zext i8 %62 to i32
-  store i32 %64, ptr %10, align 4, !tbaa !39
+  store i32 %64, ptr %10, align 4, !tbaa !31
   br label %73
 
 65:                                               ; preds = %57, %34
@@ -1009,9 +1009,9 @@ define dso_local noundef signext i32 @jpeg_fill_bit_buffer(ptr nocapture noundef
 
 79:                                               ; preds = %73
   %80 = getelementptr inbounds i8, ptr %9, i64 592
-  %81 = load ptr, ptr %80, align 8, !tbaa !45
+  %81 = load ptr, ptr %80, align 8, !tbaa !37
   %82 = getelementptr inbounds i8, ptr %81, i64 16
-  %83 = load i32, ptr %82, align 8, !tbaa !46
+  %83 = load i32, ptr %82, align 8, !tbaa !38
   %84 = icmp eq i32 %83, 0
   br i1 %84, label %85, label %92
 
@@ -1020,11 +1020,11 @@ define dso_local noundef signext i32 @jpeg_fill_bit_buffer(ptr nocapture noundef
   %87 = getelementptr inbounds i8, ptr %86, i64 40
   store i32 117, ptr %87, align 8, !tbaa !14
   %88 = getelementptr inbounds i8, ptr %86, i64 8
-  %89 = load ptr, ptr %88, align 8, !tbaa !48
+  %89 = load ptr, ptr %88, align 8, !tbaa !40
   tail call void %89(ptr noundef nonnull %9, i32 noundef signext -1) #4
-  %90 = load ptr, ptr %80, align 8, !tbaa !45
+  %90 = load ptr, ptr %80, align 8, !tbaa !37
   %91 = getelementptr inbounds i8, ptr %90, i64 16
-  store i32 1, ptr %91, align 8, !tbaa !46
+  store i32 1, ptr %91, align 8, !tbaa !38
   br label %92
 
 92:                                               ; preds = %85, %79
@@ -1038,12 +1038,12 @@ define dso_local noundef signext i32 @jpeg_fill_bit_buffer(ptr nocapture noundef
   %98 = phi i64 [ %95, %92 ], [ %75, %73 ], [ %1, %13 ], [ %70, %65 ]
   %99 = phi ptr [ %76, %92 ], [ %76, %73 ], [ %5, %13 ], [ %66, %65 ]
   %100 = phi i64 [ %77, %92 ], [ %77, %73 ], [ %7, %13 ], [ %67, %65 ]
-  store ptr %99, ptr %0, align 8, !tbaa !35
-  store i64 %100, ptr %6, align 8, !tbaa !37
+  store ptr %99, ptr %0, align 8, !tbaa !27
+  store i64 %100, ptr %6, align 8, !tbaa !29
   %101 = getelementptr inbounds i8, ptr %0, i64 16
-  store i64 %98, ptr %101, align 8, !tbaa !49
+  store i64 %98, ptr %101, align 8, !tbaa !41
   %102 = getelementptr inbounds i8, ptr %0, i64 24
-  store i32 %97, ptr %102, align 8, !tbaa !50
+  store i32 %97, ptr %102, align 8, !tbaa !42
   br label %103
 
 103:                                              ; preds = %23, %46, %96
@@ -1063,9 +1063,9 @@ define dso_local signext range(i32 -1, 256) i32 @jpeg_huff_decode(ptr nocapture 
 
 10:                                               ; preds = %7
   %11 = getelementptr inbounds i8, ptr %0, i64 16
-  %12 = load i64, ptr %11, align 8, !tbaa !49
+  %12 = load i64, ptr %11, align 8, !tbaa !41
   %13 = getelementptr inbounds i8, ptr %0, i64 24
-  %14 = load i32, ptr %13, align 8, !tbaa !50
+  %14 = load i32, ptr %13, align 8, !tbaa !42
   br label %15
 
 15:                                               ; preds = %10, %5
@@ -1081,7 +1081,7 @@ define dso_local signext range(i32 -1, 256) i32 @jpeg_huff_decode(ptr nocapture 
   %25 = zext nneg i32 %24 to i64
   %26 = sext i32 %4 to i64
   %27 = getelementptr inbounds [18 x i64], ptr %3, i64 0, i64 %26
-  %28 = load i64, ptr %27, align 8, !tbaa !30
+  %28 = load i64, ptr %27, align 8, !tbaa !26
   %29 = icmp slt i64 %28, %25
   br i1 %29, label %30, label %60
 
@@ -1105,8 +1105,8 @@ define dso_local signext range(i32 -1, 256) i32 @jpeg_huff_decode(ptr nocapture 
   br i1 %42, label %89, label %43
 
 43:                                               ; preds = %40
-  %44 = load i64, ptr %31, align 8, !tbaa !49
-  %45 = load i32, ptr %32, align 8, !tbaa !50
+  %44 = load i64, ptr %31, align 8, !tbaa !41
+  %45 = load i32, ptr %32, align 8, !tbaa !42
   br label %46
 
 46:                                               ; preds = %43, %33
@@ -1119,9 +1119,9 @@ define dso_local signext range(i32 -1, 256) i32 @jpeg_huff_decode(ptr nocapture 
   %53 = or disjoint i64 %52, %38
   %54 = add nsw i64 %34, 1
   %55 = getelementptr inbounds [18 x i64], ptr %3, i64 0, i64 %54
-  %56 = load i64, ptr %55, align 8, !tbaa !30
+  %56 = load i64, ptr %55, align 8, !tbaa !26
   %57 = icmp sgt i64 %53, %56
-  br i1 %57, label %33, label %58, !llvm.loop !51
+  br i1 %57, label %33, label %58
 
 58:                                               ; preds = %46
   %59 = trunc nsw i64 %54 to i32
@@ -1134,20 +1134,20 @@ define dso_local signext range(i32 -1, 256) i32 @jpeg_huff_decode(ptr nocapture 
   %64 = phi i64 [ %25, %15 ], [ %53, %58 ]
   %65 = phi i64 [ %26, %15 ], [ %54, %58 ]
   %66 = getelementptr inbounds i8, ptr %0, i64 16
-  store i64 %62, ptr %66, align 8, !tbaa !49
+  store i64 %62, ptr %66, align 8, !tbaa !41
   %67 = getelementptr inbounds i8, ptr %0, i64 24
-  store i32 %61, ptr %67, align 8, !tbaa !50
+  store i32 %61, ptr %67, align 8, !tbaa !42
   %68 = icmp sgt i32 %63, 16
   br i1 %68, label %69, label %76
 
 69:                                               ; preds = %60
   %70 = getelementptr inbounds i8, ptr %0, i64 32
-  %71 = load ptr, ptr %70, align 8, !tbaa !38
+  %71 = load ptr, ptr %70, align 8, !tbaa !30
   %72 = load ptr, ptr %71, align 8, !tbaa !6
   %73 = getelementptr inbounds i8, ptr %72, i64 40
   store i32 118, ptr %73, align 8, !tbaa !14
   %74 = getelementptr inbounds i8, ptr %72, i64 8
-  %75 = load ptr, ptr %74, align 8, !tbaa !48
+  %75 = load ptr, ptr %74, align 8, !tbaa !40
   tail call void %75(ptr noundef nonnull %71, i32 noundef signext -1) #4
   br label %89
 
@@ -1157,7 +1157,7 @@ define dso_local signext range(i32 -1, 256) i32 @jpeg_huff_decode(ptr nocapture 
   %79 = getelementptr inbounds i8, ptr %78, i64 17
   %80 = getelementptr inbounds i8, ptr %3, i64 144
   %81 = getelementptr inbounds [17 x i64], ptr %80, i64 0, i64 %65
-  %82 = load i64, ptr %81, align 8, !tbaa !30
+  %82 = load i64, ptr %81, align 8, !tbaa !26
   %83 = add nsw i64 %82, %64
   %84 = shl i64 %83, 32
   %85 = ashr exact i64 %84, 32
@@ -1178,10 +1178,10 @@ define dso_local void @jinit_huff_decoder(ptr noundef %0) local_unnamed_addr #0 
   %4 = load ptr, ptr %3, align 8, !tbaa !21
   %5 = tail call ptr %4(ptr noundef %0, i32 noundef signext 1, i64 noundef 368) #4
   %6 = getelementptr inbounds i8, ptr %0, i64 592
-  store ptr %5, ptr %6, align 8, !tbaa !45
-  store ptr @start_pass_huff_decoder, ptr %5, align 8, !tbaa !52
+  store ptr %5, ptr %6, align 8, !tbaa !37
+  store ptr @start_pass_huff_decoder, ptr %5, align 8, !tbaa !43
   %7 = getelementptr inbounds i8, ptr %5, i64 8
-  store ptr @decode_mcu, ptr %7, align 8, !tbaa !56
+  store ptr @decode_mcu, ptr %7, align 8, !tbaa !47
   %8 = getelementptr inbounds i8, ptr %5, i64 64
   tail call void @llvm.memset.p0.i64(ptr noundef nonnull align 8 dereferenceable(64) %8, i8 0, i64 64, i1 false)
   ret void
@@ -1190,27 +1190,27 @@ define dso_local void @jinit_huff_decoder(ptr noundef %0) local_unnamed_addr #0 
 ; Function Attrs: nounwind
 define internal void @start_pass_huff_decoder(ptr noundef %0) #0 {
   %2 = getelementptr inbounds i8, ptr %0, i64 592
-  %3 = load ptr, ptr %2, align 8, !tbaa !45
+  %3 = load ptr, ptr %2, align 8, !tbaa !37
   %4 = getelementptr inbounds i8, ptr %0, i64 524
-  %5 = load i32, ptr %4, align 4, !tbaa !57
+  %5 = load i32, ptr %4, align 4, !tbaa !48
   %6 = icmp eq i32 %5, 0
   br i1 %6, label %7, label %19
 
 7:                                                ; preds = %1
   %8 = getelementptr inbounds i8, ptr %0, i64 528
-  %9 = load i32, ptr %8, align 8, !tbaa !58
+  %9 = load i32, ptr %8, align 8, !tbaa !49
   %10 = icmp eq i32 %9, 63
   br i1 %10, label %11, label %19
 
 11:                                               ; preds = %7
   %12 = getelementptr inbounds i8, ptr %0, i64 532
-  %13 = load i32, ptr %12, align 4, !tbaa !59
+  %13 = load i32, ptr %12, align 4, !tbaa !50
   %14 = icmp eq i32 %13, 0
   br i1 %14, label %15, label %19
 
 15:                                               ; preds = %11
   %16 = getelementptr inbounds i8, ptr %0, i64 536
-  %17 = load i32, ptr %16, align 8, !tbaa !60
+  %17 = load i32, ptr %16, align 8, !tbaa !51
   %18 = icmp eq i32 %17, 0
   br i1 %18, label %24, label %19
 
@@ -1219,13 +1219,13 @@ define internal void @start_pass_huff_decoder(ptr noundef %0) #0 {
   %21 = getelementptr inbounds i8, ptr %20, i64 40
   store i32 122, ptr %21, align 8, !tbaa !14
   %22 = getelementptr inbounds i8, ptr %20, i64 8
-  %23 = load ptr, ptr %22, align 8, !tbaa !48
+  %23 = load ptr, ptr %22, align 8, !tbaa !40
   tail call void %23(ptr noundef nonnull %0, i32 noundef signext -1) #4
   br label %24
 
 24:                                               ; preds = %19, %15
   %25 = getelementptr inbounds i8, ptr %0, i64 432
-  %26 = load i32, ptr %25, align 8, !tbaa !61
+  %26 = load i32, ptr %25, align 8, !tbaa !52
   %27 = icmp sgt i32 %26, 0
   br i1 %27, label %28, label %33
 
@@ -1238,7 +1238,7 @@ define internal void @start_pass_huff_decoder(ptr noundef %0) #0 {
 
 33:                                               ; preds = %46, %24
   %34 = getelementptr inbounds i8, ptr %0, i64 480
-  %35 = load i32, ptr %34, align 8, !tbaa !62
+  %35 = load i32, ptr %34, align 8, !tbaa !53
   %36 = icmp sgt i32 %35, 0
   br i1 %36, label %37, label %102
 
@@ -1258,9 +1258,9 @@ define internal void @start_pass_huff_decoder(ptr noundef %0) #0 {
   %48 = getelementptr inbounds [4 x ptr], ptr %29, i64 0, i64 %47
   %49 = load ptr, ptr %48, align 8, !tbaa !19
   %50 = getelementptr inbounds i8, ptr %49, i64 20
-  %51 = load i32, ptr %50, align 4, !tbaa !63
+  %51 = load i32, ptr %50, align 4, !tbaa !54
   %52 = getelementptr inbounds i8, ptr %49, i64 24
-  %53 = load i32, ptr %52, align 8, !tbaa !65
+  %53 = load i32, ptr %52, align 8, !tbaa !56
   %54 = sext i32 %51 to i64
   %55 = getelementptr inbounds [4 x ptr], ptr %30, i64 0, i64 %54
   tail call void @jpeg_make_d_derived_tbl(ptr noundef nonnull %0, i32 noundef signext 1, i32 noundef signext %51, ptr noundef nonnull %55)
@@ -1268,51 +1268,51 @@ define internal void @start_pass_huff_decoder(ptr noundef %0) #0 {
   %57 = getelementptr inbounds [4 x ptr], ptr %31, i64 0, i64 %56
   tail call void @jpeg_make_d_derived_tbl(ptr noundef nonnull %0, i32 noundef signext 0, i32 noundef signext %53, ptr noundef nonnull %57)
   %58 = getelementptr inbounds [4 x i32], ptr %32, i64 0, i64 %47
-  store i32 0, ptr %58, align 4, !tbaa !27
+  store i32 0, ptr %58, align 4, !tbaa !25
   %59 = add nuw nsw i64 %47, 1
-  %60 = load i32, ptr %25, align 8, !tbaa !61
+  %60 = load i32, ptr %25, align 8, !tbaa !52
   %61 = sext i32 %60 to i64
   %62 = icmp slt i64 %59, %61
-  br i1 %62, label %46, label %33, !llvm.loop !66
+  br i1 %62, label %46, label %33
 
 63:                                               ; preds = %37, %93
   %64 = phi i64 [ 0, %37 ], [ %98, %93 ]
   %65 = getelementptr inbounds [10 x i32], ptr %38, i64 0, i64 %64
-  %66 = load i32, ptr %65, align 4, !tbaa !27
+  %66 = load i32, ptr %65, align 4, !tbaa !25
   %67 = sext i32 %66 to i64
   %68 = getelementptr inbounds [4 x ptr], ptr %39, i64 0, i64 %67
   %69 = load ptr, ptr %68, align 8, !tbaa !19
   %70 = getelementptr inbounds i8, ptr %69, i64 20
-  %71 = load i32, ptr %70, align 4, !tbaa !63
+  %71 = load i32, ptr %70, align 4, !tbaa !54
   %72 = sext i32 %71 to i64
   %73 = getelementptr inbounds [4 x ptr], ptr %40, i64 0, i64 %72
   %74 = load ptr, ptr %73, align 8, !tbaa !19
   %75 = getelementptr inbounds [10 x ptr], ptr %41, i64 0, i64 %64
   store ptr %74, ptr %75, align 8, !tbaa !19
   %76 = getelementptr inbounds i8, ptr %69, i64 24
-  %77 = load i32, ptr %76, align 8, !tbaa !65
+  %77 = load i32, ptr %76, align 8, !tbaa !56
   %78 = sext i32 %77 to i64
   %79 = getelementptr inbounds [4 x ptr], ptr %42, i64 0, i64 %78
   %80 = load ptr, ptr %79, align 8, !tbaa !19
   %81 = getelementptr inbounds [10 x ptr], ptr %43, i64 0, i64 %64
   store ptr %80, ptr %81, align 8, !tbaa !19
   %82 = getelementptr inbounds i8, ptr %69, i64 48
-  %83 = load i32, ptr %82, align 8, !tbaa !67
+  %83 = load i32, ptr %82, align 8, !tbaa !57
   %84 = icmp eq i32 %83, 0
   br i1 %84, label %91, label %85
 
 85:                                               ; preds = %63
   %86 = getelementptr inbounds [10 x i32], ptr %44, i64 0, i64 %64
-  store i32 1, ptr %86, align 4, !tbaa !27
+  store i32 1, ptr %86, align 4, !tbaa !25
   %87 = getelementptr inbounds i8, ptr %69, i64 36
-  %88 = load i32, ptr %87, align 4, !tbaa !68
+  %88 = load i32, ptr %87, align 4, !tbaa !58
   %89 = icmp sgt i32 %88, 1
   %90 = zext i1 %89 to i32
   br label %93
 
 91:                                               ; preds = %63
   %92 = getelementptr inbounds [10 x i32], ptr %45, i64 0, i64 %64
-  store i32 0, ptr %92, align 4, !tbaa !27
+  store i32 0, ptr %92, align 4, !tbaa !25
   br label %93
 
 93:                                               ; preds = %85, %91
@@ -1320,24 +1320,24 @@ define internal void @start_pass_huff_decoder(ptr noundef %0) #0 {
   %95 = phi i32 [ %90, %85 ], [ 0, %91 ]
   %96 = getelementptr inbounds i8, ptr %3, i64 %94
   %97 = getelementptr inbounds [10 x i32], ptr %96, i64 0, i64 %64
-  store i32 %95, ptr %97, align 4, !tbaa !27
+  store i32 %95, ptr %97, align 4, !tbaa !25
   %98 = add nuw nsw i64 %64, 1
-  %99 = load i32, ptr %34, align 8, !tbaa !62
+  %99 = load i32, ptr %34, align 8, !tbaa !53
   %100 = sext i32 %99 to i64
   %101 = icmp slt i64 %98, %100
-  br i1 %101, label %63, label %102, !llvm.loop !69
+  br i1 %101, label %63, label %102
 
 102:                                              ; preds = %93, %33
   %103 = getelementptr inbounds i8, ptr %3, i64 24
   %104 = getelementptr inbounds i8, ptr %3, i64 32
-  store i32 0, ptr %104, align 8, !tbaa !70
-  store i64 0, ptr %103, align 8, !tbaa !71
+  store i32 0, ptr %104, align 8, !tbaa !59
+  store i64 0, ptr %103, align 8, !tbaa !60
   %105 = getelementptr inbounds i8, ptr %3, i64 16
-  store i32 0, ptr %105, align 8, !tbaa !72
+  store i32 0, ptr %105, align 8, !tbaa !61
   %106 = getelementptr inbounds i8, ptr %0, i64 368
-  %107 = load i32, ptr %106, align 8, !tbaa !73
+  %107 = load i32, ptr %106, align 8, !tbaa !62
   %108 = getelementptr inbounds i8, ptr %3, i64 56
-  store i32 %107, ptr %108, align 8, !tbaa !74
+  store i32 %107, ptr %108, align 8, !tbaa !63
   ret void
 }
 
@@ -1346,40 +1346,40 @@ define internal noundef signext i32 @decode_mcu(ptr noundef %0, ptr nocapture no
   %3 = alloca %struct.bitread_working_state, align 8
   %4 = alloca %struct.savable_state, align 4
   %5 = getelementptr inbounds i8, ptr %0, i64 592
-  %6 = load ptr, ptr %5, align 8, !tbaa !45
+  %6 = load ptr, ptr %5, align 8, !tbaa !37
   call void @llvm.lifetime.start.p0(i64 40, ptr nonnull %3) #4
   call void @llvm.lifetime.start.p0(i64 16, ptr nonnull %4) #4
   %7 = getelementptr inbounds i8, ptr %0, i64 368
-  %8 = load i32, ptr %7, align 8, !tbaa !73
+  %8 = load i32, ptr %7, align 8, !tbaa !62
   %9 = icmp eq i32 %8, 0
   br i1 %9, label %47, label %10
 
 10:                                               ; preds = %2
   %11 = getelementptr inbounds i8, ptr %6, i64 56
-  %12 = load i32, ptr %11, align 8, !tbaa !74
+  %12 = load i32, ptr %11, align 8, !tbaa !63
   %13 = icmp eq i32 %12, 0
   br i1 %13, label %14, label %47
 
 14:                                               ; preds = %10
   %15 = getelementptr inbounds i8, ptr %6, i64 32
-  %16 = load i32, ptr %15, align 8, !tbaa !70
+  %16 = load i32, ptr %15, align 8, !tbaa !59
   %17 = sdiv i32 %16, 8
   %18 = getelementptr inbounds i8, ptr %0, i64 584
-  %19 = load ptr, ptr %18, align 8, !tbaa !75
+  %19 = load ptr, ptr %18, align 8, !tbaa !64
   %20 = getelementptr inbounds i8, ptr %19, i64 36
-  %21 = load i32, ptr %20, align 4, !tbaa !76
+  %21 = load i32, ptr %20, align 4, !tbaa !65
   %22 = add i32 %21, %17
-  store i32 %22, ptr %20, align 4, !tbaa !76
-  store i32 0, ptr %15, align 8, !tbaa !70
+  store i32 %22, ptr %20, align 4, !tbaa !65
+  store i32 0, ptr %15, align 8, !tbaa !59
   %23 = getelementptr inbounds i8, ptr %19, i64 16
-  %24 = load ptr, ptr %23, align 8, !tbaa !78
+  %24 = load ptr, ptr %23, align 8, !tbaa !67
   %25 = tail call signext i32 %24(ptr noundef nonnull %0) #4
   %26 = icmp eq i32 %25, 0
   br i1 %26, label %347, label %27
 
 27:                                               ; preds = %14
   %28 = getelementptr inbounds i8, ptr %0, i64 432
-  %29 = load i32, ptr %28, align 8, !tbaa !61
+  %29 = load i32, ptr %28, align 8, !tbaa !52
   %30 = icmp sgt i32 %29, 0
   br i1 %30, label %31, label %40
 
@@ -1390,51 +1390,51 @@ define internal noundef signext i32 @decode_mcu(ptr noundef %0, ptr nocapture no
 33:                                               ; preds = %33, %31
   %34 = phi i64 [ 0, %31 ], [ %36, %33 ]
   %35 = getelementptr inbounds [4 x i32], ptr %32, i64 0, i64 %34
-  store i32 0, ptr %35, align 4, !tbaa !27
+  store i32 0, ptr %35, align 4, !tbaa !25
   %36 = add nuw nsw i64 %34, 1
-  %37 = load i32, ptr %28, align 8, !tbaa !61
+  %37 = load i32, ptr %28, align 8, !tbaa !52
   %38 = sext i32 %37 to i64
   %39 = icmp slt i64 %36, %38
-  br i1 %39, label %33, label %40, !llvm.loop !79
+  br i1 %39, label %33, label %40
 
 40:                                               ; preds = %33, %27
-  %41 = load i32, ptr %7, align 8, !tbaa !73
-  store i32 %41, ptr %11, align 8, !tbaa !74
+  %41 = load i32, ptr %7, align 8, !tbaa !62
+  store i32 %41, ptr %11, align 8, !tbaa !63
   %42 = getelementptr inbounds i8, ptr %0, i64 540
-  %43 = load i32, ptr %42, align 4, !tbaa !39
+  %43 = load i32, ptr %42, align 4, !tbaa !31
   %44 = icmp eq i32 %43, 0
   br i1 %44, label %45, label %47
 
 45:                                               ; preds = %40
   %46 = getelementptr inbounds i8, ptr %6, i64 16
-  store i32 0, ptr %46, align 8, !tbaa !72
+  store i32 0, ptr %46, align 8, !tbaa !61
   br label %47
 
 47:                                               ; preds = %40, %45, %10, %2
   %48 = getelementptr inbounds i8, ptr %6, i64 16
-  %49 = load i32, ptr %48, align 8, !tbaa !72
+  %49 = load i32, ptr %48, align 8, !tbaa !61
   %50 = icmp eq i32 %49, 0
   br i1 %50, label %51, label %343
 
 51:                                               ; preds = %47
   %52 = getelementptr inbounds i8, ptr %3, i64 32
-  store ptr %0, ptr %52, align 8, !tbaa !38
+  store ptr %0, ptr %52, align 8, !tbaa !30
   %53 = getelementptr inbounds i8, ptr %0, i64 40
-  %54 = load ptr, ptr %53, align 8, !tbaa !40
-  %55 = load ptr, ptr %54, align 8, !tbaa !43
-  store ptr %55, ptr %3, align 8, !tbaa !35
+  %54 = load ptr, ptr %53, align 8, !tbaa !32
+  %55 = load ptr, ptr %54, align 8, !tbaa !35
+  store ptr %55, ptr %3, align 8, !tbaa !27
   %56 = getelementptr inbounds i8, ptr %54, i64 8
-  %57 = load i64, ptr %56, align 8, !tbaa !44
+  %57 = load i64, ptr %56, align 8, !tbaa !36
   %58 = getelementptr inbounds i8, ptr %3, i64 8
-  store i64 %57, ptr %58, align 8, !tbaa !37
+  store i64 %57, ptr %58, align 8, !tbaa !29
   %59 = getelementptr inbounds i8, ptr %6, i64 24
-  %60 = load i64, ptr %59, align 8, !tbaa !71
+  %60 = load i64, ptr %59, align 8, !tbaa !60
   %61 = getelementptr inbounds i8, ptr %6, i64 32
-  %62 = load i32, ptr %61, align 8, !tbaa !70
+  %62 = load i32, ptr %61, align 8, !tbaa !59
   %63 = getelementptr inbounds i8, ptr %6, i64 40
-  call void @llvm.memcpy.p0.p0.i64(ptr noundef nonnull align 4 dereferenceable(16) %4, ptr noundef nonnull align 8 dereferenceable(16) %63, i64 16, i1 false), !tbaa.struct !80
+  call void @llvm.memcpy.p0.p0.i64(ptr noundef nonnull align 4 dereferenceable(16) %4, ptr noundef nonnull align 8 dereferenceable(16) %63, i64 16, i1 false), !tbaa.struct !68
   %64 = getelementptr inbounds i8, ptr %0, i64 480
-  %65 = load i32, ptr %64, align 8, !tbaa !62
+  %65 = load i32, ptr %64, align 8, !tbaa !53
   %66 = icmp sgt i32 %65, 0
   br i1 %66, label %67, label %336
 
@@ -1467,8 +1467,8 @@ define internal noundef signext i32 @decode_mcu(ptr noundef %0, ptr nocapture no
   br i1 %88, label %347, label %89
 
 89:                                               ; preds = %86
-  %90 = load i64, ptr %70, align 8, !tbaa !49
-  %91 = load i32, ptr %71, align 8, !tbaa !50
+  %90 = load i64, ptr %70, align 8, !tbaa !41
+  %91 = load i32, ptr %71, align 8, !tbaa !42
   %92 = icmp slt i32 %91, 8
   br i1 %92, label %93, label %95
 
@@ -1485,7 +1485,7 @@ define internal noundef signext i32 @decode_mcu(ptr noundef %0, ptr nocapture no
   %101 = and i64 %100, 255
   %102 = getelementptr inbounds i8, ptr %82, i64 288
   %103 = getelementptr inbounds [256 x i32], ptr %102, i64 0, i64 %101
-  %104 = load i32, ptr %103, align 4, !tbaa !27
+  %104 = load i32, ptr %103, align 4, !tbaa !25
   %105 = icmp eq i32 %104, 0
   br i1 %105, label %112, label %106
 
@@ -1507,8 +1507,8 @@ define internal noundef signext i32 @decode_mcu(ptr noundef %0, ptr nocapture no
   br i1 %116, label %347, label %117
 
 117:                                              ; preds = %114
-  %118 = load i64, ptr %70, align 8, !tbaa !49
-  %119 = load i32, ptr %71, align 8, !tbaa !50
+  %118 = load i64, ptr %70, align 8, !tbaa !41
+  %119 = load i32, ptr %71, align 8, !tbaa !42
   br label %120
 
 120:                                              ; preds = %117, %106
@@ -1528,8 +1528,8 @@ define internal noundef signext i32 @decode_mcu(ptr noundef %0, ptr nocapture no
   br i1 %129, label %347, label %130
 
 130:                                              ; preds = %127
-  %131 = load i64, ptr %70, align 8, !tbaa !49
-  %132 = load i32, ptr %71, align 8, !tbaa !50
+  %131 = load i64, ptr %70, align 8, !tbaa !41
+  %132 = load i32, ptr %71, align 8, !tbaa !42
   br label %133
 
 133:                                              ; preds = %130, %125
@@ -1544,13 +1544,13 @@ define internal noundef signext i32 @decode_mcu(ptr noundef %0, ptr nocapture no
   %142 = and i32 %139, %141
   %143 = zext nneg i32 %121 to i64
   %144 = getelementptr inbounds [16 x i32], ptr @extend_test, i64 0, i64 %143
-  %145 = load i32, ptr %144, align 4, !tbaa !27
+  %145 = load i32, ptr %144, align 4, !tbaa !25
   %146 = icmp slt i32 %142, %145
   br i1 %146, label %147, label %151
 
 147:                                              ; preds = %133
   %148 = getelementptr inbounds [16 x i32], ptr @extend_offset, i64 0, i64 %143
-  %149 = load i32, ptr %148, align 4, !tbaa !27
+  %149 = load i32, ptr %148, align 4, !tbaa !25
   %150 = add nsw i32 %149, %142
   br label %151
 
@@ -1559,25 +1559,25 @@ define internal noundef signext i32 @decode_mcu(ptr noundef %0, ptr nocapture no
   %153 = phi i32 [ %122, %120 ], [ %136, %147 ], [ %136, %133 ]
   %154 = phi i64 [ %123, %120 ], [ %135, %147 ], [ %135, %133 ]
   %155 = getelementptr inbounds [10 x i32], ptr %72, i64 0, i64 %76
-  %156 = load i32, ptr %155, align 4, !tbaa !27
+  %156 = load i32, ptr %155, align 4, !tbaa !25
   %157 = icmp eq i32 %156, 0
   br i1 %157, label %166, label %158
 
 158:                                              ; preds = %151
   %159 = getelementptr inbounds [10 x i32], ptr %73, i64 0, i64 %76
-  %160 = load i32, ptr %159, align 4, !tbaa !27
+  %160 = load i32, ptr %159, align 4, !tbaa !25
   %161 = sext i32 %160 to i64
   %162 = getelementptr inbounds [4 x i32], ptr %4, i64 0, i64 %161
-  %163 = load i32, ptr %162, align 4, !tbaa !27
+  %163 = load i32, ptr %162, align 4, !tbaa !25
   %164 = add nsw i32 %163, %152
-  store i32 %164, ptr %162, align 4, !tbaa !27
+  store i32 %164, ptr %162, align 4, !tbaa !25
   %165 = trunc i32 %164 to i16
-  store i16 %165, ptr %80, align 2, !tbaa !81
+  store i16 %165, ptr %80, align 2, !tbaa !69
   br label %166
 
 166:                                              ; preds = %158, %151
   %167 = getelementptr inbounds [10 x i32], ptr %74, i64 0, i64 %76
-  %168 = load i32, ptr %167, align 4, !tbaa !27
+  %168 = load i32, ptr %167, align 4, !tbaa !25
   %169 = icmp eq i32 %168, 0
   %170 = getelementptr inbounds i8, ptr %84, i64 288
   %171 = getelementptr inbounds i8, ptr %84, i64 1312
@@ -1596,8 +1596,8 @@ define internal noundef signext i32 @decode_mcu(ptr noundef %0, ptr nocapture no
   br i1 %179, label %347, label %180
 
 180:                                              ; preds = %177
-  %181 = load i64, ptr %70, align 8, !tbaa !49
-  %182 = load i32, ptr %71, align 8, !tbaa !50
+  %181 = load i64, ptr %70, align 8, !tbaa !41
+  %182 = load i32, ptr %71, align 8, !tbaa !42
   %183 = icmp slt i32 %182, 8
   br i1 %183, label %184, label %186
 
@@ -1613,7 +1613,7 @@ define internal noundef signext i32 @decode_mcu(ptr noundef %0, ptr nocapture no
   %191 = ashr i64 %188, %190
   %192 = and i64 %191, 255
   %193 = getelementptr inbounds [256 x i32], ptr %170, i64 0, i64 %192
-  %194 = load i32, ptr %193, align 4, !tbaa !27
+  %194 = load i32, ptr %193, align 4, !tbaa !25
   %195 = icmp eq i32 %194, 0
   br i1 %195, label %201, label %196
 
@@ -1634,8 +1634,8 @@ define internal noundef signext i32 @decode_mcu(ptr noundef %0, ptr nocapture no
   br i1 %205, label %347, label %206
 
 206:                                              ; preds = %203
-  %207 = load i64, ptr %70, align 8, !tbaa !49
-  %208 = load i32, ptr %71, align 8, !tbaa !50
+  %207 = load i64, ptr %70, align 8, !tbaa !41
+  %208 = load i32, ptr %71, align 8, !tbaa !42
   br label %209
 
 209:                                              ; preds = %206, %196
@@ -1658,8 +1658,8 @@ define internal noundef signext i32 @decode_mcu(ptr noundef %0, ptr nocapture no
   br i1 %221, label %347, label %222
 
 222:                                              ; preds = %219
-  %223 = load i64, ptr %70, align 8, !tbaa !49
-  %224 = load i32, ptr %71, align 8, !tbaa !50
+  %223 = load i64, ptr %70, align 8, !tbaa !41
+  %224 = load i32, ptr %71, align 8, !tbaa !42
   br label %225
 
 225:                                              ; preds = %222, %216
@@ -1674,13 +1674,13 @@ define internal noundef signext i32 @decode_mcu(ptr noundef %0, ptr nocapture no
   %234 = and i32 %231, %233
   %235 = zext nneg i32 %214 to i64
   %236 = getelementptr inbounds [16 x i32], ptr @extend_test, i64 0, i64 %235
-  %237 = load i32, ptr %236, align 4, !tbaa !27
+  %237 = load i32, ptr %236, align 4, !tbaa !25
   %238 = icmp slt i32 %234, %237
   br i1 %238, label %239, label %243
 
 239:                                              ; preds = %225
   %240 = getelementptr inbounds [16 x i32], ptr @extend_offset, i64 0, i64 %235
-  %241 = load i32, ptr %240, align 4, !tbaa !27
+  %241 = load i32, ptr %240, align 4, !tbaa !25
   %242 = add nsw i32 %241, %234
   br label %243
 
@@ -1689,10 +1689,10 @@ define internal noundef signext i32 @decode_mcu(ptr noundef %0, ptr nocapture no
   %245 = trunc i32 %244 to i16
   %246 = sext i32 %217 to i64
   %247 = getelementptr inbounds [0 x i32], ptr @jpeg_natural_order, i64 0, i64 %246
-  %248 = load i32, ptr %247, align 4, !tbaa !27
+  %248 = load i32, ptr %247, align 4, !tbaa !25
   %249 = sext i32 %248 to i64
   %250 = getelementptr inbounds [64 x i16], ptr %80, i64 0, i64 %249
-  store i16 %245, ptr %250, align 2, !tbaa !81
+  store i16 %245, ptr %250, align 2, !tbaa !69
   br label %255
 
 251:                                              ; preds = %209
@@ -1709,7 +1709,7 @@ define internal noundef signext i32 @decode_mcu(ptr noundef %0, ptr nocapture no
   %258 = phi i64 [ %227, %243 ], [ %212, %253 ]
   %259 = add nsw i32 %256, 1
   %260 = icmp slt i32 %256, 63
-  br i1 %260, label %172, label %325, !llvm.loop !82
+  br i1 %260, label %172, label %325
 
 261:                                              ; preds = %166, %319
   %262 = phi i64 [ %321, %319 ], [ %154, %166 ]
@@ -1724,8 +1724,8 @@ define internal noundef signext i32 @decode_mcu(ptr noundef %0, ptr nocapture no
   br i1 %268, label %347, label %269
 
 269:                                              ; preds = %266
-  %270 = load i64, ptr %70, align 8, !tbaa !49
-  %271 = load i32, ptr %71, align 8, !tbaa !50
+  %270 = load i64, ptr %70, align 8, !tbaa !41
+  %271 = load i32, ptr %71, align 8, !tbaa !42
   %272 = icmp slt i32 %271, 8
   br i1 %272, label %273, label %275
 
@@ -1741,7 +1741,7 @@ define internal noundef signext i32 @decode_mcu(ptr noundef %0, ptr nocapture no
   %280 = ashr i64 %277, %279
   %281 = and i64 %280, 255
   %282 = getelementptr inbounds [256 x i32], ptr %170, i64 0, i64 %281
-  %283 = load i32, ptr %282, align 4, !tbaa !27
+  %283 = load i32, ptr %282, align 4, !tbaa !25
   %284 = icmp eq i32 %283, 0
   br i1 %284, label %290, label %285
 
@@ -1762,8 +1762,8 @@ define internal noundef signext i32 @decode_mcu(ptr noundef %0, ptr nocapture no
   br i1 %294, label %347, label %295
 
 295:                                              ; preds = %292
-  %296 = load i64, ptr %70, align 8, !tbaa !49
-  %297 = load i32, ptr %71, align 8, !tbaa !50
+  %296 = load i64, ptr %70, align 8, !tbaa !41
+  %297 = load i32, ptr %71, align 8, !tbaa !42
   br label %298
 
 298:                                              ; preds = %295, %285
@@ -1785,8 +1785,8 @@ define internal noundef signext i32 @decode_mcu(ptr noundef %0, ptr nocapture no
   br i1 %309, label %347, label %310
 
 310:                                              ; preds = %307
-  %311 = load i64, ptr %70, align 8, !tbaa !49
-  %312 = load i32, ptr %71, align 8, !tbaa !50
+  %311 = load i64, ptr %70, align 8, !tbaa !41
+  %312 = load i32, ptr %71, align 8, !tbaa !42
   br label %313
 
 313:                                              ; preds = %310, %305
@@ -1805,21 +1805,21 @@ define internal noundef signext i32 @decode_mcu(ptr noundef %0, ptr nocapture no
   %322 = add nsw i32 %264, 1
   %323 = add nsw i32 %322, %302
   %324 = icmp slt i32 %323, 64
-  br i1 %324, label %261, label %325, !llvm.loop !83
+  br i1 %324, label %261, label %325
 
 325:                                              ; preds = %255, %251, %319, %317
   %326 = phi i32 [ %320, %319 ], [ %300, %317 ], [ %257, %255 ], [ %211, %251 ]
   %327 = phi i64 [ %321, %319 ], [ %301, %317 ], [ %258, %255 ], [ %212, %251 ]
   %328 = add nuw nsw i64 %76, 1
-  %329 = load i32, ptr %64, align 8, !tbaa !62
+  %329 = load i32, ptr %64, align 8, !tbaa !53
   %330 = sext i32 %329 to i64
   %331 = icmp slt i64 %328, %330
-  br i1 %331, label %75, label %332, !llvm.loop !84
+  br i1 %331, label %75, label %332
 
 332:                                              ; preds = %325
-  %333 = load ptr, ptr %3, align 8, !tbaa !35
-  %334 = load ptr, ptr %53, align 8, !tbaa !40
-  %335 = load i64, ptr %58, align 8, !tbaa !37
+  %333 = load ptr, ptr %3, align 8, !tbaa !27
+  %334 = load ptr, ptr %53, align 8, !tbaa !32
+  %335 = load i64, ptr %58, align 8, !tbaa !29
   br label %336
 
 336:                                              ; preds = %332, %51
@@ -1828,19 +1828,19 @@ define internal noundef signext i32 @decode_mcu(ptr noundef %0, ptr nocapture no
   %339 = phi ptr [ %55, %51 ], [ %333, %332 ]
   %340 = phi i32 [ %62, %51 ], [ %326, %332 ]
   %341 = phi i64 [ %60, %51 ], [ %327, %332 ]
-  store ptr %339, ptr %338, align 8, !tbaa !43
+  store ptr %339, ptr %338, align 8, !tbaa !35
   %342 = getelementptr inbounds i8, ptr %338, i64 8
-  store i64 %337, ptr %342, align 8, !tbaa !44
-  store i64 %341, ptr %59, align 8, !tbaa !71
-  store i32 %340, ptr %61, align 8, !tbaa !70
-  call void @llvm.memcpy.p0.p0.i64(ptr noundef nonnull align 8 dereferenceable(16) %63, ptr noundef nonnull align 4 dereferenceable(16) %4, i64 16, i1 false), !tbaa.struct !80
+  store i64 %337, ptr %342, align 8, !tbaa !36
+  store i64 %341, ptr %59, align 8, !tbaa !60
+  store i32 %340, ptr %61, align 8, !tbaa !59
+  call void @llvm.memcpy.p0.p0.i64(ptr noundef nonnull align 8 dereferenceable(16) %63, ptr noundef nonnull align 4 dereferenceable(16) %4, i64 16, i1 false), !tbaa.struct !68
   br label %343
 
 343:                                              ; preds = %336, %47
   %344 = getelementptr inbounds i8, ptr %6, i64 56
-  %345 = load i32, ptr %344, align 8, !tbaa !74
+  %345 = load i32, ptr %344, align 8, !tbaa !63
   %346 = add i32 %345, -1
-  store i32 %346, ptr %344, align 8, !tbaa !74
+  store i32 %346, ptr %344, align 8, !tbaa !63
   br label %347
 
 347:                                              ; preds = %86, %114, %127, %177, %203, %219, %266, %292, %307, %14, %343
@@ -1887,63 +1887,48 @@ attributes #4 = { nounwind }
 !22 = !{!"jpeg_memory_mgr", !8, i64 0, !8, i64 8, !8, i64 16, !8, i64 24, !8, i64 32, !8, i64 40, !8, i64 48, !8, i64 56, !8, i64 64, !8, i64 72, !8, i64 80, !16, i64 88, !16, i64 96}
 !23 = !{!24, !8, i64 280}
 !24 = !{!"", !9, i64 0, !9, i64 144, !8, i64 280, !9, i64 288, !9, i64 1312}
-!25 = distinct !{!25, !26}
-!26 = !{!"llvm.loop.mustprogress"}
-!27 = !{!11, !11, i64 0}
-!28 = distinct !{!28, !26}
-!29 = distinct !{!29, !26}
-!30 = !{!16, !16, i64 0}
-!31 = distinct !{!31, !26}
-!32 = distinct !{!32, !26}
-!33 = distinct !{!33, !26}
-!34 = distinct !{!34, !26}
-!35 = !{!36, !8, i64 0}
-!36 = !{!"", !8, i64 0, !16, i64 8, !16, i64 16, !11, i64 24, !8, i64 32}
-!37 = !{!36, !16, i64 8}
-!38 = !{!36, !8, i64 32}
-!39 = !{!7, !11, i64 540}
-!40 = !{!7, !8, i64 40}
-!41 = !{!42, !8, i64 24}
-!42 = !{!"jpeg_source_mgr", !8, i64 0, !16, i64 8, !8, i64 16, !8, i64 24, !8, i64 32, !8, i64 40, !8, i64 48}
-!43 = !{!42, !8, i64 0}
-!44 = !{!42, !16, i64 8}
-!45 = !{!7, !8, i64 592}
-!46 = !{!47, !11, i64 16}
-!47 = !{!"jpeg_entropy_decoder", !8, i64 0, !8, i64 8, !11, i64 16}
-!48 = !{!15, !8, i64 8}
-!49 = !{!36, !16, i64 16}
-!50 = !{!36, !11, i64 24}
-!51 = distinct !{!51, !26}
-!52 = !{!53, !8, i64 0}
-!53 = !{!"", !47, i64 0, !54, i64 24, !55, i64 40, !11, i64 56, !9, i64 64, !9, i64 96, !9, i64 128, !9, i64 208, !9, i64 288, !9, i64 328}
-!54 = !{!"", !16, i64 0, !11, i64 8}
-!55 = !{!"", !9, i64 0}
-!56 = !{!53, !8, i64 8}
-!57 = !{!7, !11, i64 524}
-!58 = !{!7, !11, i64 528}
-!59 = !{!7, !11, i64 532}
-!60 = !{!7, !11, i64 536}
-!61 = !{!7, !11, i64 432}
-!62 = !{!7, !11, i64 480}
-!63 = !{!64, !11, i64 20}
-!64 = !{!"", !11, i64 0, !11, i64 4, !11, i64 8, !11, i64 12, !11, i64 16, !11, i64 20, !11, i64 24, !11, i64 28, !11, i64 32, !11, i64 36, !11, i64 40, !11, i64 44, !11, i64 48, !11, i64 52, !11, i64 56, !11, i64 60, !11, i64 64, !11, i64 68, !11, i64 72, !8, i64 80, !8, i64 88}
-!65 = !{!64, !11, i64 24}
-!66 = distinct !{!66, !26}
-!67 = !{!64, !11, i64 48}
-!68 = !{!64, !11, i64 36}
-!69 = distinct !{!69, !26}
-!70 = !{!53, !11, i64 32}
-!71 = !{!53, !16, i64 24}
-!72 = !{!53, !11, i64 16}
-!73 = !{!7, !11, i64 368}
-!74 = !{!53, !11, i64 56}
-!75 = !{!7, !8, i64 584}
-!76 = !{!77, !11, i64 36}
-!77 = !{!"jpeg_marker_reader", !8, i64 0, !8, i64 8, !8, i64 16, !11, i64 24, !11, i64 28, !11, i64 32, !11, i64 36}
-!78 = !{!77, !8, i64 16}
-!79 = distinct !{!79, !26}
-!80 = !{i64 0, i64 16, !17}
-!81 = !{!13, !13, i64 0}
-!82 = distinct !{!82, !26}
-!83 = distinct !{!83, !26}
-!84 = distinct !{!84, !26}
+!25 = !{!11, !11, i64 0}
+!26 = !{!16, !16, i64 0}
+!27 = !{!28, !8, i64 0}
+!28 = !{!"", !8, i64 0, !16, i64 8, !16, i64 16, !11, i64 24, !8, i64 32}
+!29 = !{!28, !16, i64 8}
+!30 = !{!28, !8, i64 32}
+!31 = !{!7, !11, i64 540}
+!32 = !{!7, !8, i64 40}
+!33 = !{!34, !8, i64 24}
+!34 = !{!"jpeg_source_mgr", !8, i64 0, !16, i64 8, !8, i64 16, !8, i64 24, !8, i64 32, !8, i64 40, !8, i64 48}
+!35 = !{!34, !8, i64 0}
+!36 = !{!34, !16, i64 8}
+!37 = !{!7, !8, i64 592}
+!38 = !{!39, !11, i64 16}
+!39 = !{!"jpeg_entropy_decoder", !8, i64 0, !8, i64 8, !11, i64 16}
+!40 = !{!15, !8, i64 8}
+!41 = !{!28, !16, i64 16}
+!42 = !{!28, !11, i64 24}
+!43 = !{!44, !8, i64 0}
+!44 = !{!"", !39, i64 0, !45, i64 24, !46, i64 40, !11, i64 56, !9, i64 64, !9, i64 96, !9, i64 128, !9, i64 208, !9, i64 288, !9, i64 328}
+!45 = !{!"", !16, i64 0, !11, i64 8}
+!46 = !{!"", !9, i64 0}
+!47 = !{!44, !8, i64 8}
+!48 = !{!7, !11, i64 524}
+!49 = !{!7, !11, i64 528}
+!50 = !{!7, !11, i64 532}
+!51 = !{!7, !11, i64 536}
+!52 = !{!7, !11, i64 432}
+!53 = !{!7, !11, i64 480}
+!54 = !{!55, !11, i64 20}
+!55 = !{!"", !11, i64 0, !11, i64 4, !11, i64 8, !11, i64 12, !11, i64 16, !11, i64 20, !11, i64 24, !11, i64 28, !11, i64 32, !11, i64 36, !11, i64 40, !11, i64 44, !11, i64 48, !11, i64 52, !11, i64 56, !11, i64 60, !11, i64 64, !11, i64 68, !11, i64 72, !8, i64 80, !8, i64 88}
+!56 = !{!55, !11, i64 24}
+!57 = !{!55, !11, i64 48}
+!58 = !{!55, !11, i64 36}
+!59 = !{!44, !11, i64 32}
+!60 = !{!44, !16, i64 24}
+!61 = !{!44, !11, i64 16}
+!62 = !{!7, !11, i64 368}
+!63 = !{!44, !11, i64 56}
+!64 = !{!7, !8, i64 584}
+!65 = !{!66, !11, i64 36}
+!66 = !{!"jpeg_marker_reader", !8, i64 0, !8, i64 8, !8, i64 16, !11, i64 24, !11, i64 28, !11, i64 32, !11, i64 36}
+!67 = !{!66, !8, i64 16}
+!68 = !{i64 0, i64 16, !17}
+!69 = !{!13, !13, i64 0}

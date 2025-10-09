@@ -1,0 +1,75 @@
+# ./home/lchain-build/lchain_normal.elf
+cycles: 2464102 | regsw hits:0 regsw misses:0 
+lw, 62139
+ ld, 374051
+ li, 25197
+ sw, 30493
+ sd, 42418
+
+
+# ./home/lchain-build/lchain_regsw.elf
+
+cycles: 2752492 | regsw hits:459686 regsw misses:33288 
+lw, 62160
+ ld, 200574
+ li, 322
+ sw, 30488
+ sd, 37857
+ 
+
+
+
++ ./cjpeg_regsw -dct int -quality 13 -outfile output_base_4CIF_96bps.jpg ../input_data/input_base_4CIF.ppm
+cycles: 62053090 | regsw hits:4106465 regsw misses:34 
+Corrected Cycles: 57946625
+lw, 3176897
+ ld, 4561297
+ li, 135845
+ sw, 1872198
+ sd, 610703
+
+
+ + ./djpeg_regsw -dct int -ppm -outfile output_base_4CIF_96bps_dec.ppm ../input_data/input_base_4CIF_96bps.jpg
+cycles: 40557668 | regsw hits:4845876 regsw misses:2505 
+Corrected Cycles: 35711792
+lw, 1518384
+ ld, 1570989
+ li, 126300
+ sw, 642275
+ sd, 425857
+
++ ./tmndec_regsw -o3 ../input_data/input_base_4CIF_96bps.263 output_base_4CIF_96bps_dec
+cycles: 874068576 | regsw hits:88249955 regsw misses:999 
+Corrected Cycles: 785818621
+lw, 6711340
+ ld, 41409738
+ li, 4667523
+ sw, 707930
+ sd, 15855255
+
++ ./cjpeg -dct int -quality 13 -outfile output_base_4CIF_96bps.jpg ../input_data/input_base_4CIF.ppm
+cycles: 58025602 | regsw hits:0 regsw misses:0 
+Corrected Cycles: 58025602
+lw, 3175157
+ ld, 4647114
+ li, 135843
+ sw, 1872202
+ sd, 698245
+
+ + ./djpeg -dct int -ppm -outfile output_base_4CIF_96bps_dec.ppm ../input_data/input_base_4CIF_96bps.jpg
+cycles: 37278180 | regsw hits:0 regsw misses:0 
+Corrected Cycles: 37278180
+lw, 1523346
+ ld, 2024333
+ li, 126652
+ sw, 643291
+ sd, 645859
+
++ ./tmndec -o3 ../input_data/input_base_4CIF_96bps.263 output_base_4CIF_96bps_dec
+cycles: 789365270 | regsw hits:0 regsw misses:0 
+Corrected Cycles: 789365270
+lw, 6713112
+ ld, 43805737
+ li, 4615557
+ sw, 708092
+ sd, 16467780

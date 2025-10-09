@@ -201,13 +201,13 @@ define internal void @put_pixel_rows(ptr nocapture noundef readonly %0, ptr noca
   %68 = add nsw i32 %67, -8
   store i32 %68, ptr %11, align 8, !tbaa !39
   %69 = icmp sgt i32 %67, 15
-  br i1 %69, label %39, label %70, !llvm.loop !45
+  br i1 %69, label %39, label %70
 
 70:                                               ; preds = %63, %23
   %71 = phi i64 [ %33, %23 ], [ %66, %63 ]
   %72 = phi i32 [ %35, %23 ], [ %68, %63 ]
-  %73 = load i32, ptr %18, align 4, !tbaa !47
-  %74 = load i32, ptr %19, align 4, !tbaa !48
+  %73 = load i32, ptr %18, align 4, !tbaa !45
+  %74 = load i32, ptr %19, align 4, !tbaa !46
   %75 = icmp slt i32 %73, %74
   br i1 %75, label %76, label %78
 
@@ -216,7 +216,7 @@ define internal void @put_pixel_rows(ptr nocapture noundef readonly %0, ptr noca
   br label %127
 
 78:                                               ; preds = %70
-  %79 = load i32, ptr %20, align 4, !tbaa !49
+  %79 = load i32, ptr %20, align 4, !tbaa !47
   %80 = sext i32 %79 to i64
   %81 = zext nneg i32 %72 to i64
   %82 = shl i64 %80, %81
@@ -280,10 +280,10 @@ define internal void @put_pixel_rows(ptr nocapture noundef readonly %0, ptr noca
   %118 = add nsw i32 %117, -8
   store i32 %118, ptr %11, align 8, !tbaa !39
   %119 = icmp sgt i32 %117, 15
-  br i1 %119, label %89, label %120, !llvm.loop !45
+  br i1 %119, label %89, label %120
 
 120:                                              ; preds = %113
-  %121 = load i32, ptr %20, align 4, !tbaa !49
+  %121 = load i32, ptr %20, align 4, !tbaa !47
   br label %122
 
 122:                                              ; preds = %120, %78
@@ -297,10 +297,10 @@ define internal void @put_pixel_rows(ptr nocapture noundef readonly %0, ptr noca
   %128 = phi i64 [ %123, %122 ], [ %71, %76 ]
   %129 = phi i32 [ %124, %122 ], [ %72, %76 ]
   %130 = phi i32 [ %126, %122 ], [ %77, %76 ]
-  store i32 %130, ptr %18, align 4, !tbaa !47
+  store i32 %130, ptr %18, align 4, !tbaa !45
   %131 = add i32 %26, -1
   %132 = icmp eq i32 %131, 0
-  br i1 %132, label %133, label %23, !llvm.loop !50
+  br i1 %132, label %133, label %23
 
 133:                                              ; preds = %127, %3
   ret void
@@ -309,7 +309,7 @@ define internal void @put_pixel_rows(ptr nocapture noundef readonly %0, ptr noca
 ; Function Attrs: nounwind
 define internal void @finish_output_gif(ptr noundef %0, ptr nocapture noundef %1) #0 {
   %3 = getelementptr inbounds i8, ptr %1, i64 80
-  %4 = load i32, ptr %3, align 8, !tbaa !51
+  %4 = load i32, ptr %3, align 8, !tbaa !48
   %5 = sext i32 %4 to i64
   %6 = getelementptr inbounds i8, ptr %1, i64 72
   %7 = load i32, ptr %6, align 8, !tbaa !39
@@ -382,7 +382,7 @@ define internal void @finish_output_gif(ptr noundef %0, ptr nocapture noundef %1
   %52 = add nsw i32 %51, -8
   store i32 %52, ptr %6, align 8, !tbaa !39
   %53 = icmp sgt i32 %51, 15
-  br i1 %53, label %23, label %54, !llvm.loop !45
+  br i1 %53, label %23, label %54
 
 54:                                               ; preds = %47, %2
   %55 = phi i64 [ %12, %2 ], [ %50, %47 ]
@@ -517,7 +517,7 @@ define internal fastcc void @emit_header(ptr nocapture noundef %0, i32 noundef s
   %20 = shl nuw i32 1, %19
   %21 = icmp slt i32 %20, %1
   %22 = add nuw nsw i32 %19, 1
-  br i1 %21, label %18, label %23, !llvm.loop !52
+  br i1 %21, label %18, label %23
 
 23:                                               ; preds = %18
   %24 = tail call i32 @llvm.umax.i32(i32 %19, i32 2)
@@ -546,7 +546,7 @@ define internal fastcc void @emit_header(ptr nocapture noundef %0, i32 noundef s
   %47 = tail call signext i32 @putc(i32 noundef signext %45, ptr noundef %46)
   %48 = load ptr, ptr %4, align 8, !tbaa !17
   %49 = getelementptr inbounds i8, ptr %48, i64 140
-  %50 = load i32, ptr %49, align 4, !tbaa !53
+  %50 = load i32, ptr %49, align 4, !tbaa !49
   %51 = and i32 %50, 255
   %52 = load ptr, ptr %25, align 8, !tbaa !44
   %53 = tail call signext i32 @putc(i32 noundef signext %51, ptr noundef %52)
@@ -606,7 +606,7 @@ define internal fastcc void @emit_header(ptr nocapture noundef %0, i32 noundef s
   %95 = tail call signext i32 @putc(i32 noundef signext %89, ptr noundef %94)
   %96 = add nuw nsw i32 %82, 1
   %97 = icmp eq i32 %96, %80
-  br i1 %97, label %140, label %81, !llvm.loop !54
+  br i1 %97, label %140, label %81
 
 98:                                               ; preds = %75, %134
   %99 = phi i64 [ 0, %75 ], [ %138, %134 ]
@@ -660,7 +660,7 @@ define internal fastcc void @emit_header(ptr nocapture noundef %0, i32 noundef s
   %137 = tail call signext i32 @putc(i32 noundef signext %135, ptr noundef %136)
   %138 = add nuw nsw i64 %99, 1
   %139 = icmp eq i64 %138, %78
-  br i1 %139, label %140, label %98, !llvm.loop !54
+  br i1 %139, label %140, label %98
 
 140:                                              ; preds = %134, %88, %23
   %141 = load ptr, ptr %25, align 8, !tbaa !44
@@ -685,7 +685,7 @@ define internal fastcc void @emit_header(ptr nocapture noundef %0, i32 noundef s
   %160 = tail call signext i32 @putc(i32 noundef signext %158, ptr noundef %159)
   %161 = load ptr, ptr %4, align 8, !tbaa !17
   %162 = getelementptr inbounds i8, ptr %161, i64 140
-  %163 = load i32, ptr %162, align 4, !tbaa !53
+  %163 = load i32, ptr %162, align 4, !tbaa !49
   %164 = and i32 %163, 255
   %165 = load ptr, ptr %25, align 8, !tbaa !44
   %166 = tail call signext i32 @putc(i32 noundef signext %164, ptr noundef %165)
@@ -703,16 +703,16 @@ define internal fastcc void @emit_header(ptr nocapture noundef %0, i32 noundef s
   %177 = shl nsw i32 -2, %24
   %178 = xor i32 %177, -1
   %179 = getelementptr inbounds i8, ptr %0, i64 60
-  store i32 %178, ptr %179, align 4, !tbaa !48
+  store i32 %178, ptr %179, align 4, !tbaa !46
   %180 = shl nuw i32 1, %24
   %181 = getelementptr inbounds i8, ptr %0, i64 76
-  store i32 %180, ptr %181, align 4, !tbaa !49
+  store i32 %180, ptr %181, align 4, !tbaa !47
   %182 = add nuw nsw i32 %180, 1
   %183 = getelementptr inbounds i8, ptr %0, i64 80
-  store i32 %182, ptr %183, align 8, !tbaa !51
+  store i32 %182, ptr %183, align 8, !tbaa !48
   %184 = add nuw nsw i32 %180, 2
   %185 = getelementptr inbounds i8, ptr %0, i64 84
-  store i32 %184, ptr %185, align 4, !tbaa !47
+  store i32 %184, ptr %185, align 4, !tbaa !45
   %186 = getelementptr inbounds i8, ptr %0, i64 88
   store i32 0, ptr %186, align 8, !tbaa !43
   %187 = getelementptr inbounds i8, ptr %0, i64 64
@@ -775,7 +775,7 @@ define internal fastcc void @emit_header(ptr nocapture noundef %0, i32 noundef s
   %222 = add nsw i32 %221, -8
   store i32 %222, ptr %188, align 8, !tbaa !39
   %223 = icmp sgt i32 %221, 15
-  br i1 %223, label %193, label %224, !llvm.loop !45
+  br i1 %223, label %193, label %224
 
 224:                                              ; preds = %217, %140
   ret void
@@ -854,13 +854,8 @@ attributes #5 = { nounwind }
 !42 = !{!18, !11, i64 56}
 !43 = !{!18, !11, i64 88}
 !44 = !{!18, !8, i64 24}
-!45 = distinct !{!45, !46}
-!46 = !{!"llvm.loop.mustprogress"}
-!47 = !{!18, !11, i64 84}
-!48 = !{!18, !11, i64 60}
-!49 = !{!18, !11, i64 76}
-!50 = distinct !{!50, !46}
-!51 = !{!18, !11, i64 80}
-!52 = distinct !{!52, !46}
-!53 = !{!7, !11, i64 140}
-!54 = distinct !{!54, !46}
+!45 = !{!18, !11, i64 84}
+!46 = !{!18, !11, i64 60}
+!47 = !{!18, !11, i64 76}
+!48 = !{!18, !11, i64 80}
+!49 = !{!7, !11, i64 140}

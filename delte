@@ -1,0 +1,71 @@
+
+./lchain_normal.elf
+
+
+lw, 57295
+ld, 349534
+li, 25010
+sw, 29135
+sd, 34107
+
+lchain_regsw.elf
+
+
+lw, 57295
+ld, 176200
+li, 154
+sw, 29135
+sd, 29583
+ 
+
++ ./cjpeg_regsw -dct int -quality 13 -outfile output_base_4CIF_96bps.jpg ../input_data/input_base_4CIF.ppm
+
+lw, 3175321
+ld, 4559948
+li, 135859
+sw, 1872256
+sd, 610623
+
+
+./djpeg_regsw -dct int -ppm -outfile output_base_4CIF_96bps_dec.ppm ../input_data/input_base_4CIF_96bps.jpg
+
+lw, 1522864
+ld, 1586157
+li, 126651
+sw, 643126
+sd, 430368
+
++ ./tmndec_regsw -o3 ../input_data/input_base_4CIF_96bps.263 output_base_4CIF_96bps_dec
+
+lw, 6714159
+ld, 41420684
+li, 4667925
+sw, 708344
+sd, 15857455
+ 
+
++ ./cjpeg -dct int -quality 13 -outfile output_base_4CIF_96bps.jpg ../input_data/input_base_4CIF.ppm
+
+lw, 3174863
+ld, 4646401
+li, 135833
+sw, 1872129
+sd, 697990
+
+ + ./djpeg -dct int -ppm -outfile output_base_4CIF_96bps_dec.ppm ../input_data/input_base_4CIF_96bps.jpg
+
+lw, 1522594
+ld, 2022692
+li, 126650
+sw, 643052
+sd, 644846
+
+
++ ./tmndec -o3 ../input_data/input_base_4CIF_96bps.263 output_base_4CIF_96bps_dec
+
+lw, 6713111
+ld, 43806344
+li, 4615698
+sw, 708031
+sd, 16466753
+ 

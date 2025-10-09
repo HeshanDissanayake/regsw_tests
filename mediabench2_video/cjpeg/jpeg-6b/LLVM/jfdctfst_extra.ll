@@ -85,7 +85,7 @@ define dso_local void @jpeg_fdct_ifast(ptr nocapture noundef %0) local_unnamed_a
   %69 = getelementptr inbounds i8, ptr %4, i64 32
   %70 = add nsw i32 %3, -1
   %71 = icmp eq i32 %3, 0
-  br i1 %71, label %72, label %2, !llvm.loop !10
+  br i1 %71, label %72, label %2
 
 72:                                               ; preds = %2, %72
   %73 = phi i32 [ %140, %72 ], [ 7, %2 ]
@@ -165,7 +165,7 @@ define dso_local void @jpeg_fdct_ifast(ptr nocapture noundef %0) local_unnamed_a
   %139 = getelementptr inbounds i8, ptr %74, i64 4
   %140 = add nsw i32 %73, -1
   %141 = icmp eq i32 %73, 0
-  br i1 %141, label %142, label %72, !llvm.loop !12
+  br i1 %141, label %142, label %72
 
 142:                                              ; preds = %72
   ret void
@@ -186,6 +186,3 @@ attributes #0 = { nofree norecurse nosync nounwind memory(readwrite, inaccessibl
 !7 = !{!"int", !8, i64 0}
 !8 = !{!"omnipotent char", !9, i64 0}
 !9 = !{!"Simple C/C++ TBAA"}
-!10 = distinct !{!10, !11}
-!11 = !{!"llvm.loop.mustprogress"}
-!12 = distinct !{!12, !11}

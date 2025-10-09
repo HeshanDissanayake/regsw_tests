@@ -268,7 +268,7 @@ define dso_local void @read_color_map(ptr noundef %0, ptr nocapture noundef %1) 
 154:                                              ; preds = %149, %144, %138
   %155 = add nuw nsw i64 %139, 1
   %156 = icmp eq i64 %155, %137
-  br i1 %156, label %157, label %138, !llvm.loop !25
+  br i1 %156, label %157, label %138
 
 157:                                              ; preds = %154
   %158 = icmp sgt i32 %134, 255
@@ -304,7 +304,7 @@ define dso_local void @read_color_map(ptr noundef %0, ptr nocapture noundef %1) 
 175:                                              ; preds = %149, %165
   %176 = add nuw nsw i32 %114, 1
   %177 = icmp eq i32 %176, %112
-  br i1 %177, label %437, label %113, !llvm.loop !27
+  br i1 %177, label %437, label %113
 
 178:                                              ; preds = %2
   %179 = tail call signext i32 @getc(ptr noundef %1)
@@ -412,7 +412,7 @@ define dso_local void @read_color_map(ptr noundef %0, ptr nocapture noundef %1) 
 244:                                              ; preds = %239, %234, %228
   %245 = add nuw nsw i64 %229, 1
   %246 = icmp eq i64 %245, %227
-  br i1 %246, label %247, label %228, !llvm.loop !25
+  br i1 %246, label %247, label %228
 
 247:                                              ; preds = %244
   %248 = icmp sgt i32 %224, 255
@@ -448,12 +448,12 @@ define dso_local void @read_color_map(ptr noundef %0, ptr nocapture noundef %1) 
 265:                                              ; preds = %239, %255
   %266 = add nuw i32 %204, 1
   %267 = icmp eq i32 %266, %180
-  br i1 %267, label %268, label %203, !llvm.loop !28
+  br i1 %267, label %268, label %203
 
 268:                                              ; preds = %265
   %269 = add nuw i32 %202, 1
   %270 = icmp eq i32 %269, %181
-  br i1 %270, label %437, label %201, !llvm.loop !29
+  br i1 %270, label %437, label %201
 
 271:                                              ; preds = %198
   %272 = or i1 %183, %184
@@ -710,7 +710,7 @@ define dso_local void @read_color_map(ptr noundef %0, ptr nocapture noundef %1) 
 395:                                              ; preds = %390, %385, %379
   %396 = add nuw nsw i64 %380, 1
   %397 = icmp eq i64 %396, %378
-  br i1 %397, label %398, label %379, !llvm.loop !25
+  br i1 %397, label %398, label %379
 
 398:                                              ; preds = %395
   %399 = icmp sgt i32 %375, 255
@@ -746,22 +746,22 @@ define dso_local void @read_color_map(ptr noundef %0, ptr nocapture noundef %1) 
 416:                                              ; preds = %390, %406
   %417 = add nuw i32 %429, 1
   %418 = icmp eq i32 %417, %180
-  br i1 %418, label %430, label %428, !llvm.loop !30
+  br i1 %418, label %430, label %428
 
 419:                                              ; preds = %364
   %420 = mul i32 %359, 10
   %421 = add i32 %366, %420
-  br label %358, !llvm.loop !31
+  br label %358
 
 422:                                              ; preds = %333
   %423 = mul i32 %328, 10
   %424 = add i32 %335, %423
-  br label %327, !llvm.loop !31
+  br label %327
 
 425:                                              ; preds = %302
   %426 = mul i32 %297, 10
   %427 = add i32 %304, %426
-  br label %296, !llvm.loop !31
+  br label %296
 
 428:                                              ; preds = %416, %273
   %429 = phi i32 [ 0, %273 ], [ %417, %416 ]
@@ -770,7 +770,7 @@ define dso_local void @read_color_map(ptr noundef %0, ptr nocapture noundef %1) 
 430:                                              ; preds = %416
   %431 = add nuw i32 %274, 1
   %432 = icmp eq i32 %431, %181
-  br i1 %432, label %437, label %273, !llvm.loop !32
+  br i1 %432, label %437, label %273
 
 433:                                              ; preds = %2, %198
   %434 = load ptr, ptr %0, align 8, !tbaa !19
@@ -863,7 +863,7 @@ define internal fastcc signext i32 @read_pbm_integer(ptr noundef %0, ptr nocaptu
 34:                                               ; preds = %30
   %35 = mul i32 %25, 10
   %36 = add i32 %32, %35
-  br label %24, !llvm.loop !31
+  br label %24
 
 37:                                               ; preds = %30
   ret i32 %25
@@ -901,11 +901,3 @@ attributes #2 = { nounwind }
 !22 = !{!21, !8, i64 0}
 !23 = !{!8, !8, i64 0}
 !24 = !{!9, !9, i64 0}
-!25 = distinct !{!25, !26}
-!26 = !{!"llvm.loop.mustprogress"}
-!27 = distinct !{!27, !26}
-!28 = distinct !{!28, !26}
-!29 = distinct !{!29, !26}
-!30 = distinct !{!30, !26}
-!31 = distinct !{!31, !26}
-!32 = distinct !{!32, !26}

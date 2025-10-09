@@ -98,7 +98,7 @@ define dso_local void @jinit_merged_upsampler(ptr noundef %0) local_unnamed_addr
   %67 = add nuw nsw i64 %50, 1
   %68 = add nsw i64 %51, 1
   %69 = icmp eq i64 %67, 256
-  br i1 %69, label %70, label %49, !llvm.loop !35
+  br i1 %69, label %70, label %49
 
 70:                                               ; preds = %49
   ret void
@@ -112,11 +112,11 @@ define internal void @start_pass_merged_upsample(ptr nocapture noundef readonly 
   %2 = getelementptr inbounds i8, ptr %0, i64 608
   %3 = load ptr, ptr %2, align 8, !tbaa !17
   %4 = getelementptr inbounds i8, ptr %3, i64 72
-  store i32 0, ptr %4, align 8, !tbaa !37
+  store i32 0, ptr %4, align 8, !tbaa !35
   %5 = getelementptr inbounds i8, ptr %0, i64 140
-  %6 = load i32, ptr %5, align 4, !tbaa !38
+  %6 = load i32, ptr %5, align 4, !tbaa !36
   %7 = getelementptr inbounds i8, ptr %3, i64 80
-  store i32 %6, ptr %7, align 8, !tbaa !39
+  store i32 %6, ptr %7, align 8, !tbaa !37
   ret void
 }
 
@@ -127,7 +127,7 @@ define internal void @merged_2v_upsample(ptr noundef %0, ptr noundef %1, ptr noc
   %10 = load ptr, ptr %9, align 8, !tbaa !17
   call void @llvm.lifetime.start.p0(i64 16, ptr nonnull %8) #6
   %11 = getelementptr inbounds i8, ptr %10, i64 72
-  %12 = load i32, ptr %11, align 8, !tbaa !37
+  %12 = load i32, ptr %11, align 8, !tbaa !35
   %13 = icmp eq i32 %12, 0
   br i1 %13, label %21, label %14
 
@@ -139,20 +139,20 @@ define internal void @merged_2v_upsample(ptr noundef %0, ptr noundef %1, ptr noc
   %19 = getelementptr inbounds i8, ptr %10, i64 76
   %20 = load i32, ptr %19, align 4, !tbaa !24
   tail call void @jcopy_sample_rows(ptr noundef nonnull %15, i32 noundef signext 0, ptr noundef %18, i32 noundef signext 0, i32 noundef signext 1, i32 noundef signext %20) #6
-  store i32 0, ptr %11, align 8, !tbaa !37
+  store i32 0, ptr %11, align 8, !tbaa !35
   br label %46
 
 21:                                               ; preds = %7
   %22 = getelementptr inbounds i8, ptr %10, i64 80
-  %23 = load i32, ptr %22, align 8, !tbaa !39
+  %23 = load i32, ptr %22, align 8, !tbaa !37
   %24 = load i32, ptr %5, align 4, !tbaa !33
   %25 = sub i32 %6, %24
   %26 = tail call i32 @llvm.umin.i32(i32 %23, i32 %25)
   %27 = tail call i32 @llvm.umin.i32(i32 %26, i32 2)
   %28 = zext i32 %24 to i64
   %29 = getelementptr inbounds ptr, ptr %4, i64 %28
-  %30 = load ptr, ptr %29, align 8, !tbaa !40
-  store ptr %30, ptr %8, align 8, !tbaa !40
+  %30 = load ptr, ptr %29, align 8, !tbaa !38
+  store ptr %30, ptr %8, align 8, !tbaa !38
   %31 = icmp ugt i32 %26, 1
   br i1 %31, label %32, label %37
 
@@ -160,13 +160,13 @@ define internal void @merged_2v_upsample(ptr noundef %0, ptr noundef %1, ptr noc
   %33 = add i32 %24, 1
   %34 = zext i32 %33 to i64
   %35 = getelementptr inbounds ptr, ptr %4, i64 %34
-  %36 = load ptr, ptr %35, align 8, !tbaa !40
+  %36 = load ptr, ptr %35, align 8, !tbaa !38
   br label %40
 
 37:                                               ; preds = %21
   %38 = getelementptr inbounds i8, ptr %10, i64 64
-  %39 = load ptr, ptr %38, align 8, !tbaa !41
-  store i32 1, ptr %11, align 8, !tbaa !37
+  %39 = load ptr, ptr %38, align 8, !tbaa !39
+  store i32 1, ptr %11, align 8, !tbaa !35
   br label %40
 
 40:                                               ; preds = %37, %32
@@ -185,10 +185,10 @@ define internal void @merged_2v_upsample(ptr noundef %0, ptr noundef %1, ptr noc
   %49 = add i32 %48, %47
   store i32 %49, ptr %5, align 4, !tbaa !33
   %50 = getelementptr inbounds i8, ptr %10, i64 80
-  %51 = load i32, ptr %50, align 8, !tbaa !39
+  %51 = load i32, ptr %50, align 8, !tbaa !37
   %52 = sub i32 %51, %47
-  store i32 %52, ptr %50, align 8, !tbaa !39
-  %53 = load i32, ptr %11, align 8, !tbaa !37
+  store i32 %52, ptr %50, align 8, !tbaa !37
+  %53 = load i32, ptr %11, align 8, !tbaa !35
   %54 = icmp eq i32 %53, 0
   br i1 %54, label %55, label %58
 
@@ -208,7 +208,7 @@ define internal void @h2v2_merged_upsample(ptr nocapture noundef readonly %0, pt
   %5 = getelementptr inbounds i8, ptr %0, i64 608
   %6 = load ptr, ptr %5, align 8, !tbaa !17
   %7 = getelementptr inbounds i8, ptr %0, i64 424
-  %8 = load ptr, ptr %7, align 8, !tbaa !42
+  %8 = load ptr, ptr %7, align 8, !tbaa !40
   %9 = getelementptr inbounds i8, ptr %6, i64 32
   %10 = load ptr, ptr %9, align 8, !tbaa !29
   %11 = getelementptr inbounds i8, ptr %6, i64 40
@@ -217,27 +217,27 @@ define internal void @h2v2_merged_upsample(ptr nocapture noundef readonly %0, pt
   %14 = load ptr, ptr %13, align 8, !tbaa !31
   %15 = getelementptr inbounds i8, ptr %6, i64 56
   %16 = load ptr, ptr %15, align 8, !tbaa !32
-  %17 = load ptr, ptr %1, align 8, !tbaa !40
+  %17 = load ptr, ptr %1, align 8, !tbaa !38
   %18 = shl i32 %2, 1
   %19 = zext i32 %18 to i64
   %20 = getelementptr inbounds ptr, ptr %17, i64 %19
-  %21 = load ptr, ptr %20, align 8, !tbaa !40
+  %21 = load ptr, ptr %20, align 8, !tbaa !38
   %22 = or disjoint i32 %18, 1
   %23 = zext i32 %22 to i64
   %24 = getelementptr inbounds ptr, ptr %17, i64 %23
-  %25 = load ptr, ptr %24, align 8, !tbaa !40
+  %25 = load ptr, ptr %24, align 8, !tbaa !38
   %26 = getelementptr inbounds i8, ptr %1, i64 8
-  %27 = load ptr, ptr %26, align 8, !tbaa !40
+  %27 = load ptr, ptr %26, align 8, !tbaa !38
   %28 = zext i32 %2 to i64
   %29 = getelementptr inbounds ptr, ptr %27, i64 %28
-  %30 = load ptr, ptr %29, align 8, !tbaa !40
+  %30 = load ptr, ptr %29, align 8, !tbaa !38
   %31 = getelementptr inbounds i8, ptr %1, i64 16
-  %32 = load ptr, ptr %31, align 8, !tbaa !40
+  %32 = load ptr, ptr %31, align 8, !tbaa !38
   %33 = getelementptr inbounds ptr, ptr %32, i64 %28
-  %34 = load ptr, ptr %33, align 8, !tbaa !40
-  %35 = load ptr, ptr %3, align 8, !tbaa !40
+  %34 = load ptr, ptr %33, align 8, !tbaa !38
+  %35 = load ptr, ptr %3, align 8, !tbaa !38
   %36 = getelementptr inbounds i8, ptr %3, i64 8
-  %37 = load ptr, ptr %36, align 8, !tbaa !40
+  %37 = load ptr, ptr %36, align 8, !tbaa !38
   %38 = getelementptr inbounds i8, ptr %0, i64 136
   %39 = load i32, ptr %38, align 8, !tbaa !22
   %40 = icmp ult i32 %39, 2
@@ -256,9 +256,9 @@ define internal void @h2v2_merged_upsample(ptr nocapture noundef readonly %0, pt
   %49 = phi ptr [ %139, %43 ], [ %37, %41 ]
   %50 = phi ptr [ %103, %43 ], [ %35, %41 ]
   %51 = getelementptr inbounds i8, ptr %46, i64 1
-  %52 = load i8, ptr %46, align 1, !tbaa !43
+  %52 = load i8, ptr %46, align 1, !tbaa !41
   %53 = getelementptr inbounds i8, ptr %45, i64 1
-  %54 = load i8, ptr %45, align 1, !tbaa !43
+  %54 = load i8, ptr %45, align 1, !tbaa !41
   %55 = zext i8 %54 to i64
   %56 = getelementptr inbounds i32, ptr %10, i64 %55
   %57 = load i32, ptr %56, align 4, !tbaa !33
@@ -273,92 +273,92 @@ define internal void @h2v2_merged_upsample(ptr nocapture noundef readonly %0, pt
   %66 = getelementptr inbounds i32, ptr %12, i64 %58
   %67 = load i32, ptr %66, align 4, !tbaa !33
   %68 = getelementptr inbounds i8, ptr %48, i64 1
-  %69 = load i8, ptr %48, align 1, !tbaa !43
+  %69 = load i8, ptr %48, align 1, !tbaa !41
   %70 = zext i8 %69 to i32
   %71 = add nsw i32 %57, %70
   %72 = sext i32 %71 to i64
   %73 = getelementptr inbounds i8, ptr %8, i64 %72
-  %74 = load i8, ptr %73, align 1, !tbaa !43
-  store i8 %74, ptr %50, align 1, !tbaa !43
+  %74 = load i8, ptr %73, align 1, !tbaa !41
+  store i8 %74, ptr %50, align 1, !tbaa !41
   %75 = add nsw i32 %70, %65
   %76 = sext i32 %75 to i64
   %77 = getelementptr inbounds i8, ptr %8, i64 %76
-  %78 = load i8, ptr %77, align 1, !tbaa !43
+  %78 = load i8, ptr %77, align 1, !tbaa !41
   %79 = getelementptr inbounds i8, ptr %50, i64 1
-  store i8 %78, ptr %79, align 1, !tbaa !43
+  store i8 %78, ptr %79, align 1, !tbaa !41
   %80 = add nsw i32 %67, %70
   %81 = sext i32 %80 to i64
   %82 = getelementptr inbounds i8, ptr %8, i64 %81
-  %83 = load i8, ptr %82, align 1, !tbaa !43
+  %83 = load i8, ptr %82, align 1, !tbaa !41
   %84 = getelementptr inbounds i8, ptr %50, i64 2
-  store i8 %83, ptr %84, align 1, !tbaa !43
+  store i8 %83, ptr %84, align 1, !tbaa !41
   %85 = getelementptr inbounds i8, ptr %50, i64 3
   %86 = getelementptr inbounds i8, ptr %48, i64 2
-  %87 = load i8, ptr %68, align 1, !tbaa !43
+  %87 = load i8, ptr %68, align 1, !tbaa !41
   %88 = zext i8 %87 to i32
   %89 = add nsw i32 %57, %88
   %90 = sext i32 %89 to i64
   %91 = getelementptr inbounds i8, ptr %8, i64 %90
-  %92 = load i8, ptr %91, align 1, !tbaa !43
-  store i8 %92, ptr %85, align 1, !tbaa !43
+  %92 = load i8, ptr %91, align 1, !tbaa !41
+  store i8 %92, ptr %85, align 1, !tbaa !41
   %93 = add nsw i32 %88, %65
   %94 = sext i32 %93 to i64
   %95 = getelementptr inbounds i8, ptr %8, i64 %94
-  %96 = load i8, ptr %95, align 1, !tbaa !43
+  %96 = load i8, ptr %95, align 1, !tbaa !41
   %97 = getelementptr inbounds i8, ptr %50, i64 4
-  store i8 %96, ptr %97, align 1, !tbaa !43
+  store i8 %96, ptr %97, align 1, !tbaa !41
   %98 = add nsw i32 %67, %88
   %99 = sext i32 %98 to i64
   %100 = getelementptr inbounds i8, ptr %8, i64 %99
-  %101 = load i8, ptr %100, align 1, !tbaa !43
+  %101 = load i8, ptr %100, align 1, !tbaa !41
   %102 = getelementptr inbounds i8, ptr %50, i64 5
-  store i8 %101, ptr %102, align 1, !tbaa !43
+  store i8 %101, ptr %102, align 1, !tbaa !41
   %103 = getelementptr inbounds i8, ptr %50, i64 6
   %104 = getelementptr inbounds i8, ptr %47, i64 1
-  %105 = load i8, ptr %47, align 1, !tbaa !43
+  %105 = load i8, ptr %47, align 1, !tbaa !41
   %106 = zext i8 %105 to i32
   %107 = add nsw i32 %57, %106
   %108 = sext i32 %107 to i64
   %109 = getelementptr inbounds i8, ptr %8, i64 %108
-  %110 = load i8, ptr %109, align 1, !tbaa !43
-  store i8 %110, ptr %49, align 1, !tbaa !43
+  %110 = load i8, ptr %109, align 1, !tbaa !41
+  store i8 %110, ptr %49, align 1, !tbaa !41
   %111 = add nsw i32 %106, %65
   %112 = sext i32 %111 to i64
   %113 = getelementptr inbounds i8, ptr %8, i64 %112
-  %114 = load i8, ptr %113, align 1, !tbaa !43
+  %114 = load i8, ptr %113, align 1, !tbaa !41
   %115 = getelementptr inbounds i8, ptr %49, i64 1
-  store i8 %114, ptr %115, align 1, !tbaa !43
+  store i8 %114, ptr %115, align 1, !tbaa !41
   %116 = add nsw i32 %67, %106
   %117 = sext i32 %116 to i64
   %118 = getelementptr inbounds i8, ptr %8, i64 %117
-  %119 = load i8, ptr %118, align 1, !tbaa !43
+  %119 = load i8, ptr %118, align 1, !tbaa !41
   %120 = getelementptr inbounds i8, ptr %49, i64 2
-  store i8 %119, ptr %120, align 1, !tbaa !43
+  store i8 %119, ptr %120, align 1, !tbaa !41
   %121 = getelementptr inbounds i8, ptr %49, i64 3
   %122 = getelementptr inbounds i8, ptr %47, i64 2
-  %123 = load i8, ptr %104, align 1, !tbaa !43
+  %123 = load i8, ptr %104, align 1, !tbaa !41
   %124 = zext i8 %123 to i32
   %125 = add nsw i32 %57, %124
   %126 = sext i32 %125 to i64
   %127 = getelementptr inbounds i8, ptr %8, i64 %126
-  %128 = load i8, ptr %127, align 1, !tbaa !43
-  store i8 %128, ptr %121, align 1, !tbaa !43
+  %128 = load i8, ptr %127, align 1, !tbaa !41
+  store i8 %128, ptr %121, align 1, !tbaa !41
   %129 = add nsw i32 %124, %65
   %130 = sext i32 %129 to i64
   %131 = getelementptr inbounds i8, ptr %8, i64 %130
-  %132 = load i8, ptr %131, align 1, !tbaa !43
+  %132 = load i8, ptr %131, align 1, !tbaa !41
   %133 = getelementptr inbounds i8, ptr %49, i64 4
-  store i8 %132, ptr %133, align 1, !tbaa !43
+  store i8 %132, ptr %133, align 1, !tbaa !41
   %134 = add nsw i32 %67, %124
   %135 = sext i32 %134 to i64
   %136 = getelementptr inbounds i8, ptr %8, i64 %135
-  %137 = load i8, ptr %136, align 1, !tbaa !43
+  %137 = load i8, ptr %136, align 1, !tbaa !41
   %138 = getelementptr inbounds i8, ptr %49, i64 5
-  store i8 %137, ptr %138, align 1, !tbaa !43
+  store i8 %137, ptr %138, align 1, !tbaa !41
   %139 = getelementptr inbounds i8, ptr %49, i64 6
   %140 = add nsw i32 %44, -1
   %141 = icmp eq i32 %140, 0
-  br i1 %141, label %142, label %43, !llvm.loop !44
+  br i1 %141, label %142, label %43
 
 142:                                              ; preds = %43
   %143 = load i32, ptr %38, align 8, !tbaa !22
@@ -377,8 +377,8 @@ define internal void @h2v2_merged_upsample(ptr nocapture noundef readonly %0, pt
   br i1 %153, label %202, label %154
 
 154:                                              ; preds = %144
-  %155 = load i8, ptr %150, align 1, !tbaa !43
-  %156 = load i8, ptr %151, align 1, !tbaa !43
+  %155 = load i8, ptr %150, align 1, !tbaa !41
+  %156 = load i8, ptr %151, align 1, !tbaa !41
   %157 = zext i8 %156 to i64
   %158 = getelementptr inbounds i32, ptr %10, i64 %157
   %159 = load i32, ptr %158, align 4, !tbaa !33
@@ -392,44 +392,44 @@ define internal void @h2v2_merged_upsample(ptr nocapture noundef readonly %0, pt
   %167 = trunc i64 %166 to i32
   %168 = getelementptr inbounds i32, ptr %12, i64 %160
   %169 = load i32, ptr %168, align 4, !tbaa !33
-  %170 = load i8, ptr %148, align 1, !tbaa !43
+  %170 = load i8, ptr %148, align 1, !tbaa !41
   %171 = zext i8 %170 to i32
   %172 = add nsw i32 %159, %171
   %173 = sext i32 %172 to i64
   %174 = getelementptr inbounds i8, ptr %8, i64 %173
-  %175 = load i8, ptr %174, align 1, !tbaa !43
-  store i8 %175, ptr %146, align 1, !tbaa !43
+  %175 = load i8, ptr %174, align 1, !tbaa !41
+  store i8 %175, ptr %146, align 1, !tbaa !41
   %176 = add nsw i32 %171, %167
   %177 = sext i32 %176 to i64
   %178 = getelementptr inbounds i8, ptr %8, i64 %177
-  %179 = load i8, ptr %178, align 1, !tbaa !43
+  %179 = load i8, ptr %178, align 1, !tbaa !41
   %180 = getelementptr inbounds i8, ptr %146, i64 1
-  store i8 %179, ptr %180, align 1, !tbaa !43
+  store i8 %179, ptr %180, align 1, !tbaa !41
   %181 = add nsw i32 %169, %171
   %182 = sext i32 %181 to i64
   %183 = getelementptr inbounds i8, ptr %8, i64 %182
-  %184 = load i8, ptr %183, align 1, !tbaa !43
+  %184 = load i8, ptr %183, align 1, !tbaa !41
   %185 = getelementptr inbounds i8, ptr %146, i64 2
-  store i8 %184, ptr %185, align 1, !tbaa !43
-  %186 = load i8, ptr %149, align 1, !tbaa !43
+  store i8 %184, ptr %185, align 1, !tbaa !41
+  %186 = load i8, ptr %149, align 1, !tbaa !41
   %187 = zext i8 %186 to i32
   %188 = add nsw i32 %159, %187
   %189 = sext i32 %188 to i64
   %190 = getelementptr inbounds i8, ptr %8, i64 %189
-  %191 = load i8, ptr %190, align 1, !tbaa !43
-  store i8 %191, ptr %147, align 1, !tbaa !43
+  %191 = load i8, ptr %190, align 1, !tbaa !41
+  store i8 %191, ptr %147, align 1, !tbaa !41
   %192 = add nsw i32 %187, %167
   %193 = sext i32 %192 to i64
   %194 = getelementptr inbounds i8, ptr %8, i64 %193
-  %195 = load i8, ptr %194, align 1, !tbaa !43
+  %195 = load i8, ptr %194, align 1, !tbaa !41
   %196 = getelementptr inbounds i8, ptr %147, i64 1
-  store i8 %195, ptr %196, align 1, !tbaa !43
+  store i8 %195, ptr %196, align 1, !tbaa !41
   %197 = add nsw i32 %169, %187
   %198 = sext i32 %197 to i64
   %199 = getelementptr inbounds i8, ptr %8, i64 %198
-  %200 = load i8, ptr %199, align 1, !tbaa !43
+  %200 = load i8, ptr %199, align 1, !tbaa !41
   %201 = getelementptr inbounds i8, ptr %147, i64 2
-  store i8 %200, ptr %201, align 1, !tbaa !43
+  store i8 %200, ptr %201, align 1, !tbaa !41
   br label %202
 
 202:                                              ; preds = %154, %144
@@ -461,7 +461,7 @@ define internal void @h2v1_merged_upsample(ptr nocapture noundef readonly %0, pt
   %5 = getelementptr inbounds i8, ptr %0, i64 608
   %6 = load ptr, ptr %5, align 8, !tbaa !17
   %7 = getelementptr inbounds i8, ptr %0, i64 424
-  %8 = load ptr, ptr %7, align 8, !tbaa !42
+  %8 = load ptr, ptr %7, align 8, !tbaa !40
   %9 = getelementptr inbounds i8, ptr %6, i64 32
   %10 = load ptr, ptr %9, align 8, !tbaa !29
   %11 = getelementptr inbounds i8, ptr %6, i64 40
@@ -470,19 +470,19 @@ define internal void @h2v1_merged_upsample(ptr nocapture noundef readonly %0, pt
   %14 = load ptr, ptr %13, align 8, !tbaa !31
   %15 = getelementptr inbounds i8, ptr %6, i64 56
   %16 = load ptr, ptr %15, align 8, !tbaa !32
-  %17 = load ptr, ptr %1, align 8, !tbaa !40
+  %17 = load ptr, ptr %1, align 8, !tbaa !38
   %18 = zext i32 %2 to i64
   %19 = getelementptr inbounds ptr, ptr %17, i64 %18
-  %20 = load ptr, ptr %19, align 8, !tbaa !40
+  %20 = load ptr, ptr %19, align 8, !tbaa !38
   %21 = getelementptr inbounds i8, ptr %1, i64 8
-  %22 = load ptr, ptr %21, align 8, !tbaa !40
+  %22 = load ptr, ptr %21, align 8, !tbaa !38
   %23 = getelementptr inbounds ptr, ptr %22, i64 %18
-  %24 = load ptr, ptr %23, align 8, !tbaa !40
+  %24 = load ptr, ptr %23, align 8, !tbaa !38
   %25 = getelementptr inbounds i8, ptr %1, i64 16
-  %26 = load ptr, ptr %25, align 8, !tbaa !40
+  %26 = load ptr, ptr %25, align 8, !tbaa !38
   %27 = getelementptr inbounds ptr, ptr %26, i64 %18
-  %28 = load ptr, ptr %27, align 8, !tbaa !40
-  %29 = load ptr, ptr %3, align 8, !tbaa !40
+  %28 = load ptr, ptr %27, align 8, !tbaa !38
+  %29 = load ptr, ptr %3, align 8, !tbaa !38
   %30 = getelementptr inbounds i8, ptr %0, i64 136
   %31 = load i32, ptr %30, align 8, !tbaa !22
   %32 = icmp ult i32 %31, 2
@@ -499,9 +499,9 @@ define internal void @h2v1_merged_upsample(ptr nocapture noundef readonly %0, pt
   %39 = phi ptr [ %76, %35 ], [ %20, %33 ]
   %40 = phi ptr [ %93, %35 ], [ %29, %33 ]
   %41 = getelementptr inbounds i8, ptr %38, i64 1
-  %42 = load i8, ptr %38, align 1, !tbaa !43
+  %42 = load i8, ptr %38, align 1, !tbaa !41
   %43 = getelementptr inbounds i8, ptr %37, i64 1
-  %44 = load i8, ptr %37, align 1, !tbaa !43
+  %44 = load i8, ptr %37, align 1, !tbaa !41
   %45 = zext i8 %44 to i64
   %46 = getelementptr inbounds i32, ptr %10, i64 %45
   %47 = load i32, ptr %46, align 4, !tbaa !33
@@ -516,50 +516,50 @@ define internal void @h2v1_merged_upsample(ptr nocapture noundef readonly %0, pt
   %56 = getelementptr inbounds i32, ptr %12, i64 %48
   %57 = load i32, ptr %56, align 4, !tbaa !33
   %58 = getelementptr inbounds i8, ptr %39, i64 1
-  %59 = load i8, ptr %39, align 1, !tbaa !43
+  %59 = load i8, ptr %39, align 1, !tbaa !41
   %60 = zext i8 %59 to i32
   %61 = add nsw i32 %47, %60
   %62 = sext i32 %61 to i64
   %63 = getelementptr inbounds i8, ptr %8, i64 %62
-  %64 = load i8, ptr %63, align 1, !tbaa !43
-  store i8 %64, ptr %40, align 1, !tbaa !43
+  %64 = load i8, ptr %63, align 1, !tbaa !41
+  store i8 %64, ptr %40, align 1, !tbaa !41
   %65 = add nsw i32 %60, %55
   %66 = sext i32 %65 to i64
   %67 = getelementptr inbounds i8, ptr %8, i64 %66
-  %68 = load i8, ptr %67, align 1, !tbaa !43
+  %68 = load i8, ptr %67, align 1, !tbaa !41
   %69 = getelementptr inbounds i8, ptr %40, i64 1
-  store i8 %68, ptr %69, align 1, !tbaa !43
+  store i8 %68, ptr %69, align 1, !tbaa !41
   %70 = add nsw i32 %57, %60
   %71 = sext i32 %70 to i64
   %72 = getelementptr inbounds i8, ptr %8, i64 %71
-  %73 = load i8, ptr %72, align 1, !tbaa !43
+  %73 = load i8, ptr %72, align 1, !tbaa !41
   %74 = getelementptr inbounds i8, ptr %40, i64 2
-  store i8 %73, ptr %74, align 1, !tbaa !43
+  store i8 %73, ptr %74, align 1, !tbaa !41
   %75 = getelementptr inbounds i8, ptr %40, i64 3
   %76 = getelementptr inbounds i8, ptr %39, i64 2
-  %77 = load i8, ptr %58, align 1, !tbaa !43
+  %77 = load i8, ptr %58, align 1, !tbaa !41
   %78 = zext i8 %77 to i32
   %79 = add nsw i32 %47, %78
   %80 = sext i32 %79 to i64
   %81 = getelementptr inbounds i8, ptr %8, i64 %80
-  %82 = load i8, ptr %81, align 1, !tbaa !43
-  store i8 %82, ptr %75, align 1, !tbaa !43
+  %82 = load i8, ptr %81, align 1, !tbaa !41
+  store i8 %82, ptr %75, align 1, !tbaa !41
   %83 = add nsw i32 %78, %55
   %84 = sext i32 %83 to i64
   %85 = getelementptr inbounds i8, ptr %8, i64 %84
-  %86 = load i8, ptr %85, align 1, !tbaa !43
+  %86 = load i8, ptr %85, align 1, !tbaa !41
   %87 = getelementptr inbounds i8, ptr %40, i64 4
-  store i8 %86, ptr %87, align 1, !tbaa !43
+  store i8 %86, ptr %87, align 1, !tbaa !41
   %88 = add nsw i32 %57, %78
   %89 = sext i32 %88 to i64
   %90 = getelementptr inbounds i8, ptr %8, i64 %89
-  %91 = load i8, ptr %90, align 1, !tbaa !43
+  %91 = load i8, ptr %90, align 1, !tbaa !41
   %92 = getelementptr inbounds i8, ptr %40, i64 5
-  store i8 %91, ptr %92, align 1, !tbaa !43
+  store i8 %91, ptr %92, align 1, !tbaa !41
   %93 = getelementptr inbounds i8, ptr %40, i64 6
   %94 = add nsw i32 %36, -1
   %95 = icmp eq i32 %94, 0
-  br i1 %95, label %96, label %35, !llvm.loop !45
+  br i1 %95, label %96, label %35
 
 96:                                               ; preds = %35
   %97 = load i32, ptr %30, align 8, !tbaa !22
@@ -576,8 +576,8 @@ define internal void @h2v1_merged_upsample(ptr nocapture noundef readonly %0, pt
   br i1 %105, label %138, label %106
 
 106:                                              ; preds = %98
-  %107 = load i8, ptr %102, align 1, !tbaa !43
-  %108 = load i8, ptr %103, align 1, !tbaa !43
+  %107 = load i8, ptr %102, align 1, !tbaa !41
+  %108 = load i8, ptr %103, align 1, !tbaa !41
   %109 = zext i8 %108 to i64
   %110 = getelementptr inbounds i32, ptr %10, i64 %109
   %111 = load i32, ptr %110, align 4, !tbaa !33
@@ -591,25 +591,25 @@ define internal void @h2v1_merged_upsample(ptr nocapture noundef readonly %0, pt
   %119 = trunc i64 %118 to i32
   %120 = getelementptr inbounds i32, ptr %12, i64 %112
   %121 = load i32, ptr %120, align 4, !tbaa !33
-  %122 = load i8, ptr %101, align 1, !tbaa !43
+  %122 = load i8, ptr %101, align 1, !tbaa !41
   %123 = zext i8 %122 to i32
   %124 = add nsw i32 %111, %123
   %125 = sext i32 %124 to i64
   %126 = getelementptr inbounds i8, ptr %8, i64 %125
-  %127 = load i8, ptr %126, align 1, !tbaa !43
-  store i8 %127, ptr %100, align 1, !tbaa !43
+  %127 = load i8, ptr %126, align 1, !tbaa !41
+  store i8 %127, ptr %100, align 1, !tbaa !41
   %128 = add nsw i32 %123, %119
   %129 = sext i32 %128 to i64
   %130 = getelementptr inbounds i8, ptr %8, i64 %129
-  %131 = load i8, ptr %130, align 1, !tbaa !43
+  %131 = load i8, ptr %130, align 1, !tbaa !41
   %132 = getelementptr inbounds i8, ptr %100, i64 1
-  store i8 %131, ptr %132, align 1, !tbaa !43
+  store i8 %131, ptr %132, align 1, !tbaa !41
   %133 = add nsw i32 %121, %123
   %134 = sext i32 %133 to i64
   %135 = getelementptr inbounds i8, ptr %8, i64 %134
-  %136 = load i8, ptr %135, align 1, !tbaa !43
+  %136 = load i8, ptr %135, align 1, !tbaa !41
   %137 = getelementptr inbounds i8, ptr %100, i64 2
-  store i8 %136, ptr %137, align 1, !tbaa !43
+  store i8 %136, ptr %137, align 1, !tbaa !41
   br label %138
 
 138:                                              ; preds = %106, %98
@@ -670,14 +670,10 @@ attributes #6 = { nounwind }
 !32 = !{!19, !8, i64 56}
 !33 = !{!11, !11, i64 0}
 !34 = !{!16, !16, i64 0}
-!35 = distinct !{!35, !36}
-!36 = !{!"llvm.loop.mustprogress"}
-!37 = !{!19, !11, i64 72}
-!38 = !{!7, !11, i64 140}
-!39 = !{!19, !11, i64 80}
-!40 = !{!8, !8, i64 0}
-!41 = !{!19, !8, i64 64}
-!42 = !{!7, !8, i64 424}
-!43 = !{!9, !9, i64 0}
-!44 = distinct !{!44, !36}
-!45 = distinct !{!45, !36}
+!35 = !{!19, !11, i64 72}
+!36 = !{!7, !11, i64 140}
+!37 = !{!19, !11, i64 80}
+!38 = !{!8, !8, i64 0}
+!39 = !{!19, !8, i64 64}
+!40 = !{!7, !8, i64 424}
+!41 = !{!9, !9, i64 0}

@@ -226,13 +226,13 @@ define dso_local void @jpeg_idct_islow(ptr nocapture noundef readonly %0, ptr no
   %188 = getelementptr inbounds i8, ptr %18, i64 2
   %189 = add nsw i32 %15, -1
   %190 = icmp ugt i32 %15, 1
-  br i1 %190, label %14, label %11, !llvm.loop !18
+  br i1 %190, label %14, label %11
 
 191:                                              ; preds = %11, %347
   %192 = phi i64 [ 0, %11 ], [ %352, %347 ]
   %193 = phi ptr [ %6, %11 ], [ %351, %347 ]
   %194 = getelementptr inbounds ptr, ptr %3, i64 %192
-  %195 = load ptr, ptr %194, align 8, !tbaa !20
+  %195 = load ptr, ptr %194, align 8, !tbaa !18
   %196 = getelementptr inbounds i8, ptr %195, i64 %13
   %197 = getelementptr inbounds i8, ptr %193, i64 4
   %198 = load i32, ptr %197, align 4, !tbaa !17
@@ -280,20 +280,20 @@ define dso_local void @jpeg_idct_islow(ptr nocapture noundef readonly %0, ptr no
   %228 = and i32 %227, 1023
   %229 = zext nneg i32 %228 to i64
   %230 = getelementptr inbounds i8, ptr %12, i64 %229
-  %231 = load i8, ptr %230, align 1, !tbaa !21
-  store i8 %231, ptr %196, align 1, !tbaa !21
+  %231 = load i8, ptr %230, align 1, !tbaa !19
+  store i8 %231, ptr %196, align 1, !tbaa !19
   %232 = getelementptr inbounds i8, ptr %196, i64 1
-  store i8 %231, ptr %232, align 1, !tbaa !21
+  store i8 %231, ptr %232, align 1, !tbaa !19
   %233 = getelementptr inbounds i8, ptr %196, i64 2
-  store i8 %231, ptr %233, align 1, !tbaa !21
+  store i8 %231, ptr %233, align 1, !tbaa !19
   %234 = getelementptr inbounds i8, ptr %196, i64 3
-  store i8 %231, ptr %234, align 1, !tbaa !21
+  store i8 %231, ptr %234, align 1, !tbaa !19
   %235 = getelementptr inbounds i8, ptr %196, i64 4
-  store i8 %231, ptr %235, align 1, !tbaa !21
+  store i8 %231, ptr %235, align 1, !tbaa !19
   %236 = getelementptr inbounds i8, ptr %196, i64 5
-  store i8 %231, ptr %236, align 1, !tbaa !21
+  store i8 %231, ptr %236, align 1, !tbaa !19
   %237 = getelementptr inbounds i8, ptr %196, i64 6
-  store i8 %231, ptr %237, align 1, !tbaa !21
+  store i8 %231, ptr %237, align 1, !tbaa !19
   br label %347
 
 238:                                              ; preds = %191, %220, %216, %212, %208, %204
@@ -360,69 +360,69 @@ define dso_local void @jpeg_idct_islow(ptr nocapture noundef readonly %0, ptr no
   %299 = lshr i64 %298, 18
   %300 = and i64 %299, 1023
   %301 = getelementptr inbounds i8, ptr %12, i64 %300
-  %302 = load i8, ptr %301, align 1, !tbaa !21
-  store i8 %302, ptr %196, align 1, !tbaa !21
+  %302 = load i8, ptr %301, align 1, !tbaa !19
+  store i8 %302, ptr %196, align 1, !tbaa !19
   %303 = sub nsw i64 %297, %296
   %304 = lshr i64 %303, 18
   %305 = and i64 %304, 1023
   %306 = getelementptr inbounds i8, ptr %12, i64 %305
-  %307 = load i8, ptr %306, align 1, !tbaa !21
+  %307 = load i8, ptr %306, align 1, !tbaa !19
   %308 = getelementptr inbounds i8, ptr %196, i64 7
-  store i8 %307, ptr %308, align 1, !tbaa !21
+  store i8 %307, ptr %308, align 1, !tbaa !19
   %309 = add nsw i64 %261, 131072
   %310 = add nsw i64 %309, %294
   %311 = lshr i64 %310, 18
   %312 = and i64 %311, 1023
   %313 = getelementptr inbounds i8, ptr %12, i64 %312
-  %314 = load i8, ptr %313, align 1, !tbaa !21
+  %314 = load i8, ptr %313, align 1, !tbaa !19
   %315 = getelementptr inbounds i8, ptr %196, i64 1
-  store i8 %314, ptr %315, align 1, !tbaa !21
+  store i8 %314, ptr %315, align 1, !tbaa !19
   %316 = sub nsw i64 %309, %294
   %317 = lshr i64 %316, 18
   %318 = and i64 %317, 1023
   %319 = getelementptr inbounds i8, ptr %12, i64 %318
-  %320 = load i8, ptr %319, align 1, !tbaa !21
+  %320 = load i8, ptr %319, align 1, !tbaa !19
   %321 = getelementptr inbounds i8, ptr %196, i64 6
-  store i8 %320, ptr %321, align 1, !tbaa !21
+  store i8 %320, ptr %321, align 1, !tbaa !19
   %322 = add nsw i64 %262, 131072
   %323 = add nsw i64 %322, %292
   %324 = lshr i64 %323, 18
   %325 = and i64 %324, 1023
   %326 = getelementptr inbounds i8, ptr %12, i64 %325
-  %327 = load i8, ptr %326, align 1, !tbaa !21
+  %327 = load i8, ptr %326, align 1, !tbaa !19
   %328 = getelementptr inbounds i8, ptr %196, i64 2
-  store i8 %327, ptr %328, align 1, !tbaa !21
+  store i8 %327, ptr %328, align 1, !tbaa !19
   %329 = sub nsw i64 %322, %292
   %330 = lshr i64 %329, 18
   %331 = and i64 %330, 1023
   %332 = getelementptr inbounds i8, ptr %12, i64 %331
-  %333 = load i8, ptr %332, align 1, !tbaa !21
+  %333 = load i8, ptr %332, align 1, !tbaa !19
   %334 = getelementptr inbounds i8, ptr %196, i64 5
-  store i8 %333, ptr %334, align 1, !tbaa !21
+  store i8 %333, ptr %334, align 1, !tbaa !19
   %335 = add nsw i64 %260, 131072
   %336 = add nsw i64 %335, %290
   %337 = lshr i64 %336, 18
   %338 = and i64 %337, 1023
   %339 = getelementptr inbounds i8, ptr %12, i64 %338
-  %340 = load i8, ptr %339, align 1, !tbaa !21
+  %340 = load i8, ptr %339, align 1, !tbaa !19
   %341 = getelementptr inbounds i8, ptr %196, i64 3
-  store i8 %340, ptr %341, align 1, !tbaa !21
+  store i8 %340, ptr %341, align 1, !tbaa !19
   %342 = sub nsw i64 %335, %290
   %343 = lshr i64 %342, 18
   %344 = and i64 %343, 1023
   %345 = getelementptr inbounds i8, ptr %12, i64 %344
-  %346 = load i8, ptr %345, align 1, !tbaa !21
+  %346 = load i8, ptr %345, align 1, !tbaa !19
   br label %347
 
 347:                                              ; preds = %238, %224
   %348 = phi i64 [ 4, %238 ], [ 7, %224 ]
   %349 = phi i8 [ %346, %238 ], [ %231, %224 ]
   %350 = getelementptr inbounds i8, ptr %196, i64 %348
-  store i8 %349, ptr %350, align 1, !tbaa !21
+  store i8 %349, ptr %350, align 1, !tbaa !19
   %351 = getelementptr inbounds i8, ptr %193, i64 32
   %352 = add nuw nsw i64 %192, 1
   %353 = icmp eq i64 %352, 8
-  br i1 %353, label %354, label %191, !llvm.loop !22
+  br i1 %353, label %354, label %191
 
 354:                                              ; preds = %347
   call void @llvm.lifetime.end.p0(i64 256, ptr nonnull %6) #2
@@ -460,8 +460,5 @@ attributes #2 = { nounwind }
 !15 = !{!"", !11, i64 0, !11, i64 4, !11, i64 8, !11, i64 12, !11, i64 16, !11, i64 20, !11, i64 24, !11, i64 28, !11, i64 32, !11, i64 36, !11, i64 40, !11, i64 44, !11, i64 48, !11, i64 52, !11, i64 56, !11, i64 60, !11, i64 64, !11, i64 68, !11, i64 72, !8, i64 80, !8, i64 88}
 !16 = !{!13, !13, i64 0}
 !17 = !{!11, !11, i64 0}
-!18 = distinct !{!18, !19}
-!19 = !{!"llvm.loop.mustprogress"}
-!20 = !{!8, !8, i64 0}
-!21 = !{!9, !9, i64 0}
-!22 = distinct !{!22, !19}
+!18 = !{!8, !8, i64 0}
+!19 = !{!9, !9, i64 0}

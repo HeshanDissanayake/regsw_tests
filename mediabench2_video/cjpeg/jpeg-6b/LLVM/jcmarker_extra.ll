@@ -1139,7 +1139,7 @@ define internal void @write_frame_header(ptr noundef %0) #0 {
   %17 = getelementptr inbounds i8, ptr %9, i64 96
   %18 = load i32, ptr %3, align 4, !tbaa !46
   %19 = icmp slt i32 %16, %18
-  br i1 %19, label %8, label %20, !llvm.loop !50
+  br i1 %19, label %8, label %20
 
 20:                                               ; preds = %8
   %21 = icmp ne i32 %15, 0
@@ -1149,19 +1149,19 @@ define internal void @write_frame_header(ptr noundef %0) #0 {
   %23 = phi i1 [ false, %1 ], [ %21, %20 ]
   %24 = phi i32 [ %4, %1 ], [ %18, %20 ]
   %25 = getelementptr inbounds i8, ptr %0, i64 260
-  %26 = load i32, ptr %25, align 4, !tbaa !52
+  %26 = load i32, ptr %25, align 4, !tbaa !50
   %27 = icmp eq i32 %26, 0
   br i1 %27, label %28, label %78
 
 28:                                               ; preds = %22
   %29 = getelementptr inbounds i8, ptr %0, i64 308
-  %30 = load i32, ptr %29, align 4, !tbaa !53
+  %30 = load i32, ptr %29, align 4, !tbaa !51
   %31 = icmp eq i32 %30, 0
   br i1 %31, label %32, label %78
 
 32:                                               ; preds = %28
   %33 = getelementptr inbounds i8, ptr %0, i64 72
-  %34 = load i32, ptr %33, align 8, !tbaa !54
+  %34 = load i32, ptr %33, align 8, !tbaa !52
   %35 = icmp eq i32 %34, 8
   br i1 %35, label %36, label %68
 
@@ -1178,13 +1178,13 @@ define internal void @write_frame_header(ptr noundef %0) #0 {
   %42 = phi i32 [ %53, %52 ], [ 1, %38 ]
   %43 = phi i32 [ %54, %52 ], [ 0, %38 ]
   %44 = getelementptr inbounds i8, ptr %41, i64 20
-  %45 = load i32, ptr %44, align 4, !tbaa !55
+  %45 = load i32, ptr %44, align 4, !tbaa !53
   %46 = icmp sgt i32 %45, 1
   br i1 %46, label %51, label %47
 
 47:                                               ; preds = %40
   %48 = getelementptr inbounds i8, ptr %41, i64 24
-  %49 = load i32, ptr %48, align 8, !tbaa !56
+  %49 = load i32, ptr %48, align 8, !tbaa !54
   %50 = icmp sgt i32 %49, 1
   br i1 %50, label %51, label %52
 
@@ -1196,7 +1196,7 @@ define internal void @write_frame_header(ptr noundef %0) #0 {
   %54 = add nuw nsw i32 %43, 1
   %55 = getelementptr inbounds i8, ptr %41, i64 96
   %56 = icmp eq i32 %54, %24
-  br i1 %56, label %57, label %40, !llvm.loop !57
+  br i1 %56, label %57, label %40
 
 57:                                               ; preds = %52, %36
   %58 = phi i32 [ 1, %36 ], [ %53, %52 ]
@@ -1209,20 +1209,20 @@ define internal void @write_frame_header(ptr noundef %0) #0 {
   %63 = getelementptr inbounds i8, ptr %62, i64 40
   store i32 75, ptr %63, align 8, !tbaa !35
   %64 = getelementptr inbounds i8, ptr %62, i64 8
-  %65 = load ptr, ptr %64, align 8, !tbaa !58
+  %65 = load ptr, ptr %64, align 8, !tbaa !55
   tail call void %65(ptr noundef nonnull %0, i32 noundef signext 0) #1
-  %66 = load i32, ptr %25, align 4, !tbaa !52
+  %66 = load i32, ptr %25, align 4, !tbaa !50
   %67 = icmp eq i32 %66, 0
   br i1 %67, label %72, label %78
 
 68:                                               ; preds = %57, %32
   %69 = phi i32 [ 0, %32 ], [ %58, %57 ]
-  %70 = load i32, ptr %29, align 4, !tbaa !53
+  %70 = load i32, ptr %29, align 4, !tbaa !51
   %71 = icmp eq i32 %70, 0
   br i1 %71, label %75, label %78
 
 72:                                               ; preds = %61
-  %73 = load i32, ptr %29, align 4, !tbaa !53
+  %73 = load i32, ptr %29, align 4, !tbaa !51
   %74 = icmp eq i32 %73, 0
   br i1 %74, label %77, label %78
 
@@ -1244,13 +1244,13 @@ define internal void @write_scan_header(ptr noundef %0) #0 {
   %2 = getelementptr inbounds i8, ptr %0, i64 464
   %3 = load ptr, ptr %2, align 8, !tbaa !17
   %4 = getelementptr inbounds i8, ptr %0, i64 260
-  %5 = load i32, ptr %4, align 4, !tbaa !52
+  %5 = load i32, ptr %4, align 4, !tbaa !50
   %6 = icmp eq i32 %5, 0
   br i1 %6, label %7, label %44
 
 7:                                                ; preds = %1
   %8 = getelementptr inbounds i8, ptr %0, i64 324
-  %9 = load i32, ptr %8, align 4, !tbaa !59
+  %9 = load i32, ptr %8, align 4, !tbaa !56
   %10 = icmp sgt i32 %9, 0
   br i1 %10, label %11, label %44
 
@@ -1264,52 +1264,52 @@ define internal void @write_scan_header(ptr noundef %0) #0 {
 16:                                               ; preds = %11, %39
   %17 = phi i64 [ 0, %11 ], [ %40, %39 ]
   %18 = getelementptr inbounds [4 x ptr], ptr %12, i64 0, i64 %17
-  %19 = load ptr, ptr %18, align 8, !tbaa !60
-  %20 = load i32, ptr %13, align 4, !tbaa !53
+  %19 = load ptr, ptr %18, align 8, !tbaa !57
+  %20 = load i32, ptr %13, align 4, !tbaa !51
   %21 = icmp eq i32 %20, 0
   br i1 %21, label %34, label %22
 
 22:                                               ; preds = %16
-  %23 = load i32, ptr %14, align 4, !tbaa !61
+  %23 = load i32, ptr %14, align 4, !tbaa !58
   %24 = icmp eq i32 %23, 0
   br i1 %24, label %25, label %31
 
 25:                                               ; preds = %22
-  %26 = load i32, ptr %15, align 4, !tbaa !62
+  %26 = load i32, ptr %15, align 4, !tbaa !59
   %27 = icmp eq i32 %26, 0
   br i1 %27, label %28, label %39
 
 28:                                               ; preds = %25
   %29 = getelementptr inbounds i8, ptr %19, i64 20
-  %30 = load i32, ptr %29, align 4, !tbaa !55
+  %30 = load i32, ptr %29, align 4, !tbaa !53
   tail call fastcc void @emit_dht(ptr noundef nonnull %0, i32 noundef signext %30, i32 noundef signext 0)
   br label %39
 
 31:                                               ; preds = %22
   %32 = getelementptr inbounds i8, ptr %19, i64 24
-  %33 = load i32, ptr %32, align 8, !tbaa !56
+  %33 = load i32, ptr %32, align 8, !tbaa !54
   tail call fastcc void @emit_dht(ptr noundef nonnull %0, i32 noundef signext %33, i32 noundef signext 1)
   br label %39
 
 34:                                               ; preds = %16
   %35 = getelementptr inbounds i8, ptr %19, i64 20
-  %36 = load i32, ptr %35, align 4, !tbaa !55
+  %36 = load i32, ptr %35, align 4, !tbaa !53
   tail call fastcc void @emit_dht(ptr noundef nonnull %0, i32 noundef signext %36, i32 noundef signext 0)
   %37 = getelementptr inbounds i8, ptr %19, i64 24
-  %38 = load i32, ptr %37, align 8, !tbaa !56
+  %38 = load i32, ptr %37, align 8, !tbaa !54
   tail call fastcc void @emit_dht(ptr noundef nonnull %0, i32 noundef signext %38, i32 noundef signext 1)
   br label %39
 
 39:                                               ; preds = %34, %25, %28, %31
   %40 = add nuw nsw i64 %17, 1
-  %41 = load i32, ptr %8, align 4, !tbaa !59
+  %41 = load i32, ptr %8, align 4, !tbaa !56
   %42 = sext i32 %41 to i64
   %43 = icmp slt i64 %40, %42
-  br i1 %43, label %16, label %44, !llvm.loop !63
+  br i1 %43, label %16, label %44
 
 44:                                               ; preds = %39, %7, %1
   %45 = getelementptr inbounds i8, ptr %0, i64 280
-  %46 = load i32, ptr %45, align 8, !tbaa !64
+  %46 = load i32, ptr %45, align 8, !tbaa !60
   %47 = getelementptr inbounds i8, ptr %3, i64 56
   %48 = load i32, ptr %47, align 8, !tbaa !27
   %49 = icmp eq i32 %46, %48
@@ -1429,7 +1429,7 @@ define internal void @write_scan_header(ptr noundef %0) #0 {
   br label %119
 
 119:                                              ; preds = %115, %110, %102
-  %120 = load i32, ptr %45, align 8, !tbaa !64
+  %120 = load i32, ptr %45, align 8, !tbaa !60
   %121 = lshr i32 %120, 8
   %122 = load ptr, ptr %51, align 8, !tbaa !28
   %123 = trunc i32 %121 to i8
@@ -1489,7 +1489,7 @@ define internal void @write_scan_header(ptr noundef %0) #0 {
   br label %157
 
 157:                                              ; preds = %139, %148, %153
-  %158 = load i32, ptr %45, align 8, !tbaa !64
+  %158 = load i32, ptr %45, align 8, !tbaa !60
   store i32 %158, ptr %47, align 8, !tbaa !27
   br label %159
 
@@ -1552,7 +1552,7 @@ define internal void @write_scan_header(ptr noundef %0) #0 {
 
 194:                                              ; preds = %190, %185, %177
   %195 = getelementptr inbounds i8, ptr %0, i64 324
-  %196 = load i32, ptr %195, align 4, !tbaa !59
+  %196 = load i32, ptr %195, align 4, !tbaa !56
   %197 = shl nsw i32 %196, 1
   %198 = add nsw i32 %197, 6
   %199 = lshr i32 %198, 8
@@ -1614,7 +1614,7 @@ define internal void @write_scan_header(ptr noundef %0) #0 {
   br label %235
 
 235:                                              ; preds = %231, %226, %217
-  %236 = load i32, ptr %195, align 4, !tbaa !59
+  %236 = load i32, ptr %195, align 4, !tbaa !56
   %237 = load ptr, ptr %160, align 8, !tbaa !28
   %238 = trunc i32 %236 to i8
   %239 = load ptr, ptr %237, align 8, !tbaa !29
@@ -1644,7 +1644,7 @@ define internal void @write_scan_header(ptr noundef %0) #0 {
   br label %254
 
 254:                                              ; preds = %250, %245, %235
-  %255 = load i32, ptr %195, align 4, !tbaa !59
+  %255 = load i32, ptr %195, align 4, !tbaa !56
   %256 = icmp sgt i32 %255, 0
   br i1 %256, label %257, label %328
 
@@ -1658,8 +1658,8 @@ define internal void @write_scan_header(ptr noundef %0) #0 {
 262:                                              ; preds = %323, %257
   %263 = phi i64 [ 0, %257 ], [ %324, %323 ]
   %264 = getelementptr inbounds [4 x ptr], ptr %258, i64 0, i64 %263
-  %265 = load ptr, ptr %264, align 8, !tbaa !60
-  %266 = load i32, ptr %265, align 8, !tbaa !65
+  %265 = load ptr, ptr %264, align 8, !tbaa !57
+  %266 = load i32, ptr %265, align 8, !tbaa !61
   %267 = load ptr, ptr %160, align 8, !tbaa !28
   %268 = trunc i32 %266 to i8
   %269 = load ptr, ptr %267, align 8, !tbaa !29
@@ -1690,25 +1690,25 @@ define internal void @write_scan_header(ptr noundef %0) #0 {
 
 284:                                              ; preds = %280, %275, %262
   %285 = getelementptr inbounds i8, ptr %265, i64 20
-  %286 = load i32, ptr %285, align 4, !tbaa !55
+  %286 = load i32, ptr %285, align 4, !tbaa !53
   %287 = getelementptr inbounds i8, ptr %265, i64 24
-  %288 = load i32, ptr %287, align 8, !tbaa !56
-  %289 = load i32, ptr %259, align 4, !tbaa !53
+  %288 = load i32, ptr %287, align 8, !tbaa !54
+  %289 = load i32, ptr %259, align 4, !tbaa !51
   %290 = icmp eq i32 %289, 0
   br i1 %290, label %301, label %291
 
 291:                                              ; preds = %284
-  %292 = load i32, ptr %260, align 4, !tbaa !61
+  %292 = load i32, ptr %260, align 4, !tbaa !58
   %293 = icmp eq i32 %292, 0
   br i1 %293, label %294, label %301
 
 294:                                              ; preds = %291
-  %295 = load i32, ptr %261, align 4, !tbaa !62
+  %295 = load i32, ptr %261, align 4, !tbaa !59
   %296 = icmp eq i32 %295, 0
   br i1 %296, label %301, label %297
 
 297:                                              ; preds = %294
-  %298 = load i32, ptr %4, align 4, !tbaa !52
+  %298 = load i32, ptr %4, align 4, !tbaa !50
   %299 = icmp eq i32 %298, 0
   %300 = select i1 %299, i32 0, i32 %286
   br label %301
@@ -1748,14 +1748,14 @@ define internal void @write_scan_header(ptr noundef %0) #0 {
 
 323:                                              ; preds = %319, %314, %301
   %324 = add nuw nsw i64 %263, 1
-  %325 = load i32, ptr %195, align 4, !tbaa !59
+  %325 = load i32, ptr %195, align 4, !tbaa !56
   %326 = sext i32 %325 to i64
   %327 = icmp slt i64 %324, %326
-  br i1 %327, label %262, label %328, !llvm.loop !66
+  br i1 %327, label %262, label %328
 
 328:                                              ; preds = %323, %254
   %329 = getelementptr inbounds i8, ptr %0, i64 412
-  %330 = load i32, ptr %329, align 4, !tbaa !61
+  %330 = load i32, ptr %329, align 4, !tbaa !58
   %331 = load ptr, ptr %160, align 8, !tbaa !28
   %332 = trunc i32 %330 to i8
   %333 = load ptr, ptr %331, align 8, !tbaa !29
@@ -1786,7 +1786,7 @@ define internal void @write_scan_header(ptr noundef %0) #0 {
 
 348:                                              ; preds = %344, %339, %328
   %349 = getelementptr inbounds i8, ptr %0, i64 416
-  %350 = load i32, ptr %349, align 8, !tbaa !67
+  %350 = load i32, ptr %349, align 8, !tbaa !62
   %351 = load ptr, ptr %160, align 8, !tbaa !28
   %352 = trunc i32 %350 to i8
   %353 = load ptr, ptr %351, align 8, !tbaa !29
@@ -1817,10 +1817,10 @@ define internal void @write_scan_header(ptr noundef %0) #0 {
 
 368:                                              ; preds = %364, %359, %348
   %369 = getelementptr inbounds i8, ptr %0, i64 420
-  %370 = load i32, ptr %369, align 4, !tbaa !62
+  %370 = load i32, ptr %369, align 4, !tbaa !59
   %371 = shl i32 %370, 4
   %372 = getelementptr inbounds i8, ptr %0, i64 424
-  %373 = load i32, ptr %372, align 8, !tbaa !68
+  %373 = load i32, ptr %372, align 8, !tbaa !63
   %374 = add nsw i32 %371, %373
   %375 = load ptr, ptr %160, align 8, !tbaa !28
   %376 = trunc i32 %374 to i8
@@ -1976,7 +1976,7 @@ define internal void @write_tables_only(ptr noundef %0) #0 {
 
 36:                                               ; preds = %19, %27, %32
   %37 = getelementptr inbounds i8, ptr %0, i64 96
-  %38 = load ptr, ptr %37, align 8, !tbaa !60
+  %38 = load ptr, ptr %37, align 8, !tbaa !57
   %39 = icmp eq ptr %38, null
   br i1 %39, label %42, label %40
 
@@ -1986,7 +1986,7 @@ define internal void @write_tables_only(ptr noundef %0) #0 {
 
 42:                                               ; preds = %36, %40
   %43 = getelementptr inbounds i8, ptr %0, i64 104
-  %44 = load ptr, ptr %43, align 8, !tbaa !60
+  %44 = load ptr, ptr %43, align 8, !tbaa !57
   %45 = icmp eq ptr %44, null
   br i1 %45, label %48, label %46
 
@@ -1996,7 +1996,7 @@ define internal void @write_tables_only(ptr noundef %0) #0 {
 
 48:                                               ; preds = %46, %42
   %49 = getelementptr inbounds i8, ptr %0, i64 112
-  %50 = load ptr, ptr %49, align 8, !tbaa !60
+  %50 = load ptr, ptr %49, align 8, !tbaa !57
   %51 = icmp eq ptr %50, null
   br i1 %51, label %54, label %52
 
@@ -2006,7 +2006,7 @@ define internal void @write_tables_only(ptr noundef %0) #0 {
 
 54:                                               ; preds = %52, %48
   %55 = getelementptr inbounds i8, ptr %0, i64 120
-  %56 = load ptr, ptr %55, align 8, !tbaa !60
+  %56 = load ptr, ptr %55, align 8, !tbaa !57
   %57 = icmp eq ptr %56, null
   br i1 %57, label %60, label %58
 
@@ -2016,14 +2016,14 @@ define internal void @write_tables_only(ptr noundef %0) #0 {
 
 60:                                               ; preds = %58, %54
   %61 = getelementptr inbounds i8, ptr %0, i64 260
-  %62 = load i32, ptr %61, align 4, !tbaa !52
+  %62 = load i32, ptr %61, align 4, !tbaa !50
   %63 = icmp eq i32 %62, 0
   br i1 %63, label %64, label %104
 
 64:                                               ; preds = %60
   %65 = getelementptr inbounds i8, ptr %0, i64 128
   %66 = getelementptr inbounds i8, ptr %0, i64 160
-  %67 = load ptr, ptr %65, align 8, !tbaa !60
+  %67 = load ptr, ptr %65, align 8, !tbaa !57
   %68 = icmp eq ptr %67, null
   br i1 %68, label %70, label %69
 
@@ -2032,7 +2032,7 @@ define internal void @write_tables_only(ptr noundef %0) #0 {
   br label %70
 
 70:                                               ; preds = %69, %64
-  %71 = load ptr, ptr %66, align 8, !tbaa !60
+  %71 = load ptr, ptr %66, align 8, !tbaa !57
   %72 = icmp eq ptr %71, null
   br i1 %72, label %74, label %73
 
@@ -2042,7 +2042,7 @@ define internal void @write_tables_only(ptr noundef %0) #0 {
 
 74:                                               ; preds = %70, %73
   %75 = getelementptr inbounds i8, ptr %0, i64 136
-  %76 = load ptr, ptr %75, align 8, !tbaa !60
+  %76 = load ptr, ptr %75, align 8, !tbaa !57
   %77 = icmp eq ptr %76, null
   br i1 %77, label %79, label %78
 
@@ -2052,7 +2052,7 @@ define internal void @write_tables_only(ptr noundef %0) #0 {
 
 79:                                               ; preds = %78, %74
   %80 = getelementptr inbounds i8, ptr %0, i64 168
-  %81 = load ptr, ptr %80, align 8, !tbaa !60
+  %81 = load ptr, ptr %80, align 8, !tbaa !57
   %82 = icmp eq ptr %81, null
   br i1 %82, label %84, label %83
 
@@ -2062,7 +2062,7 @@ define internal void @write_tables_only(ptr noundef %0) #0 {
 
 84:                                               ; preds = %83, %79
   %85 = getelementptr inbounds i8, ptr %0, i64 144
-  %86 = load ptr, ptr %85, align 8, !tbaa !60
+  %86 = load ptr, ptr %85, align 8, !tbaa !57
   %87 = icmp eq ptr %86, null
   br i1 %87, label %89, label %88
 
@@ -2072,7 +2072,7 @@ define internal void @write_tables_only(ptr noundef %0) #0 {
 
 89:                                               ; preds = %88, %84
   %90 = getelementptr inbounds i8, ptr %0, i64 176
-  %91 = load ptr, ptr %90, align 8, !tbaa !60
+  %91 = load ptr, ptr %90, align 8, !tbaa !57
   %92 = icmp eq ptr %91, null
   br i1 %92, label %94, label %93
 
@@ -2082,7 +2082,7 @@ define internal void @write_tables_only(ptr noundef %0) #0 {
 
 94:                                               ; preds = %93, %89
   %95 = getelementptr inbounds i8, ptr %0, i64 152
-  %96 = load ptr, ptr %95, align 8, !tbaa !60
+  %96 = load ptr, ptr %95, align 8, !tbaa !57
   %97 = icmp eq ptr %96, null
   br i1 %97, label %99, label %98
 
@@ -2092,7 +2092,7 @@ define internal void @write_tables_only(ptr noundef %0) #0 {
 
 99:                                               ; preds = %98, %94
   %100 = getelementptr inbounds i8, ptr %0, i64 184
-  %101 = load ptr, ptr %100, align 8, !tbaa !60
+  %101 = load ptr, ptr %100, align 8, !tbaa !57
   %102 = icmp eq ptr %101, null
   br i1 %102, label %104, label %103
 
@@ -2335,7 +2335,7 @@ define internal fastcc signext range(i32 0, 2) i32 @emit_dqt(ptr noundef %0, i32
   %3 = getelementptr inbounds i8, ptr %0, i64 96
   %4 = sext i32 %1 to i64
   %5 = getelementptr inbounds [4 x ptr], ptr %3, i64 0, i64 %4
-  %6 = load ptr, ptr %5, align 8, !tbaa !60
+  %6 = load ptr, ptr %5, align 8, !tbaa !57
   %7 = icmp eq ptr %6, null
   br i1 %7, label %8, label %14
 
@@ -2357,16 +2357,16 @@ define internal fastcc signext range(i32 0, 2) i32 @emit_dqt(ptr noundef %0, i32
   %16 = phi i64 [ %22, %15 ], [ 0, %14 ]
   %17 = phi i32 [ %21, %15 ], [ 0, %14 ]
   %18 = getelementptr inbounds [64 x i16], ptr %6, i64 0, i64 %16
-  %19 = load i16, ptr %18, align 2, !tbaa !69
+  %19 = load i16, ptr %18, align 2, !tbaa !64
   %20 = icmp ugt i16 %19, 255
   %21 = select i1 %20, i32 1, i32 %17
   %22 = add nuw nsw i64 %16, 1
   %23 = icmp eq i64 %22, 64
-  br i1 %23, label %24, label %15, !llvm.loop !70
+  br i1 %23, label %24, label %15
 
 24:                                               ; preds = %15
   %25 = getelementptr inbounds i8, ptr %6, i64 128
-  %26 = load i32, ptr %25, align 4, !tbaa !71
+  %26 = load i32, ptr %25, align 4, !tbaa !65
   %27 = icmp eq i32 %26, 0
   br i1 %27, label %28, label %194
 
@@ -2522,10 +2522,10 @@ define internal fastcc signext range(i32 0, 2) i32 @emit_dqt(ptr noundef %0, i32
 120:                                              ; preds = %119, %144
   %121 = phi i64 [ %145, %144 ], [ 0, %119 ]
   %122 = getelementptr inbounds [0 x i32], ptr @jpeg_natural_order, i64 0, i64 %121
-  %123 = load i32, ptr %122, align 4, !tbaa !73
+  %123 = load i32, ptr %122, align 4, !tbaa !67
   %124 = sext i32 %123 to i64
   %125 = getelementptr inbounds [64 x i16], ptr %6, i64 0, i64 %124
-  %126 = load i16, ptr %125, align 2, !tbaa !69
+  %126 = load i16, ptr %125, align 2, !tbaa !64
   %127 = load ptr, ptr %29, align 8, !tbaa !28
   %128 = trunc i16 %126 to i8
   %129 = load ptr, ptr %127, align 8, !tbaa !29
@@ -2557,15 +2557,15 @@ define internal fastcc signext range(i32 0, 2) i32 @emit_dqt(ptr noundef %0, i32
 144:                                              ; preds = %140, %135, %120
   %145 = add nuw nsw i64 %121, 1
   %146 = icmp eq i64 %145, 64
-  br i1 %146, label %193, label %120, !llvm.loop !74
+  br i1 %146, label %193, label %120
 
 147:                                              ; preds = %119, %190
   %148 = phi i64 [ %191, %190 ], [ 0, %119 ]
   %149 = getelementptr inbounds [0 x i32], ptr @jpeg_natural_order, i64 0, i64 %148
-  %150 = load i32, ptr %149, align 4, !tbaa !73
+  %150 = load i32, ptr %149, align 4, !tbaa !67
   %151 = sext i32 %150 to i64
   %152 = getelementptr inbounds [64 x i16], ptr %6, i64 0, i64 %151
-  %153 = load i16, ptr %152, align 2, !tbaa !69
+  %153 = load i16, ptr %152, align 2, !tbaa !64
   %154 = lshr i16 %153, 8
   %155 = load ptr, ptr %29, align 8, !tbaa !28
   %156 = trunc nuw i16 %154 to i8
@@ -2627,10 +2627,10 @@ define internal fastcc signext range(i32 0, 2) i32 @emit_dqt(ptr noundef %0, i32
 190:                                              ; preds = %172, %181, %186
   %191 = add nuw nsw i64 %148, 1
   %192 = icmp eq i64 %191, 64
-  br i1 %192, label %193, label %147, !llvm.loop !74
+  br i1 %192, label %193, label %147
 
 193:                                              ; preds = %190, %144
-  store i32 1, ptr %25, align 4, !tbaa !71
+  store i32 1, ptr %25, align 4, !tbaa !65
   br label %194
 
 194:                                              ; preds = %193, %24
@@ -2761,13 +2761,13 @@ define internal fastcc void @emit_sof(ptr noundef %0, i32 noundef signext %1) un
 
 79:                                               ; preds = %61, %70, %75
   %80 = getelementptr inbounds i8, ptr %0, i64 52
-  %81 = load i32, ptr %80, align 4, !tbaa !75
+  %81 = load i32, ptr %80, align 4, !tbaa !68
   %82 = icmp ugt i32 %81, 65535
   br i1 %82, label %87, label %83
 
 83:                                               ; preds = %79
   %84 = getelementptr inbounds i8, ptr %0, i64 48
-  %85 = load i32, ptr %84, align 8, !tbaa !76
+  %85 = load i32, ptr %84, align 8, !tbaa !69
   %86 = icmp ugt i32 %85, 65535
   br i1 %86, label %87, label %93
 
@@ -2784,7 +2784,7 @@ define internal fastcc void @emit_sof(ptr noundef %0, i32 noundef signext %1) un
 
 93:                                               ; preds = %87, %83
   %94 = getelementptr inbounds i8, ptr %0, i64 72
-  %95 = load i32, ptr %94, align 8, !tbaa !54
+  %95 = load i32, ptr %94, align 8, !tbaa !52
   %96 = load ptr, ptr %3, align 8, !tbaa !28
   %97 = trunc i32 %95 to i8
   %98 = load ptr, ptr %96, align 8, !tbaa !29
@@ -2814,7 +2814,7 @@ define internal fastcc void @emit_sof(ptr noundef %0, i32 noundef signext %1) un
   br label %113
 
 113:                                              ; preds = %93, %104, %109
-  %114 = load i32, ptr %80, align 4, !tbaa !75
+  %114 = load i32, ptr %80, align 4, !tbaa !68
   %115 = lshr i32 %114, 8
   %116 = load ptr, ptr %3, align 8, !tbaa !28
   %117 = trunc i32 %115 to i8
@@ -2875,7 +2875,7 @@ define internal fastcc void @emit_sof(ptr noundef %0, i32 noundef signext %1) un
 
 151:                                              ; preds = %133, %142, %147
   %152 = getelementptr inbounds i8, ptr %0, i64 48
-  %153 = load i32, ptr %152, align 8, !tbaa !76
+  %153 = load i32, ptr %152, align 8, !tbaa !69
   %154 = lshr i32 %153, 8
   %155 = load ptr, ptr %3, align 8, !tbaa !28
   %156 = trunc i32 %154 to i8
@@ -2977,7 +2977,7 @@ define internal fastcc void @emit_sof(ptr noundef %0, i32 noundef signext %1) un
 215:                                              ; preds = %212, %280
   %216 = phi ptr [ %282, %280 ], [ %214, %212 ]
   %217 = phi i32 [ %281, %280 ], [ 0, %212 ]
-  %218 = load i32, ptr %216, align 8, !tbaa !65
+  %218 = load i32, ptr %216, align 8, !tbaa !61
   %219 = load ptr, ptr %3, align 8, !tbaa !28
   %220 = trunc i32 %218 to i8
   %221 = load ptr, ptr %219, align 8, !tbaa !29
@@ -3008,10 +3008,10 @@ define internal fastcc void @emit_sof(ptr noundef %0, i32 noundef signext %1) un
 
 236:                                              ; preds = %215, %227, %232
   %237 = getelementptr inbounds i8, ptr %216, i64 8
-  %238 = load i32, ptr %237, align 8, !tbaa !77
+  %238 = load i32, ptr %237, align 8, !tbaa !70
   %239 = shl i32 %238, 4
   %240 = getelementptr inbounds i8, ptr %216, i64 12
-  %241 = load i32, ptr %240, align 4, !tbaa !78
+  %241 = load i32, ptr %240, align 4, !tbaa !71
   %242 = add nsw i32 %239, %241
   %243 = load ptr, ptr %3, align 8, !tbaa !28
   %244 = trunc i32 %242 to i8
@@ -3077,7 +3077,7 @@ define internal fastcc void @emit_sof(ptr noundef %0, i32 noundef signext %1) un
   %282 = getelementptr inbounds i8, ptr %216, i64 96
   %283 = load i32, ptr %39, align 4, !tbaa !46
   %284 = icmp slt i32 %281, %283
-  br i1 %284, label %215, label %285, !llvm.loop !79
+  br i1 %284, label %215, label %285
 
 285:                                              ; preds = %280, %209
   ret void
@@ -3094,7 +3094,7 @@ define internal fastcc void @emit_dht(ptr noundef %0, i32 noundef signext %1, i3
   %10 = getelementptr inbounds [4 x ptr], ptr %9, i64 0, i64 %5
   %11 = select i1 %4, i32 %1, i32 %8
   %12 = select i1 %4, ptr %10, ptr %7
-  %13 = load ptr, ptr %12, align 8, !tbaa !60
+  %13 = load ptr, ptr %12, align 8, !tbaa !57
   %14 = icmp eq ptr %13, null
   br i1 %14, label %15, label %21
 
@@ -3111,7 +3111,7 @@ define internal fastcc void @emit_dht(ptr noundef %0, i32 noundef signext %1, i3
 
 21:                                               ; preds = %15, %3
   %22 = getelementptr inbounds i8, ptr %13, i64 276
-  %23 = load i32, ptr %22, align 4, !tbaa !80
+  %23 = load i32, ptr %22, align 4, !tbaa !72
   %24 = icmp eq i32 %23, 0
   br i1 %24, label %25, label %232
 
@@ -3370,7 +3370,7 @@ define internal fastcc void @emit_dht(ptr noundef %0, i32 noundef signext %1, i3
 205:                                              ; preds = %185, %196, %201
   %206 = add nuw nsw i64 %186, 1
   %207 = icmp eq i64 %206, 17
-  br i1 %207, label %180, label %185, !llvm.loop !82
+  br i1 %207, label %180, label %185
 
 208:                                              ; preds = %182, %228
   %209 = phi i64 [ 0, %182 ], [ %229, %228 ]
@@ -3406,10 +3406,10 @@ define internal fastcc void @emit_dht(ptr noundef %0, i32 noundef signext %1, i3
 228:                                              ; preds = %208, %219, %224
   %229 = add nuw nsw i64 %209, 1
   %230 = icmp ult i64 %229, %184
-  br i1 %230, label %208, label %231, !llvm.loop !83
+  br i1 %230, label %208, label %231
 
 231:                                              ; preds = %228, %180
-  store i32 1, ptr %22, align 4, !tbaa !80
+  store i32 1, ptr %22, align 4, !tbaa !72
   br label %232
 
 232:                                              ; preds = %231, %21
@@ -3472,37 +3472,27 @@ attributes #1 = { nounwind }
 !47 = !{!7, !8, i64 88}
 !48 = !{!49, !11, i64 16}
 !49 = !{!"", !11, i64 0, !11, i64 4, !11, i64 8, !11, i64 12, !11, i64 16, !11, i64 20, !11, i64 24, !11, i64 28, !11, i64 32, !11, i64 36, !11, i64 40, !11, i64 44, !11, i64 48, !11, i64 52, !11, i64 56, !11, i64 60, !11, i64 64, !11, i64 68, !11, i64 72, !8, i64 80, !8, i64 88}
-!50 = distinct !{!50, !51}
-!51 = !{!"llvm.loop.mustprogress"}
-!52 = !{!7, !11, i64 260}
-!53 = !{!7, !11, i64 308}
-!54 = !{!7, !11, i64 72}
-!55 = !{!49, !11, i64 20}
-!56 = !{!49, !11, i64 24}
-!57 = distinct !{!57, !51}
-!58 = !{!36, !8, i64 8}
-!59 = !{!7, !11, i64 324}
-!60 = !{!8, !8, i64 0}
-!61 = !{!7, !11, i64 412}
-!62 = !{!7, !11, i64 420}
-!63 = distinct !{!63, !51}
-!64 = !{!7, !11, i64 280}
-!65 = !{!49, !11, i64 0}
-!66 = distinct !{!66, !51}
-!67 = !{!7, !11, i64 416}
-!68 = !{!7, !11, i64 424}
-!69 = !{!13, !13, i64 0}
-!70 = distinct !{!70, !51}
-!71 = !{!72, !11, i64 128}
-!72 = !{!"", !9, i64 0, !11, i64 128}
-!73 = !{!11, !11, i64 0}
-!74 = distinct !{!74, !51}
-!75 = !{!7, !11, i64 52}
-!76 = !{!7, !11, i64 48}
-!77 = !{!49, !11, i64 8}
-!78 = !{!49, !11, i64 12}
-!79 = distinct !{!79, !51}
-!80 = !{!81, !11, i64 276}
-!81 = !{!"", !9, i64 0, !9, i64 17, !11, i64 276}
-!82 = distinct !{!82, !51}
-!83 = distinct !{!83, !51}
+!50 = !{!7, !11, i64 260}
+!51 = !{!7, !11, i64 308}
+!52 = !{!7, !11, i64 72}
+!53 = !{!49, !11, i64 20}
+!54 = !{!49, !11, i64 24}
+!55 = !{!36, !8, i64 8}
+!56 = !{!7, !11, i64 324}
+!57 = !{!8, !8, i64 0}
+!58 = !{!7, !11, i64 412}
+!59 = !{!7, !11, i64 420}
+!60 = !{!7, !11, i64 280}
+!61 = !{!49, !11, i64 0}
+!62 = !{!7, !11, i64 416}
+!63 = !{!7, !11, i64 424}
+!64 = !{!13, !13, i64 0}
+!65 = !{!66, !11, i64 128}
+!66 = !{!"", !9, i64 0, !11, i64 128}
+!67 = !{!11, !11, i64 0}
+!68 = !{!7, !11, i64 52}
+!69 = !{!7, !11, i64 48}
+!70 = !{!49, !11, i64 8}
+!71 = !{!49, !11, i64 12}
+!72 = !{!73, !11, i64 276}
+!73 = !{!"", !9, i64 0, !9, i64 17, !11, i64 276}

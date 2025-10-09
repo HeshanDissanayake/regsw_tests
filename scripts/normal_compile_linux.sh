@@ -44,7 +44,7 @@ for FOLDER in "${FOLDERS[@]}"; do
 done
 
 
-/home/heshds/working_dir/llvm-project/output-normal/bin/clang --sysroot=/home/heshds/working_dir/cva6-sdk/buildroot/output/host/riscv64-buildroot-linux-gnu/sysroot/usr/ --gcc-toolchain=/home/heshds/working_dir/cva6-sdk/buildroot/output/host/riscv64-buildroot-linux-gnu/ -O3 -S  -emit-llvm --target=riscv64  -march=rv64g -mabi=lp64d $1 -o LLVM/${basename}_extra.ll
+/home/heshds/working_dir/llvm-project/output-normal/bin/clang -std=gnu89 --sysroot=/home/heshds/working_dir/cva6-sdk/buildroot/output/host/riscv64-buildroot-linux-gnu/sysroot/usr/ --gcc-toolchain=/home/heshds/working_dir/cva6-sdk/buildroot/output/host/riscv64-buildroot-linux-gnu/ -O3 -S $CLANG_FLAGS -emit-llvm --target=riscv64  -march=rv64g -mabi=lp64d $1 -o LLVM/${basename}_extra.ll
 
 /home/heshds/working_dir/llvm-project/output-normal/bin/llc -O3 --march=riscv64 -mcpu=generic-rv64 -mattr=+d  LLVM/${basename}_extra.ll -o asm/${basename}_normal.S
 

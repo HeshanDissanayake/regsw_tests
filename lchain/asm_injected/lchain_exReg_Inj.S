@@ -275,7 +275,7 @@ rs_sort_128x:                           # @rs_sort_128x
 	addi	a1, a1, %lo(.L.str.1)
 	lui	a3, %hi(.L__PRETTY_FUNCTION__.rs_sort_128x)
 	addi	a3, a3, %lo(.L__PRETTY_FUNCTION__.rs_sort_128x)
-	li	a2, 15
+	li	a2, 17
 	call	__assert_fail
 .Lfunc_end1:
 	.size	rs_sort_128x, .Lfunc_end1-rs_sort_128x
@@ -794,7 +794,7 @@ mg_chain_backtrack:                     # @mg_chain_backtrack
 	addi	a1, a1, %lo(.L.str.1)
 	lui	a3, %hi(.L__PRETTY_FUNCTION__.mg_chain_backtrack)
 	addi	a3, a3, %lo(.L__PRETTY_FUNCTION__.mg_chain_backtrack)
-	li	a2, 126
+	li	a2, 128
 	call	__assert_fail
 .Lfunc_end3:
 	.size	mg_chain_backtrack, .Lfunc_end3-mg_chain_backtrack
@@ -816,182 +816,104 @@ mg_chain_backtrack:                     # @mg_chain_backtrack
 	.type	mg_lchain_dp,@function
 mg_lchain_dp:                           # @mg_lchain_dp
 # %bb.0:
-	addi	sp, sp, -256
-	sd	ra, 248(sp)                     # 8-byte Folded Spill
-	sd	s0, 240(sp)                     # 8-byte Folded Spill
-	sd	s1, 232(sp)                     # 8-byte Folded Spill
-	sd	s2, 224(sp)                     # 8-byte Folded Spill
-	sd	s3, 216(sp)                     # 8-byte Folded Spill
-	sd	s4, 208(sp)                     # 8-byte Folded Spill
-	sd	s5, 200(sp)                     # 8-byte Folded Spill
-	sd	s6, 192(sp)                     # 8-byte Folded Spill
-	sd	s7, 184(sp)                     # 8-byte Folded Spill
-	sd	s8, 176(sp)                     # 8-byte Folded Spill
-	sd	s9, 168(sp)                     # 8-byte Folded Spill
-	sd	s10, 160(sp)                    # 8-byte Folded Spill
-	sd	s11, 152(sp)                    # 8-byte Folded Spill
-	fsd	fs0, 144(sp)                    # 8-byte Folded Spill
-	fsd	fs1, 136(sp)                    # 8-byte Folded Spill
-	ld	s2, 288(sp)
-	ld	t0, 280(sp)
-	sd	t0, 96(sp)                      # 8-byte Folded Spill
-	ld	s0, 272(sp)
-	ld	s8, 264(sp)
-	ld	s7, 256(sp)
-	ld	t0, 296(sp)
-	sd	t0, 112(sp)                     # 8-byte Folded Spill
-	mv	s6, a7
+	addi	sp, sp, -240
+	sd	ra, 232(sp)                     # 8-byte Folded Spill
+	sd	s0, 224(sp)                     # 8-byte Folded Spill
+	sd	s1, 216(sp)                     # 8-byte Folded Spill
+	sd	s2, 208(sp)                     # 8-byte Folded Spill
+	sd	s3, 200(sp)                     # 8-byte Folded Spill
+	sd	s4, 192(sp)                     # 8-byte Folded Spill
+	sd	s5, 184(sp)                     # 8-byte Folded Spill
+	sd	s6, 176(sp)                     # 8-byte Folded Spill
+	sd	s7, 168(sp)                     # 8-byte Folded Spill
+	sd	s8, 160(sp)                     # 8-byte Folded Spill
+	sd	s9, 152(sp)                     # 8-byte Folded Spill
+	sd	s10, 144(sp)                    # 8-byte Folded Spill
+	sd	s11, 136(sp)                    # 8-byte Folded Spill
+	fsd	fs0, 128(sp)                    # 8-byte Folded Spill
+	fsd	fs1, 120(sp)                    # 8-byte Folded Spill
+	ld	t0, 272(sp)
+	ld	t1, 264(sp)
+	ld	s0, 256(sp)
+	ld	s7, 248(sp)
+	ld	s2, 240(sp)
+	mv	s5, a7
 	fmv.s	fs0, fa1
 	fmv.s	fs1, fa0
-	mv	s1, a6
-	mv	s5, a5
-	mv	s9, a4
-	mv	s4, a3
-	mv	s11, a2
-	mv	s3, a1
-	mv	s10, a0
-	lui	a0, %hi(.L.str.3)
-	addi	a0, a0, %lo(.L.str.3)
-	mv	a1, s10
-	call	printf
-	lui	a0, %hi(.L.str.4)
-	addi	a0, a0, %lo(.L.str.4)
-	sd	s3, 104(sp)                     # 8-byte Folded Spill
-	mv	a1, s3
-	call	printf
-	lui	a0, %hi(.L.str.5)
-	addi	a0, a0, %lo(.L.str.5)
-	sd	s11, 120(sp)                    # 8-byte Folded Spill
-	mv	a1, s11
-	call	printf
-	lui	a0, %hi(.L.str.6)
-	addi	a0, a0, %lo(.L.str.6)
-	sd	s4, 72(sp)                      # 8-byte Folded Spill
-	mv	a1, s4
-	mv	s4, s1
-	call	printf
-	lui	a0, %hi(.L.str.7)
-	addi	a0, a0, %lo(.L.str.7)
-	sd	s9, 80(sp)                      # 8-byte Folded Spill
-	mv	a1, s9
-	call	printf
-	lui	a0, %hi(.L.str.8)
-	addi	a0, a0, %lo(.L.str.8)
-	sd	s5, 88(sp)                      # 8-byte Folded Spill
-	mv	a1, s5
-	mv	s5, s7
-	call	printf
-	lui	a0, %hi(.L.str.9)
-	addi	a0, a0, %lo(.L.str.9)
-	mv	a1, s1
-	call	printf
-	fcvt.d.s	fa5, fs1
-	fmv.x.d	a1, fa5
-	lui	a0, %hi(.L.str.10)
-	addi	a0, a0, %lo(.L.str.10)
-	call	printf
-	fcvt.d.s	fa5, fs0
-	fmv.x.d	a1, fa5
-	lui	a0, %hi(.L.str.11)
-	addi	a0, a0, %lo(.L.str.11)
-	call	printf
-	lui	a0, %hi(.L.str.12)
-	addi	a0, a0, %lo(.L.str.12)
-	mv	a1, s6
-	call	printf
-	lui	a0, %hi(.L.str.13)
-	addi	a0, a0, %lo(.L.str.13)
-	mv	a1, s7
-	call	printf
-	lui	a0, %hi(.L.str.14)
-	addi	a0, a0, %lo(.L.str.14)
-	mv	a1, s8
-	call	printf
-	lui	a0, %hi(.L.str.15)
-	addi	a0, a0, %lo(.L.str.15)
-	mv	a1, s0
-	call	printf
-	lui	a0, %hi(.L.str.16)
-	addi	a0, a0, %lo(.L.str.16)
-	ld	s1, 96(sp)                      # 8-byte Folded Reload
-	mv	a1, s1
-	call	printf
-	ld	a1, 0(s2)
-	lui	a0, %hi(.L.str.17)
-	addi	a0, a0, %lo(.L.str.17)
-	call	printf
-	lui	a0, %hi(.L.str.18)
-	addi	a0, a0, %lo(.L.str.18)
-	ld	a1, 112(sp)                     # 8-byte Folded Reload
-	call	printf
-	sd	zero, 0(s2)
-	sw	zero, 0(s1)
-	beqz	s8, .LBB4_113
+	mv	s6, a4
+	sd	a3, 96(sp)                      # 8-byte Folded Spill
+	mv	s4, a2
+	mv	s9, a0
+	beqz	t0, .LBB4_2
 # %bb.1:
-	beqz	s0, .LBB4_113
-# %bb.2:
-	sd	s2, 56(sp)                      # 8-byte Folded Spill
-	ld	a0, 120(sp)                     # 8-byte Folded Reload
-	blt	a0, s10, .LBB4_4
+	sd	zero, 0(t0)
+	sw	zero, 0(t1)
+.LBB4_2:
+	beqz	s7, .LBB4_116
 # %bb.3:
-	mv	s10, a0
-.LBB4_4:
-	ld	a1, 104(sp)                     # 8-byte Folded Reload
-	mv	s2, a1
-	ld	s7, 80(sp)                      # 8-byte Folded Reload
-	ld	s9, 72(sp)                      # 8-byte Folded Reload
-	blt	a0, a1, .LBB4_6
+	beqz	s0, .LBB4_116
+# %bb.4:
+	blt	s4, s9, .LBB4_6
 # %bb.5:
-	mv	s2, a0
+	mv	s9, s4
 .LBB4_6:
-	sd	s4, 48(sp)                      # 8-byte Folded Spill
-	beqz	s6, .LBB4_8
+	mv	s8, a1
+	blt	s4, a1, .LBB4_8
 # %bb.7:
+	mv	s8, s4
+.LBB4_8:
+	sd	a5, 48(sp)                      # 8-byte Folded Spill
+	sd	a6, 56(sp)                      # 8-byte Folded Spill
+	sd	t1, 64(sp)                      # 8-byte Folded Spill
+	sd	t0, 72(sp)                      # 8-byte Folded Spill
+	mv	a0, s4
+	beqz	s5, .LBB4_10
+# %bb.9:
 	lui	a0, 524288
 	addiw	a0, a0, -1
-	mv	s2, a1
-.LBB4_8:
+	mv	s8, a1
+.LBB4_10:
 	sd	a0, 40(sp)                      # 8-byte Folded Spill
-	slli	s11, s8, 2
-	mv	a0, s11
+	slli	s1, s7, 2
+	mv	a0, s1
 	call	malloc
-	mv	s1, a0
-	mv	a0, s11
-	call	malloc
-	mv	s4, a0
-	mv	a0, s11
+	mv	s10, a0
+	mv	a0, s1
 	call	malloc
 	mv	s11, a0
+	mv	a0, s1
+	call	malloc
+	mv	s1, a0
 	li	a1, 4
 	li	s3, 4
-	mv	a0, s8
+	mv	a0, s7
 	call	calloc
-	sd	s8, 64(sp)                      # 8-byte Folded Spill
-	blez	s8, .LBB4_114
-# %bb.9:
+	sd	s7, 80(sp)                      # 8-byte Folded Spill
+	blez	s7, .LBB4_117
+# %bb.11:
 	lui	a1, 2048
 	addi	a1, a1, -1
-	ld	a4, 64(sp)                      # 8-byte Folded Reload
+	ld	a4, 80(sp)                      # 8-byte Folded Reload
 	andi	a2, a4, 3
 	sd	a2, 32(sp)                      # 8-byte Folded Spill
 	li	t0, 0
 	li	a3, 0
-	bgeu	a4, s3, .LBB4_129
-# %bb.10:
+	bgeu	a4, s3, .LBB4_132
+# %bb.12:
 	li	a4, -1
-.LBB4_11:
+.LBB4_13:
 	regsw_c	x0, 0x0(x17)		# 100010000000000000000
 	ld	x19, 32(sp)                     # 8-byte Folded Reload
-	beqz	x19, .LBB4_114
-# %bb.12:                               # %.preheader13
+	beqz	x19, .LBB4_117
+# %bb.14:                               # %.preheader13
 	li	a5, 0
 	slli	a2, a3, 3
-	add	a2, a2, s1
+	add	a2, a2, s10
 	addi	a6, a2, -8
 	slli	a2, a3, 2
 	addi	a2, a2, -4
 	add	a7, a0, a2
-	add	t1, s4, a2
+	add	t1, s11, a2
 	slli	a2, a3, 4
 	add	a2, a2, s0
 	addi	t2, a2, -8
@@ -1007,12 +929,10 @@ mg_lchain_dp:                           # @mg_lchain_dp
 	fmv.w.x	fa1, a2
 	lui	t4, 260096
 	lui	t5, 524288
-	regsw_c	x0, 0x0(x16)		# 100000000000000000000
-	ld	x18, 120(sp)                    # 8-byte Folded Reload
-	j	.LBB4_15
-.LBB4_13:                               #   in Loop: Header=BB4_15 Depth=1
+	j	.LBB4_17
+.LBB4_15:                               #   in Loop: Header=BB4_17 Depth=1
 	mv	a4, a3
-.LBB4_14:                               #   in Loop: Header=BB4_15 Depth=1
+.LBB4_16:                               #   in Loop: Header=BB4_17 Depth=1
 	addi	a3, a3, 1
 	addi	a5, a5, 1
 	addi	a6, a6, 8
@@ -1020,48 +940,49 @@ mg_lchain_dp:                           # @mg_lchain_dp
 	addi	t1, t1, 4
 	addi	t2, t2, 16
 	regsw_c	x0, 0x0(x4)		# 001000000000000000000
-	beq	a5, x19, .LBB4_114
-.LBB4_15:                               # =>This Loop Header: Depth=1
-                                        #     Child Loop BB4_18 Depth 2
-                                        #     Child Loop BB4_25 Depth 2
-                                        #     Child Loop BB4_68 Depth 2
+	beq	a5, x19, .LBB4_117
+.LBB4_17:                               # =>This Loop Header: Depth=1
+                                        #     Child Loop BB4_20 Depth 2
+                                        #     Child Loop BB4_27 Depth 2
+                                        #     Child Loop BB4_71 Depth 2
 	slli	t6, a3, 4
 	add	t6, s0, t6
-	bge	t0, a3, .LBB4_20
-# %bb.16:                               #   in Loop: Header=BB4_15 Depth=1
+	bge	t0, a3, .LBB4_64
+# %bb.18:                               #   in Loop: Header=BB4_17 Depth=1
 	ld	a2, 0(t6)
-	regsw_c	x16, 0x0(x18)		# 100101000000000000000
+	regsw_c	x24, 0x0(x18)		# 100101100000000000000
 	slli	x1, t0, 4
 	add	x1, s0, x1
-	j	.LBB4_18
-.LBB4_17:                               #   in Loop: Header=BB4_18 Depth=2
+	ld	x18, 96(sp)                     # 8-byte Folded Reload
+	j	.LBB4_20
+.LBB4_19:                               #   in Loop: Header=BB4_20 Depth=2
 	addi	t0, t0, 1
 	regsw_c	x0, 0x0(x24)		# 110000000000000000000
 	addi	x1, x1, 16
-	beq	a3, t0, .LBB4_87
-.LBB4_18:                               #   Parent Loop BB4_15 Depth=1
+	beq	a3, t0, .LBB4_90
+.LBB4_20:                               #   Parent Loop BB4_17 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	regsw_c	x12, 0x400(x27)		# 110110110010000000000
 	ld	x2, 0(x1)
 	xor	x3, x2, a2
 	srli	x3, x3, 32
-	bnez	x3, .LBB4_17
-# %bb.19:                               #   in Loop: Header=BB4_18 Depth=2
+	bnez	x3, .LBB4_19
+# %bb.21:                               #   in Loop: Header=BB4_20 Depth=2
 	regsw_c	x0, 0x0(x25)		# 110010000000000000000
-	add	x2, x2, s10
-	bltu	x2, a2, .LBB4_17
-.LBB4_20:                               #   in Loop: Header=BB4_15 Depth=1
+	add	x2, x2, s9
+	bltu	x2, a2, .LBB4_19
+# %bb.22:                               #   in Loop: Header=BB4_17 Depth=1
 	sub	a2, a3, t0
-	bge	s7, a2, .LBB4_22
-.LBB4_21:                               #   in Loop: Header=BB4_15 Depth=1
-	sub	t0, a3, s7
-.LBB4_22:                               #   in Loop: Header=BB4_15 Depth=1
+	bge	s6, a2, .LBB4_24
+.LBB4_23:                               #   in Loop: Header=BB4_17 Depth=1
+	sub	t0, a3, s6
+.LBB4_24:                               #   in Loop: Header=BB4_17 Depth=1
 	regsw_c	x8, 0x0(x17)		# 100010100000000000000
 	ld	x3, 8(t6)
 	slli	a2, x3, 24
 	srli	x1, a2, 56
-	bge	t0, a3, .LBB4_62
-# %bb.23:                               #   in Loop: Header=BB4_15 Depth=1
+	bge	t0, a3, .LBB4_65
+# %bb.25:                               #   in Loop: Header=BB4_17 Depth=1
 	regsw_c	x9, 0x124(x17)		# 100010100100100100100
 	li	x4, 0
 	slli	a2, x3, 8
@@ -1073,101 +994,101 @@ mg_lchain_dp:                           # @mg_lchain_dp
 	regsw_c	x0, 0x0(x18)		# 100100000000000000000
 	mv	x10, a6
 	mv	x8, a3
-	j	.LBB4_25
-.LBB4_24:                               #   in Loop: Header=BB4_25 Depth=2
+	j	.LBB4_27
+.LBB4_26:                               #   in Loop: Header=BB4_27 Depth=2
 	regsw_c	x13, 0x588(x27)		# 110110110110110001000
 	addi	x8, x8, -1
 	addi	x10, x10, -8
 	addi	x9, x9, -4
 	addi	x7, x7, -4
 	addi	x6, x6, -16
-	bge	t0, x8, .LBB4_63
-.LBB4_25:                               #   Parent Loop BB4_15 Depth=1
+	bge	t0, x8, .LBB4_66
+.LBB4_27:                               #   Parent Loop BB4_17 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	regsw_c	x18, 0x0(x27)		# 110111001000000000000
 	ld	x14, 0(x6)
 	subw	x11, x3, x14
-	blez	x11, .LBB4_24
-# %bb.26:                               #   in Loop: Header=BB4_25 Depth=2
+	blez	x11, .LBB4_26
+# %bb.28:                               #   in Loop: Header=BB4_27 Depth=2
 	regsw_c	x0, 0x0(x4)		# 001000000000000000000
-	blt	s10, x11, .LBB4_24
-# %bb.27:                               #   in Loop: Header=BB4_25 Depth=2
+	blt	s9, x11, .LBB4_26
+# %bb.29:                               #   in Loop: Header=BB4_27 Depth=2
 	ld	a2, 0(t6)
 	regsw_c	x13, 0x2c0(x27)		# 110110110101011000000
 	ld	x12, -8(x6)
 	slli	x13, x14, 8
 	srli	x13, x13, 56
 	subw	x12, a2, x12
-	bne	x5, x13, .LBB4_38
-# %bb.28:                               #   in Loop: Header=BB4_25 Depth=2
+	bne	x5, x13, .LBB4_40
+# %bb.30:                               #   in Loop: Header=BB4_27 Depth=2
 	regsw_c	x0, 0x0(x4)		# 001000000000000000000
-	blt	s2, x11, .LBB4_24
-# %bb.29:                               #   in Loop: Header=BB4_25 Depth=2
+	blt	s8, x11, .LBB4_26
+# %bb.31:                               #   in Loop: Header=BB4_27 Depth=2
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
-	beqz	x12, .LBB4_24
-# %bb.30:                               #   in Loop: Header=BB4_25 Depth=2
-	regsw_c	x3, 0x2c0(x14)		# 011100001101011000000
+	beqz	x12, .LBB4_26
+# %bb.32:                               #   in Loop: Header=BB4_27 Depth=2
+	regsw_c	x3, 0x240(x14)		# 011100001101001000000
 	subw	a2, x11, x12
 	sraiw	x15, a2, 31
 	xor	a2, a2, x15
 	subw	x15, a2, x15
-	blt	x18, x15, .LBB4_24
-# %bb.31:                               #   in Loop: Header=BB4_25 Depth=2
-	bnez	s6, .LBB4_35
-# %bb.32:                               #   in Loop: Header=BB4_25 Depth=2
-	blt	s5, t3, .LBB4_35
-# %bb.33:                               #   in Loop: Header=BB4_25 Depth=2
+	blt	s4, x15, .LBB4_26
+# %bb.33:                               #   in Loop: Header=BB4_27 Depth=2
+	bnez	s5, .LBB4_37
+# %bb.34:                               #   in Loop: Header=BB4_27 Depth=2
+	blt	s2, t3, .LBB4_37
+# %bb.35:                               #   in Loop: Header=BB4_27 Depth=2
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
-	bne	x5, x13, .LBB4_35
-# %bb.34:                               #   in Loop: Header=BB4_25 Depth=2
+	bne	x5, x13, .LBB4_37
+# %bb.36:                               #   in Loop: Header=BB4_27 Depth=2
 	regsw_c	x0, 0x0(x4)		# 001000000000000000000
-	blt	s2, x12, .LBB4_24
-.LBB4_35:                               #   in Loop: Header=BB4_25 Depth=2
+	blt	s8, x12, .LBB4_26
+.LBB4_37:                               #   in Loop: Header=BB4_27 Depth=2
 	regsw_c	x16, 0x0(x9)		# 010011000000000000000
 	mv	a2, x11
-	blt	x11, x12, .LBB4_39
-.LBB4_36:                               #   in Loop: Header=BB4_25 Depth=2
+	blt	x11, x12, .LBB4_41
+.LBB4_38:                               #   in Loop: Header=BB4_27 Depth=2
 	regsw_c	x13, 0x4c0(x11)		# 010110110110011000000
 	mv	a2, x12
 	slli	x14, x14, 24
 	srli	x16, x14, 56
 	mv	x14, x16
-	bge	x16, x12, .LBB4_40
-.LBB4_37:                               #   in Loop: Header=BB4_25 Depth=2
+	bge	x16, x12, .LBB4_42
+.LBB4_39:                               #   in Loop: Header=BB4_27 Depth=2
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
-	beqz	x15, .LBB4_41
-	j	.LBB4_43
-.LBB4_38:                               #   in Loop: Header=BB4_25 Depth=2
+	beqz	x15, .LBB4_43
+	j	.LBB4_45
+.LBB4_40:                               #   in Loop: Header=BB4_27 Depth=2
 	regsw_c	x3, 0x298(x14)		# 011100001101010011000
 	subw	a2, x11, x12
 	sraiw	x15, a2, 31
 	xor	a2, a2, x15
 	subw	x15, a2, x15
 	mv	a2, x11
-	bge	x11, x12, .LBB4_36
-.LBB4_39:                               #   in Loop: Header=BB4_25 Depth=2
+	bge	x11, x12, .LBB4_38
+.LBB4_41:                               #   in Loop: Header=BB4_27 Depth=2
 	regsw_c	x12, 0x400(x27)		# 110110110010000000000
 	slli	x14, x14, 24
 	srli	x16, x14, 56
 	mv	x14, x16
-	blt	x16, a2, .LBB4_37
-.LBB4_40:                               #   in Loop: Header=BB4_25 Depth=2
+	blt	x16, a2, .LBB4_39
+.LBB4_42:                               #   in Loop: Header=BB4_27 Depth=2
 	regsw_c	x0, 0x0(x17)		# 100010000000000000000
 	mv	x14, a2
-	bnez	x15, .LBB4_43
-.LBB4_41:                               #   in Loop: Header=BB4_25 Depth=2
+	bnez	x15, .LBB4_45
+.LBB4_43:                               #   in Loop: Header=BB4_27 Depth=2
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
-	blt	x16, a2, .LBB4_43
-# %bb.42:                               #   in Loop: Header=BB4_25 Depth=2
+	blt	x16, a2, .LBB4_45
+# %bb.44:                               #   in Loop: Header=BB4_27 Depth=2
 	regsw_c	x0, 0x0(x9)		# 010010000000000000000
 	mv	a2, x14
-	beq	x14, t5, .LBB4_24
-	j	.LBB4_50
-.LBB4_43:                               #   in Loop: Header=BB4_25 Depth=2
+	beq	x14, t5, .LBB4_26
+	j	.LBB4_52
+.LBB4_45:                               #   in Loop: Header=BB4_27 Depth=2
 	fmv.s	fa0, fa5
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
-	beqz	x15, .LBB4_45
-# %bb.44:                               #   in Loop: Header=BB4_25 Depth=2
+	beqz	x15, .LBB4_47
+# %bb.46:                               #   in Loop: Header=BB4_27 Depth=2
 	regsw_c	x9, 0x596(x25)		# 110010100110110010110
 	addi	x16, x15, 1
 	fcvt.s.wu	fa0, x16
@@ -1182,155 +1103,161 @@ mg_lchain_dp:                           # @mg_lchain_dp
 	fmadd.s	ft1, ft0, fa3, fa4
 	fmadd.s	ft0, ft1, ft0, fa2
 	fadd.s	fa0, ft0, fa0
-.LBB4_45:                               #   in Loop: Header=BB4_25 Depth=2
+.LBB4_47:                               #   in Loop: Header=BB4_27 Depth=2
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
 	fcvt.s.wu	ft0, x15
 	fcvt.s.w	ft1, a2
 	fmul.s	ft1, ft1, fs0
 	fmadd.s	ft0, fs1, ft0, ft1
-	bnez	s6, .LBB4_48
-# %bb.46:                               #   in Loop: Header=BB4_25 Depth=2
+	bnez	s5, .LBB4_50
+# %bb.48:                               #   in Loop: Header=BB4_27 Depth=2
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
-	bne	x5, x13, .LBB4_48
-.LBB4_47:                               #   in Loop: Header=BB4_25 Depth=2
+	bne	x5, x13, .LBB4_50
+.LBB4_49:                               #   in Loop: Header=BB4_27 Depth=2
 	fmadd.s	fa0, fa0, fa1, ft0
 	fcvt.w.s	a2, fa0, rtz
 	regsw_c	x4, 0x0(x25)		# 110010010000000000000
 	subw	x14, x14, a2
 	mv	a2, x14
-	beq	x14, t5, .LBB4_24
-	j	.LBB4_50
-.LBB4_48:                               #   in Loop: Header=BB4_25 Depth=2
+	beq	x14, t5, .LBB4_26
+	j	.LBB4_52
+.LBB4_50:                               #   in Loop: Header=BB4_27 Depth=2
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
-	beq	x5, x13, .LBB4_57
-# %bb.49:                               #   in Loop: Header=BB4_25 Depth=2
+	beq	x5, x13, .LBB4_59
+# %bb.51:                               #   in Loop: Header=BB4_27 Depth=2
 	li	a2, 1
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
-	bnez	x12, .LBB4_57
-.LBB4_50:                               #   in Loop: Header=BB4_25 Depth=2
+	bnez	x12, .LBB4_59
+.LBB4_52:                               #   in Loop: Header=BB4_27 Depth=2
 	regsw_c	x4, 0x0(x25)		# 110010010000000000000
 	lw	x11, 0(x7)
 	addw	a2, x11, a2
-	bge	x1, a2, .LBB4_52
-# %bb.51:                               #   in Loop: Header=BB4_25 Depth=2
+	bge	x1, a2, .LBB4_54
+# %bb.53:                               #   in Loop: Header=BB4_27 Depth=2
 	regsw_c	x31, 0x0(x26)		# 110101111100000000000
 	addi	x2, x8, -1
 	sgtz	x1, x4
 	subw	x4, x4, x1
 	mv	x1, a2
-	j	.LBB4_55
-.LBB4_52:                               #   in Loop: Header=BB4_25 Depth=2
+	j	.LBB4_57
+.LBB4_54:                               #   in Loop: Header=BB4_27 Depth=2
 	regsw_c	x2, 0x0(x10)		# 010100001000000000000
 	lw	a2, 0(x9)
 	sext.w	x11, a3
-	bne	a2, x11, .LBB4_55
-# %bb.53:                               #   in Loop: Header=BB4_25 Depth=2
-	regsw_c	x0, 0x0(x8)		# 010000000000000000000
-	bge	x4, s9, .LBB4_63
-# %bb.54:                               #   in Loop: Header=BB4_25 Depth=2
+	bne	a2, x11, .LBB4_57
+# %bb.55:                               #   in Loop: Header=BB4_27 Depth=2
+	regsw_c	x0, 0x0(x12)		# 011000000000000000000
+	bge	x4, x18, .LBB4_66
+# %bb.56:                               #   in Loop: Header=BB4_27 Depth=2
 	regsw_c	x0, 0x0(x24)		# 110000000000000000000
 	addiw	x4, x4, 1
-.LBB4_55:                               #   in Loop: Header=BB4_25 Depth=2
+.LBB4_57:                               #   in Loop: Header=BB4_27 Depth=2
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
 	ld	a2, 0(x10)
-	bltz	a2, .LBB4_24
-# %bb.56:                               #   in Loop: Header=BB4_25 Depth=2
+	bltz	a2, .LBB4_26
+# %bb.58:                               #   in Loop: Header=BB4_27 Depth=2
 	slli	a2, a2, 2
 	add	a2, a0, a2
 	sw	a3, 0(a2)
-	j	.LBB4_24
-.LBB4_57:                               #   in Loop: Header=BB4_25 Depth=2
+	j	.LBB4_26
+.LBB4_59:                               #   in Loop: Header=BB4_27 Depth=2
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
-	bne	x5, x13, .LBB4_59
-# %bb.58:                               #   in Loop: Header=BB4_25 Depth=2
+	bne	x5, x13, .LBB4_61
+# %bb.60:                               #   in Loop: Header=BB4_27 Depth=2
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
-	bge	x11, x12, .LBB4_47
-.LBB4_59:                               #   in Loop: Header=BB4_25 Depth=2
+	bge	x11, x12, .LBB4_49
+.LBB4_61:                               #   in Loop: Header=BB4_27 Depth=2
 	flt.s	a2, ft0, fa0
-	bnez	a2, .LBB4_61
-# %bb.60:                               #   in Loop: Header=BB4_25 Depth=2
+	bnez	a2, .LBB4_63
+# %bb.62:                               #   in Loop: Header=BB4_27 Depth=2
 	fmv.s	ft0, fa0
-.LBB4_61:                               #   in Loop: Header=BB4_25 Depth=2
+.LBB4_63:                               #   in Loop: Header=BB4_27 Depth=2
 	fcvt.w.s	a2, ft0, rtz
 	regsw_c	x4, 0x0(x25)		# 110010010000000000000
 	subw	x14, x14, a2
 	mv	a2, x14
-	beq	x14, t5, .LBB4_24
-	j	.LBB4_50
-.LBB4_62:                               #   in Loop: Header=BB4_15 Depth=1
+	beq	x14, t5, .LBB4_26
+	j	.LBB4_52
+.LBB4_64:                               #   in Loop: Header=BB4_17 Depth=1
+	regsw_c	x0, 0x0(x16)		# 100000000000000000000
+	ld	x18, 96(sp)                     # 8-byte Folded Reload
+	sub	a2, a3, t0
+	bge	s6, a2, .LBB4_24
+	j	.LBB4_23
+.LBB4_65:                               #   in Loop: Header=BB4_17 Depth=1
 	regsw_c	x9, 0x0(x18)		# 100100100100000000000
 	addi	x8, a3, -1
 	li	x2, -1
 	slli	x4, a3, 2
 	slli	x5, a3, 3
-	bgez	a4, .LBB4_64
-	j	.LBB4_65
-.LBB4_63:                               # %..loopexit7_crit_edge
-                                        #   in Loop: Header=BB4_15 Depth=1
+	bgez	a4, .LBB4_67
+	j	.LBB4_68
+.LBB4_66:                               # %..loopexit7_crit_edge
+                                        #   in Loop: Header=BB4_17 Depth=1
 	regsw_c	x8, 0x0(x26)		# 110100100000000000000
 	addi	x8, x8, -1
 	slli	x4, a3, 2
 	slli	x5, a3, 3
-	bltz	a4, .LBB4_65
-.LBB4_64:                               #   in Loop: Header=BB4_15 Depth=1
+	bltz	a4, .LBB4_68
+.LBB4_67:                               #   in Loop: Header=BB4_17 Depth=1
 	ld	a2, 0(t6)
 	regsw_c	x28, 0x200(x18)		# 100101110001000000000
 	slli	x6, a4, 4
 	add	x6, s0, x6
 	ld	x6, 0(x6)
 	sub	a2, a2, x6
-	bgeu	s10, a2, .LBB4_72
-.LBB4_65:                               #   in Loop: Header=BB4_15 Depth=1
+	bgeu	s9, a2, .LBB4_75
+.LBB4_68:                               #   in Loop: Header=BB4_17 Depth=1
 	li	a4, -1
-	bge	t0, a3, .LBB4_107
-# %bb.66:                               # %.preheader5
-                                        #   in Loop: Header=BB4_15 Depth=1
+	bge	t0, a3, .LBB4_110
+# %bb.69:                               # %.preheader5
+                                        #   in Loop: Header=BB4_17 Depth=1
 	regsw_c	x1, 0x0(x18)		# 100100000100000000000
 	li	x9, -1
 	lui	x6, 524288
 	mv	a2, t1
 	mv	x7, a3
-	j	.LBB4_68
-.LBB4_67:                               #   in Loop: Header=BB4_68 Depth=2
+	j	.LBB4_71
+.LBB4_70:                               #   in Loop: Header=BB4_71 Depth=2
 	addi	a2, a2, -4
 	regsw_c	x16, 0x0(x16)		# 100001000000000000000
 	mv	x9, a4
-	bge	t0, x7, .LBB4_72
-.LBB4_68:                               #   Parent Loop BB4_15 Depth=1
+	bge	t0, x7, .LBB4_75
+.LBB4_71:                               #   Parent Loop BB4_17 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	regsw_c	x4, 0x600(x19)		# 100110010011000000000
 	lw	x10, 0(a2)
 	addi	x7, x7, -1
 	mv	a4, x7
-	blt	x6, x10, .LBB4_70
-# %bb.69:                               #   in Loop: Header=BB4_68 Depth=2
+	blt	x6, x10, .LBB4_73
+# %bb.72:                               #   in Loop: Header=BB4_71 Depth=2
 	regsw_c	x16, 0x0(x9)		# 010011000000000000000
 	mv	a4, x9
-	blt	x10, x6, .LBB4_67
-	j	.LBB4_71
-.LBB4_70:                               #   in Loop: Header=BB4_68 Depth=2
+	blt	x10, x6, .LBB4_70
+	j	.LBB4_74
+.LBB4_73:                               #   in Loop: Header=BB4_71 Depth=2
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
-	blt	x10, x6, .LBB4_67
-.LBB4_71:                               #   in Loop: Header=BB4_68 Depth=2
+	blt	x10, x6, .LBB4_70
+.LBB4_74:                               #   in Loop: Header=BB4_71 Depth=2
 	regsw_c	x0, 0x0(x24)		# 110000000000000000000
 	mv	x6, x10
-	j	.LBB4_67
-.LBB4_72:                               #   in Loop: Header=BB4_15 Depth=1
-	bltz	a4, .LBB4_107
-# %bb.73:                               #   in Loop: Header=BB4_15 Depth=1
+	j	.LBB4_70
+.LBB4_75:                               #   in Loop: Header=BB4_17 Depth=1
+	bltz	a4, .LBB4_110
+# %bb.76:                               #   in Loop: Header=BB4_17 Depth=1
 	regsw_c	x0, 0x0(x4)		# 001000000000000000000
-	bge	a4, x8, .LBB4_107
-# %bb.74:                               #   in Loop: Header=BB4_15 Depth=1
+	bge	a4, x8, .LBB4_110
+# %bb.77:                               #   in Loop: Header=BB4_17 Depth=1
 	slli	a2, a4, 4
 	add	a2, s0, a2
 	regsw_c	x18, 0x0(x19)		# 100111001000000000000
 	ld	x9, 8(a2)
 	subw	x6, x3, x9
-	blez	x6, .LBB4_107
-# %bb.75:                               #   in Loop: Header=BB4_15 Depth=1
+	blez	x6, .LBB4_110
+# %bb.78:                               #   in Loop: Header=BB4_17 Depth=1
 	regsw_c	x0, 0x0(x4)		# 001000000000000000000
-	blt	s10, x6, .LBB4_107
-# %bb.76:                               #   in Loop: Header=BB4_15 Depth=1
+	blt	s9, x6, .LBB4_110
+# %bb.79:                               #   in Loop: Header=BB4_17 Depth=1
 	regsw_c	x1, 0x5b6(x26)		# 110100000110110110110
 	slli	x3, x3, 8
 	ld	x7, 0(t6)
@@ -1340,81 +1267,81 @@ mg_lchain_dp:                           # @mg_lchain_dp
 	srli	x8, x8, 56
 	subw	x7, x7, a2
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
-	bne	x3, x8, .LBB4_88
-# %bb.77:                               #   in Loop: Header=BB4_15 Depth=1
+	bne	x3, x8, .LBB4_91
+# %bb.80:                               #   in Loop: Header=BB4_17 Depth=1
 	regsw_c	x0, 0x0(x4)		# 001000000000000000000
-	blt	s2, x6, .LBB4_107
-# %bb.78:                               #   in Loop: Header=BB4_15 Depth=1
+	blt	s8, x6, .LBB4_110
+# %bb.81:                               #   in Loop: Header=BB4_17 Depth=1
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
-	beqz	x7, .LBB4_107
-# %bb.79:                               #   in Loop: Header=BB4_15 Depth=1
-	regsw_c	x3, 0x2c0(x14)		# 011100001101011000000
+	beqz	x7, .LBB4_110
+# %bb.82:                               #   in Loop: Header=BB4_17 Depth=1
+	regsw_c	x3, 0x240(x14)		# 011100001101001000000
 	subw	a2, x6, x7
 	sraiw	x10, a2, 31
 	xor	a2, a2, x10
 	subw	x10, a2, x10
-	blt	x18, x10, .LBB4_107
-# %bb.80:                               #   in Loop: Header=BB4_15 Depth=1
-	bnez	s6, .LBB4_84
-# %bb.81:                               #   in Loop: Header=BB4_15 Depth=1
-	blt	s5, t3, .LBB4_84
-# %bb.82:                               #   in Loop: Header=BB4_15 Depth=1
+	blt	s4, x10, .LBB4_110
+# %bb.83:                               #   in Loop: Header=BB4_17 Depth=1
+	bnez	s5, .LBB4_87
+# %bb.84:                               #   in Loop: Header=BB4_17 Depth=1
+	blt	s2, t3, .LBB4_87
+# %bb.85:                               #   in Loop: Header=BB4_17 Depth=1
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
-	bne	x3, x8, .LBB4_84
-# %bb.83:                               #   in Loop: Header=BB4_15 Depth=1
+	bne	x3, x8, .LBB4_87
+# %bb.86:                               #   in Loop: Header=BB4_17 Depth=1
 	regsw_c	x0, 0x0(x4)		# 001000000000000000000
-	blt	s2, x7, .LBB4_107
-.LBB4_84:                               #   in Loop: Header=BB4_15 Depth=1
+	blt	s8, x7, .LBB4_110
+.LBB4_87:                               #   in Loop: Header=BB4_17 Depth=1
 	regsw_c	x16, 0x0(x9)		# 010011000000000000000
 	mv	a2, x6
-	blt	x6, x7, .LBB4_89
-.LBB4_85:                               #   in Loop: Header=BB4_15 Depth=1
+	blt	x6, x7, .LBB4_92
+.LBB4_88:                               #   in Loop: Header=BB4_17 Depth=1
 	regsw_c	x13, 0x4c0(x11)		# 010110110110011000000
 	mv	a2, x7
 	slli	x9, x9, 24
 	srli	x11, x9, 56
 	mv	x9, x11
-	bge	x11, x7, .LBB4_90
-.LBB4_86:                               #   in Loop: Header=BB4_15 Depth=1
+	bge	x11, x7, .LBB4_93
+.LBB4_89:                               #   in Loop: Header=BB4_17 Depth=1
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
-	beqz	x10, .LBB4_91
-	j	.LBB4_93
-.LBB4_87:                               #   in Loop: Header=BB4_15 Depth=1
+	beqz	x10, .LBB4_94
+	j	.LBB4_96
+.LBB4_90:                               #   in Loop: Header=BB4_17 Depth=1
 	mv	t0, a3
 	sub	a2, a3, a3
-	blt	s7, a2, .LBB4_21
-	j	.LBB4_22
-.LBB4_88:                               #   in Loop: Header=BB4_15 Depth=1
+	blt	s6, a2, .LBB4_23
+	j	.LBB4_24
+.LBB4_91:                               #   in Loop: Header=BB4_17 Depth=1
 	regsw_c	x3, 0x298(x14)		# 011100001101010011000
 	subw	a2, x6, x7
 	sraiw	x10, a2, 31
 	xor	a2, a2, x10
 	subw	x10, a2, x10
 	mv	a2, x6
-	bge	x6, x7, .LBB4_85
-.LBB4_89:                               #   in Loop: Header=BB4_15 Depth=1
+	bge	x6, x7, .LBB4_88
+.LBB4_92:                               #   in Loop: Header=BB4_17 Depth=1
 	regsw_c	x12, 0x400(x27)		# 110110110010000000000
 	slli	x9, x9, 24
 	srli	x11, x9, 56
 	mv	x9, x11
-	blt	x11, a2, .LBB4_86
-.LBB4_90:                               #   in Loop: Header=BB4_15 Depth=1
+	blt	x11, a2, .LBB4_89
+.LBB4_93:                               #   in Loop: Header=BB4_17 Depth=1
 	regsw_c	x0, 0x0(x17)		# 100010000000000000000
 	mv	x9, a2
-	bnez	x10, .LBB4_93
-.LBB4_91:                               #   in Loop: Header=BB4_15 Depth=1
+	bnez	x10, .LBB4_96
+.LBB4_94:                               #   in Loop: Header=BB4_17 Depth=1
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
-	blt	x11, a2, .LBB4_93
-# %bb.92:                               #   in Loop: Header=BB4_15 Depth=1
+	blt	x11, a2, .LBB4_96
+# %bb.95:                               #   in Loop: Header=BB4_17 Depth=1
 	regsw_c	x0, 0x0(x9)		# 010010000000000000000
 	mv	a2, x9
-	bne	x9, t5, .LBB4_100
-	j	.LBB4_107
-.LBB4_93:                               #   in Loop: Header=BB4_15 Depth=1
+	bne	x9, t5, .LBB4_103
+	j	.LBB4_110
+.LBB4_96:                               #   in Loop: Header=BB4_17 Depth=1
 	fmv.s	fa0, fa5
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
-	beqz	x10, .LBB4_95
-# %bb.94:                               #   in Loop: Header=BB4_15 Depth=1
+	beqz	x10, .LBB4_98
+# %bb.97:                               #   in Loop: Header=BB4_17 Depth=1
 	regsw_c	x9, 0x596(x25)		# 110010100110110010110
 	addi	x11, x10, 1
 	fcvt.s.wu	fa0, x11
@@ -1429,156 +1356,156 @@ mg_lchain_dp:                           # @mg_lchain_dp
 	fmadd.s	ft1, ft0, fa3, fa4
 	fmadd.s	ft0, ft1, ft0, fa2
 	fadd.s	fa0, ft0, fa0
-.LBB4_95:                               #   in Loop: Header=BB4_15 Depth=1
+.LBB4_98:                               #   in Loop: Header=BB4_17 Depth=1
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
 	fcvt.s.wu	ft0, x10
 	fcvt.s.w	ft1, a2
 	fmul.s	ft1, ft1, fs0
 	fmadd.s	ft0, fs1, ft0, ft1
-	bnez	s6, .LBB4_98
-# %bb.96:                               #   in Loop: Header=BB4_15 Depth=1
+	bnez	s5, .LBB4_101
+# %bb.99:                               #   in Loop: Header=BB4_17 Depth=1
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
-	bne	x3, x8, .LBB4_98
-.LBB4_97:                               #   in Loop: Header=BB4_15 Depth=1
+	bne	x3, x8, .LBB4_101
+.LBB4_100:                              #   in Loop: Header=BB4_17 Depth=1
 	fmadd.s	fa0, fa0, fa1, ft0
 	fcvt.w.s	a2, fa0, rtz
 	regsw_c	x4, 0x0(x25)		# 110010010000000000000
 	subw	x9, x9, a2
 	mv	a2, x9
-	bne	x9, t5, .LBB4_100
-	j	.LBB4_107
-.LBB4_98:                               #   in Loop: Header=BB4_15 Depth=1
+	bne	x9, t5, .LBB4_103
+	j	.LBB4_110
+.LBB4_101:                              #   in Loop: Header=BB4_17 Depth=1
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
-	beq	x3, x8, .LBB4_102
-# %bb.99:                               #   in Loop: Header=BB4_15 Depth=1
+	beq	x3, x8, .LBB4_105
+# %bb.102:                              #   in Loop: Header=BB4_17 Depth=1
 	li	a2, 1
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
-	bnez	x7, .LBB4_102
-.LBB4_100:                              #   in Loop: Header=BB4_15 Depth=1
+	bnez	x7, .LBB4_105
+.LBB4_103:                              #   in Loop: Header=BB4_17 Depth=1
 	regsw_c	x28, 0x480(x18)		# 100101110010010000000
 	slli	x3, a4, 2
-	add	x3, s4, x3
+	add	x3, s11, x3
 	lw	x3, 0(x3)
 	addw	a2, x3, a2
-	bge	x1, a2, .LBB4_107
-# %bb.101:                              #   in Loop: Header=BB4_15 Depth=1
+	bge	x1, a2, .LBB4_110
+# %bb.104:                              #   in Loop: Header=BB4_17 Depth=1
 	regsw_c	x10, 0x520(x21)		# 101010101010100100000
-	add	x1, s4, x4
+	add	x1, s11, x4
 	sw	a2, 0(x1)
-	add	x5, s1, x5
+	add	x5, s10, x5
 	sd	a4, 0(x5)
 	mv	x1, a2
 	mv	x2, a4
-	j	.LBB4_108
-.LBB4_102:                              #   in Loop: Header=BB4_15 Depth=1
+	j	.LBB4_111
+.LBB4_105:                              #   in Loop: Header=BB4_17 Depth=1
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
-	bne	x3, x8, .LBB4_104
-# %bb.103:                              #   in Loop: Header=BB4_15 Depth=1
+	bne	x3, x8, .LBB4_107
+# %bb.106:                              #   in Loop: Header=BB4_17 Depth=1
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
-	bge	x6, x7, .LBB4_97
-.LBB4_104:                              #   in Loop: Header=BB4_15 Depth=1
+	bge	x6, x7, .LBB4_100
+.LBB4_107:                              #   in Loop: Header=BB4_17 Depth=1
 	flt.s	a2, ft0, fa0
-	bnez	a2, .LBB4_106
-# %bb.105:                              #   in Loop: Header=BB4_15 Depth=1
+	bnez	a2, .LBB4_109
+# %bb.108:                              #   in Loop: Header=BB4_17 Depth=1
 	fmv.s	ft0, fa0
-.LBB4_106:                              #   in Loop: Header=BB4_15 Depth=1
+.LBB4_109:                              #   in Loop: Header=BB4_17 Depth=1
 	fcvt.w.s	a2, ft0, rtz
 	regsw_c	x4, 0x0(x25)		# 110010010000000000000
 	subw	x9, x9, a2
 	mv	a2, x9
-	bne	x9, t5, .LBB4_100
-.LBB4_107:                              #   in Loop: Header=BB4_15 Depth=1
+	bne	x9, t5, .LBB4_103
+.LBB4_110:                              #   in Loop: Header=BB4_17 Depth=1
 	regsw_c	x26, 0x690(x4)		# 001001101011010010000
-	add	a2, s4, x4
+	add	a2, s11, x4
 	sw	x1, 0(a2)
-	add	x5, s1, x5
+	add	x5, s10, x5
 	sd	x2, 0(x5)
 	mv	a2, x1
-	bltz	x2, .LBB4_110
-.LBB4_108:                              #   in Loop: Header=BB4_15 Depth=1
+	bltz	x2, .LBB4_113
+.LBB4_111:                              #   in Loop: Header=BB4_17 Depth=1
 	regsw_c	x20, 0x400(x26)		# 110101010010000000000
 	slli	x2, x2, 2
-	add	x2, s11, x2
+	add	x2, s1, x2
 	lw	a2, 0(x2)
-	blt	x1, a2, .LBB4_110
-# %bb.109:                              #   in Loop: Header=BB4_15 Depth=1
+	blt	x1, a2, .LBB4_113
+# %bb.112:                              #   in Loop: Header=BB4_17 Depth=1
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
 	mv	a2, x1
-.LBB4_110:                              #   in Loop: Header=BB4_15 Depth=1
+.LBB4_113:                              #   in Loop: Header=BB4_17 Depth=1
 	regsw_c	x0, 0x0(x21)		# 101010000000000000000
-	add	x4, s11, x4
+	add	x4, s1, x4
 	sw	a2, 0(x4)
-	bltz	a4, .LBB4_13
-# %bb.111:                              #   in Loop: Header=BB4_15 Depth=1
+	bltz	a4, .LBB4_15
+# %bb.114:                              #   in Loop: Header=BB4_17 Depth=1
 	ld	a2, 0(t6)
 	slli	t6, a4, 4
 	add	t6, s0, t6
 	ld	t6, 0(t6)
 	sub	a2, a2, t6
-	bltu	s10, a2, .LBB4_14
-# %bb.112:                              #   in Loop: Header=BB4_15 Depth=1
+	bltu	s9, a2, .LBB4_16
+# %bb.115:                              #   in Loop: Header=BB4_17 Depth=1
 	slli	a2, a4, 2
-	add	a2, s4, a2
+	add	a2, s11, a2
 	lw	a2, 0(a2)
 	regsw_c	x0, 0x0(x4)		# 001000000000000000000
-	blt	a2, x1, .LBB4_13
-	j	.LBB4_14
-.LBB4_113:
+	blt	a2, x1, .LBB4_15
+	j	.LBB4_16
+.LBB4_116:
 	mv	a0, s0
-	j	.LBB4_128
-.LBB4_114:
-	addi	a1, sp, 128
+	j	.LBB4_131
+.LBB4_117:
+	addi	a1, sp, 112
 	sd	a1, 16(sp)
-	addi	a1, sp, 132
+	addi	a1, sp, 116
 	sd	a1, 8(sp)
 	ld	a1, 40(sp)                      # 8-byte Folded Reload
 	sd	a1, 0(sp)
-	ld	a1, 64(sp)                      # 8-byte Folded Reload
-	mv	a2, s4
-	mv	a3, s1
-	mv	a4, s11
+	ld	a1, 80(sp)                      # 8-byte Folded Reload
+	mv	a2, s11
+	mv	a3, s10
+	mv	a4, s1
 	mv	a5, a0
-	ld	a6, 88(sp)                      # 8-byte Folded Reload
-	ld	a7, 48(sp)                      # 8-byte Folded Reload
+	ld	a6, 48(sp)                      # 8-byte Folded Reload
+	ld	a7, 56(sp)                      # 8-byte Folded Reload
 	call	mg_chain_backtrack
-	lw	s5, 132(sp)
+	lw	s5, 116(sp)
 	mv	s2, a0
-	ld	a0, 96(sp)                      # 8-byte Folded Reload
+	ld	a0, 64(sp)                      # 8-byte Folded Reload
 	sw	s5, 0(a0)
-	ld	a0, 56(sp)                      # 8-byte Folded Reload
+	ld	a0, 72(sp)                      # 8-byte Folded Reload
 	sd	s2, 0(a0)
-	beqz	s5, .LBB4_127
-# %bb.115:
-	lw	a0, 128(sp)
+	beqz	s5, .LBB4_130
+# %bb.118:
+	lw	a0, 112(sp)
 	slli	a0, a0, 4
 	call	malloc
-	mv	s1, a0
-	blez	s5, .LBB4_121
-# %bb.116:                              # %.preheader3
+	mv	s3, a0
+	blez	s5, .LBB4_124
+# %bb.119:                              # %.preheader3
 	li	a0, 0
 	li	a1, 0
-	addi	a2, s11, -4
-	j	.LBB4_118
-.LBB4_117:                              #   in Loop: Header=BB4_118 Depth=1
+	addi	a2, s1, -4
+	j	.LBB4_121
+.LBB4_120:                              #   in Loop: Header=BB4_121 Depth=1
 	addi	a0, a0, 1
-	beq	a0, s5, .LBB4_121
-.LBB4_118:                              # =>This Loop Header: Depth=1
-                                        #     Child Loop BB4_120 Depth 2
+	beq	a0, s5, .LBB4_124
+.LBB4_121:                              # =>This Loop Header: Depth=1
+                                        #     Child Loop BB4_123 Depth 2
 	slli	a3, a0, 3
 	add	a3, s2, a3
 	lw	a5, 0(a3)
-	blez	a5, .LBB4_117
-# %bb.119:                              #   in Loop: Header=BB4_118 Depth=1
+	blez	a5, .LBB4_120
+# %bb.122:                              #   in Loop: Header=BB4_121 Depth=1
 	sext.w	a3, a1
 	slli	a6, a3, 2
 	slli	a3, a5, 2
 	add	a4, a2, a6
 	add	a3, a4, a3
 	slli	a4, a1, 4
-	add	a4, s1, a4
+	add	a4, s3, a4
 	add	a1, a1, a5
 	add	a5, a2, a6
-.LBB4_120:                              #   Parent Loop BB4_118 Depth=1
+.LBB4_123:                              #   Parent Loop BB4_121 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	lw	a6, 0(a3)
 	slli	a6, a6, 4
@@ -1589,25 +1516,25 @@ mg_lchain_dp:                           # @mg_lchain_dp
 	sd	a6, 8(a4)
 	addi	a3, a3, -4
 	addi	a4, a4, 16
-	bne	a3, a5, .LBB4_120
-	j	.LBB4_117
-.LBB4_121:
-	mv	a0, s11
+	bne	a3, a5, .LBB4_123
+	j	.LBB4_120
+.LBB4_124:
+	mv	a0, s1
 	call	free
 	slli	s4, s5, 4
 	mv	a0, s4
 	call	malloc
-	bgtz	s5, .LBB4_122
-	j	.LBB4_540
-.LBB4_122:                              # %.preheader1
-	mv	s3, a0
+	bgtz	s5, .LBB4_125
+	j	.LBB4_543
+.LBB4_125:                              # %.preheader1
+	mv	s1, a0
 	li	a0, 0
 	li	a1, 0
-	addi	a2, s3, 8
+	addi	a2, s1, 8
 	mv	a3, s2
-.LBB4_123:                              # =>This Inner Loop Header: Depth=1
+.LBB4_126:                              # =>This Inner Loop Header: Depth=1
 	slli	a4, a1, 4
-	add	a4, s1, a4
+	add	a4, s3, a4
 	ld	a4, 0(a4)
 	sd	a4, -8(a2)
 	lw	a4, 0(a3)
@@ -1618,63 +1545,63 @@ mg_lchain_dp:                           # @mg_lchain_dp
 	addi	a0, a0, 1
 	addi	a3, a3, 8
 	addi	a2, a2, 16
-	bne	s5, a0, .LBB4_123
-# %bb.124:
+	bne	s5, a0, .LBB4_126
+# %bb.127:
 	li	a0, 64
-	add	a1, s3, s4
-	bge	a0, s5, .LBB4_125
-	j	.LBB4_541
-.LBB4_125:
+	add	a1, s1, s4
+	bge	a0, s5, .LBB4_128
+	j	.LBB4_544
+.LBB4_128:
 	li	a0, 1
-	beq	s5, a0, .LBB4_126
-	j	.LBB4_547
-.LBB4_126:
+	beq	s5, a0, .LBB4_129
+	j	.LBB4_550
+.LBB4_129:
 	li	a0, 8
-	j	.LBB4_543
-.LBB4_127:
+	j	.LBB4_546
+.LBB4_130:
 	mv	a0, s0
 	call	free
-	mv	a0, s11
-.LBB4_128:
+	mv	a0, s1
+.LBB4_131:
 	call	free
 	li	a0, 0
-	ld	ra, 248(sp)                     # 8-byte Folded Reload
-	ld	s0, 240(sp)                     # 8-byte Folded Reload
-	ld	s1, 232(sp)                     # 8-byte Folded Reload
-	ld	s2, 224(sp)                     # 8-byte Folded Reload
-	ld	s3, 216(sp)                     # 8-byte Folded Reload
-	ld	s4, 208(sp)                     # 8-byte Folded Reload
-	ld	s5, 200(sp)                     # 8-byte Folded Reload
-	ld	s6, 192(sp)                     # 8-byte Folded Reload
-	ld	s7, 184(sp)                     # 8-byte Folded Reload
-	ld	s8, 176(sp)                     # 8-byte Folded Reload
-	ld	s9, 168(sp)                     # 8-byte Folded Reload
-	ld	s10, 160(sp)                    # 8-byte Folded Reload
-	ld	s11, 152(sp)                    # 8-byte Folded Reload
-	fld	fs0, 144(sp)                    # 8-byte Folded Reload
-	fld	fs1, 136(sp)                    # 8-byte Folded Reload
-	addi	sp, sp, 256
+	ld	ra, 232(sp)                     # 8-byte Folded Reload
+	ld	s0, 224(sp)                     # 8-byte Folded Reload
+	ld	s1, 216(sp)                     # 8-byte Folded Reload
+	ld	s2, 208(sp)                     # 8-byte Folded Reload
+	ld	s3, 200(sp)                     # 8-byte Folded Reload
+	ld	s4, 192(sp)                     # 8-byte Folded Reload
+	ld	s5, 184(sp)                     # 8-byte Folded Reload
+	ld	s6, 176(sp)                     # 8-byte Folded Reload
+	ld	s7, 168(sp)                     # 8-byte Folded Reload
+	ld	s8, 160(sp)                     # 8-byte Folded Reload
+	ld	s9, 152(sp)                     # 8-byte Folded Reload
+	ld	s10, 144(sp)                    # 8-byte Folded Reload
+	ld	s11, 136(sp)                    # 8-byte Folded Reload
+	fld	fs0, 128(sp)                    # 8-byte Folded Reload
+	fld	fs1, 120(sp)                    # 8-byte Folded Reload
+	addi	sp, sp, 240
 	ret
-.LBB4_129:
+.LBB4_132:
 	li	a2, -7
 	srli	a2, a2, 1
 	and	a2, a4, a2
-	sd	a2, 104(sp)                     # 8-byte Folded Spill
-	addi	a6, s1, -8
+	sd	a2, 88(sp)                      # 8-byte Folded Spill
+	addi	a6, s10, -8
 	addi	a7, a0, -4
-	addi	t1, s4, -4
+	addi	t1, s11, -4
 	addi	t2, s0, -8
-	neg	a2, s7
-	sd	a2, 112(sp)                     # 8-byte Folded Spill
+	neg	a2, s6
+	sd	a2, 104(sp)                     # 8-byte Folded Spill
 	addi	t4, s0, 8
-	addi	t5, s1, 8
+	addi	t5, s10, 8
 	addi	t6, a0, 4
 	regsw_c	x9, 0x124(x18)		# 100100100100100100100
-	addi	x1, s4, 4
+	addi	x1, s11, 4
 	addi	x2, s0, 24
-	addi	x3, s1, 16
+	addi	x3, s10, 16
 	addi	x4, a0, 8
-	addi	x5, s4, 8
+	addi	x5, s11, 8
 	addi	x6, s0, 40
 	li	x8, 1
 	regsw_c	x0, 0x100(x16)		# 100000000000100000000
@@ -1692,28 +1619,28 @@ mg_lchain_dp:                           # @mg_lchain_dp
 	regsw_c	x9, 0x100(x18)		# 100100100100100000000
 	lui	x12, 524288
 	li	x13, 2
-	mv	x14, s4
+	mv	x14, s11
 	mv	x15, a0
-	mv	x16, s1
+	mv	x16, s10
 	li	a4, -1
-	ld	s8, 120(sp)                     # 8-byte Folded Reload
-	j	.LBB4_133
-.LBB4_130:                              #   in Loop: Header=BB4_133 Depth=1
+	ld	s7, 96(sp)                      # 8-byte Folded Reload
+	j	.LBB4_136
+.LBB4_133:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x2, 0x400(x8)		# 010000001010000000000
 	slli	a2, x18, 2
-	add	a4, s4, a2
+	add	a4, s11, a2
 	sw	x17, 0(a4)
 	slli	a4, x18, 3
-	add	a4, s1, a4
+	add	a4, s10, a4
 	li	a5, -1
 	sd	a5, 0(a4)
-	add	a2, s11, a2
+	add	a2, s1, a2
 	regsw_c	x0, 0x0(x4)		# 001000000000000000000
 	sw	x17, 0(a2)
-.LBB4_131:                              #   in Loop: Header=BB4_133 Depth=1
+.LBB4_134:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
 	mv	a4, x18
-.LBB4_132:                              #   in Loop: Header=BB4_133 Depth=1
+.LBB4_135:                              #   in Loop: Header=BB4_136 Depth=1
 	addi	a3, a3, 4
 	addi	a6, a6, 32
 	addi	a7, a7, 16
@@ -1736,70 +1663,70 @@ mg_lchain_dp:                           # @mg_lchain_dp
 	addi	x4, x4, 16
 	addi	x5, x5, 16
 	addi	x6, x6, 64
-	ld	a2, 104(sp)                     # 8-byte Folded Reload
-	beq	a3, a2, .LBB4_11
-.LBB4_133:                              # =>This Loop Header: Depth=1
-                                        #     Child Loop BB4_136 Depth 2
-                                        #     Child Loop BB4_146 Depth 2
-                                        #     Child Loop BB4_189 Depth 2
-                                        #     Child Loop BB4_240 Depth 2
-                                        #     Child Loop BB4_246 Depth 2
-                                        #     Child Loop BB4_293 Depth 2
-                                        #     Child Loop BB4_343 Depth 2
-                                        #     Child Loop BB4_353 Depth 2
-                                        #     Child Loop BB4_395 Depth 2
-                                        #     Child Loop BB4_445 Depth 2
-                                        #     Child Loop BB4_452 Depth 2
-                                        #     Child Loop BB4_496 Depth 2
+	ld	a2, 88(sp)                      # 8-byte Folded Reload
+	beq	a3, a2, .LBB4_13
+.LBB4_136:                              # =>This Loop Header: Depth=1
+                                        #     Child Loop BB4_139 Depth 2
+                                        #     Child Loop BB4_149 Depth 2
+                                        #     Child Loop BB4_192 Depth 2
+                                        #     Child Loop BB4_243 Depth 2
+                                        #     Child Loop BB4_249 Depth 2
+                                        #     Child Loop BB4_296 Depth 2
+                                        #     Child Loop BB4_346 Depth 2
+                                        #     Child Loop BB4_356 Depth 2
+                                        #     Child Loop BB4_398 Depth 2
+                                        #     Child Loop BB4_448 Depth 2
+                                        #     Child Loop BB4_455 Depth 2
+                                        #     Child Loop BB4_499 Depth 2
 	regsw_c	x16, 0x0(x18)		# 100101000000000000000
 	slli	x17, a3, 4
 	add	x17, s0, x17
-	bge	t0, a3, .LBB4_138
-# %bb.134:                              #   in Loop: Header=BB4_133 Depth=1
+	bge	t0, a3, .LBB4_141
+# %bb.137:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
 	ld	a2, 0(x17)
 	slli	a5, t0, 4
 	add	a5, s0, a5
-	j	.LBB4_136
-.LBB4_135:                              #   in Loop: Header=BB4_136 Depth=2
+	j	.LBB4_139
+.LBB4_138:                              #   in Loop: Header=BB4_139 Depth=2
 	addi	t0, t0, 1
 	addi	a5, a5, 16
-	beq	a3, t0, .LBB4_140
-.LBB4_136:                              #   Parent Loop BB4_133 Depth=1
+	beq	a3, t0, .LBB4_143
+.LBB4_139:                              #   Parent Loop BB4_136 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld	t3, 0(a5)
 	regsw_c	x4, 0x0(x19)		# 100110010000000000000
 	xor	x7, t3, a2
 	srli	x7, x7, 32
-	bnez	x7, .LBB4_135
-# %bb.137:                              #   in Loop: Header=BB4_136 Depth=2
-	add	t3, t3, s10
-	bltu	t3, a2, .LBB4_135
-.LBB4_138:                              #   in Loop: Header=BB4_133 Depth=1
+	bnez	x7, .LBB4_138
+# %bb.140:                              #   in Loop: Header=BB4_139 Depth=2
+	add	t3, t3, s9
+	bltu	t3, a2, .LBB4_138
+.LBB4_141:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x16, 0x0(x16)		# 100001000000000000000
 	sub	x21, a3, t0
-	blt	s7, x21, .LBB4_141
-.LBB4_139:                              #   in Loop: Header=BB4_133 Depth=1
+	blt	s6, x21, .LBB4_144
+.LBB4_142:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x16)		# 100000000000000000000
 	mv	x18, t0
-	j	.LBB4_142
-.LBB4_140:                              #   in Loop: Header=BB4_133 Depth=1
+	j	.LBB4_145
+.LBB4_143:                              #   in Loop: Header=BB4_136 Depth=1
 	mv	t0, a3
 	regsw_c	x16, 0x0(x16)		# 100001000000000000000
 	sub	x21, a3, a3
-	bge	s7, x21, .LBB4_139
-.LBB4_141:                              #   in Loop: Header=BB4_133 Depth=1
+	bge	s6, x21, .LBB4_142
+.LBB4_144:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x16)		# 100000000000000000000
-	sub	x18, a3, s7
-.LBB4_142:                              #   in Loop: Header=BB4_133 Depth=1
+	sub	x18, a3, s6
+.LBB4_145:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x9, 0x110(x25)		# 110010100100100010000
 	ld	x22, 8(x17)
 	slli	a2, x22, 24
 	srli	x30, a2, 56
 	addi	x31, a3, -1
 	li	x19, -1
-	bge	x18, a3, .LBB4_183
-# %bb.143:                              #   in Loop: Header=BB4_133 Depth=1
+	bge	x18, a3, .LBB4_186
+# %bb.146:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x9, 0x124(x17)		# 100010100100100100100
 	li	x23, 0
 	slli	a2, x22, 8
@@ -1810,11 +1737,11 @@ mg_lchain_dp:                           # @mg_lchain_dp
 	mv	x27, a7
 	regsw_c	x0, 0x0(x16)		# 100000000000000000000
 	mv	x28, a6
-	j	.LBB4_146
-.LBB4_144:                              #   in Loop: Header=BB4_146 Depth=2
+	j	.LBB4_149
+.LBB4_147:                              #   in Loop: Header=BB4_149 Depth=2
 	regsw_c	x0, 0x0(x24)		# 110000000000000000000
 	mv	x20, x30
-.LBB4_145:                              #   in Loop: Header=BB4_146 Depth=2
+.LBB4_148:                              #   in Loop: Header=BB4_149 Depth=2
 	regsw_c	x13, 0x5b3(x27)		# 110110110110110110011
 	addi	x31, x29, -1
 	addi	x28, x28, -8
@@ -1822,91 +1749,91 @@ mg_lchain_dp:                           # @mg_lchain_dp
 	addi	x26, x26, -4
 	addi	x25, x25, -16
 	mv	x30, x20
-	bge	x18, x29, .LBB4_184
-.LBB4_146:                              #   Parent Loop BB4_133 Depth=1
+	bge	x18, x29, .LBB4_187
+.LBB4_149:                              #   Parent Loop BB4_136 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	regsw_c	x12, 0x200(x11)		# 010110110001000000000
 	ld	a5, 0(x25)
 	subw	x20, x22, a5
 	mv	x29, x31
-	blez	x20, .LBB4_144
-# %bb.147:                              #   in Loop: Header=BB4_146 Depth=2
+	blez	x20, .LBB4_147
+# %bb.150:                              #   in Loop: Header=BB4_149 Depth=2
 	regsw_c	x0, 0x0(x4)		# 001000000000000000000
-	blt	s10, x20, .LBB4_144
-# %bb.148:                              #   in Loop: Header=BB4_146 Depth=2
+	blt	s9, x20, .LBB4_147
+# %bb.151:                              #   in Loop: Header=BB4_149 Depth=2
 	regsw_c	x8, 0x410(x9)		# 010010100010000010000
 	ld	a2, 0(x17)
 	ld	t3, -8(x25)
 	slli	x7, a5, 8
 	srli	ra, x7, 56
 	subw	a2, a2, t3
-	bne	x24, ra, .LBB4_159
-# %bb.149:                              #   in Loop: Header=BB4_146 Depth=2
+	bne	x24, ra, .LBB4_162
+# %bb.152:                              #   in Loop: Header=BB4_149 Depth=2
 	regsw_c	x0, 0x0(x4)		# 001000000000000000000
-	blt	s2, x20, .LBB4_144
-# %bb.150:                              #   in Loop: Header=BB4_146 Depth=2
-	beqz	a2, .LBB4_144
-# %bb.151:                              #   in Loop: Header=BB4_146 Depth=2
+	blt	s8, x20, .LBB4_147
+# %bb.153:                              #   in Loop: Header=BB4_149 Depth=2
+	beqz	a2, .LBB4_147
+# %bb.154:                              #   in Loop: Header=BB4_149 Depth=2
 	regsw_c	x2, 0x200(x10)		# 010100001001000000000
 	subw	t3, x20, a2
 	sraiw	x7, t3, 31
 	xor	t3, t3, x7
 	subw	s3, t3, x7
-	blt	s8, s3, .LBB4_144
-# %bb.152:                              #   in Loop: Header=BB4_146 Depth=2
-	bnez	s6, .LBB4_156
-# %bb.153:                              #   in Loop: Header=BB4_146 Depth=2
+	blt	s4, s3, .LBB4_147
+# %bb.155:                              #   in Loop: Header=BB4_149 Depth=2
+	bnez	s5, .LBB4_159
+# %bb.156:                              #   in Loop: Header=BB4_149 Depth=2
 	li	t3, 2
-	blt	s5, t3, .LBB4_156
-# %bb.154:                              #   in Loop: Header=BB4_146 Depth=2
+	blt	s2, t3, .LBB4_159
+# %bb.157:                              #   in Loop: Header=BB4_149 Depth=2
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
-	bne	x24, ra, .LBB4_156
-# %bb.155:                              #   in Loop: Header=BB4_146 Depth=2
-	blt	s2, a2, .LBB4_144
-.LBB4_156:                              #   in Loop: Header=BB4_146 Depth=2
+	bne	x24, ra, .LBB4_159
+# %bb.158:                              #   in Loop: Header=BB4_149 Depth=2
+	blt	s8, a2, .LBB4_147
+.LBB4_159:                              #   in Loop: Header=BB4_149 Depth=2
 	regsw_c	x0, 0x0(x25)		# 110010000000000000000
 	mv	x31, x20
-	blt	x20, a2, .LBB4_160
-.LBB4_157:                              #   in Loop: Header=BB4_146 Depth=2
+	blt	x20, a2, .LBB4_163
+.LBB4_160:                              #   in Loop: Header=BB4_149 Depth=2
 	regsw_c	x1, 0x0(x16)		# 100000000100000000000
 	mv	x31, a2
 	slli	a5, a5, 24
 	srli	a5, a5, 56
 	mv	x7, a5
-	bge	a5, a2, .LBB4_161
-.LBB4_158:                              #   in Loop: Header=BB4_146 Depth=2
-	beqz	s3, .LBB4_162
-	j	.LBB4_164
-.LBB4_159:                              #   in Loop: Header=BB4_146 Depth=2
+	bge	a5, a2, .LBB4_164
+.LBB4_161:                              #   in Loop: Header=BB4_149 Depth=2
+	beqz	s3, .LBB4_165
+	j	.LBB4_167
+.LBB4_162:                              #   in Loop: Header=BB4_149 Depth=2
 	regsw_c	x2, 0x390(x10)		# 010100001001110010000
 	subw	t3, x20, a2
 	sraiw	x7, t3, 31
 	xor	t3, t3, x7
 	subw	s3, t3, x7
 	mv	x31, x20
-	bge	x20, a2, .LBB4_157
-.LBB4_160:                              #   in Loop: Header=BB4_146 Depth=2
+	bge	x20, a2, .LBB4_160
+.LBB4_163:                              #   in Loop: Header=BB4_149 Depth=2
 	slli	a5, a5, 24
 	srli	a5, a5, 56
 	regsw_c	x16, 0x0(x16)		# 100001000000000000000
 	mv	x7, a5
-	blt	a5, x31, .LBB4_158
-.LBB4_161:                              #   in Loop: Header=BB4_146 Depth=2
+	blt	a5, x31, .LBB4_161
+.LBB4_164:                              #   in Loop: Header=BB4_149 Depth=2
 	regsw_c	x0, 0x0(x24)		# 110000000000000000000
 	mv	x7, x31
-	bnez	s3, .LBB4_164
-.LBB4_162:                              #   in Loop: Header=BB4_146 Depth=2
+	bnez	s3, .LBB4_167
+.LBB4_165:                              #   in Loop: Header=BB4_149 Depth=2
 	regsw_c	x0, 0x0(x4)		# 001000000000000000000
-	blt	a5, x31, .LBB4_164
-# %bb.163:                              #   in Loop: Header=BB4_146 Depth=2
+	blt	a5, x31, .LBB4_167
+# %bb.166:                              #   in Loop: Header=BB4_149 Depth=2
 	regsw_c	x16, 0x0(x9)		# 010011000000000000000
 	mv	a5, x7
-	beq	x7, x12, .LBB4_144
-	j	.LBB4_171
-.LBB4_164:                              #   in Loop: Header=BB4_146 Depth=2
+	beq	x7, x12, .LBB4_147
+	j	.LBB4_174
+.LBB4_167:                              #   in Loop: Header=BB4_149 Depth=2
 	fmv.s	fa0, fa5
-	beqz	s3, .LBB4_166
-# %bb.165:                              #   in Loop: Header=BB4_146 Depth=2
+	beqz	s3, .LBB4_169
+# %bb.168:                              #   in Loop: Header=BB4_149 Depth=2
 	addi	a5, s3, 1
 	fcvt.s.wu	fa0, a5
 	fmv.x.w	a5, fa0
@@ -1920,149 +1847,149 @@ mg_lchain_dp:                           # @mg_lchain_dp
 	fmadd.s	ft1, ft0, fa2, fa3
 	fmadd.s	ft0, ft1, ft0, fa1
 	fadd.s	fa0, ft0, fa0
-.LBB4_166:                              #   in Loop: Header=BB4_146 Depth=2
+.LBB4_169:                              #   in Loop: Header=BB4_149 Depth=2
 	fcvt.s.wu	ft0, s3
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
 	fcvt.s.w	ft1, x31
 	fmul.s	ft1, ft1, fs0
 	fmadd.s	ft0, fs1, ft0, ft1
-	bnez	s6, .LBB4_169
-# %bb.167:                              #   in Loop: Header=BB4_146 Depth=2
+	bnez	s5, .LBB4_172
+# %bb.170:                              #   in Loop: Header=BB4_149 Depth=2
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
-	bne	x24, ra, .LBB4_169
-.LBB4_168:                              #   in Loop: Header=BB4_146 Depth=2
+	bne	x24, ra, .LBB4_172
+.LBB4_171:                              #   in Loop: Header=BB4_149 Depth=2
 	fmadd.s	fa0, fa0, fa4, ft0
 	fcvt.w.s	a2, fa0, rtz
 	regsw_c	x6, 0x0(x25)		# 110010011000000000000
 	subw	x7, x7, a2
 	mv	a5, x7
-	beq	x7, x12, .LBB4_144
-	j	.LBB4_171
-.LBB4_169:                              #   in Loop: Header=BB4_146 Depth=2
+	beq	x7, x12, .LBB4_147
+	j	.LBB4_174
+.LBB4_172:                              #   in Loop: Header=BB4_149 Depth=2
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
-	beq	x24, ra, .LBB4_178
-# %bb.170:                              #   in Loop: Header=BB4_146 Depth=2
+	beq	x24, ra, .LBB4_181
+# %bb.173:                              #   in Loop: Header=BB4_149 Depth=2
 	li	a5, 1
-	bnez	a2, .LBB4_178
-.LBB4_171:                              #   in Loop: Header=BB4_146 Depth=2
+	bnez	a2, .LBB4_181
+.LBB4_174:                              #   in Loop: Header=BB4_149 Depth=2
 	regsw_c	x6, 0x0(x10)		# 010100011000000000000
 	lw	a2, 0(x26)
 	addw	x20, a2, a5
-	bge	x30, x20, .LBB4_173
-# %bb.172:                              #   in Loop: Header=BB4_146 Depth=2
+	bge	x30, x20, .LBB4_176
+# %bb.175:                              #   in Loop: Header=BB4_149 Depth=2
 	regsw_c	x12, 0x400(x7)		# 001110110010000000000
 	sgtz	a2, x23
 	subw	x23, x23, a2
 	mv	x19, x29
 	ld	a2, 0(x28)
-	bgez	a2, .LBB4_177
-	j	.LBB4_145
-.LBB4_173:                              #   in Loop: Header=BB4_146 Depth=2
+	bgez	a2, .LBB4_180
+	j	.LBB4_148
+.LBB4_176:                              #   in Loop: Header=BB4_149 Depth=2
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
 	lw	a2, 0(x27)
 	sext.w	a5, a3
-	bne	a2, a5, .LBB4_176
-# %bb.174:                              #   in Loop: Header=BB4_146 Depth=2
+	bne	a2, a5, .LBB4_179
+# %bb.177:                              #   in Loop: Header=BB4_149 Depth=2
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
-	bge	x23, s9, .LBB4_222
-# %bb.175:                              #   in Loop: Header=BB4_146 Depth=2
+	bge	x23, s7, .LBB4_225
+# %bb.178:                              #   in Loop: Header=BB4_149 Depth=2
 	regsw_c	x0, 0x0(x24)		# 110000000000000000000
 	addiw	x23, x23, 1
-.LBB4_176:                              #   in Loop: Header=BB4_146 Depth=2
+.LBB4_179:                              #   in Loop: Header=BB4_149 Depth=2
 	regsw_c	x0, 0x0(x25)		# 110010000000000000000
 	mv	x20, x30
 	ld	a2, 0(x28)
-	bltz	a2, .LBB4_145
-.LBB4_177:                              #   in Loop: Header=BB4_146 Depth=2
+	bltz	a2, .LBB4_148
+.LBB4_180:                              #   in Loop: Header=BB4_149 Depth=2
 	slli	a2, a2, 2
 	add	a2, a0, a2
 	sw	a3, 0(a2)
-	j	.LBB4_145
-.LBB4_178:                              #   in Loop: Header=BB4_146 Depth=2
+	j	.LBB4_148
+.LBB4_181:                              #   in Loop: Header=BB4_149 Depth=2
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
-	bne	x24, ra, .LBB4_180
-# %bb.179:                              #   in Loop: Header=BB4_146 Depth=2
+	bne	x24, ra, .LBB4_183
+# %bb.182:                              #   in Loop: Header=BB4_149 Depth=2
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
-	bge	x20, a2, .LBB4_168
-.LBB4_180:                              #   in Loop: Header=BB4_146 Depth=2
+	bge	x20, a2, .LBB4_171
+.LBB4_183:                              #   in Loop: Header=BB4_149 Depth=2
 	flt.s	a2, ft0, fa0
-	bnez	a2, .LBB4_182
-# %bb.181:                              #   in Loop: Header=BB4_146 Depth=2
+	bnez	a2, .LBB4_185
+# %bb.184:                              #   in Loop: Header=BB4_149 Depth=2
 	fmv.s	ft0, fa0
-.LBB4_182:                              #   in Loop: Header=BB4_146 Depth=2
+.LBB4_185:                              #   in Loop: Header=BB4_149 Depth=2
 	fcvt.w.s	a2, ft0, rtz
 	regsw_c	x6, 0x0(x25)		# 110010011000000000000
 	subw	x7, x7, a2
 	mv	a5, x7
-	beq	x7, x12, .LBB4_144
-	j	.LBB4_171
-.LBB4_183:                              #   in Loop: Header=BB4_133 Depth=1
+	beq	x7, x12, .LBB4_147
+	j	.LBB4_174
+.LBB4_186:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x24)		# 110000000000000000000
 	mv	x20, x30
-.LBB4_184:                              #   in Loop: Header=BB4_133 Depth=1
+.LBB4_187:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x16)		# 100000000000000000000
 	slli	x23, a3, 2
-	bltz	a4, .LBB4_186
-.LBB4_185:                              #   in Loop: Header=BB4_133 Depth=1
+	bltz	a4, .LBB4_189
+.LBB4_188:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
 	ld	a2, 0(x17)
 	slli	a5, a4, 4
 	add	a5, s0, a5
 	ld	a5, 0(a5)
 	sub	a2, a2, a5
-	bgeu	s10, a2, .LBB4_193
-.LBB4_186:                              #   in Loop: Header=BB4_133 Depth=1
+	bgeu	s9, a2, .LBB4_196
+.LBB4_189:                              #   in Loop: Header=BB4_136 Depth=1
 	li	a4, -1
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
-	bge	x18, a3, .LBB4_228
-# %bb.187:                              # %.preheader27
-                                        #   in Loop: Header=BB4_133 Depth=1
+	bge	x18, a3, .LBB4_231
+# %bb.190:                              # %.preheader27
+                                        #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x1, 0x0(x16)		# 100000000100000000000
 	li	x24, -1
 	lui	a5, 524288
 	mv	a2, t1
 	mv	x7, a3
-	j	.LBB4_189
-.LBB4_188:                              #   in Loop: Header=BB4_189 Depth=2
+	j	.LBB4_192
+.LBB4_191:                              #   in Loop: Header=BB4_192 Depth=2
 	addi	a2, a2, -4
 	regsw_c	x16, 0x0(x17)		# 100011000000000000000
 	mv	x24, a4
-	bge	x18, x7, .LBB4_193
-.LBB4_189:                              #   Parent Loop BB4_133 Depth=1
+	bge	x18, x7, .LBB4_196
+.LBB4_192:                              #   Parent Loop BB4_136 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	regsw_c	x4, 0x200(x19)		# 100110010001000000000
 	lw	x25, 0(a2)
 	addi	x7, x7, -1
 	mv	a4, x7
-	blt	a5, x25, .LBB4_191
-# %bb.190:                              #   in Loop: Header=BB4_189 Depth=2
+	blt	a5, x25, .LBB4_194
+# %bb.193:                              #   in Loop: Header=BB4_192 Depth=2
 	regsw_c	x0, 0x0(x9)		# 010010000000000000000
 	mv	a4, x24
-	blt	x25, a5, .LBB4_188
-	j	.LBB4_192
-.LBB4_191:                              #   in Loop: Header=BB4_189 Depth=2
+	blt	x25, a5, .LBB4_191
+	j	.LBB4_195
+.LBB4_194:                              #   in Loop: Header=BB4_192 Depth=2
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
-	blt	x25, a5, .LBB4_188
-.LBB4_192:                              #   in Loop: Header=BB4_189 Depth=2
+	blt	x25, a5, .LBB4_191
+.LBB4_195:                              #   in Loop: Header=BB4_192 Depth=2
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
 	mv	a5, x25
-	j	.LBB4_188
-.LBB4_193:                              #   in Loop: Header=BB4_133 Depth=1
-	bltz	a4, .LBB4_228
-# %bb.194:                              #   in Loop: Header=BB4_133 Depth=1
+	j	.LBB4_191
+.LBB4_196:                              #   in Loop: Header=BB4_136 Depth=1
+	bltz	a4, .LBB4_231
+# %bb.197:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x4)		# 001000000000000000000
-	bge	a4, x31, .LBB4_228
-# %bb.195:                              #   in Loop: Header=BB4_133 Depth=1
+	bge	a4, x31, .LBB4_231
+# %bb.198:                              #   in Loop: Header=BB4_136 Depth=1
 	slli	a2, a4, 4
 	add	a2, s0, a2
 	ld	a5, 8(a2)
 	regsw_c	x16, 0x0(x24)		# 110001000000000000000
 	subw	x24, x22, a5
-	blez	x24, .LBB4_228
-# %bb.196:                              #   in Loop: Header=BB4_133 Depth=1
+	blez	x24, .LBB4_231
+# %bb.199:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x4)		# 001000000000000000000
-	blt	s10, x24, .LBB4_228
-# %bb.197:                              #   in Loop: Header=BB4_133 Depth=1
+	blt	s9, x24, .LBB4_231
+# %bb.200:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x1, 0x534(x25)		# 110010000110100110100
 	slli	x22, x22, 8
 	ld	t3, 0(x17)
@@ -2072,76 +1999,76 @@ mg_lchain_dp:                           # @mg_lchain_dp
 	srli	x26, x7, 56
 	subw	x25, t3, a2
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
-	bne	x22, x26, .LBB4_208
-# %bb.198:                              #   in Loop: Header=BB4_133 Depth=1
+	bne	x22, x26, .LBB4_211
+# %bb.201:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x4)		# 001000000000000000000
-	blt	s2, x24, .LBB4_228
-# %bb.199:                              #   in Loop: Header=BB4_133 Depth=1
+	blt	s8, x24, .LBB4_231
+# %bb.202:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
-	beqz	x25, .LBB4_228
-# %bb.200:                              #   in Loop: Header=BB4_133 Depth=1
+	beqz	x25, .LBB4_231
+# %bb.203:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x1, 0x40(x12)		# 011000000100001000000
 	subw	a2, x24, x25
 	sraiw	t3, a2, 31
 	xor	a2, a2, t3
 	subw	x27, a2, t3
-	blt	s8, x27, .LBB4_228
-# %bb.201:                              #   in Loop: Header=BB4_133 Depth=1
-	bnez	s6, .LBB4_205
-# %bb.202:                              #   in Loop: Header=BB4_133 Depth=1
+	blt	s4, x27, .LBB4_231
+# %bb.204:                              #   in Loop: Header=BB4_136 Depth=1
+	bnez	s5, .LBB4_208
+# %bb.205:                              #   in Loop: Header=BB4_136 Depth=1
 	li	a2, 2
-	blt	s5, a2, .LBB4_205
-# %bb.203:                              #   in Loop: Header=BB4_133 Depth=1
+	blt	s2, a2, .LBB4_208
+# %bb.206:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
-	bne	x22, x26, .LBB4_205
-# %bb.204:                              #   in Loop: Header=BB4_133 Depth=1
+	bne	x22, x26, .LBB4_208
+# %bb.207:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x4)		# 001000000000000000000
-	blt	s2, x25, .LBB4_228
-.LBB4_205:                              #   in Loop: Header=BB4_133 Depth=1
+	blt	s8, x25, .LBB4_231
+.LBB4_208:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x16, 0x0(x9)		# 010011000000000000000
 	mv	a2, x24
-	blt	x24, x25, .LBB4_209
-.LBB4_206:                              #   in Loop: Header=BB4_133 Depth=1
+	blt	x24, x25, .LBB4_212
+.LBB4_209:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x1, 0x40(x8)		# 010000000100001000000
 	mv	a2, x25
 	slli	a5, a5, 24
 	srli	a5, a5, 56
 	mv	x7, a5
-	bge	a5, x25, .LBB4_210
-.LBB4_207:                              #   in Loop: Header=BB4_133 Depth=1
+	bge	a5, x25, .LBB4_213
+.LBB4_210:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
-	beqz	x27, .LBB4_211
-	j	.LBB4_213
-.LBB4_208:                              #   in Loop: Header=BB4_133 Depth=1
+	beqz	x27, .LBB4_214
+	j	.LBB4_216
+.LBB4_211:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x1, 0x98(x12)		# 011000000100010011000
 	subw	a2, x24, x25
 	sraiw	t3, a2, 31
 	xor	a2, a2, t3
 	subw	x27, a2, t3
 	mv	a2, x24
-	bge	x24, x25, .LBB4_206
-.LBB4_209:                              #   in Loop: Header=BB4_133 Depth=1
+	bge	x24, x25, .LBB4_209
+.LBB4_212:                              #   in Loop: Header=BB4_136 Depth=1
 	slli	a5, a5, 24
 	srli	a5, a5, 56
 	regsw_c	x0, 0x0(x16)		# 100000000000000000000
 	mv	x7, a5
-	blt	a5, a2, .LBB4_207
-.LBB4_210:                              #   in Loop: Header=BB4_133 Depth=1
+	blt	a5, a2, .LBB4_210
+.LBB4_213:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x17)		# 100010000000000000000
 	mv	x7, a2
-	bnez	x27, .LBB4_213
-.LBB4_211:                              #   in Loop: Header=BB4_133 Depth=1
-	blt	a5, a2, .LBB4_213
-# %bb.212:                              #   in Loop: Header=BB4_133 Depth=1
+	bnez	x27, .LBB4_216
+.LBB4_214:                              #   in Loop: Header=BB4_136 Depth=1
+	blt	a5, a2, .LBB4_216
+# %bb.215:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x16, 0x0(x9)		# 010011000000000000000
 	mv	a2, x7
-	bne	x7, x12, .LBB4_220
-	j	.LBB4_228
-.LBB4_213:                              #   in Loop: Header=BB4_133 Depth=1
+	bne	x7, x12, .LBB4_223
+	j	.LBB4_231
+.LBB4_216:                              #   in Loop: Header=BB4_136 Depth=1
 	fmv.s	fa0, fa5
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
-	beqz	x27, .LBB4_215
-# %bb.214:                              #   in Loop: Header=BB4_133 Depth=1
+	beqz	x27, .LBB4_218
+# %bb.217:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
 	addi	a5, x27, 1
 	fcvt.s.wu	fa0, a5
@@ -2156,159 +2083,159 @@ mg_lchain_dp:                           # @mg_lchain_dp
 	fmadd.s	ft1, ft0, fa2, fa3
 	fmadd.s	ft0, ft1, ft0, fa1
 	fadd.s	fa0, ft0, fa0
-.LBB4_215:                              #   in Loop: Header=BB4_133 Depth=1
+.LBB4_218:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
 	fcvt.s.wu	ft0, x27
 	fcvt.s.w	ft1, a2
 	fmul.s	ft1, ft1, fs0
 	fmadd.s	ft0, fs1, ft0, ft1
-	bnez	s6, .LBB4_218
-# %bb.216:                              #   in Loop: Header=BB4_133 Depth=1
+	bnez	s5, .LBB4_221
+# %bb.219:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
-	bne	x22, x26, .LBB4_218
-.LBB4_217:                              #   in Loop: Header=BB4_133 Depth=1
+	bne	x22, x26, .LBB4_221
+.LBB4_220:                              #   in Loop: Header=BB4_136 Depth=1
 	fmadd.s	fa0, fa0, fa4, ft0
 	fcvt.w.s	a2, fa0, rtz
 	regsw_c	x6, 0x0(x25)		# 110010011000000000000
 	subw	x7, x7, a2
 	mv	a2, x7
-	bne	x7, x12, .LBB4_220
-	j	.LBB4_228
-.LBB4_218:                              #   in Loop: Header=BB4_133 Depth=1
+	bne	x7, x12, .LBB4_223
+	j	.LBB4_231
+.LBB4_221:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
-	beq	x22, x26, .LBB4_223
-# %bb.219:                              #   in Loop: Header=BB4_133 Depth=1
+	beq	x22, x26, .LBB4_226
+# %bb.222:                              #   in Loop: Header=BB4_136 Depth=1
 	li	a2, 1
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
-	bnez	x25, .LBB4_223
-.LBB4_220:                              #   in Loop: Header=BB4_133 Depth=1
+	bnez	x25, .LBB4_226
+.LBB4_223:                              #   in Loop: Header=BB4_136 Depth=1
 	slli	a5, a4, 2
-	add	a5, s4, a5
+	add	a5, s11, a5
 	lw	a5, 0(a5)
 	addw	a2, a5, a2
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
-	bge	x20, a2, .LBB4_228
-# %bb.221:                              #   in Loop: Header=BB4_133 Depth=1
+	bge	x20, a2, .LBB4_231
+# %bb.224:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x24(x4)		# 001000000000000100100
-	add	a5, s4, x23
+	add	a5, s11, x23
 	sw	a2, 0(a5)
 	slli	a5, a3, 3
-	add	a5, s1, a5
+	add	a5, s10, a5
 	sd	a4, 0(a5)
 	mv	x20, a2
 	mv	x19, a4
-	j	.LBB4_229
-.LBB4_222:                              #   in Loop: Header=BB4_133 Depth=1
+	j	.LBB4_232
+.LBB4_225:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x8, 0x0(x27)		# 110110100000000000000
 	mv	x31, x29
 	mv	x20, x30
 	slli	x23, a3, 2
-	bgez	a4, .LBB4_185
-	j	.LBB4_186
-.LBB4_223:                              #   in Loop: Header=BB4_133 Depth=1
+	bgez	a4, .LBB4_188
+	j	.LBB4_189
+.LBB4_226:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
-	bne	x22, x26, .LBB4_225
-# %bb.224:                              #   in Loop: Header=BB4_133 Depth=1
+	bne	x22, x26, .LBB4_228
+# %bb.227:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
-	bge	x24, x25, .LBB4_217
-.LBB4_225:                              #   in Loop: Header=BB4_133 Depth=1
+	bge	x24, x25, .LBB4_220
+.LBB4_228:                              #   in Loop: Header=BB4_136 Depth=1
 	flt.s	a2, ft0, fa0
-	bnez	a2, .LBB4_227
-# %bb.226:                              #   in Loop: Header=BB4_133 Depth=1
+	bnez	a2, .LBB4_230
+# %bb.229:                              #   in Loop: Header=BB4_136 Depth=1
 	fmv.s	ft0, fa0
-.LBB4_227:                              #   in Loop: Header=BB4_133 Depth=1
+.LBB4_230:                              #   in Loop: Header=BB4_136 Depth=1
 	fcvt.w.s	a2, ft0, rtz
 	regsw_c	x6, 0x0(x25)		# 110010011000000000000
 	subw	x7, x7, a2
 	mv	a2, x7
-	bne	x7, x12, .LBB4_220
-.LBB4_228:                              #   in Loop: Header=BB4_133 Depth=1
+	bne	x7, x12, .LBB4_223
+.LBB4_231:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x16, 0x52(x4)		# 001001000000001010010
-	add	a2, s4, x23
+	add	a2, s11, x23
 	sw	x20, 0(a2)
 	slli	a2, a3, 3
-	add	a2, s1, a2
+	add	a2, s10, a2
 	sd	x19, 0(a2)
 	mv	a2, x20
-	bltz	x19, .LBB4_231
-.LBB4_229:                              #   in Loop: Header=BB4_133 Depth=1
+	bltz	x19, .LBB4_234
+.LBB4_232:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x20, 0x400(x26)		# 110101010010000000000
 	slli	x19, x19, 2
-	add	x19, s11, x19
+	add	x19, s1, x19
 	lw	a2, 0(x19)
-	blt	x20, a2, .LBB4_231
-# %bb.230:                              #   in Loop: Header=BB4_133 Depth=1
+	blt	x20, a2, .LBB4_234
+# %bb.233:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
 	mv	a2, x20
-.LBB4_231:                              #   in Loop: Header=BB4_133 Depth=1
+.LBB4_234:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x21)		# 101010000000000000000
-	add	x23, s11, x23
+	add	x23, s1, x23
 	sw	a2, 0(x23)
-	bltz	a4, .LBB4_234
-# %bb.232:                              #   in Loop: Header=BB4_133 Depth=1
+	bltz	a4, .LBB4_237
+# %bb.235:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
 	ld	a2, 0(x17)
 	slli	a5, a4, 4
 	add	a5, s0, a5
 	ld	a5, 0(a5)
 	sub	a2, a2, a5
-	bltu	s10, a2, .LBB4_235
-# %bb.233:                              #   in Loop: Header=BB4_133 Depth=1
+	bltu	s9, a2, .LBB4_238
+# %bb.236:                              #   in Loop: Header=BB4_136 Depth=1
 	slli	a2, a4, 2
-	add	a2, s4, a2
+	add	a2, s11, a2
 	lw	a2, 0(a2)
 	regsw_c	x0, 0x0(x4)		# 001000000000000000000
-	bge	a2, x20, .LBB4_235
-.LBB4_234:                              #   in Loop: Header=BB4_133 Depth=1
+	bge	a2, x20, .LBB4_238
+.LBB4_237:                              #   in Loop: Header=BB4_136 Depth=1
 	mv	a4, a3
-.LBB4_235:                              #   in Loop: Header=BB4_133 Depth=1
+.LBB4_238:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x11, 0x440(x19)		# 100110101110001000000
 	addi	x20, a3, 1
 	slli	x19, x20, 4
 	add	x19, s0, x19
 	ld	x23, 8(x19)
-	blt	a3, x18, .LBB4_242
-# %bb.236:                              #   in Loop: Header=BB4_133 Depth=1
+	blt	a3, x18, .LBB4_245
+# %bb.239:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x4)		# 001000000000000000000
-	blt	s7, x21, .LBB4_238
-# %bb.237:                              #   in Loop: Header=BB4_133 Depth=1
+	blt	s6, x21, .LBB4_241
+# %bb.240:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x16)		# 100000000000000000000
-	mv	x21, s7
-.LBB4_238:                              #   in Loop: Header=BB4_133 Depth=1
+	mv	x21, s6
+.LBB4_241:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x200(x8)		# 010000000001000000000
 	ld	a2, 0(x19)
-	ld	a5, 112(sp)                     # 8-byte Folded Reload
+	ld	a5, 104(sp)                     # 8-byte Folded Reload
 	add	t0, a5, t0
 	add	t0, t0, x21
 	slli	a5, t0, 4
 	add	a5, s0, a5
-	j	.LBB4_240
-.LBB4_239:                              #   in Loop: Header=BB4_240 Depth=2
+	j	.LBB4_243
+.LBB4_242:                              #   in Loop: Header=BB4_243 Depth=2
 	regsw_c	x6, 0x0(x24)		# 110000011000000000000
 	addi	x18, x18, 1
 	addi	a5, a5, 16
-	beq	x8, x18, .LBB4_283
-.LBB4_240:                              #   Parent Loop BB4_133 Depth=1
+	beq	x8, x18, .LBB4_286
+.LBB4_243:                              #   Parent Loop BB4_136 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld	t0, 0(a5)
 	xor	t3, t0, a2
 	srli	t3, t3, 32
-	bnez	t3, .LBB4_239
-# %bb.241:                              #   in Loop: Header=BB4_240 Depth=2
-	add	t0, t0, s10
-	bltu	t0, a2, .LBB4_239
-.LBB4_242:                              #   in Loop: Header=BB4_133 Depth=1
+	bnez	t3, .LBB4_242
+# %bb.244:                              #   in Loop: Header=BB4_243 Depth=2
+	add	t0, t0, s9
+	bltu	t0, a2, .LBB4_242
+.LBB4_245:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
 	sub	a2, x20, x18
-	blt	s7, a2, .LBB4_284
-.LBB4_243:                              #   in Loop: Header=BB4_133 Depth=1
+	blt	s6, a2, .LBB4_287
+.LBB4_246:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x8, 0x440(x25)		# 110010100010001000000
 	mv	x17, x18
 	slli	a2, x23, 24
 	srli	x21, a2, 56
 	slli	t0, x20, 2
-	blt	a3, x18, .LBB4_285
-.LBB4_244:                              #   in Loop: Header=BB4_133 Depth=1
+	blt	a3, x18, .LBB4_288
+.LBB4_247:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x9, 0x136(x17)		# 100010100100100110110
 	li	x24, 0
 	slli	a2, x23, 8
@@ -2320,95 +2247,95 @@ mg_lchain_dp:                           # @mg_lchain_dp
 	regsw_c	x0, 0x0(x24)		# 110000000000000000000
 	mv	x29, x16
 	mv	ra, a3
-	j	.LBB4_246
-.LBB4_245:                              #   in Loop: Header=BB4_246 Depth=2
+	j	.LBB4_249
+.LBB4_248:                              #   in Loop: Header=BB4_249 Depth=2
 	regsw_c	x13, 0x598(x11)		# 010110110110110011000
 	addi	ra, x30, -1
 	addi	x29, x29, -8
 	addi	x28, x28, -4
 	addi	x27, x27, -4
 	addi	x26, x26, -16
-	bge	x17, x30, .LBB4_289
-.LBB4_246:                              #   Parent Loop BB4_133 Depth=1
+	bge	x17, x30, .LBB4_292
+.LBB4_249:                              #   Parent Loop BB4_136 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	regsw_c	x8, 0x200(x11)		# 010110100001000000000
 	ld	s3, 0(x26)
 	subw	x31, x23, s3
 	mv	x30, ra
-	blez	x31, .LBB4_245
-# %bb.247:                              #   in Loop: Header=BB4_246 Depth=2
+	blez	x31, .LBB4_248
+# %bb.250:                              #   in Loop: Header=BB4_249 Depth=2
 	regsw_c	x0, 0x0(x4)		# 001000000000000000000
-	blt	s10, x31, .LBB4_245
-# %bb.248:                              #   in Loop: Header=BB4_246 Depth=2
+	blt	s9, x31, .LBB4_248
+# %bb.251:                              #   in Loop: Header=BB4_249 Depth=2
 	regsw_c	x1, 0x18(x9)		# 010010000100000011000
 	ld	a2, 0(x19)
 	ld	a5, -8(x26)
 	slli	t3, s3, 8
 	srli	x7, t3, 56
 	subw	ra, a2, a5
-	bne	x25, x7, .LBB4_259
-# %bb.249:                              #   in Loop: Header=BB4_246 Depth=2
+	bne	x25, x7, .LBB4_262
+# %bb.252:                              #   in Loop: Header=BB4_249 Depth=2
 	regsw_c	x0, 0x0(x4)		# 001000000000000000000
-	blt	s2, x31, .LBB4_245
-# %bb.250:                              #   in Loop: Header=BB4_246 Depth=2
-	beqz	ra, .LBB4_245
-# %bb.251:                              #   in Loop: Header=BB4_246 Depth=2
+	blt	s8, x31, .LBB4_248
+# %bb.253:                              #   in Loop: Header=BB4_249 Depth=2
+	beqz	ra, .LBB4_248
+# %bb.254:                              #   in Loop: Header=BB4_249 Depth=2
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
 	subw	a2, x31, ra
 	sraiw	a5, a2, 31
 	xor	a2, a2, a5
 	subw	a5, a2, a5
-	blt	s8, a5, .LBB4_245
-# %bb.252:                              #   in Loop: Header=BB4_246 Depth=2
-	bnez	s6, .LBB4_256
-# %bb.253:                              #   in Loop: Header=BB4_246 Depth=2
+	blt	s4, a5, .LBB4_248
+# %bb.255:                              #   in Loop: Header=BB4_249 Depth=2
+	bnez	s5, .LBB4_259
+# %bb.256:                              #   in Loop: Header=BB4_249 Depth=2
 	li	a2, 2
-	blt	s5, a2, .LBB4_256
-# %bb.254:                              #   in Loop: Header=BB4_246 Depth=2
+	blt	s2, a2, .LBB4_259
+# %bb.257:                              #   in Loop: Header=BB4_249 Depth=2
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
-	bne	x25, x7, .LBB4_256
-# %bb.255:                              #   in Loop: Header=BB4_246 Depth=2
-	blt	s2, ra, .LBB4_245
-.LBB4_256:                              #   in Loop: Header=BB4_246 Depth=2
+	bne	x25, x7, .LBB4_259
+# %bb.258:                              #   in Loop: Header=BB4_249 Depth=2
+	blt	s8, ra, .LBB4_248
+.LBB4_259:                              #   in Loop: Header=BB4_249 Depth=2
 	regsw_c	x0, 0x0(x9)		# 010010000000000000000
 	mv	a2, x31
-	blt	x31, ra, .LBB4_260
-.LBB4_257:                              #   in Loop: Header=BB4_246 Depth=2
+	blt	x31, ra, .LBB4_263
+.LBB4_260:                              #   in Loop: Header=BB4_249 Depth=2
 	mv	a2, ra
 	slli	s3, s3, 24
 	srli	s3, s3, 56
 	mv	t3, s3
-	bge	s3, ra, .LBB4_261
-.LBB4_258:                              #   in Loop: Header=BB4_246 Depth=2
-	beqz	a5, .LBB4_262
-	j	.LBB4_264
-.LBB4_259:                              #   in Loop: Header=BB4_246 Depth=2
+	bge	s3, ra, .LBB4_264
+.LBB4_261:                              #   in Loop: Header=BB4_249 Depth=2
+	beqz	a5, .LBB4_265
+	j	.LBB4_267
+.LBB4_262:                              #   in Loop: Header=BB4_249 Depth=2
 	regsw_c	x0, 0x90(x8)		# 010000000000010010000
 	subw	a2, x31, ra
 	sraiw	a5, a2, 31
 	xor	a2, a2, a5
 	subw	a5, a2, a5
 	mv	a2, x31
-	bge	x31, ra, .LBB4_257
-.LBB4_260:                              #   in Loop: Header=BB4_246 Depth=2
+	bge	x31, ra, .LBB4_260
+.LBB4_263:                              #   in Loop: Header=BB4_249 Depth=2
 	slli	s3, s3, 24
 	srli	s3, s3, 56
 	mv	t3, s3
-	blt	s3, a2, .LBB4_258
-.LBB4_261:                              #   in Loop: Header=BB4_246 Depth=2
+	blt	s3, a2, .LBB4_261
+.LBB4_264:                              #   in Loop: Header=BB4_249 Depth=2
 	mv	t3, a2
-	bnez	a5, .LBB4_264
-.LBB4_262:                              #   in Loop: Header=BB4_246 Depth=2
-	blt	s3, a2, .LBB4_264
-# %bb.263:                              #   in Loop: Header=BB4_246 Depth=2
+	bnez	a5, .LBB4_267
+.LBB4_265:                              #   in Loop: Header=BB4_249 Depth=2
+	blt	s3, a2, .LBB4_267
+# %bb.266:                              #   in Loop: Header=BB4_249 Depth=2
 	mv	a2, t3
 	regsw_c	x0, 0x0(x4)		# 001000000000000000000
-	beq	t3, x12, .LBB4_245
-	j	.LBB4_271
-.LBB4_264:                              #   in Loop: Header=BB4_246 Depth=2
+	beq	t3, x12, .LBB4_248
+	j	.LBB4_274
+.LBB4_267:                              #   in Loop: Header=BB4_249 Depth=2
 	fmv.s	fa0, fa5
-	beqz	a5, .LBB4_266
-# %bb.265:                              #   in Loop: Header=BB4_246 Depth=2
+	beqz	a5, .LBB4_269
+# %bb.268:                              #   in Loop: Header=BB4_249 Depth=2
 	addi	s3, a5, 1
 	fcvt.s.wu	fa0, s3
 	fmv.x.w	s3, fa0
@@ -2422,93 +2349,93 @@ mg_lchain_dp:                           # @mg_lchain_dp
 	fmadd.s	ft1, ft0, fa2, fa3
 	fmadd.s	ft0, ft1, ft0, fa1
 	fadd.s	fa0, ft0, fa0
-.LBB4_266:                              #   in Loop: Header=BB4_246 Depth=2
+.LBB4_269:                              #   in Loop: Header=BB4_249 Depth=2
 	fcvt.s.wu	ft0, a5
 	fcvt.s.w	ft1, a2
 	fmul.s	ft1, ft1, fs0
 	fmadd.s	ft0, fs1, ft0, ft1
-	bnez	s6, .LBB4_269
-# %bb.267:                              #   in Loop: Header=BB4_246 Depth=2
+	bnez	s5, .LBB4_272
+# %bb.270:                              #   in Loop: Header=BB4_249 Depth=2
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
-	bne	x25, x7, .LBB4_269
-.LBB4_268:                              #   in Loop: Header=BB4_246 Depth=2
+	bne	x25, x7, .LBB4_272
+.LBB4_271:                              #   in Loop: Header=BB4_249 Depth=2
 	fmadd.s	fa0, fa0, fa4, ft0
 	fcvt.w.s	a2, fa0, rtz
 	subw	t3, t3, a2
 	mv	a2, t3
 	regsw_c	x0, 0x0(x4)		# 001000000000000000000
-	beq	t3, x12, .LBB4_245
-	j	.LBB4_271
-.LBB4_269:                              #   in Loop: Header=BB4_246 Depth=2
+	beq	t3, x12, .LBB4_248
+	j	.LBB4_274
+.LBB4_272:                              #   in Loop: Header=BB4_249 Depth=2
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
-	beq	x25, x7, .LBB4_278
-# %bb.270:                              #   in Loop: Header=BB4_246 Depth=2
+	beq	x25, x7, .LBB4_281
+# %bb.273:                              #   in Loop: Header=BB4_249 Depth=2
 	li	a2, 1
-	bnez	ra, .LBB4_278
-.LBB4_271:                              #   in Loop: Header=BB4_246 Depth=2
+	bnez	ra, .LBB4_281
+.LBB4_274:                              #   in Loop: Header=BB4_249 Depth=2
 	regsw_c	x4, 0x0(x8)		# 010000010000000000000
 	lw	a5, 0(x27)
 	addw	a2, a5, a2
-	bge	x21, a2, .LBB4_273
-# %bb.272:                              #   in Loop: Header=BB4_246 Depth=2
+	bge	x21, a2, .LBB4_276
+# %bb.275:                              #   in Loop: Header=BB4_249 Depth=2
 	regsw_c	x13, 0x0(x7)		# 001110110100000000000
 	sgtz	a5, x24
 	subw	x24, x24, a5
 	mv	x22, x30
 	mv	x21, a2
-	j	.LBB4_276
-.LBB4_273:                              #   in Loop: Header=BB4_246 Depth=2
+	j	.LBB4_279
+.LBB4_276:                              #   in Loop: Header=BB4_249 Depth=2
 	regsw_c	x0, 0x0(x9)		# 010010000000000000000
 	lw	a2, 0(x28)
 	sext.w	a5, x20
-	bne	a2, a5, .LBB4_276
-# %bb.274:                              #   in Loop: Header=BB4_246 Depth=2
+	bne	a2, a5, .LBB4_279
+# %bb.277:                              #   in Loop: Header=BB4_249 Depth=2
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
-	bge	x24, s9, .LBB4_288
-# %bb.275:                              #   in Loop: Header=BB4_246 Depth=2
+	bge	x24, s7, .LBB4_291
+# %bb.278:                              #   in Loop: Header=BB4_249 Depth=2
 	regsw_c	x0, 0x0(x24)		# 110000000000000000000
 	addiw	x24, x24, 1
-.LBB4_276:                              #   in Loop: Header=BB4_246 Depth=2
+.LBB4_279:                              #   in Loop: Header=BB4_249 Depth=2
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
 	ld	a2, 0(x29)
-	bltz	a2, .LBB4_245
-# %bb.277:                              #   in Loop: Header=BB4_246 Depth=2
+	bltz	a2, .LBB4_248
+# %bb.280:                              #   in Loop: Header=BB4_249 Depth=2
 	slli	a2, a2, 2
 	add	a2, a0, a2
 	regsw_c	x0, 0x0(x4)		# 001000000000000000000
 	sw	x20, 0(a2)
-	j	.LBB4_245
-.LBB4_278:                              #   in Loop: Header=BB4_246 Depth=2
+	j	.LBB4_248
+.LBB4_281:                              #   in Loop: Header=BB4_249 Depth=2
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
-	bne	x25, x7, .LBB4_280
-# %bb.279:                              #   in Loop: Header=BB4_246 Depth=2
+	bne	x25, x7, .LBB4_283
+# %bb.282:                              #   in Loop: Header=BB4_249 Depth=2
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
-	bge	x31, ra, .LBB4_268
-.LBB4_280:                              #   in Loop: Header=BB4_246 Depth=2
+	bge	x31, ra, .LBB4_271
+.LBB4_283:                              #   in Loop: Header=BB4_249 Depth=2
 	flt.s	a2, ft0, fa0
-	bnez	a2, .LBB4_282
-# %bb.281:                              #   in Loop: Header=BB4_246 Depth=2
+	bnez	a2, .LBB4_285
+# %bb.284:                              #   in Loop: Header=BB4_249 Depth=2
 	fmv.s	ft0, fa0
-.LBB4_282:                              #   in Loop: Header=BB4_246 Depth=2
+.LBB4_285:                              #   in Loop: Header=BB4_249 Depth=2
 	fcvt.w.s	a2, ft0, rtz
 	subw	t3, t3, a2
 	mv	a2, t3
 	regsw_c	x0, 0x0(x4)		# 001000000000000000000
-	beq	t3, x12, .LBB4_245
-	j	.LBB4_271
-.LBB4_283:                              #   in Loop: Header=BB4_133 Depth=1
+	beq	t3, x12, .LBB4_248
+	j	.LBB4_274
+.LBB4_286:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x16, 0x0(x25)		# 110011000000000000000
 	mv	x18, x20
 	sub	a2, x20, x20
-	bge	s7, a2, .LBB4_243
-.LBB4_284:                              #   in Loop: Header=BB4_133 Depth=1
+	bge	s6, a2, .LBB4_246
+.LBB4_287:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x8, 0x440(x25)		# 110010100010001000000
-	sub	x17, x20, s7
+	sub	x17, x20, s6
 	slli	a2, x23, 24
 	srli	x21, a2, 56
 	slli	t0, x20, 2
-	bge	a3, x17, .LBB4_244
-.LBB4_285:                              #   in Loop: Header=BB4_133 Depth=1
+	bge	a3, x17, .LBB4_247
+.LBB4_288:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x20(x8)		# 010000000000000100000
 	ld	a2, 0(x19)
 	slli	a5, a4, 4
@@ -2516,83 +2443,83 @@ mg_lchain_dp:                           # @mg_lchain_dp
 	ld	a5, 0(a5)
 	sub	a2, a2, a5
 	li	x22, -1
-	bgeu	s10, a2, .LBB4_287
-# %bb.286:                              #   in Loop: Header=BB4_133 Depth=1
-	add	a2, s4, t0
+	bgeu	s9, a2, .LBB4_290
+# %bb.289:                              #   in Loop: Header=BB4_136 Depth=1
+	add	a2, s11, t0
 	regsw_c	x0, 0x1(x5)		# 001010000000000000001
 	sw	x21, 0(a2)
 	slli	a2, x20, 3
-	add	a2, s1, a2
+	add	a2, s10, a2
 	li	a4, -1
 	sd	a4, 0(a2)
-	add	t0, s11, t0
+	add	t0, s1, t0
 	sw	x21, 0(t0)
-	j	.LBB4_337
-.LBB4_287:                              #   in Loop: Header=BB4_133 Depth=1
+	j	.LBB4_340
+.LBB4_290:                              #   in Loop: Header=BB4_136 Depth=1
 	mv	ra, a3
-	j	.LBB4_297
-.LBB4_288:                              #   in Loop: Header=BB4_133 Depth=1
+	j	.LBB4_300
+.LBB4_291:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
 	mv	ra, x30
-.LBB4_289:                              #   in Loop: Header=BB4_133 Depth=1
+.LBB4_292:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
 	ld	a2, 0(x19)
 	slli	a5, a4, 4
 	add	a5, s0, a5
 	ld	a5, 0(a5)
 	sub	a2, a2, a5
-	bgeu	s10, a2, .LBB4_297
-# %bb.290:                              #   in Loop: Header=BB4_133 Depth=1
+	bgeu	s9, a2, .LBB4_300
+# %bb.293:                              #   in Loop: Header=BB4_136 Depth=1
 	li	a4, -1
 	regsw_c	x0, 0x0(x4)		# 001000000000000000000
-	blt	a3, x17, .LBB4_331
-# %bb.291:                              # %.preheader23
-                                        #   in Loop: Header=BB4_133 Depth=1
+	blt	a3, x17, .LBB4_334
+# %bb.294:                              # %.preheader23
+                                        #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x5, 0x400(x16)		# 100000010110000000000
 	li	x24, -1
 	lui	a5, 524288
 	mv	a2, x14
 	mv	x7, x8
-	j	.LBB4_293
-.LBB4_292:                              #   in Loop: Header=BB4_293 Depth=2
+	j	.LBB4_296
+.LBB4_295:                              #   in Loop: Header=BB4_296 Depth=2
 	addi	a2, a2, -4
 	regsw_c	x16, 0x0(x17)		# 100011000000000000000
 	mv	x24, a4
-	bge	x17, x7, .LBB4_297
-.LBB4_293:                              #   Parent Loop BB4_133 Depth=1
+	bge	x17, x7, .LBB4_300
+.LBB4_296:                              #   Parent Loop BB4_136 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	regsw_c	x4, 0x200(x19)		# 100110010001000000000
 	lw	x25, 0(a2)
 	addi	x7, x7, -1
 	mv	a4, x7
-	blt	a5, x25, .LBB4_295
-# %bb.294:                              #   in Loop: Header=BB4_293 Depth=2
+	blt	a5, x25, .LBB4_298
+# %bb.297:                              #   in Loop: Header=BB4_296 Depth=2
 	regsw_c	x0, 0x0(x9)		# 010010000000000000000
 	mv	a4, x24
-	blt	x25, a5, .LBB4_292
-	j	.LBB4_296
-.LBB4_295:                              #   in Loop: Header=BB4_293 Depth=2
+	blt	x25, a5, .LBB4_295
+	j	.LBB4_299
+.LBB4_298:                              #   in Loop: Header=BB4_296 Depth=2
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
-	blt	x25, a5, .LBB4_292
-.LBB4_296:                              #   in Loop: Header=BB4_293 Depth=2
+	blt	x25, a5, .LBB4_295
+.LBB4_299:                              #   in Loop: Header=BB4_296 Depth=2
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
 	mv	a5, x25
-	j	.LBB4_292
-.LBB4_297:                              #   in Loop: Header=BB4_133 Depth=1
-	bltz	a4, .LBB4_331
-# %bb.298:                              #   in Loop: Header=BB4_133 Depth=1
-	bge	a4, ra, .LBB4_331
-# %bb.299:                              #   in Loop: Header=BB4_133 Depth=1
+	j	.LBB4_295
+.LBB4_300:                              #   in Loop: Header=BB4_136 Depth=1
+	bltz	a4, .LBB4_334
+# %bb.301:                              #   in Loop: Header=BB4_136 Depth=1
+	bge	a4, ra, .LBB4_334
+# %bb.302:                              #   in Loop: Header=BB4_136 Depth=1
 	slli	a2, a4, 4
 	add	a2, s0, a2
 	regsw_c	x18, 0x0(x19)		# 100111001000000000000
 	ld	x26, 8(a2)
 	subw	x24, x23, x26
-	blez	x24, .LBB4_331
-# %bb.300:                              #   in Loop: Header=BB4_133 Depth=1
+	blez	x24, .LBB4_334
+# %bb.303:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x4)		# 001000000000000000000
-	blt	s10, x24, .LBB4_331
-# %bb.301:                              #   in Loop: Header=BB4_133 Depth=1
+	blt	s9, x24, .LBB4_334
+# %bb.304:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x1, 0x4a4(x25)		# 110010000110010100100
 	slli	x23, x23, 8
 	ld	a5, 0(x19)
@@ -2602,74 +2529,74 @@ mg_lchain_dp:                           # @mg_lchain_dp
 	srli	x7, t3, 56
 	subw	x25, a5, a2
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
-	bne	x23, x7, .LBB4_312
-# %bb.302:                              #   in Loop: Header=BB4_133 Depth=1
+	bne	x23, x7, .LBB4_315
+# %bb.305:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x4)		# 001000000000000000000
-	blt	s2, x24, .LBB4_331
-# %bb.303:                              #   in Loop: Header=BB4_133 Depth=1
+	blt	s8, x24, .LBB4_334
+# %bb.306:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
-	beqz	x25, .LBB4_331
-# %bb.304:                              #   in Loop: Header=BB4_133 Depth=1
+	beqz	x25, .LBB4_334
+# %bb.307:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
 	subw	a2, x24, x25
 	sraiw	a5, a2, 31
 	xor	a2, a2, a5
 	subw	a5, a2, a5
-	blt	s8, a5, .LBB4_331
-# %bb.305:                              #   in Loop: Header=BB4_133 Depth=1
-	bnez	s6, .LBB4_309
-# %bb.306:                              #   in Loop: Header=BB4_133 Depth=1
+	blt	s4, a5, .LBB4_334
+# %bb.308:                              #   in Loop: Header=BB4_136 Depth=1
+	bnez	s5, .LBB4_312
+# %bb.309:                              #   in Loop: Header=BB4_136 Depth=1
 	li	a2, 2
-	blt	s5, a2, .LBB4_309
-# %bb.307:                              #   in Loop: Header=BB4_133 Depth=1
+	blt	s2, a2, .LBB4_312
+# %bb.310:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
-	bne	x23, x7, .LBB4_309
-# %bb.308:                              #   in Loop: Header=BB4_133 Depth=1
+	bne	x23, x7, .LBB4_312
+# %bb.311:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x4)		# 001000000000000000000
-	blt	s2, x25, .LBB4_331
-.LBB4_309:                              #   in Loop: Header=BB4_133 Depth=1
+	blt	s8, x25, .LBB4_334
+.LBB4_312:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x16, 0x0(x9)		# 010011000000000000000
 	mv	a2, x24
-	blt	x24, x25, .LBB4_313
-.LBB4_310:                              #   in Loop: Header=BB4_133 Depth=1
+	blt	x24, x25, .LBB4_316
+.LBB4_313:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x1, 0x40(x9)		# 010010000100001000000
 	mv	a2, x25
 	slli	t3, x26, 24
 	srli	t3, t3, 56
 	mv	x26, t3
-	bge	t3, x25, .LBB4_314
-.LBB4_311:                              #   in Loop: Header=BB4_133 Depth=1
-	beqz	a5, .LBB4_315
-	j	.LBB4_317
-.LBB4_312:                              #   in Loop: Header=BB4_133 Depth=1
+	bge	t3, x25, .LBB4_317
+.LBB4_314:                              #   in Loop: Header=BB4_136 Depth=1
+	beqz	a5, .LBB4_318
+	j	.LBB4_320
+.LBB4_315:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x98(x12)		# 011000000000010011000
 	subw	a2, x24, x25
 	sraiw	a5, a2, 31
 	xor	a2, a2, a5
 	subw	a5, a2, a5
 	mv	a2, x24
-	bge	x24, x25, .LBB4_310
-.LBB4_313:                              #   in Loop: Header=BB4_133 Depth=1
+	bge	x24, x25, .LBB4_313
+.LBB4_316:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x8, 0x0(x8)		# 010000100000000000000
 	slli	t3, x26, 24
 	srli	t3, t3, 56
 	mv	x26, t3
-	blt	t3, a2, .LBB4_311
-.LBB4_314:                              #   in Loop: Header=BB4_133 Depth=1
+	blt	t3, a2, .LBB4_314
+.LBB4_317:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x16)		# 100000000000000000000
 	mv	x26, a2
-	bnez	a5, .LBB4_317
-.LBB4_315:                              #   in Loop: Header=BB4_133 Depth=1
-	blt	t3, a2, .LBB4_317
-# %bb.316:                              #   in Loop: Header=BB4_133 Depth=1
+	bnez	a5, .LBB4_320
+.LBB4_318:                              #   in Loop: Header=BB4_136 Depth=1
+	blt	t3, a2, .LBB4_320
+# %bb.319:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x16, 0x0(x9)		# 010011000000000000000
 	mv	a2, x26
-	bne	x26, x12, .LBB4_324
-	j	.LBB4_331
-.LBB4_317:                              #   in Loop: Header=BB4_133 Depth=1
+	bne	x26, x12, .LBB4_327
+	j	.LBB4_334
+.LBB4_320:                              #   in Loop: Header=BB4_136 Depth=1
 	fmv.s	fa0, fa5
-	beqz	a5, .LBB4_319
-# %bb.318:                              #   in Loop: Header=BB4_133 Depth=1
+	beqz	a5, .LBB4_322
+# %bb.321:                              #   in Loop: Header=BB4_136 Depth=1
 	addi	t3, a5, 1
 	fcvt.s.wu	fa0, t3
 	fmv.x.w	t3, fa0
@@ -2683,149 +2610,149 @@ mg_lchain_dp:                           # @mg_lchain_dp
 	fmadd.s	ft1, ft0, fa2, fa3
 	fmadd.s	ft0, ft1, ft0, fa1
 	fadd.s	fa0, ft0, fa0
-.LBB4_319:                              #   in Loop: Header=BB4_133 Depth=1
+.LBB4_322:                              #   in Loop: Header=BB4_136 Depth=1
 	fcvt.s.wu	ft0, a5
 	fcvt.s.w	ft1, a2
 	fmul.s	ft1, ft1, fs0
 	fmadd.s	ft0, fs1, ft0, ft1
-	bnez	s6, .LBB4_322
-# %bb.320:                              #   in Loop: Header=BB4_133 Depth=1
+	bnez	s5, .LBB4_325
+# %bb.323:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
-	bne	x23, x7, .LBB4_322
-.LBB4_321:                              #   in Loop: Header=BB4_133 Depth=1
+	bne	x23, x7, .LBB4_325
+.LBB4_324:                              #   in Loop: Header=BB4_136 Depth=1
 	fmadd.s	fa0, fa0, fa4, ft0
 	fcvt.w.s	a2, fa0, rtz
 	regsw_c	x6, 0x0(x25)		# 110010011000000000000
 	subw	x26, x26, a2
 	mv	a2, x26
-	bne	x26, x12, .LBB4_324
-	j	.LBB4_331
-.LBB4_322:                              #   in Loop: Header=BB4_133 Depth=1
+	bne	x26, x12, .LBB4_327
+	j	.LBB4_334
+.LBB4_325:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
-	beq	x23, x7, .LBB4_326
-# %bb.323:                              #   in Loop: Header=BB4_133 Depth=1
+	beq	x23, x7, .LBB4_329
+# %bb.326:                              #   in Loop: Header=BB4_136 Depth=1
 	li	a2, 1
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
-	bnez	x25, .LBB4_326
-.LBB4_324:                              #   in Loop: Header=BB4_133 Depth=1
+	bnez	x25, .LBB4_329
+.LBB4_327:                              #   in Loop: Header=BB4_136 Depth=1
 	slli	a5, a4, 2
-	add	a5, s4, a5
+	add	a5, s11, a5
 	lw	a5, 0(a5)
 	addw	a5, a5, a2
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
-	bge	x21, a5, .LBB4_331
-# %bb.325:                              #   in Loop: Header=BB4_133 Depth=1
-	add	a2, s4, t0
+	bge	x21, a5, .LBB4_334
+# %bb.328:                              #   in Loop: Header=BB4_136 Depth=1
+	add	a2, s11, t0
 	sw	a5, 0(a2)
 	regsw_c	x1, 0x0(x8)		# 010000000100000000000
 	slli	a2, x20, 3
-	add	a2, s1, a2
+	add	a2, s10, a2
 	sd	a4, 0(a2)
 	mv	x22, a4
-	j	.LBB4_332
-.LBB4_326:                              #   in Loop: Header=BB4_133 Depth=1
+	j	.LBB4_335
+.LBB4_329:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
-	bne	x23, x7, .LBB4_328
-# %bb.327:                              #   in Loop: Header=BB4_133 Depth=1
+	bne	x23, x7, .LBB4_331
+# %bb.330:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
-	bge	x24, x25, .LBB4_321
-.LBB4_328:                              #   in Loop: Header=BB4_133 Depth=1
+	bge	x24, x25, .LBB4_324
+.LBB4_331:                              #   in Loop: Header=BB4_136 Depth=1
 	flt.s	a2, ft0, fa0
-	bnez	a2, .LBB4_330
-# %bb.329:                              #   in Loop: Header=BB4_133 Depth=1
+	bnez	a2, .LBB4_333
+# %bb.332:                              #   in Loop: Header=BB4_136 Depth=1
 	fmv.s	ft0, fa0
-.LBB4_330:                              #   in Loop: Header=BB4_133 Depth=1
+.LBB4_333:                              #   in Loop: Header=BB4_136 Depth=1
 	fcvt.w.s	a2, ft0, rtz
 	regsw_c	x6, 0x0(x25)		# 110010011000000000000
 	subw	x26, x26, a2
 	mv	a2, x26
-	bne	x26, x12, .LBB4_324
-.LBB4_331:                              #   in Loop: Header=BB4_133 Depth=1
-	add	a2, s4, t0
+	bne	x26, x12, .LBB4_327
+.LBB4_334:                              #   in Loop: Header=BB4_136 Depth=1
+	add	a2, s11, t0
 	regsw_c	x0, 0x290(x5)		# 001010000001010010000
 	sw	x21, 0(a2)
 	slli	a2, x20, 3
-	add	a2, s1, a2
+	add	a2, s10, a2
 	sd	x22, 0(a2)
 	mv	a5, x21
-	bltz	x22, .LBB4_334
-.LBB4_332:                              #   in Loop: Header=BB4_133 Depth=1
+	bltz	x22, .LBB4_337
+.LBB4_335:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x28, 0x200(x26)		# 110101110001000000000
 	slli	x22, x22, 2
-	add	x22, s11, x22
+	add	x22, s1, x22
 	lw	x21, 0(x22)
-	blt	a5, x21, .LBB4_334
-# %bb.333:                              #   in Loop: Header=BB4_133 Depth=1
+	blt	a5, x21, .LBB4_337
+# %bb.336:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x16)		# 100000000000000000000
 	mv	x21, a5
-.LBB4_334:                              #   in Loop: Header=BB4_133 Depth=1
-	add	t0, s11, t0
+.LBB4_337:                              #   in Loop: Header=BB4_136 Depth=1
+	add	t0, s1, t0
 	regsw_c	x0, 0x0(x4)		# 001000000000000000000
 	sw	x21, 0(t0)
-	bltz	a4, .LBB4_337
-# %bb.335:                              #   in Loop: Header=BB4_133 Depth=1
+	bltz	a4, .LBB4_340
+# %bb.338:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
 	ld	a2, 0(x19)
 	slli	t0, a4, 4
 	add	t0, s0, t0
 	ld	t0, 0(t0)
 	sub	a2, a2, t0
-	bltu	s10, a2, .LBB4_338
-# %bb.336:                              #   in Loop: Header=BB4_133 Depth=1
+	bltu	s9, a2, .LBB4_341
+# %bb.339:                              #   in Loop: Header=BB4_136 Depth=1
 	slli	a2, a4, 2
-	add	a2, s4, a2
+	add	a2, s11, a2
 	lw	a2, 0(a2)
-	bge	a2, a5, .LBB4_338
-.LBB4_337:                              #   in Loop: Header=BB4_133 Depth=1
+	bge	a2, a5, .LBB4_341
+.LBB4_340:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
 	mv	a4, x20
-.LBB4_338:                              #   in Loop: Header=BB4_133 Depth=1
+.LBB4_341:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x11, 0x4c0(x19)		# 100110101110011000000
 	addi	x19, a3, 2
 	slli	x21, x19, 4
 	add	x21, s0, x21
 	ld	x23, 8(x21)
-	bge	x17, x19, .LBB4_345
-# %bb.339:                              #   in Loop: Header=BB4_133 Depth=1
+	bge	x17, x19, .LBB4_348
+# %bb.342:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
 	sub	a5, x8, x18
-	blt	s7, a5, .LBB4_341
-# %bb.340:                              #   in Loop: Header=BB4_133 Depth=1
-	mv	a5, s7
-.LBB4_341:                              #   in Loop: Header=BB4_133 Depth=1
+	blt	s6, a5, .LBB4_344
+# %bb.343:                              #   in Loop: Header=BB4_136 Depth=1
+	mv	a5, s6
+.LBB4_344:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x10, 0x400(x8)		# 010000101010000000000
 	ld	a2, 0(x21)
-	ld	t0, 112(sp)                     # 8-byte Folded Reload
+	ld	t0, 104(sp)                     # 8-byte Folded Reload
 	add	x18, t0, x18
 	add	a5, x18, a5
 	slli	a5, a5, 4
 	add	a5, s0, a5
-	j	.LBB4_343
-.LBB4_342:                              #   in Loop: Header=BB4_343 Depth=2
+	j	.LBB4_346
+.LBB4_345:                              #   in Loop: Header=BB4_346 Depth=2
 	regsw_c	x6, 0x0(x24)		# 110000011000000000000
 	addi	x17, x17, 1
 	addi	a5, a5, 16
-	beq	x13, x17, .LBB4_349
-.LBB4_343:                              #   Parent Loop BB4_133 Depth=1
+	beq	x13, x17, .LBB4_352
+.LBB4_346:                              #   Parent Loop BB4_136 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld	t0, 0(a5)
 	xor	t3, t0, a2
 	srli	t3, t3, 32
-	bnez	t3, .LBB4_342
-# %bb.344:                              #   in Loop: Header=BB4_343 Depth=2
-	add	t0, t0, s10
-	bltu	t0, a2, .LBB4_342
-.LBB4_345:                              #   in Loop: Header=BB4_133 Depth=1
+	bnez	t3, .LBB4_345
+# %bb.347:                              #   in Loop: Header=BB4_346 Depth=2
+	add	t0, t0, s9
+	bltu	t0, a2, .LBB4_345
+.LBB4_348:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
 	sub	a2, x19, x17
-	blt	s7, a2, .LBB4_350
-.LBB4_346:                              #   in Loop: Header=BB4_133 Depth=1
+	blt	s6, a2, .LBB4_353
+.LBB4_349:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x8, 0x600(x9)		# 010010100011000000000
 	mv	t0, x17
 	slli	a2, x23, 24
 	srli	x18, a2, 56
-	blt	x17, x19, .LBB4_351
-.LBB4_347:                              #   in Loop: Header=BB4_133 Depth=1
+	blt	x17, x19, .LBB4_354
+.LBB4_350:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x20(x8)		# 010000000000000100000
 	ld	a2, 0(x21)
 	slli	a5, a4, 4
@@ -2833,32 +2760,32 @@ mg_lchain_dp:                           # @mg_lchain_dp
 	ld	a5, 0(a5)
 	sub	a2, a2, a5
 	li	x22, -1
-	bgeu	s10, a2, .LBB4_399
-# %bb.348:                              #   in Loop: Header=BB4_133 Depth=1
+	bgeu	s9, a2, .LBB4_402
+# %bb.351:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x2, 0x400(x8)		# 010000001010000000000
 	slli	a2, x19, 2
-	add	a4, s4, a2
+	add	a4, s11, a2
 	sw	x18, 0(a4)
 	slli	a4, x19, 3
-	add	a4, s1, a4
+	add	a4, s10, a4
 	li	a5, -1
 	sd	a5, 0(a4)
-	add	a2, s11, a2
+	add	a2, s1, a2
 	regsw_c	x0, 0x0(x4)		# 001000000000000000000
 	sw	x18, 0(a2)
-	j	.LBB4_439
-.LBB4_349:                              #   in Loop: Header=BB4_133 Depth=1
+	j	.LBB4_442
+.LBB4_352:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x16, 0x0(x25)		# 110011000000000000000
 	mv	x17, x19
 	sub	a2, x19, x19
-	bge	s7, a2, .LBB4_346
-.LBB4_350:                              #   in Loop: Header=BB4_133 Depth=1
+	bge	s6, a2, .LBB4_349
+.LBB4_353:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x8, 0x200(x9)		# 010010100001000000000
-	sub	t0, x19, s7
+	sub	t0, x19, s6
 	slli	a2, x23, 24
 	srli	x18, a2, 56
-	bge	t0, x19, .LBB4_347
-.LBB4_351:                              #   in Loop: Header=BB4_133 Depth=1
+	bge	t0, x19, .LBB4_350
+.LBB4_354:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x9, 0x1b4(x17)		# 100010100100110110100
 	li	x24, 0
 	slli	a2, x23, 8
@@ -2869,98 +2796,98 @@ mg_lchain_dp:                           # @mg_lchain_dp
 	mv	x28, t6
 	regsw_c	x0, 0x0(x16)		# 100000000000000000000
 	mv	x29, t5
-	j	.LBB4_353
-.LBB4_352:                              #   in Loop: Header=BB4_353 Depth=2
+	j	.LBB4_356
+.LBB4_355:                              #   in Loop: Header=BB4_356 Depth=2
 	regsw_c	x13, 0x588(x27)		# 110110110110110001000
 	addi	x20, x30, -1
 	addi	x29, x29, -8
 	addi	x28, x28, -4
 	addi	x27, x27, -4
 	addi	x26, x26, -16
-	bge	t0, x30, .LBB4_391
-.LBB4_353:                              #   Parent Loop BB4_133 Depth=1
+	bge	t0, x30, .LBB4_394
+.LBB4_356:                              #   Parent Loop BB4_136 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	regsw_c	x12, 0x200(x11)		# 010110110001000000000
 	ld	s3, 0(x26)
 	subw	x31, x23, s3
 	mv	x30, x20
-	blez	x31, .LBB4_352
-# %bb.354:                              #   in Loop: Header=BB4_353 Depth=2
+	blez	x31, .LBB4_355
+# %bb.357:                              #   in Loop: Header=BB4_356 Depth=2
 	regsw_c	x0, 0x0(x4)		# 001000000000000000000
-	blt	s10, x31, .LBB4_352
-# %bb.355:                              #   in Loop: Header=BB4_353 Depth=2
+	blt	s9, x31, .LBB4_355
+# %bb.358:                              #   in Loop: Header=BB4_356 Depth=2
 	regsw_c	x1, 0x118(x9)		# 010010000100100011000
 	ld	a2, 0(x21)
 	ld	a5, -8(x26)
 	slli	t3, s3, 8
 	srli	x7, t3, 56
 	subw	x20, a2, a5
-	bne	x25, x7, .LBB4_366
-# %bb.356:                              #   in Loop: Header=BB4_353 Depth=2
+	bne	x25, x7, .LBB4_369
+# %bb.359:                              #   in Loop: Header=BB4_356 Depth=2
 	regsw_c	x0, 0x0(x4)		# 001000000000000000000
-	blt	s2, x31, .LBB4_352
-# %bb.357:                              #   in Loop: Header=BB4_353 Depth=2
+	blt	s8, x31, .LBB4_355
+# %bb.360:                              #   in Loop: Header=BB4_356 Depth=2
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
-	beqz	x20, .LBB4_352
-# %bb.358:                              #   in Loop: Header=BB4_353 Depth=2
+	beqz	x20, .LBB4_355
+# %bb.361:                              #   in Loop: Header=BB4_356 Depth=2
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
 	subw	a2, x31, x20
 	sraiw	a5, a2, 31
 	xor	a2, a2, a5
 	subw	a5, a2, a5
-	blt	s8, a5, .LBB4_352
-# %bb.359:                              #   in Loop: Header=BB4_353 Depth=2
-	bnez	s6, .LBB4_363
-# %bb.360:                              #   in Loop: Header=BB4_353 Depth=2
+	blt	s4, a5, .LBB4_355
+# %bb.362:                              #   in Loop: Header=BB4_356 Depth=2
+	bnez	s5, .LBB4_366
+# %bb.363:                              #   in Loop: Header=BB4_356 Depth=2
 	li	a2, 2
-	blt	s5, a2, .LBB4_363
-# %bb.361:                              #   in Loop: Header=BB4_353 Depth=2
+	blt	s2, a2, .LBB4_366
+# %bb.364:                              #   in Loop: Header=BB4_356 Depth=2
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
-	bne	x25, x7, .LBB4_363
-# %bb.362:                              #   in Loop: Header=BB4_353 Depth=2
+	bne	x25, x7, .LBB4_366
+# %bb.365:                              #   in Loop: Header=BB4_356 Depth=2
 	regsw_c	x0, 0x0(x4)		# 001000000000000000000
-	blt	s2, x20, .LBB4_352
-.LBB4_363:                              #   in Loop: Header=BB4_353 Depth=2
+	blt	s8, x20, .LBB4_355
+.LBB4_366:                              #   in Loop: Header=BB4_356 Depth=2
 	regsw_c	x16, 0x0(x9)		# 010011000000000000000
 	mv	a2, x31
-	blt	x31, x20, .LBB4_367
-.LBB4_364:                              #   in Loop: Header=BB4_353 Depth=2
+	blt	x31, x20, .LBB4_370
+.LBB4_367:                              #   in Loop: Header=BB4_356 Depth=2
 	regsw_c	x0, 0x40(x8)		# 010000000000001000000
 	mv	a2, x20
 	slli	t3, s3, 24
 	srli	t3, t3, 56
 	mv	s3, t3
-	bge	t3, x20, .LBB4_368
-.LBB4_365:                              #   in Loop: Header=BB4_353 Depth=2
-	beqz	a5, .LBB4_369
-	j	.LBB4_371
-.LBB4_366:                              #   in Loop: Header=BB4_353 Depth=2
+	bge	t3, x20, .LBB4_371
+.LBB4_368:                              #   in Loop: Header=BB4_356 Depth=2
+	beqz	a5, .LBB4_372
+	j	.LBB4_374
+.LBB4_369:                              #   in Loop: Header=BB4_356 Depth=2
 	regsw_c	x0, 0x98(x12)		# 011000000000010011000
 	subw	a2, x31, x20
 	sraiw	a5, a2, 31
 	xor	a2, a2, a5
 	subw	a5, a2, a5
 	mv	a2, x31
-	bge	x31, x20, .LBB4_364
-.LBB4_367:                              #   in Loop: Header=BB4_353 Depth=2
+	bge	x31, x20, .LBB4_367
+.LBB4_370:                              #   in Loop: Header=BB4_356 Depth=2
 	slli	t3, s3, 24
 	srli	t3, t3, 56
 	mv	s3, t3
-	blt	t3, a2, .LBB4_365
-.LBB4_368:                              #   in Loop: Header=BB4_353 Depth=2
+	blt	t3, a2, .LBB4_368
+.LBB4_371:                              #   in Loop: Header=BB4_356 Depth=2
 	mv	s3, a2
-	bnez	a5, .LBB4_371
-.LBB4_369:                              #   in Loop: Header=BB4_353 Depth=2
-	blt	t3, a2, .LBB4_371
-# %bb.370:                              #   in Loop: Header=BB4_353 Depth=2
+	bnez	a5, .LBB4_374
+.LBB4_372:                              #   in Loop: Header=BB4_356 Depth=2
+	blt	t3, a2, .LBB4_374
+# %bb.373:                              #   in Loop: Header=BB4_356 Depth=2
 	mv	a2, s3
 	regsw_c	x0, 0x0(x4)		# 001000000000000000000
-	beq	s3, x12, .LBB4_352
-	j	.LBB4_378
-.LBB4_371:                              #   in Loop: Header=BB4_353 Depth=2
+	beq	s3, x12, .LBB4_355
+	j	.LBB4_381
+.LBB4_374:                              #   in Loop: Header=BB4_356 Depth=2
 	fmv.s	fa0, fa5
-	beqz	a5, .LBB4_373
-# %bb.372:                              #   in Loop: Header=BB4_353 Depth=2
+	beqz	a5, .LBB4_376
+# %bb.375:                              #   in Loop: Header=BB4_356 Depth=2
 	addi	t3, a5, 1
 	fcvt.s.wu	fa0, t3
 	fmv.x.w	t3, fa0
@@ -2974,144 +2901,144 @@ mg_lchain_dp:                           # @mg_lchain_dp
 	fmadd.s	ft1, ft0, fa2, fa3
 	fmadd.s	ft0, ft1, ft0, fa1
 	fadd.s	fa0, ft0, fa0
-.LBB4_373:                              #   in Loop: Header=BB4_353 Depth=2
+.LBB4_376:                              #   in Loop: Header=BB4_356 Depth=2
 	fcvt.s.wu	ft0, a5
 	fcvt.s.w	ft1, a2
 	fmul.s	ft1, ft1, fs0
 	fmadd.s	ft0, fs1, ft0, ft1
-	bnez	s6, .LBB4_376
-# %bb.374:                              #   in Loop: Header=BB4_353 Depth=2
+	bnez	s5, .LBB4_379
+# %bb.377:                              #   in Loop: Header=BB4_356 Depth=2
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
-	bne	x25, x7, .LBB4_376
-.LBB4_375:                              #   in Loop: Header=BB4_353 Depth=2
+	bne	x25, x7, .LBB4_379
+.LBB4_378:                              #   in Loop: Header=BB4_356 Depth=2
 	fmadd.s	fa0, fa0, fa4, ft0
 	fcvt.w.s	a2, fa0, rtz
 	subw	s3, s3, a2
 	mv	a2, s3
 	regsw_c	x0, 0x0(x4)		# 001000000000000000000
-	beq	s3, x12, .LBB4_352
-	j	.LBB4_378
-.LBB4_376:                              #   in Loop: Header=BB4_353 Depth=2
+	beq	s3, x12, .LBB4_355
+	j	.LBB4_381
+.LBB4_379:                              #   in Loop: Header=BB4_356 Depth=2
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
-	beq	x25, x7, .LBB4_385
-# %bb.377:                              #   in Loop: Header=BB4_353 Depth=2
+	beq	x25, x7, .LBB4_388
+# %bb.380:                              #   in Loop: Header=BB4_356 Depth=2
 	li	a2, 1
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
-	bnez	x20, .LBB4_385
-.LBB4_378:                              #   in Loop: Header=BB4_353 Depth=2
+	bnez	x20, .LBB4_388
+.LBB4_381:                              #   in Loop: Header=BB4_356 Depth=2
 	regsw_c	x4, 0x0(x8)		# 010000010000000000000
 	lw	a5, 0(x27)
 	addw	a2, a5, a2
-	bge	x18, a2, .LBB4_380
-# %bb.379:                              #   in Loop: Header=BB4_353 Depth=2
+	bge	x18, a2, .LBB4_383
+# %bb.382:                              #   in Loop: Header=BB4_356 Depth=2
 	regsw_c	x13, 0x0(x7)		# 001110110100000000000
 	sgtz	a5, x24
 	subw	x24, x24, a5
 	mv	x22, x30
 	mv	x18, a2
-	j	.LBB4_383
-.LBB4_380:                              #   in Loop: Header=BB4_353 Depth=2
+	j	.LBB4_386
+.LBB4_383:                              #   in Loop: Header=BB4_356 Depth=2
 	regsw_c	x0, 0x0(x9)		# 010010000000000000000
 	lw	a2, 0(x28)
 	sext.w	a5, x19
-	bne	a2, a5, .LBB4_383
-# %bb.381:                              #   in Loop: Header=BB4_353 Depth=2
+	bne	a2, a5, .LBB4_386
+# %bb.384:                              #   in Loop: Header=BB4_356 Depth=2
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
-	bge	x24, s9, .LBB4_390
-# %bb.382:                              #   in Loop: Header=BB4_353 Depth=2
+	bge	x24, s7, .LBB4_393
+# %bb.385:                              #   in Loop: Header=BB4_356 Depth=2
 	regsw_c	x0, 0x0(x24)		# 110000000000000000000
 	addiw	x24, x24, 1
-.LBB4_383:                              #   in Loop: Header=BB4_353 Depth=2
+.LBB4_386:                              #   in Loop: Header=BB4_356 Depth=2
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
 	ld	a2, 0(x29)
-	bltz	a2, .LBB4_352
-# %bb.384:                              #   in Loop: Header=BB4_353 Depth=2
+	bltz	a2, .LBB4_355
+# %bb.387:                              #   in Loop: Header=BB4_356 Depth=2
 	slli	a2, a2, 2
 	add	a2, a0, a2
 	regsw_c	x0, 0x0(x4)		# 001000000000000000000
 	sw	x19, 0(a2)
-	j	.LBB4_352
-.LBB4_385:                              #   in Loop: Header=BB4_353 Depth=2
+	j	.LBB4_355
+.LBB4_388:                              #   in Loop: Header=BB4_356 Depth=2
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
-	bne	x25, x7, .LBB4_387
-# %bb.386:                              #   in Loop: Header=BB4_353 Depth=2
+	bne	x25, x7, .LBB4_390
+# %bb.389:                              #   in Loop: Header=BB4_356 Depth=2
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
-	bge	x31, x20, .LBB4_375
-.LBB4_387:                              #   in Loop: Header=BB4_353 Depth=2
+	bge	x31, x20, .LBB4_378
+.LBB4_390:                              #   in Loop: Header=BB4_356 Depth=2
 	flt.s	a2, ft0, fa0
-	bnez	a2, .LBB4_389
-# %bb.388:                              #   in Loop: Header=BB4_353 Depth=2
+	bnez	a2, .LBB4_392
+# %bb.391:                              #   in Loop: Header=BB4_356 Depth=2
 	fmv.s	ft0, fa0
-.LBB4_389:                              #   in Loop: Header=BB4_353 Depth=2
+.LBB4_392:                              #   in Loop: Header=BB4_356 Depth=2
 	fcvt.w.s	a2, ft0, rtz
 	subw	s3, s3, a2
 	mv	a2, s3
 	regsw_c	x0, 0x0(x4)		# 001000000000000000000
-	beq	s3, x12, .LBB4_352
-	j	.LBB4_378
-.LBB4_390:                              #   in Loop: Header=BB4_133 Depth=1
+	beq	s3, x12, .LBB4_355
+	j	.LBB4_381
+.LBB4_393:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x24)		# 110000000000000000000
 	mv	x20, x30
-.LBB4_391:                              #   in Loop: Header=BB4_133 Depth=1
+.LBB4_394:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
 	ld	a2, 0(x21)
 	slli	a5, a4, 4
 	add	a5, s0, a5
 	ld	a5, 0(a5)
 	sub	a2, a2, a5
-	bgeu	s10, a2, .LBB4_399
-# %bb.392:                              #   in Loop: Header=BB4_133 Depth=1
+	bgeu	s9, a2, .LBB4_402
+# %bb.395:                              #   in Loop: Header=BB4_136 Depth=1
 	li	a4, -1
 	regsw_c	x0, 0x0(x4)		# 001000000000000000000
-	bge	t0, x19, .LBB4_433
-# %bb.393:                              # %.preheader19
-                                        #   in Loop: Header=BB4_133 Depth=1
+	bge	t0, x19, .LBB4_436
+# %bb.396:                              # %.preheader19
+                                        #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x5, 0x400(x16)		# 100000010110000000000
 	li	x24, -1
 	lui	a5, 524288
 	mv	a2, x1
 	mv	x7, x13
-	j	.LBB4_395
-.LBB4_394:                              #   in Loop: Header=BB4_395 Depth=2
+	j	.LBB4_398
+.LBB4_397:                              #   in Loop: Header=BB4_398 Depth=2
 	addi	a2, a2, -4
 	regsw_c	x16, 0x0(x16)		# 100001000000000000000
 	mv	x24, a4
-	bge	t0, x7, .LBB4_399
-.LBB4_395:                              #   Parent Loop BB4_133 Depth=1
+	bge	t0, x7, .LBB4_402
+.LBB4_398:                              #   Parent Loop BB4_136 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	regsw_c	x4, 0x200(x19)		# 100110010001000000000
 	lw	x25, 0(a2)
 	addi	x7, x7, -1
 	mv	a4, x7
-	blt	a5, x25, .LBB4_397
-# %bb.396:                              #   in Loop: Header=BB4_395 Depth=2
+	blt	a5, x25, .LBB4_400
+# %bb.399:                              #   in Loop: Header=BB4_398 Depth=2
 	regsw_c	x0, 0x0(x9)		# 010010000000000000000
 	mv	a4, x24
-	blt	x25, a5, .LBB4_394
-	j	.LBB4_398
-.LBB4_397:                              #   in Loop: Header=BB4_395 Depth=2
+	blt	x25, a5, .LBB4_397
+	j	.LBB4_401
+.LBB4_400:                              #   in Loop: Header=BB4_398 Depth=2
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
-	blt	x25, a5, .LBB4_394
-.LBB4_398:                              #   in Loop: Header=BB4_395 Depth=2
+	blt	x25, a5, .LBB4_397
+.LBB4_401:                              #   in Loop: Header=BB4_398 Depth=2
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
 	mv	a5, x25
-	j	.LBB4_394
-.LBB4_399:                              #   in Loop: Header=BB4_133 Depth=1
-	bltz	a4, .LBB4_433
-# %bb.400:                              #   in Loop: Header=BB4_133 Depth=1
+	j	.LBB4_397
+.LBB4_402:                              #   in Loop: Header=BB4_136 Depth=1
+	bltz	a4, .LBB4_436
+# %bb.403:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x4)		# 001000000000000000000
-	bge	a4, x20, .LBB4_433
-# %bb.401:                              #   in Loop: Header=BB4_133 Depth=1
+	bge	a4, x20, .LBB4_436
+# %bb.404:                              #   in Loop: Header=BB4_136 Depth=1
 	slli	a2, a4, 4
 	add	a2, s0, a2
 	regsw_c	x18, 0x0(x19)		# 100111001000000000000
 	ld	x25, 8(a2)
 	subw	x20, x23, x25
-	blez	x20, .LBB4_433
-# %bb.402:                              #   in Loop: Header=BB4_133 Depth=1
+	blez	x20, .LBB4_436
+# %bb.405:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x4)		# 001000000000000000000
-	blt	s10, x20, .LBB4_433
-# %bb.403:                              #   in Loop: Header=BB4_133 Depth=1
+	blt	s9, x20, .LBB4_436
+# %bb.406:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x1, 0x4a4(x25)		# 110010000110010100100
 	slli	x23, x23, 8
 	ld	a5, 0(x21)
@@ -3121,74 +3048,74 @@ mg_lchain_dp:                           # @mg_lchain_dp
 	srli	x7, t3, 56
 	subw	x24, a5, a2
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
-	bne	x23, x7, .LBB4_414
-# %bb.404:                              #   in Loop: Header=BB4_133 Depth=1
+	bne	x23, x7, .LBB4_417
+# %bb.407:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x4)		# 001000000000000000000
-	blt	s2, x20, .LBB4_433
-# %bb.405:                              #   in Loop: Header=BB4_133 Depth=1
+	blt	s8, x20, .LBB4_436
+# %bb.408:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
-	beqz	x24, .LBB4_433
-# %bb.406:                              #   in Loop: Header=BB4_133 Depth=1
+	beqz	x24, .LBB4_436
+# %bb.409:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
 	subw	a2, x20, x24
 	sraiw	a5, a2, 31
 	xor	a2, a2, a5
 	subw	a5, a2, a5
-	blt	s8, a5, .LBB4_433
-# %bb.407:                              #   in Loop: Header=BB4_133 Depth=1
-	bnez	s6, .LBB4_411
-# %bb.408:                              #   in Loop: Header=BB4_133 Depth=1
+	blt	s4, a5, .LBB4_436
+# %bb.410:                              #   in Loop: Header=BB4_136 Depth=1
+	bnez	s5, .LBB4_414
+# %bb.411:                              #   in Loop: Header=BB4_136 Depth=1
 	li	a2, 2
-	blt	s5, a2, .LBB4_411
-# %bb.409:                              #   in Loop: Header=BB4_133 Depth=1
+	blt	s2, a2, .LBB4_414
+# %bb.412:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
-	bne	x23, x7, .LBB4_411
-# %bb.410:                              #   in Loop: Header=BB4_133 Depth=1
+	bne	x23, x7, .LBB4_414
+# %bb.413:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x4)		# 001000000000000000000
-	blt	s2, x24, .LBB4_433
-.LBB4_411:                              #   in Loop: Header=BB4_133 Depth=1
+	blt	s8, x24, .LBB4_436
+.LBB4_414:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x16, 0x0(x9)		# 010011000000000000000
 	mv	a2, x20
-	blt	x20, x24, .LBB4_415
-.LBB4_412:                              #   in Loop: Header=BB4_133 Depth=1
+	blt	x20, x24, .LBB4_418
+.LBB4_415:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x1, 0x40(x9)		# 010010000100001000000
 	mv	a2, x24
 	slli	t3, x25, 24
 	srli	t3, t3, 56
 	mv	x25, t3
-	bge	t3, x24, .LBB4_416
-.LBB4_413:                              #   in Loop: Header=BB4_133 Depth=1
-	beqz	a5, .LBB4_417
-	j	.LBB4_419
-.LBB4_414:                              #   in Loop: Header=BB4_133 Depth=1
+	bge	t3, x24, .LBB4_419
+.LBB4_416:                              #   in Loop: Header=BB4_136 Depth=1
+	beqz	a5, .LBB4_420
+	j	.LBB4_422
+.LBB4_417:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x98(x12)		# 011000000000010011000
 	subw	a2, x20, x24
 	sraiw	a5, a2, 31
 	xor	a2, a2, a5
 	subw	a5, a2, a5
 	mv	a2, x20
-	bge	x20, x24, .LBB4_412
-.LBB4_415:                              #   in Loop: Header=BB4_133 Depth=1
+	bge	x20, x24, .LBB4_415
+.LBB4_418:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x8, 0x0(x8)		# 010000100000000000000
 	slli	t3, x25, 24
 	srli	t3, t3, 56
 	mv	x25, t3
-	blt	t3, a2, .LBB4_413
-.LBB4_416:                              #   in Loop: Header=BB4_133 Depth=1
+	blt	t3, a2, .LBB4_416
+.LBB4_419:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x16)		# 100000000000000000000
 	mv	x25, a2
-	bnez	a5, .LBB4_419
-.LBB4_417:                              #   in Loop: Header=BB4_133 Depth=1
-	blt	t3, a2, .LBB4_419
-# %bb.418:                              #   in Loop: Header=BB4_133 Depth=1
+	bnez	a5, .LBB4_422
+.LBB4_420:                              #   in Loop: Header=BB4_136 Depth=1
+	blt	t3, a2, .LBB4_422
+# %bb.421:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x16, 0x0(x9)		# 010011000000000000000
 	mv	a2, x25
-	bne	x25, x12, .LBB4_426
-	j	.LBB4_433
-.LBB4_419:                              #   in Loop: Header=BB4_133 Depth=1
+	bne	x25, x12, .LBB4_429
+	j	.LBB4_436
+.LBB4_422:                              #   in Loop: Header=BB4_136 Depth=1
 	fmv.s	fa0, fa5
-	beqz	a5, .LBB4_421
-# %bb.420:                              #   in Loop: Header=BB4_133 Depth=1
+	beqz	a5, .LBB4_424
+# %bb.423:                              #   in Loop: Header=BB4_136 Depth=1
 	addi	t3, a5, 1
 	fcvt.s.wu	fa0, t3
 	fmv.x.w	t3, fa0
@@ -3202,156 +3129,156 @@ mg_lchain_dp:                           # @mg_lchain_dp
 	fmadd.s	ft1, ft0, fa2, fa3
 	fmadd.s	ft0, ft1, ft0, fa1
 	fadd.s	fa0, ft0, fa0
-.LBB4_421:                              #   in Loop: Header=BB4_133 Depth=1
+.LBB4_424:                              #   in Loop: Header=BB4_136 Depth=1
 	fcvt.s.wu	ft0, a5
 	fcvt.s.w	ft1, a2
 	fmul.s	ft1, ft1, fs0
 	fmadd.s	ft0, fs1, ft0, ft1
-	bnez	s6, .LBB4_424
-# %bb.422:                              #   in Loop: Header=BB4_133 Depth=1
+	bnez	s5, .LBB4_427
+# %bb.425:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
-	bne	x23, x7, .LBB4_424
-.LBB4_423:                              #   in Loop: Header=BB4_133 Depth=1
+	bne	x23, x7, .LBB4_427
+.LBB4_426:                              #   in Loop: Header=BB4_136 Depth=1
 	fmadd.s	fa0, fa0, fa4, ft0
 	fcvt.w.s	a2, fa0, rtz
 	regsw_c	x6, 0x0(x25)		# 110010011000000000000
 	subw	x25, x25, a2
 	mv	a2, x25
-	bne	x25, x12, .LBB4_426
-	j	.LBB4_433
-.LBB4_424:                              #   in Loop: Header=BB4_133 Depth=1
+	bne	x25, x12, .LBB4_429
+	j	.LBB4_436
+.LBB4_427:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
-	beq	x23, x7, .LBB4_428
-# %bb.425:                              #   in Loop: Header=BB4_133 Depth=1
+	beq	x23, x7, .LBB4_431
+# %bb.428:                              #   in Loop: Header=BB4_136 Depth=1
 	li	a2, 1
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
-	bnez	x24, .LBB4_428
-.LBB4_426:                              #   in Loop: Header=BB4_133 Depth=1
+	bnez	x24, .LBB4_431
+.LBB4_429:                              #   in Loop: Header=BB4_136 Depth=1
 	slli	a5, a4, 2
-	add	a5, s4, a5
+	add	a5, s11, a5
 	lw	a5, 0(a5)
 	addw	a5, a5, a2
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
-	bge	x18, a5, .LBB4_433
-# %bb.427:                              #   in Loop: Header=BB4_133 Depth=1
+	bge	x18, a5, .LBB4_436
+# %bb.430:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x404(x8)		# 010000000010000000100
 	slli	a2, x19, 2
-	add	a2, s4, a2
+	add	a2, s11, a2
 	sw	a5, 0(a2)
 	slli	a2, x19, 3
-	add	a2, s1, a2
+	add	a2, s10, a2
 	sd	a4, 0(a2)
 	mv	x22, a4
-	j	.LBB4_434
-.LBB4_428:                              #   in Loop: Header=BB4_133 Depth=1
+	j	.LBB4_437
+.LBB4_431:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
-	bne	x23, x7, .LBB4_430
-# %bb.429:                              #   in Loop: Header=BB4_133 Depth=1
+	bne	x23, x7, .LBB4_433
+# %bb.432:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
-	bge	x20, x24, .LBB4_423
-.LBB4_430:                              #   in Loop: Header=BB4_133 Depth=1
+	bge	x20, x24, .LBB4_426
+.LBB4_433:                              #   in Loop: Header=BB4_136 Depth=1
 	flt.s	a2, ft0, fa0
-	bnez	a2, .LBB4_432
-# %bb.431:                              #   in Loop: Header=BB4_133 Depth=1
+	bnez	a2, .LBB4_435
+# %bb.434:                              #   in Loop: Header=BB4_136 Depth=1
 	fmv.s	ft0, fa0
-.LBB4_432:                              #   in Loop: Header=BB4_133 Depth=1
+.LBB4_435:                              #   in Loop: Header=BB4_136 Depth=1
 	fcvt.w.s	a2, ft0, rtz
 	regsw_c	x6, 0x0(x25)		# 110010011000000000000
 	subw	x25, x25, a2
 	mv	a2, x25
-	bne	x25, x12, .LBB4_426
-.LBB4_433:                              #   in Loop: Header=BB4_133 Depth=1
+	bne	x25, x12, .LBB4_429
+.LBB4_436:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x2, 0x40a(x8)		# 010000001010000001010
-	slli	a2, x19, 2
-	add	a2, s4, a2
-	sw	x18, 0(a2)
-	slli	a2, x19, 3
-	add	a2, s1, a2
-	sd	x22, 0(a2)
-	mv	a5, x18
-	regsw_c	x0, 0x0(x8)		# 010000000000000000000
-	bltz	x22, .LBB4_436
-.LBB4_434:                              #   in Loop: Header=BB4_133 Depth=1
-	regsw_c	x28, 0x200(x26)		# 110101110001000000000
-	slli	x22, x22, 2
-	add	x22, s11, x22
-	lw	x18, 0(x22)
-	blt	a5, x18, .LBB4_436
-# %bb.435:                              #   in Loop: Header=BB4_133 Depth=1
-	regsw_c	x0, 0x0(x16)		# 100000000000000000000
-	mv	x18, a5
-.LBB4_436:                              #   in Loop: Header=BB4_133 Depth=1
-	regsw_c	x2, 0x0(x8)		# 010000001000000000000
 	slli	a2, x19, 2
 	add	a2, s11, a2
 	sw	x18, 0(a2)
-	bltz	a4, .LBB4_439
-# %bb.437:                              #   in Loop: Header=BB4_133 Depth=1
+	slli	a2, x19, 3
+	add	a2, s10, a2
+	sd	x22, 0(a2)
+	mv	a5, x18
+	regsw_c	x0, 0x0(x8)		# 010000000000000000000
+	bltz	x22, .LBB4_439
+.LBB4_437:                              #   in Loop: Header=BB4_136 Depth=1
+	regsw_c	x28, 0x200(x26)		# 110101110001000000000
+	slli	x22, x22, 2
+	add	x22, s1, x22
+	lw	x18, 0(x22)
+	blt	a5, x18, .LBB4_439
+# %bb.438:                              #   in Loop: Header=BB4_136 Depth=1
+	regsw_c	x0, 0x0(x16)		# 100000000000000000000
+	mv	x18, a5
+.LBB4_439:                              #   in Loop: Header=BB4_136 Depth=1
+	regsw_c	x2, 0x0(x8)		# 010000001000000000000
+	slli	a2, x19, 2
+	add	a2, s1, a2
+	sw	x18, 0(a2)
+	bltz	a4, .LBB4_442
+# %bb.440:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
 	ld	a2, 0(x21)
 	slli	t3, a4, 4
 	add	t3, s0, t3
 	ld	t3, 0(t3)
 	sub	a2, a2, t3
-	bltu	s10, a2, .LBB4_440
-# %bb.438:                              #   in Loop: Header=BB4_133 Depth=1
+	bltu	s9, a2, .LBB4_443
+# %bb.441:                              #   in Loop: Header=BB4_136 Depth=1
 	slli	a2, a4, 2
-	add	a2, s4, a2
+	add	a2, s11, a2
 	lw	a2, 0(a2)
-	bge	a2, a5, .LBB4_440
-.LBB4_439:                              #   in Loop: Header=BB4_133 Depth=1
+	bge	a2, a5, .LBB4_443
+.LBB4_442:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
 	mv	a4, x19
-.LBB4_440:                              #   in Loop: Header=BB4_133 Depth=1
+.LBB4_443:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x11, 0x440(x19)		# 100110101110001000000
 	addi	x18, a3, 3
 	slli	x20, x18, 4
 	add	x20, s0, x20
 	ld	x22, 8(x20)
-	bge	t0, x18, .LBB4_447
-# %bb.441:                              #   in Loop: Header=BB4_133 Depth=1
+	bge	t0, x18, .LBB4_450
+# %bb.444:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
 	sub	a5, x13, x17
-	blt	s7, a5, .LBB4_443
-# %bb.442:                              #   in Loop: Header=BB4_133 Depth=1
-	mv	a5, s7
-.LBB4_443:                              #   in Loop: Header=BB4_133 Depth=1
+	blt	s6, a5, .LBB4_446
+# %bb.445:                              #   in Loop: Header=BB4_136 Depth=1
+	mv	a5, s6
+.LBB4_446:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x10, 0x400(x8)		# 010000101010000000000
 	ld	a2, 0(x20)
-	ld	t3, 112(sp)                     # 8-byte Folded Reload
+	ld	t3, 104(sp)                     # 8-byte Folded Reload
 	add	x17, t3, x17
 	add	a5, x17, a5
 	slli	a5, a5, 4
 	add	a5, s0, a5
-	j	.LBB4_445
-.LBB4_444:                              #   in Loop: Header=BB4_445 Depth=2
+	j	.LBB4_448
+.LBB4_447:                              #   in Loop: Header=BB4_448 Depth=2
 	addi	t0, t0, 1
 	addi	a5, a5, 16
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
-	beq	x10, t0, .LBB4_490
-.LBB4_445:                              #   Parent Loop BB4_133 Depth=1
+	beq	x10, t0, .LBB4_493
+.LBB4_448:                              #   Parent Loop BB4_136 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld	t3, 0(a5)
 	regsw_c	x4, 0x0(x19)		# 100110010000000000000
 	xor	x7, t3, a2
 	srli	x7, x7, 32
-	bnez	x7, .LBB4_444
-# %bb.446:                              #   in Loop: Header=BB4_445 Depth=2
-	add	t3, t3, s10
-	bltu	t3, a2, .LBB4_444
-.LBB4_447:                              #   in Loop: Header=BB4_133 Depth=1
+	bnez	x7, .LBB4_447
+# %bb.449:                              #   in Loop: Header=BB4_448 Depth=2
+	add	t3, t3, s9
+	bltu	t3, a2, .LBB4_447
+.LBB4_450:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
 	sub	a2, x18, t0
-	bge	s7, a2, .LBB4_449
-.LBB4_448:                              #   in Loop: Header=BB4_133 Depth=1
+	bge	s6, a2, .LBB4_452
+.LBB4_451:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
-	sub	t0, x18, s7
-.LBB4_449:                              #   in Loop: Header=BB4_133 Depth=1
+	sub	t0, x18, s6
+.LBB4_452:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x2, 0x0(x10)		# 010100001000000000000
 	slli	a2, x22, 24
 	srli	x17, a2, 56
-	bge	t0, x18, .LBB4_489
-# %bb.450:                              #   in Loop: Header=BB4_133 Depth=1
+	bge	t0, x18, .LBB4_492
+# %bb.453:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x9, 0x1b6(x17)		# 100010100100110110110
 	li	x23, 0
 	slli	a2, x22, 8
@@ -3362,100 +3289,100 @@ mg_lchain_dp:                           # @mg_lchain_dp
 	mv	x27, x4
 	regsw_c	x0, 0x0(x24)		# 110000000000000000000
 	mv	x28, x3
-	j	.LBB4_452
-.LBB4_451:                              #   in Loop: Header=BB4_452 Depth=2
+	j	.LBB4_455
+.LBB4_454:                              #   in Loop: Header=BB4_455 Depth=2
 	regsw_c	x13, 0x588(x27)		# 110110110110110001000
 	addi	x19, x29, -1
 	addi	x28, x28, -8
 	addi	x27, x27, -4
 	addi	x26, x26, -4
 	addi	x25, x25, -16
-	bge	t0, x29, .LBB4_492
-.LBB4_452:                              #   Parent Loop BB4_133 Depth=1
+	bge	t0, x29, .LBB4_495
+.LBB4_455:                              #   Parent Loop BB4_136 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	regsw_c	x28, 0x200(x27)		# 110111110001000000000
 	ld	x31, 0(x25)
 	subw	x30, x22, x31
 	mv	x29, x19
-	blez	x30, .LBB4_451
-# %bb.453:                              #   in Loop: Header=BB4_452 Depth=2
+	blez	x30, .LBB4_454
+# %bb.456:                              #   in Loop: Header=BB4_455 Depth=2
 	regsw_c	x0, 0x0(x4)		# 001000000000000000000
-	blt	s10, x30, .LBB4_451
-# %bb.454:                              #   in Loop: Header=BB4_452 Depth=2
+	blt	s9, x30, .LBB4_454
+# %bb.457:                              #   in Loop: Header=BB4_455 Depth=2
 	regsw_c	x5, 0x118(x9)		# 010010010100100011000
 	ld	a2, 0(x20)
 	ld	a5, -8(x25)
 	slli	t3, x31, 8
 	srli	x7, t3, 56
 	subw	x19, a2, a5
-	bne	x24, x7, .LBB4_465
-# %bb.455:                              #   in Loop: Header=BB4_452 Depth=2
+	bne	x24, x7, .LBB4_468
+# %bb.458:                              #   in Loop: Header=BB4_455 Depth=2
 	regsw_c	x0, 0x0(x4)		# 001000000000000000000
-	blt	s2, x30, .LBB4_451
-# %bb.456:                              #   in Loop: Header=BB4_452 Depth=2
+	blt	s8, x30, .LBB4_454
+# %bb.459:                              #   in Loop: Header=BB4_455 Depth=2
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
-	beqz	x19, .LBB4_451
-# %bb.457:                              #   in Loop: Header=BB4_452 Depth=2
+	beqz	x19, .LBB4_454
+# %bb.460:                              #   in Loop: Header=BB4_455 Depth=2
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
 	subw	a2, x30, x19
 	sraiw	a5, a2, 31
 	xor	a2, a2, a5
 	subw	a5, a2, a5
-	blt	s8, a5, .LBB4_451
-# %bb.458:                              #   in Loop: Header=BB4_452 Depth=2
-	bnez	s6, .LBB4_462
-# %bb.459:                              #   in Loop: Header=BB4_452 Depth=2
+	blt	s4, a5, .LBB4_454
+# %bb.461:                              #   in Loop: Header=BB4_455 Depth=2
+	bnez	s5, .LBB4_465
+# %bb.462:                              #   in Loop: Header=BB4_455 Depth=2
 	li	a2, 2
-	blt	s5, a2, .LBB4_462
-# %bb.460:                              #   in Loop: Header=BB4_452 Depth=2
+	blt	s2, a2, .LBB4_465
+# %bb.463:                              #   in Loop: Header=BB4_455 Depth=2
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
-	bne	x24, x7, .LBB4_462
-# %bb.461:                              #   in Loop: Header=BB4_452 Depth=2
+	bne	x24, x7, .LBB4_465
+# %bb.464:                              #   in Loop: Header=BB4_455 Depth=2
 	regsw_c	x0, 0x0(x4)		# 001000000000000000000
-	blt	s2, x19, .LBB4_451
-.LBB4_462:                              #   in Loop: Header=BB4_452 Depth=2
+	blt	s8, x19, .LBB4_454
+.LBB4_465:                              #   in Loop: Header=BB4_455 Depth=2
 	regsw_c	x16, 0x0(x9)		# 010011000000000000000
 	mv	a2, x30
-	blt	x30, x19, .LBB4_466
-.LBB4_463:                              #   in Loop: Header=BB4_452 Depth=2
+	blt	x30, x19, .LBB4_469
+.LBB4_466:                              #   in Loop: Header=BB4_455 Depth=2
 	regsw_c	x1, 0x40(x9)		# 010010000100001000000
 	mv	a2, x19
 	slli	t3, x31, 24
 	srli	t3, t3, 56
 	mv	x31, t3
-	bge	t3, x19, .LBB4_467
-.LBB4_464:                              #   in Loop: Header=BB4_452 Depth=2
-	beqz	a5, .LBB4_468
-	j	.LBB4_470
-.LBB4_465:                              #   in Loop: Header=BB4_452 Depth=2
+	bge	t3, x19, .LBB4_470
+.LBB4_467:                              #   in Loop: Header=BB4_455 Depth=2
+	beqz	a5, .LBB4_471
+	j	.LBB4_473
+.LBB4_468:                              #   in Loop: Header=BB4_455 Depth=2
 	regsw_c	x0, 0x98(x12)		# 011000000000010011000
 	subw	a2, x30, x19
 	sraiw	a5, a2, 31
 	xor	a2, a2, a5
 	subw	a5, a2, a5
 	mv	a2, x30
-	bge	x30, x19, .LBB4_463
-.LBB4_466:                              #   in Loop: Header=BB4_452 Depth=2
+	bge	x30, x19, .LBB4_466
+.LBB4_469:                              #   in Loop: Header=BB4_455 Depth=2
 	regsw_c	x8, 0x0(x8)		# 010000100000000000000
 	slli	t3, x31, 24
 	srli	t3, t3, 56
 	mv	x31, t3
-	blt	t3, a2, .LBB4_464
-.LBB4_467:                              #   in Loop: Header=BB4_452 Depth=2
+	blt	t3, a2, .LBB4_467
+.LBB4_470:                              #   in Loop: Header=BB4_455 Depth=2
 	regsw_c	x0, 0x0(x16)		# 100000000000000000000
 	mv	x31, a2
-	bnez	a5, .LBB4_470
-.LBB4_468:                              #   in Loop: Header=BB4_452 Depth=2
-	blt	t3, a2, .LBB4_470
-# %bb.469:                              #   in Loop: Header=BB4_452 Depth=2
+	bnez	a5, .LBB4_473
+.LBB4_471:                              #   in Loop: Header=BB4_455 Depth=2
+	blt	t3, a2, .LBB4_473
+# %bb.472:                              #   in Loop: Header=BB4_455 Depth=2
 	regsw_c	x16, 0x0(x9)		# 010011000000000000000
 	mv	a2, x31
-	beq	x31, x12, .LBB4_451
-	j	.LBB4_477
-.LBB4_470:                              #   in Loop: Header=BB4_452 Depth=2
+	beq	x31, x12, .LBB4_454
+	j	.LBB4_480
+.LBB4_473:                              #   in Loop: Header=BB4_455 Depth=2
 	fmv.s	fa0, fa5
-	beqz	a5, .LBB4_472
-# %bb.471:                              #   in Loop: Header=BB4_452 Depth=2
+	beqz	a5, .LBB4_475
+# %bb.474:                              #   in Loop: Header=BB4_455 Depth=2
 	addi	t3, a5, 1
 	fcvt.s.wu	fa0, t3
 	fmv.x.w	t3, fa0
@@ -3469,82 +3396,82 @@ mg_lchain_dp:                           # @mg_lchain_dp
 	fmadd.s	ft1, ft0, fa2, fa3
 	fmadd.s	ft0, ft1, ft0, fa1
 	fadd.s	fa0, ft0, fa0
-.LBB4_472:                              #   in Loop: Header=BB4_452 Depth=2
+.LBB4_475:                              #   in Loop: Header=BB4_455 Depth=2
 	fcvt.s.wu	ft0, a5
 	fcvt.s.w	ft1, a2
 	fmul.s	ft1, ft1, fs0
 	fmadd.s	ft0, fs1, ft0, ft1
-	bnez	s6, .LBB4_475
-# %bb.473:                              #   in Loop: Header=BB4_452 Depth=2
+	bnez	s5, .LBB4_478
+# %bb.476:                              #   in Loop: Header=BB4_455 Depth=2
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
-	bne	x24, x7, .LBB4_475
-.LBB4_474:                              #   in Loop: Header=BB4_452 Depth=2
+	bne	x24, x7, .LBB4_478
+.LBB4_477:                              #   in Loop: Header=BB4_455 Depth=2
 	fmadd.s	fa0, fa0, fa4, ft0
 	fcvt.w.s	a2, fa0, rtz
 	regsw_c	x6, 0x0(x25)		# 110010011000000000000
 	subw	x31, x31, a2
 	mv	a2, x31
-	beq	x31, x12, .LBB4_451
-	j	.LBB4_477
-.LBB4_475:                              #   in Loop: Header=BB4_452 Depth=2
+	beq	x31, x12, .LBB4_454
+	j	.LBB4_480
+.LBB4_478:                              #   in Loop: Header=BB4_455 Depth=2
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
-	beq	x24, x7, .LBB4_484
-# %bb.476:                              #   in Loop: Header=BB4_452 Depth=2
+	beq	x24, x7, .LBB4_487
+# %bb.479:                              #   in Loop: Header=BB4_455 Depth=2
 	li	a2, 1
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
-	bnez	x19, .LBB4_484
-.LBB4_477:                              #   in Loop: Header=BB4_452 Depth=2
+	bnez	x19, .LBB4_487
+.LBB4_480:                              #   in Loop: Header=BB4_455 Depth=2
 	regsw_c	x4, 0x0(x8)		# 010000010000000000000
 	lw	a5, 0(x26)
 	addw	a2, a5, a2
-	bge	x17, a2, .LBB4_479
-# %bb.478:                              #   in Loop: Header=BB4_452 Depth=2
+	bge	x17, a2, .LBB4_482
+# %bb.481:                              #   in Loop: Header=BB4_455 Depth=2
 	regsw_c	x13, 0x0(x7)		# 001110110100000000000
 	sgtz	a5, x23
 	subw	x23, x23, a5
 	mv	x21, x29
 	mv	x17, a2
-	j	.LBB4_482
-.LBB4_479:                              #   in Loop: Header=BB4_452 Depth=2
+	j	.LBB4_485
+.LBB4_482:                              #   in Loop: Header=BB4_455 Depth=2
 	regsw_c	x0, 0x0(x9)		# 010010000000000000000
 	lw	a2, 0(x27)
 	sext.w	a5, x18
-	bne	a2, a5, .LBB4_482
-# %bb.480:                              #   in Loop: Header=BB4_452 Depth=2
+	bne	a2, a5, .LBB4_485
+# %bb.483:                              #   in Loop: Header=BB4_455 Depth=2
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
-	bge	x23, s9, .LBB4_491
-# %bb.481:                              #   in Loop: Header=BB4_452 Depth=2
+	bge	x23, s7, .LBB4_494
+# %bb.484:                              #   in Loop: Header=BB4_455 Depth=2
 	regsw_c	x0, 0x0(x24)		# 110000000000000000000
 	addiw	x23, x23, 1
-.LBB4_482:                              #   in Loop: Header=BB4_452 Depth=2
+.LBB4_485:                              #   in Loop: Header=BB4_455 Depth=2
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
 	ld	a2, 0(x28)
-	bltz	a2, .LBB4_451
-# %bb.483:                              #   in Loop: Header=BB4_452 Depth=2
+	bltz	a2, .LBB4_454
+# %bb.486:                              #   in Loop: Header=BB4_455 Depth=2
 	slli	a2, a2, 2
 	add	a2, a0, a2
 	regsw_c	x0, 0x0(x4)		# 001000000000000000000
 	sw	x18, 0(a2)
-	j	.LBB4_451
-.LBB4_484:                              #   in Loop: Header=BB4_452 Depth=2
+	j	.LBB4_454
+.LBB4_487:                              #   in Loop: Header=BB4_455 Depth=2
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
-	bne	x24, x7, .LBB4_486
-# %bb.485:                              #   in Loop: Header=BB4_452 Depth=2
+	bne	x24, x7, .LBB4_489
+# %bb.488:                              #   in Loop: Header=BB4_455 Depth=2
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
-	bge	x30, x19, .LBB4_474
-.LBB4_486:                              #   in Loop: Header=BB4_452 Depth=2
+	bge	x30, x19, .LBB4_477
+.LBB4_489:                              #   in Loop: Header=BB4_455 Depth=2
 	flt.s	a2, ft0, fa0
-	bnez	a2, .LBB4_488
-# %bb.487:                              #   in Loop: Header=BB4_452 Depth=2
+	bnez	a2, .LBB4_491
+# %bb.490:                              #   in Loop: Header=BB4_455 Depth=2
 	fmv.s	ft0, fa0
-.LBB4_488:                              #   in Loop: Header=BB4_452 Depth=2
+.LBB4_491:                              #   in Loop: Header=BB4_455 Depth=2
 	fcvt.w.s	a2, ft0, rtz
 	regsw_c	x6, 0x0(x25)		# 110010011000000000000
 	subw	x31, x31, a2
 	mv	a2, x31
-	beq	x31, x12, .LBB4_451
-	j	.LBB4_477
-.LBB4_489:                              #   in Loop: Header=BB4_133 Depth=1
+	beq	x31, x12, .LBB4_454
+	j	.LBB4_480
+.LBB4_492:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x20(x8)		# 010000000000000100000
 	ld	a2, 0(x20)
 	slli	a5, a4, 4
@@ -3552,77 +3479,77 @@ mg_lchain_dp:                           # @mg_lchain_dp
 	ld	a5, 0(a5)
 	sub	a2, a2, a5
 	li	x21, -1
-	bgeu	s10, a2, .LBB4_500
-	j	.LBB4_130
-.LBB4_490:                              #   in Loop: Header=BB4_133 Depth=1
+	bgeu	s9, a2, .LBB4_503
+	j	.LBB4_133
+.LBB4_493:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x16, 0x0(x9)		# 010011000000000000000
 	mv	t0, x18
 	sub	a2, x18, x18
-	blt	s7, a2, .LBB4_448
-	j	.LBB4_449
-.LBB4_491:                              #   in Loop: Header=BB4_133 Depth=1
+	blt	s6, a2, .LBB4_451
+	j	.LBB4_452
+.LBB4_494:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x24)		# 110000000000000000000
 	mv	x19, x29
-.LBB4_492:                              #   in Loop: Header=BB4_133 Depth=1
+.LBB4_495:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
 	ld	a2, 0(x20)
 	slli	a5, a4, 4
 	add	a5, s0, a5
 	ld	a5, 0(a5)
 	sub	a2, a2, a5
-	bgeu	s10, a2, .LBB4_500
-# %bb.493:                              #   in Loop: Header=BB4_133 Depth=1
+	bgeu	s9, a2, .LBB4_503
+# %bb.496:                              #   in Loop: Header=BB4_136 Depth=1
 	li	a4, -1
 	regsw_c	x0, 0x0(x4)		# 001000000000000000000
-	bge	t0, x18, .LBB4_534
-# %bb.494:                              # %.preheader15
-                                        #   in Loop: Header=BB4_133 Depth=1
+	bge	t0, x18, .LBB4_537
+# %bb.497:                              # %.preheader15
+                                        #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x5, 0x400(x16)		# 100000010110000000000
 	li	x23, -1
 	lui	a5, 524288
 	mv	a2, x5
 	mv	x7, x10
-	j	.LBB4_496
-.LBB4_495:                              #   in Loop: Header=BB4_496 Depth=2
+	j	.LBB4_499
+.LBB4_498:                              #   in Loop: Header=BB4_499 Depth=2
 	addi	a2, a2, -4
 	regsw_c	x16, 0x0(x16)		# 100001000000000000000
 	mv	x23, a4
-	bge	t0, x7, .LBB4_500
-.LBB4_496:                              #   Parent Loop BB4_133 Depth=1
+	bge	t0, x7, .LBB4_503
+.LBB4_499:                              #   Parent Loop BB4_136 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	regsw_c	x4, 0x200(x19)		# 100110010001000000000
 	lw	x24, 0(a2)
 	addi	x7, x7, -1
 	mv	a4, x7
-	blt	a5, x24, .LBB4_498
-# %bb.497:                              #   in Loop: Header=BB4_496 Depth=2
+	blt	a5, x24, .LBB4_501
+# %bb.500:                              #   in Loop: Header=BB4_499 Depth=2
 	regsw_c	x0, 0x0(x9)		# 010010000000000000000
 	mv	a4, x23
-	blt	x24, a5, .LBB4_495
-	j	.LBB4_499
-.LBB4_498:                              #   in Loop: Header=BB4_496 Depth=2
+	blt	x24, a5, .LBB4_498
+	j	.LBB4_502
+.LBB4_501:                              #   in Loop: Header=BB4_499 Depth=2
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
-	blt	x24, a5, .LBB4_495
-.LBB4_499:                              #   in Loop: Header=BB4_496 Depth=2
+	blt	x24, a5, .LBB4_498
+.LBB4_502:                              #   in Loop: Header=BB4_499 Depth=2
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
 	mv	a5, x24
-	j	.LBB4_495
-.LBB4_500:                              #   in Loop: Header=BB4_133 Depth=1
-	bltz	a4, .LBB4_534
-# %bb.501:                              #   in Loop: Header=BB4_133 Depth=1
+	j	.LBB4_498
+.LBB4_503:                              #   in Loop: Header=BB4_136 Depth=1
+	bltz	a4, .LBB4_537
+# %bb.504:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x4)		# 001000000000000000000
-	bge	a4, x19, .LBB4_534
-# %bb.502:                              #   in Loop: Header=BB4_133 Depth=1
+	bge	a4, x19, .LBB4_537
+# %bb.505:                              #   in Loop: Header=BB4_136 Depth=1
 	slli	a2, a4, 4
 	add	a2, s0, a2
 	regsw_c	x18, 0x0(x19)		# 100111001000000000000
 	ld	x24, 8(a2)
 	subw	x19, x22, x24
-	blez	x19, .LBB4_534
-# %bb.503:                              #   in Loop: Header=BB4_133 Depth=1
+	blez	x19, .LBB4_537
+# %bb.506:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x4)		# 001000000000000000000
-	blt	s10, x19, .LBB4_534
-# %bb.504:                              #   in Loop: Header=BB4_133 Depth=1
+	blt	s9, x19, .LBB4_537
+# %bb.507:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x1, 0x4a4(x25)		# 110010000110010100100
 	slli	x22, x22, 8
 	ld	a5, 0(x20)
@@ -3632,74 +3559,74 @@ mg_lchain_dp:                           # @mg_lchain_dp
 	srli	x7, t3, 56
 	subw	x23, a5, a2
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
-	bne	x22, x7, .LBB4_515
-# %bb.505:                              #   in Loop: Header=BB4_133 Depth=1
+	bne	x22, x7, .LBB4_518
+# %bb.508:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x4)		# 001000000000000000000
-	blt	s2, x19, .LBB4_534
-# %bb.506:                              #   in Loop: Header=BB4_133 Depth=1
+	blt	s8, x19, .LBB4_537
+# %bb.509:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
-	beqz	x23, .LBB4_534
-# %bb.507:                              #   in Loop: Header=BB4_133 Depth=1
+	beqz	x23, .LBB4_537
+# %bb.510:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
 	subw	a2, x19, x23
 	sraiw	a5, a2, 31
 	xor	a2, a2, a5
 	subw	a5, a2, a5
-	blt	s8, a5, .LBB4_534
-# %bb.508:                              #   in Loop: Header=BB4_133 Depth=1
-	bnez	s6, .LBB4_512
-# %bb.509:                              #   in Loop: Header=BB4_133 Depth=1
+	blt	s4, a5, .LBB4_537
+# %bb.511:                              #   in Loop: Header=BB4_136 Depth=1
+	bnez	s5, .LBB4_515
+# %bb.512:                              #   in Loop: Header=BB4_136 Depth=1
 	li	a2, 2
-	blt	s5, a2, .LBB4_512
-# %bb.510:                              #   in Loop: Header=BB4_133 Depth=1
+	blt	s2, a2, .LBB4_515
+# %bb.513:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
-	bne	x22, x7, .LBB4_512
-# %bb.511:                              #   in Loop: Header=BB4_133 Depth=1
+	bne	x22, x7, .LBB4_515
+# %bb.514:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x4)		# 001000000000000000000
-	blt	s2, x23, .LBB4_534
-.LBB4_512:                              #   in Loop: Header=BB4_133 Depth=1
+	blt	s8, x23, .LBB4_537
+.LBB4_515:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x16, 0x0(x9)		# 010011000000000000000
 	mv	a2, x19
-	blt	x19, x23, .LBB4_516
-.LBB4_513:                              #   in Loop: Header=BB4_133 Depth=1
+	blt	x19, x23, .LBB4_519
+.LBB4_516:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x1, 0x40(x9)		# 010010000100001000000
 	mv	a2, x23
 	slli	t3, x24, 24
 	srli	t3, t3, 56
 	mv	x24, t3
-	bge	t3, x23, .LBB4_517
-.LBB4_514:                              #   in Loop: Header=BB4_133 Depth=1
-	beqz	a5, .LBB4_518
-	j	.LBB4_520
-.LBB4_515:                              #   in Loop: Header=BB4_133 Depth=1
+	bge	t3, x23, .LBB4_520
+.LBB4_517:                              #   in Loop: Header=BB4_136 Depth=1
+	beqz	a5, .LBB4_521
+	j	.LBB4_523
+.LBB4_518:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x98(x12)		# 011000000000010011000
 	subw	a2, x19, x23
 	sraiw	a5, a2, 31
 	xor	a2, a2, a5
 	subw	a5, a2, a5
 	mv	a2, x19
-	bge	x19, x23, .LBB4_513
-.LBB4_516:                              #   in Loop: Header=BB4_133 Depth=1
+	bge	x19, x23, .LBB4_516
+.LBB4_519:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x8, 0x0(x8)		# 010000100000000000000
 	slli	t3, x24, 24
 	srli	t3, t3, 56
 	mv	x24, t3
-	blt	t3, a2, .LBB4_514
-.LBB4_517:                              #   in Loop: Header=BB4_133 Depth=1
+	blt	t3, a2, .LBB4_517
+.LBB4_520:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x16)		# 100000000000000000000
 	mv	x24, a2
-	bnez	a5, .LBB4_520
-.LBB4_518:                              #   in Loop: Header=BB4_133 Depth=1
-	blt	t3, a2, .LBB4_520
-# %bb.519:                              #   in Loop: Header=BB4_133 Depth=1
+	bnez	a5, .LBB4_523
+.LBB4_521:                              #   in Loop: Header=BB4_136 Depth=1
+	blt	t3, a2, .LBB4_523
+# %bb.522:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x16, 0x0(x9)		# 010011000000000000000
 	mv	a2, x24
-	bne	x24, x12, .LBB4_527
-	j	.LBB4_534
-.LBB4_520:                              #   in Loop: Header=BB4_133 Depth=1
+	bne	x24, x12, .LBB4_530
+	j	.LBB4_537
+.LBB4_523:                              #   in Loop: Header=BB4_136 Depth=1
 	fmv.s	fa0, fa5
-	beqz	a5, .LBB4_522
-# %bb.521:                              #   in Loop: Header=BB4_133 Depth=1
+	beqz	a5, .LBB4_525
+# %bb.524:                              #   in Loop: Header=BB4_136 Depth=1
 	addi	t3, a5, 1
 	fcvt.s.wu	fa0, t3
 	fmv.x.w	t3, fa0
@@ -3713,131 +3640,131 @@ mg_lchain_dp:                           # @mg_lchain_dp
 	fmadd.s	ft1, ft0, fa2, fa3
 	fmadd.s	ft0, ft1, ft0, fa1
 	fadd.s	fa0, ft0, fa0
-.LBB4_522:                              #   in Loop: Header=BB4_133 Depth=1
+.LBB4_525:                              #   in Loop: Header=BB4_136 Depth=1
 	fcvt.s.wu	ft0, a5
 	fcvt.s.w	ft1, a2
 	fmul.s	ft1, ft1, fs0
 	fmadd.s	ft0, fs1, ft0, ft1
-	bnez	s6, .LBB4_525
-# %bb.523:                              #   in Loop: Header=BB4_133 Depth=1
+	bnez	s5, .LBB4_528
+# %bb.526:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
-	bne	x22, x7, .LBB4_525
-.LBB4_524:                              #   in Loop: Header=BB4_133 Depth=1
+	bne	x22, x7, .LBB4_528
+.LBB4_527:                              #   in Loop: Header=BB4_136 Depth=1
 	fmadd.s	fa0, fa0, fa4, ft0
 	fcvt.w.s	a2, fa0, rtz
 	regsw_c	x6, 0x0(x25)		# 110010011000000000000
 	subw	x24, x24, a2
 	mv	a2, x24
-	bne	x24, x12, .LBB4_527
-	j	.LBB4_534
-.LBB4_525:                              #   in Loop: Header=BB4_133 Depth=1
+	bne	x24, x12, .LBB4_530
+	j	.LBB4_537
+.LBB4_528:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
-	beq	x22, x7, .LBB4_529
-# %bb.526:                              #   in Loop: Header=BB4_133 Depth=1
+	beq	x22, x7, .LBB4_532
+# %bb.529:                              #   in Loop: Header=BB4_136 Depth=1
 	li	a2, 1
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
-	bnez	x23, .LBB4_529
-.LBB4_527:                              #   in Loop: Header=BB4_133 Depth=1
+	bnez	x23, .LBB4_532
+.LBB4_530:                              #   in Loop: Header=BB4_136 Depth=1
 	slli	a5, a4, 2
-	add	a5, s4, a5
+	add	a5, s11, a5
 	lw	a5, 0(a5)
 	addw	a5, a5, a2
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
-	bge	x17, a5, .LBB4_534
-# %bb.528:                              #   in Loop: Header=BB4_133 Depth=1
+	bge	x17, a5, .LBB4_537
+# %bb.531:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x404(x8)		# 010000000010000000100
 	slli	a2, x18, 2
-	add	a2, s4, a2
+	add	a2, s11, a2
 	sw	a5, 0(a2)
 	slli	a2, x18, 3
-	add	a2, s1, a2
+	add	a2, s10, a2
 	sd	a4, 0(a2)
 	mv	x21, a4
-	j	.LBB4_535
-.LBB4_529:                              #   in Loop: Header=BB4_133 Depth=1
+	j	.LBB4_538
+.LBB4_532:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
-	bne	x22, x7, .LBB4_531
-# %bb.530:                              #   in Loop: Header=BB4_133 Depth=1
+	bne	x22, x7, .LBB4_534
+# %bb.533:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x12)		# 011000000000000000000
-	bge	x19, x23, .LBB4_524
-.LBB4_531:                              #   in Loop: Header=BB4_133 Depth=1
+	bge	x19, x23, .LBB4_527
+.LBB4_534:                              #   in Loop: Header=BB4_136 Depth=1
 	flt.s	a2, ft0, fa0
-	bnez	a2, .LBB4_533
-# %bb.532:                              #   in Loop: Header=BB4_133 Depth=1
+	bnez	a2, .LBB4_536
+# %bb.535:                              #   in Loop: Header=BB4_136 Depth=1
 	fmv.s	ft0, fa0
-.LBB4_533:                              #   in Loop: Header=BB4_133 Depth=1
+.LBB4_536:                              #   in Loop: Header=BB4_136 Depth=1
 	fcvt.w.s	a2, ft0, rtz
 	regsw_c	x6, 0x0(x25)		# 110010011000000000000
 	subw	x24, x24, a2
 	mv	a2, x24
-	bne	x24, x12, .LBB4_527
-.LBB4_534:                              #   in Loop: Header=BB4_133 Depth=1
+	bne	x24, x12, .LBB4_530
+.LBB4_537:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x2, 0x40a(x8)		# 010000001010000001010
-	slli	a2, x18, 2
-	add	a2, s4, a2
-	sw	x17, 0(a2)
-	slli	a2, x18, 3
-	add	a2, s1, a2
-	sd	x21, 0(a2)
-	mv	a5, x17
-	regsw_c	x0, 0x0(x8)		# 010000000000000000000
-	bltz	x21, .LBB4_537
-.LBB4_535:                              #   in Loop: Header=BB4_133 Depth=1
-	regsw_c	x28, 0x200(x26)		# 110101110001000000000
-	slli	x21, x21, 2
-	add	x21, s11, x21
-	lw	x17, 0(x21)
-	blt	a5, x17, .LBB4_537
-# %bb.536:                              #   in Loop: Header=BB4_133 Depth=1
-	regsw_c	x0, 0x0(x16)		# 100000000000000000000
-	mv	x17, a5
-.LBB4_537:                              #   in Loop: Header=BB4_133 Depth=1
-	regsw_c	x2, 0x0(x8)		# 010000001000000000000
 	slli	a2, x18, 2
 	add	a2, s11, a2
 	sw	x17, 0(a2)
-	bgez	a4, .LBB4_538
-	j	.LBB4_131
-.LBB4_538:                              #   in Loop: Header=BB4_133 Depth=1
+	slli	a2, x18, 3
+	add	a2, s10, a2
+	sd	x21, 0(a2)
+	mv	a5, x17
+	regsw_c	x0, 0x0(x8)		# 010000000000000000000
+	bltz	x21, .LBB4_540
+.LBB4_538:                              #   in Loop: Header=BB4_136 Depth=1
+	regsw_c	x28, 0x200(x26)		# 110101110001000000000
+	slli	x21, x21, 2
+	add	x21, s1, x21
+	lw	x17, 0(x21)
+	blt	a5, x17, .LBB4_540
+# %bb.539:                              #   in Loop: Header=BB4_136 Depth=1
+	regsw_c	x0, 0x0(x16)		# 100000000000000000000
+	mv	x17, a5
+.LBB4_540:                              #   in Loop: Header=BB4_136 Depth=1
+	regsw_c	x2, 0x0(x8)		# 010000001000000000000
+	slli	a2, x18, 2
+	add	a2, s1, a2
+	sw	x17, 0(a2)
+	bgez	a4, .LBB4_541
+	j	.LBB4_134
+.LBB4_541:                              #   in Loop: Header=BB4_136 Depth=1
 	regsw_c	x0, 0x0(x8)		# 010000000000000000000
 	ld	a2, 0(x20)
 	slli	t3, a4, 4
 	add	t3, s0, t3
 	ld	t3, 0(t3)
 	sub	a2, a2, t3
-	bgeu	s10, a2, .LBB4_539
-	j	.LBB4_132
-.LBB4_539:                              #   in Loop: Header=BB4_133 Depth=1
+	bgeu	s9, a2, .LBB4_542
+	j	.LBB4_135
+.LBB4_542:                              #   in Loop: Header=BB4_136 Depth=1
 	slli	a2, a4, 2
-	add	a2, s4, a2
+	add	a2, s11, a2
 	lw	a2, 0(a2)
-	bge	a2, a5, .LBB4_556
-	j	.LBB4_131
-.LBB4_556:                              #   in Loop: Header=BB4_133 Depth=1
-	j	.LBB4_132
-.LBB4_540:
+	bge	a2, a5, .LBB4_559
+	j	.LBB4_134
+.LBB4_559:                              #   in Loop: Header=BB4_136 Depth=1
+	j	.LBB4_135
+.LBB4_543:
 	slli	a0, s5, 3
 	call	malloc
 	mv	s4, a0
-	li	s3, 0
-	j	.LBB4_546
-.LBB4_541:
+	li	s1, 0
+	j	.LBB4_549
+.LBB4_544:
 	li	a2, 8
 	li	a3, 56
-	mv	a0, s3
+	mv	a0, s1
 	call	rs_sort_128x
-.LBB4_542:
+.LBB4_545:
 	slli	a0, s5, 3
-.LBB4_543:
+.LBB4_546:
 	call	malloc
 	mv	s4, a0
 	li	s6, 0
-	addi	s3, s3, 8
+	addi	s1, s1, 8
 	slli	s7, s5, 3
 	add	s7, a0, s7
 	mv	s8, a0
-.LBB4_544:                              # =>This Inner Loop Header: Depth=1
-	ld	a1, 0(s3)
+.LBB4_547:                              # =>This Inner Loop Header: Depth=1
+	ld	a1, 0(s1)
 	sext.w	a0, a1
 	slli	a0, a0, 3
 	add	a0, s2, a0
@@ -3847,80 +3774,80 @@ mg_lchain_dp:                           # @mg_lchain_dp
 	add	a0, s0, a0
 	srli	a1, a1, 28
 	andi	a1, a1, -16
-	add	a1, s1, a1
+	add	a1, s3, a1
 	sext.w	s9, a2
 	slli	a2, s9, 4
 	call	memcpy
 	add	s6, s9, s6
 	addi	s8, s8, 8
-	addi	s3, s3, 16
-	bne	s8, s7, .LBB4_544
-# %bb.545:
-	slli	s3, s6, 4
-.LBB4_546:
+	addi	s1, s1, 16
+	bne	s8, s7, .LBB4_547
+# %bb.548:
+	slli	s1, s6, 4
+.LBB4_549:
 	slliw	a2, s5, 3
 	mv	a0, s2
 	mv	a1, s4
 	call	memcpy
-	mv	a0, s1
+	mv	a0, s3
 	mv	a1, s0
-	mv	a2, s3
-	ld	ra, 248(sp)                     # 8-byte Folded Reload
-	ld	s0, 240(sp)                     # 8-byte Folded Reload
-	ld	s1, 232(sp)                     # 8-byte Folded Reload
-	ld	s2, 224(sp)                     # 8-byte Folded Reload
-	ld	s3, 216(sp)                     # 8-byte Folded Reload
-	ld	s4, 208(sp)                     # 8-byte Folded Reload
-	ld	s5, 200(sp)                     # 8-byte Folded Reload
-	ld	s6, 192(sp)                     # 8-byte Folded Reload
-	ld	s7, 184(sp)                     # 8-byte Folded Reload
-	ld	s8, 176(sp)                     # 8-byte Folded Reload
-	ld	s9, 168(sp)                     # 8-byte Folded Reload
-	ld	s10, 160(sp)                    # 8-byte Folded Reload
-	ld	s11, 152(sp)                    # 8-byte Folded Reload
-	fld	fs0, 144(sp)                    # 8-byte Folded Reload
-	fld	fs1, 136(sp)                    # 8-byte Folded Reload
-	addi	sp, sp, 256
+	mv	a2, s1
+	ld	ra, 232(sp)                     # 8-byte Folded Reload
+	ld	s0, 224(sp)                     # 8-byte Folded Reload
+	ld	s1, 216(sp)                     # 8-byte Folded Reload
+	ld	s2, 208(sp)                     # 8-byte Folded Reload
+	ld	s3, 200(sp)                     # 8-byte Folded Reload
+	ld	s4, 192(sp)                     # 8-byte Folded Reload
+	ld	s5, 184(sp)                     # 8-byte Folded Reload
+	ld	s6, 176(sp)                     # 8-byte Folded Reload
+	ld	s7, 168(sp)                     # 8-byte Folded Reload
+	ld	s8, 160(sp)                     # 8-byte Folded Reload
+	ld	s9, 152(sp)                     # 8-byte Folded Reload
+	ld	s10, 144(sp)                    # 8-byte Folded Reload
+	ld	s11, 136(sp)                    # 8-byte Folded Reload
+	fld	fs0, 128(sp)                    # 8-byte Folded Reload
+	fld	fs1, 120(sp)                    # 8-byte Folded Reload
+	addi	sp, sp, 240
 	tail	memcpy
-.LBB4_547:
-	addi	a3, s3, 16
-	mv	a4, s3
-	j	.LBB4_551
-.LBB4_548:                              #   in Loop: Header=BB4_551 Depth=1
+.LBB4_550:
+	addi	a3, s1, 16
+	mv	a4, s1
+	j	.LBB4_554
+.LBB4_551:                              #   in Loop: Header=BB4_554 Depth=1
 	mv	a4, a5
-.LBB4_549:                              #   in Loop: Header=BB4_551 Depth=1
+.LBB4_552:                              #   in Loop: Header=BB4_554 Depth=1
 	sd	a2, 0(a4)
 	sd	a3, 8(a4)
-.LBB4_550:                              #   in Loop: Header=BB4_551 Depth=1
+.LBB4_553:                              #   in Loop: Header=BB4_554 Depth=1
 	addi	a3, a0, 16
 	mv	a4, a0
-	bgeu	a3, a1, .LBB4_542
-.LBB4_551:                              # =>This Loop Header: Depth=1
-                                        #     Child Loop BB4_554 Depth 2
+	bgeu	a3, a1, .LBB4_545
+.LBB4_554:                              # =>This Loop Header: Depth=1
+                                        #     Child Loop BB4_557 Depth 2
 	ld	a2, 16(a4)
 	ld	a5, 0(a4)
 	mv	a0, a3
-	bgeu	a2, a5, .LBB4_550
-# %bb.552:                              #   in Loop: Header=BB4_551 Depth=1
+	bgeu	a2, a5, .LBB4_553
+# %bb.555:                              #   in Loop: Header=BB4_554 Depth=1
 	ld	a3, 24(a4)
 	mv	a4, a0
-	bgeu	s3, a0, .LBB4_549
-# %bb.553:                              # %.preheader
-                                        #   in Loop: Header=BB4_551 Depth=1
+	bgeu	s1, a0, .LBB4_552
+# %bb.556:                              # %.preheader
+                                        #   in Loop: Header=BB4_554 Depth=1
 	mv	a5, a0
-.LBB4_554:                              #   Parent Loop BB4_551 Depth=1
+.LBB4_557:                              #   Parent Loop BB4_554 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld	a4, -16(a5)
-	bgeu	a2, a4, .LBB4_548
-# %bb.555:                              #   in Loop: Header=BB4_554 Depth=2
+	bgeu	a2, a4, .LBB4_551
+# %bb.558:                              #   in Loop: Header=BB4_557 Depth=2
 	addi	a4, a5, -16
 	ld	a6, 8(a4)
 	ld	a7, 0(a4)
 	sd	a6, 8(a5)
 	sd	a7, 0(a5)
 	mv	a5, a4
-	bltu	s3, a4, .LBB4_554
-	j	.LBB4_549
+	bltu	s1, a4, .LBB4_557
+	j	.LBB4_552
 .Lfunc_end4:
 	.size	mg_lchain_dp, .Lfunc_end4-mg_lchain_dp
                                         # -- End function
@@ -3963,8 +3890,8 @@ load_input_data_from_file:              # @load_input_data_from_file
 	mv	s3, a3
 	mv	s4, a2
 	mv	s0, a1
-	lui	a1, %hi(.L.str.19)
-	addi	a1, a1, %lo(.L.str.19)
+	lui	a1, %hi(.L.str.3)
+	addi	a1, a1, %lo(.L.str.3)
 	call	fopen
 	beqz	a0, .LBB5_2
 # %bb.1:
@@ -4055,8 +3982,8 @@ load_input_data_from_file:              # @load_input_data_from_file
 	addi	sp, sp, 128
 	tail	fclose
 .LBB5_2:
-	lui	a0, %hi(.L.str.20)
-	addi	a0, a0, %lo(.L.str.20)
+	lui	a0, %hi(.L.str.4)
+	addi	a0, a0, %lo(.L.str.4)
 	ld	ra, 120(sp)                     # 8-byte Folded Reload
 	ld	s0, 112(sp)                     # 8-byte Folded Reload
 	ld	s1, 104(sp)                     # 8-byte Folded Reload
@@ -4090,8 +4017,8 @@ load_output_data_from_file:             # @load_output_data_from_file
 	sd	s2, 0(sp)                       # 8-byte Folded Spill
 	mv	s1, a2
 	mv	s2, a1
-	lui	a1, %hi(.L.str.19)
-	addi	a1, a1, %lo(.L.str.19)
+	lui	a1, %hi(.L.str.3)
+	addi	a1, a1, %lo(.L.str.3)
 	call	fopen
 	beqz	a0, .LBB6_4
 # %bb.1:
@@ -4120,8 +4047,8 @@ load_output_data_from_file:             # @load_output_data_from_file
 	addi	sp, sp, 32
 	tail	fclose
 .LBB6_4:
-	lui	a0, %hi(.L.str.20)
-	addi	a0, a0, %lo(.L.str.20)
+	lui	a0, %hi(.L.str.4)
+	addi	a0, a0, %lo(.L.str.4)
 	ld	ra, 24(sp)                      # 8-byte Folded Reload
 	ld	s0, 16(sp)                      # 8-byte Folded Reload
 	ld	s1, 8(sp)                       # 8-byte Folded Reload
@@ -4129,8 +4056,8 @@ load_output_data_from_file:             # @load_output_data_from_file
 	addi	sp, sp, 32
 	tail	perror
 .LBB6_5:
-	lui	a0, %hi(.L.str.21)
-	addi	a0, a0, %lo(.L.str.21)
+	lui	a0, %hi(.L.str.5)
+	addi	a0, a0, %lo(.L.str.5)
 	call	perror
 	j	.LBB6_3
 .Lfunc_end6:
@@ -4155,8 +4082,8 @@ print_mm128_array:                      # @print_mm128_array
 	mv	s0, a1
 	li	s1, 0
 	addi	s3, a0, 8
-	lui	s2, %hi(.L.str.22)
-	addi	s2, s2, %lo(.L.str.22)
+	lui	s2, %hi(.L.str.6)
+	addi	s2, s2, %lo(.L.str.6)
 .LBB7_2:                                # =>This Inner Loop Header: Depth=1
 	ld	a2, -8(s3)
 	ld	a3, 0(s3)
@@ -4234,7 +4161,7 @@ clear_regsw_cache:                      # @clear_regsw_cache
 get_cycles:                             # @get_cycles
 # %bb.0:
 	#APP
-	csrr	a0, 2062
+	csrr	a0, 2068
 	#NO_APP
 	sext.w	a0, a0
 	ret
@@ -4244,9 +4171,104 @@ get_cycles:                             # @get_cycles
 	.option	pop
 	.option	push
 	.option	arch, +a, +m, +zifencei
+	.globl	enable_regsw                    # -- Begin function enable_regsw
+	.p2align	2
+	.type	enable_regsw,@function
+enable_regsw:                           # @enable_regsw
+# %bb.0:
+	#APP
+	csrw	2051, a0
+	#NO_APP
+	ret
+.Lfunc_end12:
+	.size	enable_regsw, .Lfunc_end12-enable_regsw
+                                        # -- End function
+	.option	pop
+	.option	push
+	.option	arch, +a, +m, +zifencei
+	.globl	get_li                          # -- Begin function get_li
+	.p2align	2
+	.type	get_li,@function
+get_li:                                 # @get_li
+# %bb.0:
+	#APP
+	csrr	a0, 2063
+	#NO_APP
+	sext.w	a0, a0
+	ret
+.Lfunc_end13:
+	.size	get_li, .Lfunc_end13-get_li
+                                        # -- End function
+	.option	pop
+	.option	push
+	.option	arch, +a, +m, +zifencei
+	.globl	get_ld                          # -- Begin function get_ld
+	.p2align	2
+	.type	get_ld,@function
+get_ld:                                 # @get_ld
+# %bb.0:
+	#APP
+	csrr	a0, 2065
+	#NO_APP
+	sext.w	a0, a0
+	ret
+.Lfunc_end14:
+	.size	get_ld, .Lfunc_end14-get_ld
+                                        # -- End function
+	.option	pop
+	.option	push
+	.option	arch, +a, +m, +zifencei
+	.globl	get_lw                          # -- Begin function get_lw
+	.p2align	2
+	.type	get_lw,@function
+get_lw:                                 # @get_lw
+# %bb.0:
+	#APP
+	csrr	a0, 2064
+	#NO_APP
+	sext.w	a0, a0
+	ret
+.Lfunc_end15:
+	.size	get_lw, .Lfunc_end15-get_lw
+                                        # -- End function
+	.option	pop
+	.option	push
+	.option	arch, +a, +m, +zifencei
+	.globl	get_sd                          # -- Begin function get_sd
+	.p2align	2
+	.type	get_sd,@function
+get_sd:                                 # @get_sd
+# %bb.0:
+	#APP
+	csrr	a0, 2067
+	#NO_APP
+	sext.w	a0, a0
+	ret
+.Lfunc_end16:
+	.size	get_sd, .Lfunc_end16-get_sd
+                                        # -- End function
+	.option	pop
+	.option	push
+	.option	arch, +a, +m, +zifencei
+	.globl	get_sw                          # -- Begin function get_sw
+	.p2align	2
+	.type	get_sw,@function
+get_sw:                                 # @get_sw
+# %bb.0:
+	#APP
+	csrr	a0, 2066
+	#NO_APP
+	sext.w	a0, a0
+	ret
+.Lfunc_end17:
+	.size	get_sw, .Lfunc_end17-get_sw
+                                        # -- End function
+	.option	pop
+	.option	push
+	.option	arch, +a, +m, +zifencei
 	.section	.srodata.cst4,"aM",@progbits,4
 	.p2align	2, 0x0                          # -- Begin function main
-.LCPI12_0:
+.LCPI18_0:
 	.word	0x3df5c28f                      # float 0.119999997
 	.text
 	.globl	main
@@ -4266,7 +4288,7 @@ main:                                   # @main
 	csrr	a0, 2061
 	#NO_APP
 	#APP
-	csrr	s2, 2062
+	csrr	s2, 2068
 	#NO_APP
 	addi	a0, sp, 56
 	sd	a0, 32(sp)
@@ -4280,8 +4302,8 @@ main:                                   # @main
 	li	a1, 1
 	lui	a0, 1
 	addiw	a0, a0, 904
-	lui	a2, %hi(.LCPI12_0)
-	flw	fa0, %lo(.LCPI12_0)(a2)
+	lui	a2, %hi(.LCPI18_0)
+	flw	fa0, %lo(.LCPI18_0)(a2)
 	fmv.w.x	fa1, zero
 	li	a2, 500
 	li	a3, 25
@@ -4294,7 +4316,7 @@ main:                                   # @main
 	call	mg_lchain_dp
 	mv	s0, a0
 	#APP
-	csrr	s5, 2062
+	csrr	s5, 2068
 	#NO_APP
 	#APP
 	csrr	s3, 2059
@@ -4304,8 +4326,8 @@ main:                                   # @main
 	#NO_APP
 	ld	a2, 0(a0)
 	ld	a3, 8(a0)
-	lui	s1, %hi(.L.str.22)
-	addi	s1, s1, %lo(.L.str.22)
+	lui	s1, %hi(.L.str.6)
+	addi	s1, s1, %lo(.L.str.6)
 	mv	a0, s1
 	li	a1, 0
 	call	printf
@@ -4412,8 +4434,31 @@ main:                                   # @main
 	sub	a1, s5, s2
 	sext.w	a2, s3
 	sext.w	a3, s4
-	lui	a0, %hi(.L.str.24)
-	addi	a0, a0, %lo(.L.str.24)
+	lui	a0, %hi(.L.str.8)
+	addi	a0, a0, %lo(.L.str.8)
+	call	printf
+	#APP
+	csrr	a1, 2064
+	#NO_APP
+	sext.w	a1, a1
+	#APP
+	csrr	a3, 2063
+	#NO_APP
+	sext.w	a3, a3
+	#APP
+	csrr	a2, 2065
+	#NO_APP
+	sext.w	a2, a2
+	#APP
+	csrr	a4, 2066
+	#NO_APP
+	sext.w	a4, a4
+	#APP
+	csrr	a5, 2067
+	#NO_APP
+	sext.w	a5, a5
+	lui	a0, %hi(.L.str.9)
+	addi	a0, a0, %lo(.L.str.9)
 	call	printf
 	li	a0, 0
 	ld	ra, 120(sp)                     # 8-byte Folded Reload
@@ -4425,8 +4470,8 @@ main:                                   # @main
 	ld	s5, 72(sp)                      # 8-byte Folded Reload
 	addi	sp, sp, 128
 	ret
-.Lfunc_end12:
-	.size	main, .Lfunc_end12-main
+.Lfunc_end18:
+	.size	main, .Lfunc_end18-main
                                         # -- End function
 	.option	pop
 	.type	.L.str,@object                  # @.str
@@ -4457,103 +4502,23 @@ main:                                   # @main
 
 	.type	.L.str.3,@object                # @.str.3
 .L.str.3:
-	.asciz	"max_dist_x: %d\n"
-	.size	.L.str.3, 16
+	.asciz	"rb"
+	.size	.L.str.3, 3
 
 	.type	.L.str.4,@object                # @.str.4
 .L.str.4:
-	.asciz	"max_dist_y: %d\n"
-	.size	.L.str.4, 16
+	.asciz	"Failed to open file"
+	.size	.L.str.4, 20
 
 	.type	.L.str.5,@object                # @.str.5
 .L.str.5:
-	.asciz	"bw: %d\n"
-	.size	.L.str.5, 8
+	.asciz	"Failed to allocate memory"
+	.size	.L.str.5, 26
 
 	.type	.L.str.6,@object                # @.str.6
 .L.str.6:
-	.asciz	"max_skip: %d\n"
-	.size	.L.str.6, 14
-
-	.type	.L.str.7,@object                # @.str.7
-.L.str.7:
-	.asciz	"max_iter: %d\n"
-	.size	.L.str.7, 14
-
-	.type	.L.str.8,@object                # @.str.8
-.L.str.8:
-	.asciz	"min_cnt: %d\n"
-	.size	.L.str.8, 13
-
-	.type	.L.str.9,@object                # @.str.9
-.L.str.9:
-	.asciz	"min_sc: %d\n"
-	.size	.L.str.9, 12
-
-	.type	.L.str.10,@object               # @.str.10
-.L.str.10:
-	.asciz	"chn_pen_gap: %.2f\n"
-	.size	.L.str.10, 19
-
-	.type	.L.str.11,@object               # @.str.11
-.L.str.11:
-	.asciz	"chn_pen_skip: %.2f\n"
-	.size	.L.str.11, 20
-
-	.type	.L.str.12,@object               # @.str.12
-.L.str.12:
-	.asciz	"is_cdna: %d\n"
-	.size	.L.str.12, 13
-
-	.type	.L.str.13,@object               # @.str.13
-.L.str.13:
-	.asciz	"n_seg: %d\n"
-	.size	.L.str.13, 11
-
-	.type	.L.str.14,@object               # @.str.14
-.L.str.14:
-	.asciz	"n: %ld\n"
-	.size	.L.str.14, 8
-
-	.type	.L.str.15,@object               # @.str.15
-.L.str.15:
-	.asciz	"a: %p\n"
-	.size	.L.str.15, 7
-
-	.type	.L.str.16,@object               # @.str.16
-.L.str.16:
-	.asciz	"n_u_: %p\n"
-	.size	.L.str.16, 10
-
-	.type	.L.str.17,@object               # @.str.17
-.L.str.17:
-	.asciz	"_u: %p\n"
-	.size	.L.str.17, 8
-
-	.type	.L.str.18,@object               # @.str.18
-.L.str.18:
-	.asciz	"km: %p\n"
-	.size	.L.str.18, 8
-
-	.type	.L.str.19,@object               # @.str.19
-.L.str.19:
-	.asciz	"rb"
-	.size	.L.str.19, 3
-
-	.type	.L.str.20,@object               # @.str.20
-.L.str.20:
-	.asciz	"Failed to open file"
-	.size	.L.str.20, 20
-
-	.type	.L.str.21,@object               # @.str.21
-.L.str.21:
-	.asciz	"Failed to allocate memory"
-	.size	.L.str.21, 26
-
-	.type	.L.str.22,@object               # @.str.22
-.L.str.22:
 	.asciz	"%d: x = %llu, y = %llu\n"
-	.size	.L.str.22, 24
+	.size	.L.str.6, 24
 
 	.type	sta,@object                     # @sta
 	.data
@@ -6562,11 +6527,16 @@ sta:
 	.quad	64424514330                     # 0xf0000131a
 	.size	sta, 16000
 
-	.type	.L.str.24,@object               # @.str.24
+	.type	.L.str.8,@object                # @.str.8
 	.section	.rodata.str1.1,"aMS",@progbits,1
-.L.str.24:
+.L.str.8:
 	.asciz	"cycles: %lu | regsw hits:%d regsw misses:%d \n"
-	.size	.L.str.24, 46
+	.size	.L.str.8, 46
+
+	.type	.L.str.9,@object                # @.str.9
+.L.str.9:
+	.asciz	"lw, %lu\n ld, %lu\n li, %lu\n sw, %lu\n sd, %lu\n "
+	.size	.L.str.9, 46
 
 	.type	.Lstr,@object                   # @str
 .Lstr:

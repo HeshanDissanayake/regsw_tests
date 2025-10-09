@@ -46,7 +46,7 @@ define dso_local void @jcopy_sample_rows(ptr nocapture noundef readonly %0, i32 
   tail call void @llvm.memcpy.p0.p0.i64(ptr align 1 %21, ptr align 1 %19, i64 %7, i1 false)
   %22 = add nsw i32 %15, -1
   %23 = icmp ugt i32 %15, 1
-  br i1 %23, label %14, label %24, !llvm.loop !10
+  br i1 %23, label %14, label %24
 
 24:                                               ; preds = %14, %6
   ret void
@@ -92,5 +92,3 @@ attributes #5 = { mustprogress nocallback nofree nounwind willreturn memory(argm
 !7 = !{!"any pointer", !8, i64 0}
 !8 = !{!"omnipotent char", !9, i64 0}
 !9 = !{!"Simple C/C++ TBAA"}
-!10 = distinct !{!10, !11}
-!11 = !{!"llvm.loop.mustprogress"}

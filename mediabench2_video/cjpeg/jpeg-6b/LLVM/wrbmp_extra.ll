@@ -482,25 +482,25 @@ define internal void @finish_output_bmp(ptr noundef %0, ptr nocapture noundef re
   %249 = getelementptr inbounds i8, ptr %244, i64 1
   %250 = add i32 %245, -1
   %251 = icmp eq i32 %250, 0
-  br i1 %251, label %252, label %243, !llvm.loop !52
+  br i1 %251, label %252, label %243
 
 252:                                              ; preds = %243, %231
   %253 = icmp eq i32 %237, 0
-  br i1 %253, label %282, label %231, !llvm.loop !54
+  br i1 %253, label %282, label %231
 
 254:                                              ; preds = %273, %256
   %255 = icmp eq i32 %267, 0
-  br i1 %255, label %282, label %256, !llvm.loop !54
+  br i1 %255, label %282, label %256
 
 256:                                              ; preds = %224, %254
   %257 = phi i32 [ %267, %254 ], [ %222, %224 ]
   %258 = load i32, ptr %221, align 4, !tbaa !35
   %259 = sub i32 %258, %257
   %260 = zext i32 %259 to i64
-  store i64 %260, ptr %226, align 8, !tbaa !55
+  store i64 %260, ptr %226, align 8, !tbaa !52
   %261 = zext i32 %258 to i64
-  store i64 %261, ptr %227, align 8, !tbaa !56
-  %262 = load ptr, ptr %10, align 8, !tbaa !57
+  store i64 %261, ptr %227, align 8, !tbaa !53
+  %262 = load ptr, ptr %10, align 8, !tbaa !54
   tail call void %262(ptr noundef %0) #7
   %263 = load ptr, ptr %228, align 8, !tbaa !6
   %264 = getelementptr inbounds i8, ptr %263, i64 56
@@ -525,7 +525,7 @@ define internal void @finish_output_bmp(ptr noundef %0, ptr nocapture noundef re
   %279 = getelementptr inbounds i8, ptr %274, i64 1
   %280 = add i32 %275, -1
   %281 = icmp eq i32 %280, 0
-  br i1 %281, label %254, label %273, !llvm.loop !52
+  br i1 %281, label %254, label %273
 
 282:                                              ; preds = %254, %252, %220
   %283 = icmp eq ptr %10, null
@@ -533,9 +533,9 @@ define internal void @finish_output_bmp(ptr noundef %0, ptr nocapture noundef re
 
 284:                                              ; preds = %282
   %285 = getelementptr inbounds i8, ptr %10, i64 32
-  %286 = load i32, ptr %285, align 8, !tbaa !58
+  %286 = load i32, ptr %285, align 8, !tbaa !55
   %287 = add nsw i32 %286, 1
-  store i32 %287, ptr %285, align 8, !tbaa !58
+  store i32 %287, ptr %285, align 8, !tbaa !55
   br label %288
 
 288:                                              ; preds = %284, %282
@@ -592,7 +592,7 @@ define internal void @put_gray_rows(ptr noundef %0, ptr nocapture noundef %1, i3
   store i8 %28, ptr %25, align 1, !tbaa !46
   %30 = add i32 %24, -1
   %31 = icmp eq i32 %30, 0
-  br i1 %31, label %32, label %23, !llvm.loop !59
+  br i1 %31, label %32, label %23
 
 32:                                               ; preds = %23, %3
   %33 = phi ptr [ %15, %3 ], [ %29, %23 ]
@@ -654,7 +654,7 @@ define internal void @put_pixel_rows(ptr noundef %0, ptr nocapture noundef %1, i
   %35 = getelementptr inbounds i8, ptr %25, i64 3
   %36 = add i32 %24, -1
   %37 = icmp eq i32 %36, 0
-  br i1 %37, label %38, label %23, !llvm.loop !60
+  br i1 %37, label %38, label %23
 
 38:                                               ; preds = %23, %3
   %39 = phi ptr [ %15, %3 ], [ %35, %23 ]
@@ -695,9 +695,9 @@ declare dso_local noundef i64 @fwrite(ptr nocapture noundef, i64 noundef, i64 no
 ; Function Attrs: nounwind
 define internal fastcc void @write_colormap(ptr noundef %0, ptr nocapture %1, i32 noundef signext %2, i32 noundef signext %3) unnamed_addr #0 {
   %5 = getelementptr inbounds i8, ptr %0, i64 160
-  %6 = load ptr, ptr %5, align 8, !tbaa !61
+  %6 = load ptr, ptr %5, align 8, !tbaa !56
   %7 = getelementptr inbounds i8, ptr %0, i64 156
-  %8 = load i32, ptr %7, align 4, !tbaa !62
+  %8 = load i32, ptr %7, align 4, !tbaa !57
   %9 = icmp eq ptr %6, null
   br i1 %9, label %10, label %20
 
@@ -713,11 +713,11 @@ define internal fastcc void @write_colormap(ptr noundef %0, ptr nocapture %1, i3
   %17 = tail call signext i32 @putc(i32 noundef signext 0, ptr noundef %1)
   %18 = add nuw nsw i32 %13, 1
   %19 = icmp eq i32 %18, 256
-  br i1 %19, label %120, label %12, !llvm.loop !63
+  br i1 %19, label %120, label %12
 
 20:                                               ; preds = %4
   %21 = getelementptr inbounds i8, ptr %0, i64 144
-  %22 = load i32, ptr %21, align 8, !tbaa !64
+  %22 = load i32, ptr %21, align 8, !tbaa !58
   %23 = icmp eq i32 %22, 3
   %24 = icmp sgt i32 %8, 0
   br i1 %23, label %49, label %25
@@ -750,7 +750,7 @@ define internal fastcc void @write_colormap(ptr noundef %0, ptr nocapture %1, i3
   %46 = tail call signext i32 @putc(i32 noundef signext 0, ptr noundef %1)
   %47 = add nuw nsw i64 %30, 1
   %48 = icmp eq i64 %47, %28
-  br i1 %48, label %120, label %29, !llvm.loop !65
+  br i1 %48, label %120, label %29
 
 49:                                               ; preds = %20
   br i1 %24, label %50, label %120
@@ -782,7 +782,7 @@ define internal fastcc void @write_colormap(ptr noundef %0, ptr nocapture %1, i3
   %72 = tail call signext i32 @putc(i32 noundef signext 0, ptr noundef %1)
   %73 = add nuw nsw i64 %56, 1
   %74 = icmp eq i64 %73, %54
-  br i1 %74, label %120, label %55, !llvm.loop !66
+  br i1 %74, label %120, label %55
 
 75:                                               ; preds = %50, %75
   %76 = phi i64 [ %92, %75 ], [ 0, %50 ]
@@ -803,7 +803,7 @@ define internal fastcc void @write_colormap(ptr noundef %0, ptr nocapture %1, i3
   %91 = tail call signext i32 @putc(i32 noundef signext %90, ptr noundef %1)
   %92 = add nuw nsw i64 %76, 1
   %93 = icmp eq i64 %92, %54
-  br i1 %93, label %120, label %75, !llvm.loop !66
+  br i1 %93, label %120, label %75
 
 94:                                               ; preds = %26, %94
   %95 = phi i64 [ %111, %94 ], [ 0, %26 ]
@@ -824,7 +824,7 @@ define internal fastcc void @write_colormap(ptr noundef %0, ptr nocapture %1, i3
   %110 = tail call signext i32 @putc(i32 noundef signext %109, ptr noundef %1)
   %111 = add nuw nsw i64 %95, 1
   %112 = icmp eq i64 %111, %28
-  br i1 %112, label %120, label %94, !llvm.loop !65
+  br i1 %112, label %120, label %94
 
 113:                                              ; preds = %10, %113
   %114 = phi i32 [ %118, %113 ], [ 0, %10 ]
@@ -833,7 +833,7 @@ define internal fastcc void @write_colormap(ptr noundef %0, ptr nocapture %1, i3
   %117 = tail call signext i32 @putc(i32 noundef signext %114, ptr noundef %1)
   %118 = add nuw nsw i32 %114, 1
   %119 = icmp eq i32 %118, 256
-  br i1 %119, label %120, label %113, !llvm.loop !63
+  br i1 %119, label %120, label %113
 
 120:                                              ; preds = %94, %29, %75, %55, %113, %12, %25, %49
   %121 = phi i32 [ 0, %49 ], [ 0, %25 ], [ 256, %12 ], [ 256, %113 ], [ %8, %55 ], [ %8, %75 ], [ %8, %29 ], [ %8, %94 ]
@@ -867,7 +867,7 @@ define internal fastcc void @write_colormap(ptr noundef %0, ptr nocapture %1, i3
   %138 = tail call signext i32 @putc(i32 noundef signext 0, ptr noundef %1)
   %139 = add nuw i32 %134, 1
   %140 = icmp eq i32 %139, %2
-  br i1 %140, label %148, label %133, !llvm.loop !67
+  br i1 %140, label %148, label %133
 
 141:                                              ; preds = %131, %141
   %142 = phi i32 [ %146, %141 ], [ %121, %131 ]
@@ -876,7 +876,7 @@ define internal fastcc void @write_colormap(ptr noundef %0, ptr nocapture %1, i3
   %145 = tail call signext i32 @putc(i32 noundef signext 0, ptr noundef %1)
   %146 = add nuw i32 %142, 1
   %147 = icmp eq i32 %146, %2
-  br i1 %147, label %148, label %141, !llvm.loop !67
+  br i1 %147, label %148, label %141
 
 148:                                              ; preds = %141, %133, %129
   ret void
@@ -946,19 +946,10 @@ attributes #7 = { nounwind }
 !49 = !{!7, !13, i64 382}
 !50 = !{!15, !8, i64 56}
 !51 = !{!8, !8, i64 0}
-!52 = distinct !{!52, !53}
-!53 = !{!"llvm.loop.mustprogress"}
-!54 = distinct !{!54, !53}
-!55 = !{!40, !16, i64 8}
-!56 = !{!40, !16, i64 16}
-!57 = !{!40, !8, i64 0}
-!58 = !{!40, !11, i64 32}
-!59 = distinct !{!59, !53}
-!60 = distinct !{!60, !53}
-!61 = !{!7, !8, i64 160}
-!62 = !{!7, !11, i64 156}
-!63 = distinct !{!63, !53}
-!64 = !{!7, !11, i64 144}
-!65 = distinct !{!65, !53}
-!66 = distinct !{!66, !53}
-!67 = distinct !{!67, !53}
+!52 = !{!40, !16, i64 8}
+!53 = !{!40, !16, i64 16}
+!54 = !{!40, !8, i64 0}
+!55 = !{!40, !11, i64 32}
+!56 = !{!7, !8, i64 160}
+!57 = !{!7, !11, i64 156}
+!58 = !{!7, !11, i64 144}

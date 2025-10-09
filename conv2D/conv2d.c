@@ -26,7 +26,7 @@ void load_kernel(){
 }
 
 
-void conv2d_regsw(int output[N - K + 1][N - K + 1]) {
+void conv2d_normal(int output[N - K + 1][N - K + 1]) {
     for (int i = 0; i <= N - K; i++) {
         for (int j = 0; j <= N - K; j++) {
             int sum = 0;
@@ -40,7 +40,7 @@ void conv2d_regsw(int output[N - K + 1][N - K + 1]) {
     }
 }
 
-void conv2d_normal(int output[N - K + 1][N - K + 1]) {
+void conv2d_regsw(int output[N - K + 1][N - K + 1]) {
     load_kernel();
     for (int i = 0; i <= N - K; i++) {
         for (int j = 0; j <= N - K; j++) {

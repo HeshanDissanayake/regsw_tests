@@ -4,7 +4,7 @@ RUN_REGSW = ../run.sh
 MODE = regsw
 
 SRC = main.c
-OBJ = main.o obj/sha.o
+OBJ = main.o obj/sha_extra.o
 
 ifeq ($(MODE), regsw)
   EXEC = sha_exec_regsw.o
@@ -39,9 +39,9 @@ $(EXEC): $(OBJ)
 main.o: main.c
 	$(RISCV_GCC) $(LDFLAGS)  -c main.c -o main.o
 
-obj/sha.o: sha.c
-	# $(RUN_REGSW) sha.c $(MODE)
-	$(RISCV_GCC)  $(LDFLAGS) -DMODE=\"$(MODE)\" -O3 -c -static sha.c -o obj/sha.o
+obj/sha_extra.o: sha.c
+	$(RUN_REGSW) sha.c $(MODE)
+	# $(RISCV_GCC)  $(LDFLAGS) -DMODE=\"$(MODE)\" -O3 -c -static sha.c -o obj/sha.o
 
 
 clean:

@@ -110,7 +110,7 @@ define dso_local noundef signext i32 @main(i32 noundef signext %0, ptr nocapture
 47:                                               ; preds = %44
   %48 = load i8, ptr %30, align 1, !tbaa !10
   %49 = icmp eq i8 %48, 0
-  br i1 %49, label %443, label %50, !llvm.loop !15
+  br i1 %49, label %443, label %50
 
 50:                                               ; preds = %47
   %51 = getelementptr inbounds i8, ptr %22, i64 3
@@ -137,7 +137,7 @@ define dso_local noundef signext i32 @main(i32 noundef signext %0, ptr nocapture
 66:                                               ; preds = %63
   %67 = load i8, ptr %51, align 1, !tbaa !10
   %68 = icmp eq i8 %67, 0
-  br i1 %68, label %443, label %69, !llvm.loop !15
+  br i1 %68, label %443, label %69
 
 69:                                               ; preds = %66
   %70 = getelementptr inbounds i8, ptr %22, i64 4
@@ -164,7 +164,7 @@ define dso_local noundef signext i32 @main(i32 noundef signext %0, ptr nocapture
 85:                                               ; preds = %82
   %86 = load i8, ptr %70, align 1, !tbaa !10
   %87 = icmp eq i8 %86, 0
-  br i1 %87, label %443, label %88, !llvm.loop !15
+  br i1 %87, label %443, label %88
 
 88:                                               ; preds = %85
   %89 = getelementptr inbounds i8, ptr %22, i64 5
@@ -191,7 +191,7 @@ define dso_local noundef signext i32 @main(i32 noundef signext %0, ptr nocapture
 104:                                              ; preds = %101
   %105 = load i8, ptr %89, align 1, !tbaa !10
   %106 = icmp eq i8 %105, 0
-  br i1 %106, label %443, label %107, !llvm.loop !15
+  br i1 %106, label %443, label %107
 
 107:                                              ; preds = %104
   %108 = getelementptr inbounds i8, ptr %22, i64 6
@@ -218,7 +218,7 @@ define dso_local noundef signext i32 @main(i32 noundef signext %0, ptr nocapture
 123:                                              ; preds = %120
   %124 = load i8, ptr %108, align 1, !tbaa !10
   %125 = icmp eq i8 %124, 0
-  br i1 %125, label %443, label %126, !llvm.loop !15
+  br i1 %125, label %443, label %126
 
 126:                                              ; preds = %123
   %127 = getelementptr inbounds i8, ptr %22, i64 7
@@ -245,7 +245,7 @@ define dso_local noundef signext i32 @main(i32 noundef signext %0, ptr nocapture
 142:                                              ; preds = %139
   %143 = load i8, ptr %127, align 1, !tbaa !10
   %144 = icmp eq i8 %143, 0
-  br i1 %144, label %443, label %145, !llvm.loop !15
+  br i1 %144, label %443, label %145
 
 145:                                              ; preds = %142
   %146 = getelementptr inbounds i8, ptr %22, i64 8
@@ -272,7 +272,7 @@ define dso_local noundef signext i32 @main(i32 noundef signext %0, ptr nocapture
 161:                                              ; preds = %158
   %162 = load i8, ptr %146, align 1, !tbaa !10
   %163 = icmp eq i8 %162, 0
-  br i1 %163, label %443, label %164, !llvm.loop !15
+  br i1 %163, label %443, label %164
 
 164:                                              ; preds = %161, %158, %139, %120, %101, %82, %63, %44
   br i1 %38, label %170, label %165
@@ -292,7 +292,7 @@ define dso_local noundef signext i32 @main(i32 noundef signext %0, ptr nocapture
 173:                                              ; preds = %170
   %174 = load i8, ptr %30, align 1, !tbaa !10
   %175 = icmp eq i8 %174, 0
-  br i1 %175, label %267, label %176, !llvm.loop !15
+  br i1 %175, label %267, label %176
 
 176:                                              ; preds = %173
   %177 = getelementptr inbounds i8, ptr %22, i64 3
@@ -319,7 +319,7 @@ define dso_local noundef signext i32 @main(i32 noundef signext %0, ptr nocapture
 192:                                              ; preds = %189
   %193 = load i8, ptr %177, align 1, !tbaa !10
   %194 = icmp eq i8 %193, 0
-  br i1 %194, label %252, label %195, !llvm.loop !15
+  br i1 %194, label %252, label %195
 
 195:                                              ; preds = %192
   %196 = getelementptr inbounds i8, ptr %22, i64 4
@@ -346,7 +346,7 @@ define dso_local noundef signext i32 @main(i32 noundef signext %0, ptr nocapture
 211:                                              ; preds = %208
   %212 = load i8, ptr %196, align 1, !tbaa !10
   %213 = icmp eq i8 %212, 0
-  br i1 %213, label %252, label %214, !llvm.loop !15
+  br i1 %213, label %252, label %214
 
 214:                                              ; preds = %211
   %215 = getelementptr inbounds i8, ptr %22, i64 5
@@ -373,7 +373,7 @@ define dso_local noundef signext i32 @main(i32 noundef signext %0, ptr nocapture
 230:                                              ; preds = %227
   %231 = load i8, ptr %215, align 1, !tbaa !10
   %232 = icmp eq i8 %231, 0
-  br i1 %232, label %252, label %233, !llvm.loop !15
+  br i1 %232, label %252, label %233
 
 233:                                              ; preds = %230
   %234 = getelementptr inbounds i8, ptr %22, i64 6
@@ -400,7 +400,7 @@ define dso_local noundef signext i32 @main(i32 noundef signext %0, ptr nocapture
 249:                                              ; preds = %246
   %250 = load i8, ptr %234, align 1, !tbaa !10
   %251 = icmp eq i8 %250, 0
-  br i1 %251, label %252, label %267, !llvm.loop !15
+  br i1 %251, label %252, label %267
 
 252:                                              ; preds = %249, %230, %211, %192
   %253 = add nsw i32 %15, 1
@@ -445,7 +445,7 @@ define dso_local noundef signext i32 @main(i32 noundef signext %0, ptr nocapture
 276:                                              ; preds = %273
   %277 = load i8, ptr %30, align 1, !tbaa !10
   %278 = icmp eq i8 %277, 0
-  br i1 %278, label %393, label %279, !llvm.loop !15
+  br i1 %278, label %393, label %279
 
 279:                                              ; preds = %276
   %280 = getelementptr inbounds i8, ptr %22, i64 3
@@ -472,7 +472,7 @@ define dso_local noundef signext i32 @main(i32 noundef signext %0, ptr nocapture
 295:                                              ; preds = %292
   %296 = load i8, ptr %280, align 1, !tbaa !10
   %297 = icmp eq i8 %296, 0
-  br i1 %297, label %393, label %298, !llvm.loop !15
+  br i1 %297, label %393, label %298
 
 298:                                              ; preds = %295
   %299 = getelementptr inbounds i8, ptr %22, i64 4
@@ -499,7 +499,7 @@ define dso_local noundef signext i32 @main(i32 noundef signext %0, ptr nocapture
 314:                                              ; preds = %311
   %315 = load i8, ptr %299, align 1, !tbaa !10
   %316 = icmp eq i8 %315, 0
-  br i1 %316, label %393, label %317, !llvm.loop !15
+  br i1 %316, label %393, label %317
 
 317:                                              ; preds = %314
   %318 = getelementptr inbounds i8, ptr %22, i64 5
@@ -526,7 +526,7 @@ define dso_local noundef signext i32 @main(i32 noundef signext %0, ptr nocapture
 333:                                              ; preds = %330
   %334 = load i8, ptr %318, align 1, !tbaa !10
   %335 = icmp eq i8 %334, 0
-  br i1 %335, label %393, label %336, !llvm.loop !15
+  br i1 %335, label %393, label %336
 
 336:                                              ; preds = %333
   %337 = getelementptr inbounds i8, ptr %22, i64 6
@@ -553,7 +553,7 @@ define dso_local noundef signext i32 @main(i32 noundef signext %0, ptr nocapture
 352:                                              ; preds = %349
   %353 = load i8, ptr %337, align 1, !tbaa !10
   %354 = icmp eq i8 %353, 0
-  br i1 %354, label %393, label %355, !llvm.loop !15
+  br i1 %354, label %393, label %355
 
 355:                                              ; preds = %352
   %356 = getelementptr inbounds i8, ptr %22, i64 7
@@ -580,7 +580,7 @@ define dso_local noundef signext i32 @main(i32 noundef signext %0, ptr nocapture
 371:                                              ; preds = %368
   %372 = load i8, ptr %356, align 1, !tbaa !10
   %373 = icmp eq i8 %372, 0
-  br i1 %373, label %393, label %374, !llvm.loop !15
+  br i1 %373, label %393, label %374
 
 374:                                              ; preds = %371
   %375 = getelementptr inbounds i8, ptr %22, i64 8
@@ -607,7 +607,7 @@ define dso_local noundef signext i32 @main(i32 noundef signext %0, ptr nocapture
 390:                                              ; preds = %387
   %391 = load i8, ptr %375, align 1, !tbaa !10
   %392 = icmp eq i8 %391, 0
-  br i1 %392, label %393, label %442, !llvm.loop !15
+  br i1 %392, label %393, label %442
 
 393:                                              ; preds = %390, %371, %352, %333, %314, %295, %276
   %394 = add nsw i32 %15, 1
@@ -701,7 +701,7 @@ define dso_local noundef signext i32 @main(i32 noundef signext %0, ptr nocapture
   %448 = phi i32 [ %253, %256 ], [ %439, %437 ], [ %15, %161 ], [ %15, %142 ], [ %15, %123 ], [ %15, %104 ], [ %15, %85 ], [ %15, %66 ], [ %15, %47 ]
   %449 = add nsw i32 %448, 1
   %450 = icmp slt i32 %449, %0
-  br i1 %450, label %14, label %451, !llvm.loop !17
+  br i1 %450, label %14, label %451
 
 451:                                              ; preds = %443, %14
   %452 = phi ptr [ %444, %443 ], [ %19, %14 ]
@@ -807,7 +807,7 @@ define dso_local noundef signext i32 @main(i32 noundef signext %0, ptr nocapture
   store i8 %508, ptr %510, align 1, !tbaa !10
   %511 = tail call signext i32 @getc(ptr noundef %497)
   %512 = icmp eq i32 %511, -1
-  br i1 %512, label %513, label %500, !llvm.loop !18
+  br i1 %512, label %513, label %500
 
 513:                                              ; preds = %507
   %514 = trunc nuw nsw i64 %509 to i32
@@ -869,7 +869,7 @@ define dso_local noundef signext i32 @main(i32 noundef signext %0, ptr nocapture
 551:                                              ; preds = %546, %582
   %552 = phi i32 [ %549, %546 ], [ %584, %582 ]
   %553 = phi i32 [ %547, %546 ], [ 0, %582 ]
-  br label %542, !llvm.loop !19
+  br label %542
 
 554:                                              ; preds = %542, %554
   %555 = load ptr, ptr @infile, align 8, !tbaa !6
@@ -928,7 +928,7 @@ define dso_local noundef signext i32 @main(i32 noundef signext %0, ptr nocapture
 574:                                              ; preds = %569
   %575 = add i32 %570, -1
   %576 = icmp eq i32 %575, 0
-  br i1 %576, label %582, label %569, !llvm.loop !20
+  br i1 %576, label %582, label %569
 
 577:                                              ; preds = %562
   %578 = load ptr, ptr @outfile, align 8, !tbaa !6
@@ -966,7 +966,7 @@ define dso_local noundef signext i32 @main(i32 noundef signext %0, ptr nocapture
 598:                                              ; preds = %593, %625
   %599 = phi i32 [ %596, %593 ], [ %631, %625 ]
   %600 = phi i32 [ %594, %593 ], [ 0, %625 ]
-  br label %589, !llvm.loop !19
+  br label %589
 
 601:                                              ; preds = %593, %546
   %602 = load ptr, ptr @stderr, align 8, !tbaa !6
@@ -1075,7 +1075,7 @@ define dso_local noundef signext i32 @main(i32 noundef signext %0, ptr nocapture
   %656 = tail call signext i32 @putc(i32 noundef signext %654, ptr noundef %655)
   %657 = add i32 %650, -1
   %658 = icmp eq i32 %657, 0
-  br i1 %658, label %659, label %649, !llvm.loop !21
+  br i1 %658, label %659, label %649
 
 659:                                              ; preds = %649, %633
   tail call fastcc void @write_marker(i32 noundef signext %634)
@@ -1171,7 +1171,7 @@ define internal fastcc void @copy_rest_of_file() unnamed_addr #1 {
   %8 = load ptr, ptr @infile, align 8, !tbaa !6
   %9 = tail call signext i32 @getc(ptr noundef %8)
   %10 = icmp eq i32 %9, -1
-  br i1 %10, label %11, label %4, !llvm.loop !22
+  br i1 %10, label %11, label %4
 
 11:                                               ; preds = %4, %0
   ret void
@@ -1225,7 +1225,7 @@ define internal fastcc void @copy_variable() unnamed_addr #6 {
   %26 = tail call signext i32 @putc(i32 noundef signext %19, ptr noundef %25)
   %27 = add i32 %17, -1
   %28 = icmp eq i32 %27, 0
-  br i1 %28, label %29, label %16, !llvm.loop !23
+  br i1 %28, label %29, label %16
 
 29:                                               ; preds = %24, %13
   ret void
@@ -1302,12 +1302,3 @@ attributes #14 = { cold }
 !12 = !{!"short", !8, i64 0}
 !13 = !{!14, !14, i64 0}
 !14 = !{!"int", !8, i64 0}
-!15 = distinct !{!15, !16}
-!16 = !{!"llvm.loop.mustprogress"}
-!17 = distinct !{!17, !16}
-!18 = distinct !{!18, !16}
-!19 = distinct !{!19, !16}
-!20 = distinct !{!20, !16}
-!21 = distinct !{!21, !16}
-!22 = distinct !{!22, !16}
-!23 = distinct !{!23, !16}

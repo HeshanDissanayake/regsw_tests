@@ -1,0 +1,15 @@
+RISCV_GCC :=  /opt/dev/riscv_linux_rv64g_regsw/bin/riscv64-unknown-linux-gnu-gcc 
+RUN_REGSW = ../run.sh
+
+# Linker flags
+LDFLAGS := -static \
+		   -D SIZE=$(SIZE) \
+           -ffixed-x28 -ffixed-x29 \
+
+compile:
+	$(RISCV_GCC)  $(LDFLAGS) -DNORMAL=0  -O2 -c conv2d.c data.c 
+	$(RISCV_GCC)  $(LDFLAGS) -DNORMAL=0 -static  main.c conv2d.o data.c -o main.o 
+
+
+run-spike:
+	/home/heshds/working_dir/cva6-sdk/install64/bin/spike /home/heshds/working_dir/riscv-pk_linux/build/pk main.o

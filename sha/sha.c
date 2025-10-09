@@ -48,17 +48,8 @@ uint64_t read_cycles() {
     return cycles;
 }
 
-
-void  sha256_transform(SHA256_CTX *ctx, const BYTE data[]){
-	if (MODE == "regsw") {
-		sha256_transform_regsw(ctx, data);
-	} else {
-		sha256_transform_normal(ctx, data);
-	}
-}
-
 /*********************** FUNCTION DEFINITIONS ***********************/
-void  sha256_transform_normal(SHA256_CTX *ctx, const BYTE data[])
+void  sha256_transform(SHA256_CTX *ctx, const BYTE data[])
 {
 	WORD a, b, c, d, e, f, g, h, i, j, t1, t2, m[64];
 
@@ -100,74 +91,7 @@ void  sha256_transform_normal(SHA256_CTX *ctx, const BYTE data[])
 	ctx->state[7] += h;
 }
 
-/*********************** FUNCTION DEFINITIONS ***********************/
-void  sha256_transform_regsw(SHA256_CTX *ctx, const BYTE data[])
-{
-	WORD a, b, c, d, e, f, g, h, i, j, t1, t2, m[64];
-
-	for (i = 0, j = 0; i < 16; ++i, j += 4)
-		m[i] = (data[j] << 24) | (data[j + 1] << 16) | (data[j + 2] << 8) | (data[j + 3]);
-	for ( ; i < 64; ++i)
-		m[i] = SIG1(m[i - 2]) + m[i - 7] + SIG0(m[i - 15]) + m[i - 16];
-
-	// replaced by the regsiter array
-	// a = ctx->state[0];
-	// b = ctx->state[1];
-	// c = ctx->state[2];
-	// d = ctx->state[3];
-	// e = ctx->state[4];
-	// f = ctx->state[5];
-	// g = ctx->state[6];
-	// h = ctx->state[7];
-
-    
-	for (i = 0; i < 64; ++i) {
-		__asm__ volatile ("add x28, x28, x28" : ); // the regsw set pointer for k[i]
-		t1 = h + EP1(e) + CH(e,f,g)  + m[i];
-		__asm__ volatile ("addw x28, x28, x28" : ); // + k[i]
-		t2 = EP0(a) + MAJ(a,b,c);
-
-		__asm__ volatile ("add x28, x28, x28" : ); // the regsw
-		// h = g;
-		__asm__ volatile ("mv x28, x29" : ); 
-		// g = f;
-		__asm__ volatile ("mv x28, x29" : );
-		// f = e;
-		__asm__ volatile ("mv x28, x29" : );
-		// e = d + t1;
-		__asm__ volatile ("add x28, x28, x29" : );
-		// d = c;
-		__asm__ volatile ("mv x28, x29" : );
-		// c = b;
-		__asm__ volatile ("mv x28, x29" : );
-		// b = a;
-		__asm__ volatile ("mv x28, x29" : );
-		// a = t1 + t2;
-		__asm__ volatile ("add x28, x28, x29" : );
-
-	}
-
-	// ctx->state[0] += a;
-	// ctx->state[1] += b;
-	// ctx->state[2] += c;
-	// ctx->state[3] += d;
-	// ctx->state[4] += e;
-	// ctx->state[5] += f;
-	// ctx->state[6] += g;
-	// ctx->state[7] += h;
-	__asm__ volatile ("add x28, x28, x29" : );
-	__asm__ volatile ("add x28, x28, x29" : );
-	__asm__ volatile ("add x28, x28, x29" : );
-	__asm__ volatile ("add x28, x28, x29" : );
-	__asm__ volatile ("add x28, x28, x29" : );
-	__asm__ volatile ("add x28, x28, x29" : );
-	__asm__ volatile ("add x28, x28, x29" : );
-	__asm__ volatile ("add x28, x28, x29" : );
-}
-
-
-
-void sha256_init_normal(SHA256_CTX *ctx)
+void sha256_init(SHA256_CTX *ctx)
 {
 	ctx->datalen = 0;
 	ctx->bitlen = 0;
@@ -181,48 +105,6 @@ void sha256_init_normal(SHA256_CTX *ctx)
 	ctx->state[7] = 0x5be0cd19;
 }
 
-void sha256_init_regsw(SHA256_CTX *ctx)
-{
-	ctx->datalen = 0;
-	ctx->bitlen = 0;
-	
- 	// ctx->state[0] = 0x6a09e667;
-	// ctx->state[1] = 0xbb67ae85;
-	// ctx->state[2] = 0x3c6ef372;
-	// ctx->state[3] = 0xa54ff53a;
-	// ctx->state[4] = 0x510e527f;
-	// ctx->state[5] = 0x9b05688c;
-	// ctx->state[6] = 0x1f83d9ab;
-	// ctx->state[7] = 0x5be0cd19;
-	// __asm__ volatile ("regsw x0, x0, x0" : ); // the regsw
-
-	__asm__ volatile ("li x28, 0x6a" : );
-	__asm__ volatile ("li x28, 0x6a" : );
-	__asm__ volatile ("li x28, 0x6a" : );
-	__asm__ volatile ("li x28, 0x6a" : );
-
-	__asm__ volatile ("li x28, 0x6a" : );
-	__asm__ volatile ("li x28, 0x6a" : );
-	__asm__ volatile ("li x28, 0x6a" : );
-	__asm__ volatile ("li x28, 0x6a" : );
-
-	for(int i = 0; i < 64; i++){
-		__asm__ volatile ("lw x28, %0" ::"m"(k[i]) );
-	}
-
-}
-
-
-
-
-void sha256_init(SHA256_CTX *ctx)
-{
-	if(MODE == "normal"){
-		sha256_init_normal(ctx);
-	}else{
-		sha256_init_regsw(ctx);
-	}	
-}
 
 void sha256_update(SHA256_CTX *ctx, const BYTE data[], size_t len)
 {
@@ -231,11 +113,7 @@ void sha256_update(SHA256_CTX *ctx, const BYTE data[], size_t len)
 		ctx->data[ctx->datalen] = data[i];
 		ctx->datalen++;
 		if (ctx->datalen == 64) {
-			if(MODE == "normal"){
-				sha256_transform_normal(ctx, ctx->data);
-			}else{
-				sha256_transform_regsw(ctx, ctx->data);
-			}
+			sha256_transform(ctx, ctx->data);
 			ctx->bitlen += 512;
 			ctx->datalen = 0;
 		}
@@ -258,11 +136,9 @@ void sha256_final(SHA256_CTX *ctx, BYTE hash[])
 		ctx->data[i++] = 0x80;
 		while (i < 64)
 			ctx->data[i++] = 0x00;
-		if(MODE == "normal"){
-			sha256_transform_normal(ctx, ctx->data);
-		}else{
-			sha256_transform_regsw(ctx, ctx->data);
-		}
+	
+			sha256_transform(ctx, ctx->data);
+	
 		memset(ctx->data, 0, 56);
 	}
 
@@ -276,11 +152,9 @@ void sha256_final(SHA256_CTX *ctx, BYTE hash[])
 	ctx->data[58] = ctx->bitlen >> 40;
 	ctx->data[57] = ctx->bitlen >> 48;
 	ctx->data[56] = ctx->bitlen >> 56;
-	if(MODE == "normal"){
-			sha256_transform_normal(ctx, ctx->data);
-	}else{
-		sha256_transform_regsw(ctx, ctx->data);
-	}
+	
+	sha256_transform(ctx, ctx->data);
+	
 	// Since this implementation uses little endian byte ordering and SHA uses big endian,
 	// reverse all the bytes when copying the final state to the output hash.
 	for (i = 0; i < 4; ++i) {

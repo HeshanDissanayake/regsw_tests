@@ -259,7 +259,7 @@ define internal void @start_input_ppm(ptr noundef %0, ptr noundef %1) #0 {
   store i8 %141, ptr %143, align 1, !tbaa !31
   %144 = add nuw nsw i64 %137, 1
   %145 = icmp eq i64 %137, %130
-  br i1 %145, label %146, label %136, !llvm.loop !41
+  br i1 %145, label %146, label %136
 
 146:                                              ; preds = %136, %110, %122
   ret void
@@ -349,7 +349,7 @@ define internal fastcc signext i32 @read_pbm_integer(ptr noundef %0, ptr nocaptu
 34:                                               ; preds = %30
   %35 = mul i32 %25, 10
   %36 = add i32 %32, %35
-  br label %24, !llvm.loop !43
+  br label %24
 
 37:                                               ; preds = %30
   ret i32 %25
@@ -369,7 +369,7 @@ define internal noundef signext i32 @get_text_gray_row(ptr noundef %0, ptr nocap
 10:                                               ; preds = %2
   %11 = getelementptr inbounds i8, ptr %1, i64 32
   %12 = load ptr, ptr %11, align 8, !tbaa !37
-  %13 = load ptr, ptr %12, align 8, !tbaa !44
+  %13 = load ptr, ptr %12, align 8, !tbaa !41
   br label %14
 
 14:                                               ; preds = %10, %14
@@ -383,7 +383,7 @@ define internal noundef signext i32 @get_text_gray_row(ptr noundef %0, ptr nocap
   store i8 %20, ptr %16, align 1, !tbaa !31
   %22 = add i32 %15, -1
   %23 = icmp eq i32 %22, 0
-  br i1 %23, label %24, label %14, !llvm.loop !45
+  br i1 %23, label %24, label %14
 
 24:                                               ; preds = %14, %2
   ret i32 1
@@ -403,7 +403,7 @@ define internal noundef signext i32 @get_text_rgb_row(ptr noundef %0, ptr nocapt
 10:                                               ; preds = %2
   %11 = getelementptr inbounds i8, ptr %1, i64 32
   %12 = load ptr, ptr %11, align 8, !tbaa !37
-  %13 = load ptr, ptr %12, align 8, !tbaa !44
+  %13 = load ptr, ptr %12, align 8, !tbaa !41
   br label %14
 
 14:                                               ; preds = %10, %14
@@ -429,7 +429,7 @@ define internal noundef signext i32 @get_text_rgb_row(ptr noundef %0, ptr nocapt
   store i8 %30, ptr %26, align 1, !tbaa !31
   %32 = add i32 %15, -1
   %33 = icmp eq i32 %32, 0
-  br i1 %33, label %34, label %14, !llvm.loop !46
+  br i1 %33, label %34, label %14
 
 34:                                               ; preds = %14, %2
   ret i32 1
@@ -468,7 +468,7 @@ define internal noundef signext i32 @get_word_gray_row(ptr noundef %0, ptr nocap
   %23 = load ptr, ptr %5, align 8, !tbaa !35
   %24 = getelementptr inbounds i8, ptr %1, i64 32
   %25 = load ptr, ptr %24, align 8, !tbaa !37
-  %26 = load ptr, ptr %25, align 8, !tbaa !44
+  %26 = load ptr, ptr %25, align 8, !tbaa !41
   br label %27
 
 27:                                               ; preds = %22, %27
@@ -489,7 +489,7 @@ define internal noundef signext i32 @get_word_gray_row(ptr noundef %0, ptr nocap
   store i8 %40, ptr %28, align 1, !tbaa !31
   %42 = add i32 %29, -1
   %43 = icmp eq i32 %42, 0
-  br i1 %43, label %44, label %27, !llvm.loop !47
+  br i1 %43, label %44, label %27
 
 44:                                               ; preds = %27, %18
   ret i32 1
@@ -553,7 +553,7 @@ define internal noundef signext i32 @get_scaled_gray_row(ptr noundef %0, ptr noc
   %23 = load ptr, ptr %5, align 8, !tbaa !35
   %24 = getelementptr inbounds i8, ptr %1, i64 32
   %25 = load ptr, ptr %24, align 8, !tbaa !37
-  %26 = load ptr, ptr %25, align 8, !tbaa !44
+  %26 = load ptr, ptr %25, align 8, !tbaa !41
   br label %27
 
 27:                                               ; preds = %22, %27
@@ -569,7 +569,7 @@ define internal noundef signext i32 @get_scaled_gray_row(ptr noundef %0, ptr noc
   store i8 %35, ptr %29, align 1, !tbaa !31
   %37 = add i32 %28, -1
   %38 = icmp eq i32 %37, 0
-  br i1 %38, label %39, label %27, !llvm.loop !48
+  br i1 %38, label %39, label %27
 
 39:                                               ; preds = %27, %18
   ret i32 1
@@ -608,7 +608,7 @@ define internal noundef signext i32 @get_word_rgb_row(ptr noundef %0, ptr nocapt
   %23 = load ptr, ptr %5, align 8, !tbaa !35
   %24 = getelementptr inbounds i8, ptr %1, i64 32
   %25 = load ptr, ptr %24, align 8, !tbaa !37
-  %26 = load ptr, ptr %25, align 8, !tbaa !44
+  %26 = load ptr, ptr %25, align 8, !tbaa !41
   br label %27
 
 27:                                               ; preds = %22, %27
@@ -653,7 +653,7 @@ define internal noundef signext i32 @get_word_rgb_row(ptr noundef %0, ptr nocapt
   store i8 %62, ptr %52, align 1, !tbaa !31
   %64 = add i32 %29, -1
   %65 = icmp eq i32 %64, 0
-  br i1 %65, label %66, label %27, !llvm.loop !49
+  br i1 %65, label %66, label %27
 
 66:                                               ; preds = %27, %18
   ret i32 1
@@ -692,7 +692,7 @@ define internal noundef signext i32 @get_scaled_rgb_row(ptr noundef %0, ptr noca
   %23 = load ptr, ptr %5, align 8, !tbaa !35
   %24 = getelementptr inbounds i8, ptr %1, i64 32
   %25 = load ptr, ptr %24, align 8, !tbaa !37
-  %26 = load ptr, ptr %25, align 8, !tbaa !44
+  %26 = load ptr, ptr %25, align 8, !tbaa !41
   br label %27
 
 27:                                               ; preds = %22, %27
@@ -722,7 +722,7 @@ define internal noundef signext i32 @get_scaled_rgb_row(ptr noundef %0, ptr noca
   store i8 %47, ptr %42, align 1, !tbaa !31
   %49 = add i32 %28, -1
   %50 = icmp eq i32 %49, 0
-  br i1 %50, label %51, label %27, !llvm.loop !50
+  br i1 %50, label %51, label %27
 
 51:                                               ; preds = %27, %18
   ret i32 1
@@ -780,13 +780,4 @@ attributes #3 = { nounwind }
 !38 = !{!18, !11, i64 40}
 !39 = !{!18, !8, i64 56}
 !40 = !{!18, !8, i64 72}
-!41 = distinct !{!41, !42}
-!42 = !{!"llvm.loop.mustprogress"}
-!43 = distinct !{!43, !42}
-!44 = !{!8, !8, i64 0}
-!45 = distinct !{!45, !42}
-!46 = distinct !{!46, !42}
-!47 = distinct !{!47, !42}
-!48 = distinct !{!48, !42}
-!49 = distinct !{!49, !42}
-!50 = distinct !{!50, !42}
+!41 = !{!8, !8, i64 0}

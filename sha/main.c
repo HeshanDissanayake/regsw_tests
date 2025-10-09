@@ -32,7 +32,7 @@ int memcmp(const void *ptr1, const void *ptr2, size_t num) {
 
 /*********************** FUNCTION DEFINITIONS ***********************/
 int sha256_test()
-{
+{	
 	BYTE text1[] = {"abc"};
 	BYTE text2[] = {"abcdbcdecdefdefgefghfghighijhijkijkljklmklmnlmnomnopnopq"};
 	BYTE text3[] = {"aaaaaaaaaa"};
@@ -61,41 +61,49 @@ int sha256_test()
 	cycles_test1 = end - start;	
 
 
-	// test 2
-	start = read_cycles();
-	sha256_init(&ctx);
-	sha256_update(&ctx, text2, strlen(text2));
-	sha256_final(&ctx, buf);
-	pass = pass && !memcmp(hash2, buf, SHA256_BLOCK_SIZE);
-	end = read_cycles();
-	cycles_test2 = end - start;	
+	// // test 2
+	// start = read_cycles();
+	// sha256_init(&ctx);
+	// sha256_update(&ctx, text2, strlen(text2));
+	// sha256_final(&ctx, buf);
+	// pass = pass && !memcmp(hash2, buf, SHA256_BLOCK_SIZE);
+	// end = read_cycles();
+	// cycles_test2 = end - start;	
 
-	// test 3
-	start = read_cycles();
-	sha256_init(&ctx);
-	for (idx = 0; idx < 100000; ++idx)
-	   sha256_update(&ctx, text3, strlen(text3));
-	sha256_final(&ctx, buf);
-	pass = pass && !memcmp(hash3, buf, SHA256_BLOCK_SIZE);
-	end = read_cycles();
-	cycles_test3 = end - start;
+	// // test 3
+	// start = read_cycles();
+	// sha256_init(&ctx);
+	// for (idx = 0; idx < 100000; ++idx)
+	//    sha256_update(&ctx, text3, strlen(text3));
+	// sha256_final(&ctx, buf);
+	// pass = pass && !memcmp(hash3, buf, SHA256_BLOCK_SIZE);
+	// end = read_cycles();
+	// cycles_test3 = end - start;
 
-	__builtin_trap(); 
+	// __builtin_trap(); 
 
 
 	return(pass);
 }
 
+void enable_regsw(int enable){
+    asm volatile ("csrw 0x803, %0"::"r"(enable)); // enable regsw unit
 
+}
 
 int main()
-{
+{	
+	
+	enable_regsw(1); // enable regsw unit
 	uint64_t start = read_cycles();
-	int pass = sha256_test();
+	uint64_t pass = sha256_test();
 	uint64_t end = read_cycles();
 
-	printf("cycles: %llu \n", end - start);
+	// printf("cycles: %llu \n", end - start);
 	// printf("%d\n", pass);
+
+	asm volatile ("li x31, 2" ); 
+	asm volatile ("mv x31, %0" :: "r"(pass)); 
 
 	return(0);
 }

@@ -166,7 +166,7 @@ define internal void @skip_input_data(ptr noundef %0, i64 noundef %1) #0 {
   store i32 0, ptr %41, align 8, !tbaa !27
   %42 = load i64, ptr %7, align 8, !tbaa !35
   %43 = icmp sgt i64 %13, %42
-  br i1 %43, label %10, label %44, !llvm.loop !36
+  br i1 %43, label %10, label %44
 
 44:                                               ; preds = %37, %6
   %45 = phi i64 [ %1, %6 ], [ %13, %37 ]
@@ -242,5 +242,3 @@ attributes #6 = { nounwind }
 !33 = !{!9, !9, i64 0}
 !34 = !{!19, !8, i64 0}
 !35 = !{!19, !17, i64 8}
-!36 = distinct !{!36, !37}
-!37 = !{!"llvm.loop.mustprogress"}

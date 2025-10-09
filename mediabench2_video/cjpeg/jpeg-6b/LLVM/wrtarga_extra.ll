@@ -254,7 +254,7 @@ define internal void @start_output_tga(ptr noundef %0, ptr nocapture noundef %1)
   %129 = tail call signext i32 @putc(i32 noundef signext %128, ptr noundef %103)
   %130 = add nuw nsw i64 %109, 1
   %131 = icmp eq i64 %130, %107
-  br i1 %131, label %132, label %108, !llvm.loop !42
+  br i1 %131, label %132, label %108
 
 132:                                              ; preds = %108, %102
   %133 = getelementptr inbounds i8, ptr %1, i64 8
@@ -378,7 +378,7 @@ define internal void @put_demapped_gray(ptr nocapture noundef readonly %0, ptr n
   store i8 %24, ptr %19, align 1, !tbaa !29
   %26 = add i32 %17, -1
   %27 = icmp eq i32 %26, 0
-  br i1 %27, label %28, label %16, !llvm.loop !44
+  br i1 %27, label %28, label %16
 
 28:                                               ; preds = %16
   %29 = load ptr, ptr %7, align 8, !tbaa !24
@@ -420,7 +420,7 @@ define internal void @put_gray_rows(ptr nocapture noundef readonly %0, ptr nocap
   store i8 %18, ptr %15, align 1, !tbaa !29
   %20 = add i32 %14, -1
   %21 = icmp eq i32 %20, 0
-  br i1 %21, label %22, label %13, !llvm.loop !45
+  br i1 %21, label %22, label %13
 
 22:                                               ; preds = %13
   %23 = load ptr, ptr %4, align 8, !tbaa !24
@@ -473,7 +473,7 @@ define internal void @put_pixel_rows(ptr nocapture noundef readonly %0, ptr noca
   %25 = getelementptr inbounds i8, ptr %15, i64 3
   %26 = add i32 %14, -1
   %27 = icmp eq i32 %26, 0
-  br i1 %27, label %28, label %13, !llvm.loop !46
+  br i1 %27, label %28, label %13
 
 28:                                               ; preds = %13
   %29 = load ptr, ptr %4, align 8, !tbaa !24
@@ -555,8 +555,3 @@ attributes #6 = { nounwind }
 !39 = !{!18, !8, i64 24}
 !40 = !{!7, !8, i64 160}
 !41 = !{!8, !8, i64 0}
-!42 = distinct !{!42, !43}
-!43 = !{!"llvm.loop.mustprogress"}
-!44 = distinct !{!44, !43}
-!45 = distinct !{!45, !43}
-!46 = distinct !{!46, !43}

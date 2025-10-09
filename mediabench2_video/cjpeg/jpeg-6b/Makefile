@@ -7,7 +7,15 @@
 
 # For compiling with source and object files in different directories.
 srcdir = .
-REGSW_COMPILER=../../../../scripts/normal_compile_linux.sh
+
+ifeq ($(REGSW), true)
+	REGSW_COMPILER=/home/heshds/working_dir/regsw_tests/scripts/regsw_compile_linux.sh
+	regsw_mode = _regsw
+else
+	REGSW_COMPILER=/home/heshds/working_dir/regsw_tests/scripts/normal_compile_linux.sh
+	regsw_mode = 
+endif
+
 # Compiler
 export RISCV_CC = /opt/dev/riscv_linux_rv64g_regsw/bin/riscv64-unknown-linux-gnu-gcc
 # Compiler flags
@@ -35,10 +43,10 @@ CFLAGS= -O2  -I$(srcdir)
 ANSI2KNRFLAGS= 
 
 # Link-time cc options:
-LDFLAGS= 
+LDFLAGS= $(RISCV_CFLAGS)
 
 # To link any special libraries, add the necessary -l commands here.
-LDLIBS= 
+LDLIBS= $(RISCV_CFLAGS)
 
 # If using GNU libtool, LIBTOOL references it; if not, LIBTOOL is empty.
 LIBTOOL = 
@@ -179,23 +187,24 @@ libjpeg.la:  $(LIBOBJECTS)
 # sample programs:
 
 cjpeg: $(COBJECTS) libjpeg.$(A)
-	$(LN) $(LDFLAGS) -o cjpeg $(COBJECTS) libjpeg.$(A) $(LDLIBS)
+	$(LN) $(LDFLAGS) -o cjpeg$(regsw_mode) $(COBJECTS) libjpeg.$(A) $(LDLIBS)
 
 djpeg: $(DOBJECTS) libjpeg.$(A)
-	$(LN) $(LDFLAGS) -o djpeg $(DOBJECTS) libjpeg.$(A) $(LDLIBS)
+	$(LN) $(LDFLAGS) -o djpeg$(regsw_mode) $(DOBJECTS) libjpeg.$(A) $(LDLIBS)
 
 jpegtran: $(TROBJECTS) libjpeg.$(A)
-	$(LN) $(LDFLAGS) -o jpegtran $(TROBJECTS) libjpeg.$(A) $(LDLIBS)
+	$(LN) $(LDFLAGS) -o jpegtran$(regsw_mode) $(TROBJECTS) libjpeg.$(A) $(LDLIBS)
 
 rdjpgcom: rdjpgcom.$(O)
-	$(LN) $(LDFLAGS) -o rdjpgcom rdjpgcom.$(O) $(LDLIBS)
+	$(LN) $(LDFLAGS) -o rdjpgcom$(regsw_mode) rdjpgcom.$(O) $(LDLIBS)
 
 wrjpgcom: wrjpgcom.$(O)
-	$(LN) $(LDFLAGS) -o wrjpgcom wrjpgcom.$(O) $(LDLIBS)
+	$(LN) $(LDFLAGS) -o wrjpgcom$(regsw_mode) wrjpgcom.$(O) $(LDLIBS)
 
 # Installation rules:
 
 install: cjpeg djpeg jpegtran rdjpgcom wrjpgcom 
+
 	$(INSTALL_PROGRAM) cjpeg $(bindir)/$(binprefix)cjpeg
 	$(INSTALL_PROGRAM) djpeg $(bindir)/$(binprefix)djpeg
 	$(INSTALL_PROGRAM) jpegtran $(bindir)/$(binprefix)jpegtran
@@ -206,6 +215,25 @@ install: cjpeg djpeg jpegtran rdjpgcom wrjpgcom
 	$(INSTALL_DATA) $(srcdir)/jpegtran.1 $(mandir)/$(manprefix)jpegtran.$(manext)
 	$(INSTALL_DATA) $(srcdir)/rdjpgcom.1 $(mandir)/$(manprefix)rdjpgcom.$(manext)
 	$(INSTALL_DATA) $(srcdir)/wrjpgcom.1 $(mandir)/$(manprefix)wrjpgcom.$(manext)
+
+
+
+PARENT := $(notdir $(CURDIR))
+copy-to-build:
+	mkdir -p $(PARENT)-build
+	cp tmndec$(regsw_mode) $(PARENT)-build/tmndec$(regsw_mode)
+
+
+copy-to-build:
+	mkdir -p $(srcdir)/$(PARENT)-build
+	cp cjpeg$(regsw_mode) $(PARENT)-build/
+	cp djpeg$(regsw_mode) $(PARENT)-build/
+	cp jpegtran$(regsw_mode) $(PARENT)-build/
+	cp rdjpgcom$(regsw_mode) $(PARENT)-build/
+	cp wrjpgcom$(regsw_mode) $(PARENT)-build/
+
+
+
 
 install-lib: libjpeg.$(A) install-headers
 	$(INSTALL_LIB) libjpeg.$(A) $(libdir)/$(binprefix)libjpeg.$(A)
@@ -218,7 +246,7 @@ install-headers: jconfig.h
 
 clean:
 	$(RM) *.o *.lo libjpeg.a libjpeg.la
-	$(RM) cjpeg djpeg jpegtran rdjpgcom wrjpgcom
+	$(RM) cjpeg$(regsw_mode) djpeg$(regsw_mode) jpegtran$(regsw_mode) rdjpgcom$(regsw_mode) wrjpgcom$(regsw_mode)
 	$(RM) ansi2knr core testout* config.log config.status
 	$(RM) -r knr .libs _libs
 
